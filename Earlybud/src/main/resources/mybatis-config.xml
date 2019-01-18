@@ -5,10 +5,8 @@
 <configuration>
 <typeAliases>
 	<typeAlias alias="Member" type="com.earlybud.model.Member"/>
-<<<<<<< HEAD
 	<typeAlias alias="Auth" type="com.earlybud.model.Auth"/>
-=======
->>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
+
 </typeAliases>
 <mappers>
 	<mapper resource="mybatis/Member.xml"/>

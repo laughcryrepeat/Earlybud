@@ -17,10 +17,9 @@
 	<resources mapping="/js/**" location="/resources/js/" />
 	<resources mapping="/css/**" location="/resources/css/" />
 	<resources mapping="/images/**" location="/resources/images/" />
-<<<<<<< HEAD
+	<resources mapping="/img/**" location="/resources/img/" />
 	<resources mapping="/summernote/**" location="/resources/summernote/" />
-=======
->>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
+
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

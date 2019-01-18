@@ -4,7 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.earlybud.model.Member">
   	<resultMap type="Member" id="memberResult"><!-- dto mapping -->
-<<<<<<< HEAD
   		<result property="userid" column="USERID"/>
   		<result property="userpw" column="USERPW"/>
   		<result property="userName" column="USERNAME"/>
@@ -25,19 +24,6 @@
   	FROM 
   	tbl_member mem LEFT OUTER JOIN tbl_member_auth auth on mem.userid = auth.userid 
   	WHERE mem.userid = #{userid} 
-=======
-  		<result property="no" column="NO"/>
-  		<result property="name" column="NAME"/>
-  		<result property="id" column="ID"/>
-  		<result property="pwd" column="PWD"/>
-  		<result property="email" column="EMAIL"/>
-  		<result property="phone" column="PHONE"/>
-  		<result property="joindate" column="JOINDATE"/>
-  	</resultMap>
-  	
-  	<select id="checkPwd" resultType="String" parameterType="String">
-  		select PWD from SP_MEMBER where ID=#{id}
->>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
   	</select>
   	
   </mapper>
