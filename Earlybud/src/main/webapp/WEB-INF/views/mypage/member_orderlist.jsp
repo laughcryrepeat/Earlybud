@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html> 
 <html class="no-js">
-
+<!doctype html>
+<html lang="en-US">
 
 <head>
 	<meta charset="UTF-8">
