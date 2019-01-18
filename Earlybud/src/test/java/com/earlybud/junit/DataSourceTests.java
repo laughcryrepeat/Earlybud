@@ -47,7 +47,11 @@ public class DataSourceTests {
 
   }
 
+<<<<<<< HEAD
 
+=======
+  //testestsetsetsetsetsetsetetestest
+>>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
   @Test
   public void testConnection() {
     

@@ -47,8 +47,13 @@ body {
   font-weight: 900;
   --position: absolute;
   position: relative;
+<<<<<<< HEAD
   left: 30%;
   top: 0;
+=======
+  left: 50%;
+  top: 50%;
+>>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
