@@ -19,7 +19,7 @@
   </head>
   <body class="app sidebar-mini rtl">
 
-<title> Earlybud · Multi step form</title>
+<title>Earlybud · Multi step form</title>
 <!-- @@close -->
 <!-- @@block = body -->
 <nav aria-label="breadcrumb">
@@ -160,8 +160,8 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-6">
                   <div class="form-group">
-                    <label>State</label>
-                    <input type="text" class="form-control" id="state">
+                    <label>City</label>
+                    <input type="text" class="form-control" id="city">
                   </div>
                 </div>
               </div>
@@ -218,8 +218,8 @@
           <div class="row">
             <div class="col-12 col-lg-7">
               <div class="form-group">
-                <label>Card holder name</label>
-                <input type="text" class="form-control" id="cardholder">
+                <label>Card type name</label>
+                <input type="text" class="form-control" id="card_type">
               </div>
             </div>
             <div class="col-12 col-lg-5">
@@ -246,7 +246,7 @@
                 <i class="icon-arrow-left font-sm"></i>
                 &nbsp; 배송지정보
               </button>
-              <button type="button" class="btn btn-success ml-auto" data-form-step="#confirmation">
+              <button type="button" id="confirm_btn" class="btn btn-success ml-auto" data-form-step="#confirmation">
                 확인 &nbsp;
                 <i class="icon-arrow-right font-sm"></i>
               </button>
@@ -274,7 +274,7 @@
                   <label class="text-secondary">이름</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div class="mb-2">john_doe</div>
+                  <div id="confirm_username" class="mb-2">john_doe</div>
                 </div>
               </div>
               <div class="row">
@@ -282,7 +282,7 @@
                   <label class="text-secondary">Email ID</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div class="mb-2">john_doe@email.com</div>
+                  <div id="confirm_email" class="mb-2">john_doe@email.com</div>
                 </div>
               </div>
               <div class="row">
@@ -290,7 +290,7 @@
                   <label class="text-secondary">받는 사람</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div class="mb-2">John Doe</div>
+                  <div id="confirm_name" class="mb-2">John Doe</div>
                 </div>
               </div>
               <div class="row">
@@ -298,7 +298,7 @@
                   <label class="text-secondary">폰번호</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div class="mb-2">01000000000</div>
+                  <div id="confirm_phone" class="mb-2">01000000000</div>
                 </div>
               </div>
               <div class="row">
@@ -306,7 +306,7 @@
                   <label class="text-secondary">주소</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div class="mb-2">111 W.App Ave. Suite 123, Sunway, CA</div>
+                  <div id="confirm_address" class="mb-2">111 W.App Ave. Suite 123, Sunway, CA</div>
                 </div>
               </div>
               <div class="row">
@@ -314,7 +314,7 @@
                   <label class="text-secondary">우편번호</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div class="mb-2">94086</div>
+                  <div id="confirm_zipcode" class="mb-2">94086</div>
                 </div>
               </div>
               <div class="row">
@@ -322,7 +322,7 @@
                   <label class="text-secondary">지역</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div class="mb-2">CA</div>
+                  <div id="confirm_city" class="mb-2">CA</div>
                 </div>
               </div>
               <div class="row">
@@ -330,7 +330,15 @@
                   <label class="text-secondary">Card number</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div class="mb-2">**** 2086</div>
+                  <div id="confirm_cardnum" class="mb-2">**** 2086</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-md-3 col-lg-2">
+                  <label class="text-secondary">Card Type</label>
+                </div>
+                <div class="col-12 col-md-9 col-lg-10">
+                  <div id="confirm_cardtype" class="mb-2">Visa</div>
                 </div>
               </div>
               <div class="row">
@@ -338,7 +346,7 @@
                   <label class="text-secondary">Card Expiry</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div class="mb-2">12/20</div>
+                  <div id="confirm_expiry" class="mb-2">12/20</div>
                 </div>
               </div>
             </div>
@@ -350,7 +358,7 @@
               &nbsp; 결제정보
             </button>
             <div class="d-block d-md-inline ml-auto mb-3">
-              <button type="submit" class="btn btn-success btn-block">
+              <button id="submit_btn" type="submit" class="btn btn-success btn-block">
                 주문하기
               </button>
             </div>
