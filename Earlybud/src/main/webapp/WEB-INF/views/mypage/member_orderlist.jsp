@@ -3,7 +3,11 @@
 <!doctype html> 
 <html class="no-js">
 <!doctype html>
+<<<<<<< HEAD
 <html lang="en-US">
+=======
+<html lang="en-US">
+>>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
 
 <head>
 	<meta charset="UTF-8">
