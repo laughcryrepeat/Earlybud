@@ -17,14 +17,15 @@ $('[data-form-step]').on('click', function () {
   $('[href="' + tabId + '"]').tab('show');
 });
 
-$('#formOrder').on('submit', function(e) {
+$('#submit_btn').on('click', function(e) {
     var serializeArray = $(this).serializeArray();
     //alert(serializeArray);
     $('.nav-tabs-progress').find('.nav-item').last().addClass('complete');
+    console.log("before ajax");
     $.ajax({
-        type: 'post',
+        method: 'post',
         url: '../payment/reserve_payment', 
-        data: serializeArrayeArray,
+        data: serializeArray,
         success: function(){
             console.log("success");
         }
@@ -41,8 +42,8 @@ $(document).ready(function(){
         payment.del_name = formOrder.del_name.value;
         payment.del_phone = formOrder.del_phone.value;
         payment.zip_code = formOrder.zip_code.value;
-        payment.city = formOrder.city.value;
-        payment.address = formOrder.address.value;
+        payment.addr1 = formOrder.addr1.value;
+        payment.addr2 = formOrder.addr2.value;
         payment.cardnum = formOrder.cardnum.value;
         payment.cardcvc = formOrder.cardcvc.value;
         payment.cardtype = formOrder.cardtype.value;
@@ -50,13 +51,14 @@ $(document).ready(function(){
         payment.exp_month = formOrder.exp_month.value;
         payment.exp_year = formOrder.exp_year.value;
         
-        $('#confirm_username').html(payment.username);
+        $('#confirm_nickname').html(payment.nickname);
         $('#confirm_email').html(payment.email);
         $('#confirm_name').html(payment.del_name);
         $('#confirm_phone').html(payment.del_phone);
-        $('#confirm_address').html(payment.address);
         $('#confirm_zipcode').html(payment.zip_code);
-        $('#confirm_city').html(payment.city);
+        $('#confirm_addr1').html(payment.addr1);
+        $('#confirm_addr2').html(payment.addr2);
+        $('#confirm_pur_type').html(payment.pur_type);
         $('#confirm_cardnum').html(payment.cardnum);
         $('#confirm_cardtype').html(payment.cardtype);
         $('#confirm_expiry').html(payment.exp_month+"/"+payment.exp_year);

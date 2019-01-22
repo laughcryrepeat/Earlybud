@@ -1,17 +1,13 @@
 package com.earlybud.controller;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.earlybud.vo.AddrVo;
+import com.earlybud.vo.PaymentVo;
 
 import lombok.extern.log4j.Log4j;
 
@@ -32,13 +28,14 @@ public class PaymentController {
 	}
 	
 	@RequestMapping("jusoPopup")
-	public String jusoPopup(HttpServletRequest request, HttpServletResponse response) 
-			throws IOException, ServletException {
+	public String jusoPopup(@ModelAttribute("AddrVo") AddrVo addrvo) {
 		log.info("jusoPopup");
 		return "payment/jusoPopup";
 	}
-	@RequestMapping("reserve_payment")
-	public void reservePayment() {
+	
+	@RequestMapping(value="reserve_payment", method=RequestMethod.POST)
+	public void reservePayment(PaymentVo paymentVo) {
 		log.info("reserve payment with Ajax");
+		log.info("paymentVo: "+paymentVo.getNickname());
 	}
 }

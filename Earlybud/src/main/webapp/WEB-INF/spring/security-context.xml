@@ -23,16 +23,17 @@
 
 	<security:intercept-url
 			pattern="/auth/member" access="hasRole('ROLE_MEMBER')" />
-	-->
+	-->	
 	<security:intercept-url pattern="/admin/**"
 			access="hasRole('ROLE_ADMIN')" />
 	<security:form-login
         	login-page="/customLogin"
         	authentication-success-handler-ref="customLoginSuccess"
         />		
+    
 	<security:access-denied-handler ref="customAccessDenied" />
-	
-	<!-- <security:csrf disabled="true"/> -->
+
+	<security:csrf disabled="true"/>
 
 	<security:logout logout-url="/customLogout"
 		invalidate-session="true" />

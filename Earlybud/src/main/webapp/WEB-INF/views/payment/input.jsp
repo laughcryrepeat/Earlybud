@@ -135,13 +135,13 @@
           <div class="row">
             <div class="col-12 col-lg-6">
               <div class="form-group">
-                <label>Full name</label>
+                <label>받는사람 이름</label>
                 <input type="text" class="form-control" id="del_name" name="del_name">
               </div>
             </div>
             <div class="col-12 col-lg-6">
              <div class="form-group">
-                <label>Phone number</label>
+                <label>폰번호</label>
                 <input type="text" class="form-control" id="del_phone" name="del_phone">
              </div>
             </div>
@@ -152,22 +152,22 @@
               <div class="row">
                 <div class="col-12 col-md-6 col-lg-6">
                   <div class="form-group">
-                    <label>Zip code</label>
+                    <label>우편번호</label>
                     <input type="text" class="form-control" id="zip_code" name="zip_code" onClick="goPopup()">
                   </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6">
                   <div class="form-group">
-                    <label>City</label>
-                    <input type="text" class="form-control" id="city" name="city">
+                    <label>도로명주소</label>
+                    <input type="text" class="form-control whiteinput" id="addr1" name="addr1" readonly>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-12 col-lg-6">
               <div class="form-group">
-                <label>Home address</label>
-                <input type="text" class="form-control" id="address" name="address">
+                <label>상세주소</label>
+                <input type="text" class="form-control whiteinput" id="addr2" name="addr2" readonly>
               </div>
             </div>
           </div>
@@ -202,7 +202,7 @@
           <div class="row">
             <div class="col-12 col-md-8 col-lg-7">
               <div class="form-group">
-                <label>Card number</label>
+                <label>카드번호</label>
                 <input type="text" class="form-control" id="cardnum" name="cardnum">
               </div>
             </div>
@@ -216,7 +216,7 @@
           <div class="row">
             <div class="col-12 col-lg-7">
               <div class="form-group">
-                <label>Card type name</label>
+                <label>카드타입</label>
                 <input type="text" class="form-control" id="cardtype" name="card_type">
               </div>
             </div>
@@ -285,7 +285,7 @@
                   <label class="text-secondary">이름</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div id="confirm_username" class="mb-2"></div>
+                  <div id="confirm_nickname" class="mb-2"></div>
                 </div>
               </div>
               <div class="row">
@@ -314,14 +314,6 @@
               </div>
               <div class="row">
                 <div class="col-12 col-md-3 col-lg-2">
-                  <label class="text-secondary">주소</label>
-                </div>
-                <div class="col-12 col-md-9 col-lg-10">
-                  <div id="confirm_address" class="mb-2"></div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12 col-md-3 col-lg-2">
                   <label class="text-secondary">우편번호</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
@@ -330,10 +322,18 @@
               </div>
               <div class="row">
                 <div class="col-12 col-md-3 col-lg-2">
-                  <label class="text-secondary">지역</label>
+                  <label class="text-secondary">도로명주소</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div id="confirm_city" class="mb-2"></div>
+                  <div id="confirm_addr1" class="mb-2"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-md-3 col-lg-2">
+                  <label class="text-secondary">상세주소</label>
+                </div>
+                <div class="col-12 col-md-9 col-lg-10">
+                  <div id="confirm_addr2" class="mb-2"></div>
                 </div>
               </div>
               <div class="row">
@@ -398,9 +398,9 @@
       }
       function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
       // 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다. 
-       document.form.zip_code.value = zipNo;//우편번호
-       document.form.address.value = addrDetail; //상세주소
-       document.form.city.value = roadAddrPart1;//도로명주소
+       formOrder.zip_code.value = zipNo;//우편번호
+       formOrder.addr1.value = roadAddrPart1;//도로명주소
+       formOrder.addr2.value = addrDetail; //상세주소
       }
     </script>
   </body>
