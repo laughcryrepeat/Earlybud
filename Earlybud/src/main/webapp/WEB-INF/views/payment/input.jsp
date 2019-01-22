@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Admin Page - Item list</title>
+    <title>Payment</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -85,14 +85,14 @@
           <div class="row">
             <div class="col-12 col-md-6 col-lg-6">
               <div class="form-group">
-                <label>User name</label>
-                <input type="text" class="form-control" id="username">
+                <label>Nick name</label>
+                <input type="text" class="form-control" id="nickname" name="nickname">
               </div>
             </div>
             <div class="col-12 col-md-6 col-lg-6">
               <div class="form-group">
                 <label>E-mail</label>
-                <input type="text" class="form-control" id="email">
+                <input type="text" class="form-control" id="email" name="email">
               </div>
             </div>
           </div>
@@ -100,14 +100,12 @@
             <div class="col-12 col-md-6 col-lg-6">
               <div class="form-group">
                 <label>Password</label>
-                <input type="password" class="form-control" id="pwd">
-              </div>
+                <input type="password" class="form-control" id="pwd" name="pwd">
+              </div>         
             </div>
             <div class="col-12 col-md-6 col-lg-6">
-              <div class="form-group">
-                <label>Confirm password</label>
-                <input type="password" class="form-control" id="pwd_check">
-              </div>
+                <br/>
+              <span id="pwd_ok"></span>
             </div>
           </div>
           <div class="d-none d-md-block">
@@ -138,13 +136,13 @@
             <div class="col-12 col-lg-6">
               <div class="form-group">
                 <label>Full name</label>
-                <input type="text" class="form-control" id="full_name">
+                <input type="text" class="form-control" id="del_name" name="del_name">
               </div>
             </div>
             <div class="col-12 col-lg-6">
              <div class="form-group">
                 <label>Phone number</label>
-                <input type="text" class="form-control" id="phone">
+                <input type="text" class="form-control" id="del_phone" name="del_phone">
              </div>
             </div>
           </div>
@@ -155,13 +153,13 @@
                 <div class="col-12 col-md-6 col-lg-6">
                   <div class="form-group">
                     <label>Zip code</label>
-                    <input type="text" class="form-control" id="zip_code">
+                    <input type="text" class="form-control" id="zip_code" name="zip_code" onClick="goPopup()">
                   </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6">
                   <div class="form-group">
                     <label>City</label>
-                    <input type="text" class="form-control" id="city">
+                    <input type="text" class="form-control" id="city" name="city">
                   </div>
                 </div>
               </div>
@@ -169,7 +167,7 @@
             <div class="col-12 col-lg-6">
               <div class="form-group">
                 <label>Home address</label>
-                <input type="text" class="form-control" id="address">
+                <input type="text" class="form-control" id="address" name="address">
               </div>
             </div>
           </div>
@@ -205,13 +203,13 @@
             <div class="col-12 col-md-8 col-lg-7">
               <div class="form-group">
                 <label>Card number</label>
-                <input type="text" class="form-control" id="cardnum">
+                <input type="text" class="form-control" id="cardnum" name="cardnum">
               </div>
             </div>
             <div class="col-12 col-md-4 col-lg-5">
               <div class="form-group">
                 <label>CVC</label>
-                <input type="text" class="form-control" id="cvc">
+                <input type="text" class="form-control" id="cardcvc" name="cardcvc">
               </div>
             </div>
           </div>
@@ -219,7 +217,7 @@
             <div class="col-12 col-lg-7">
               <div class="form-group">
                 <label>Card type name</label>
-                <input type="text" class="form-control" id="card_type">
+                <input type="text" class="form-control" id="cardtype" name="card_type">
               </div>
             </div>
             <div class="col-12 col-lg-5">
@@ -227,15 +225,28 @@
                 <div class="col-12 col-md-4 col-lg-6">
                   <div class="form-group">
                     <label>Expiry month</label>
-                    <input type="text" class="form-control" id="exp_month">
+                    <input type="text" class="form-control" id="exp_month" name="exp_month">
                   </div>
                 </div>
                 <div class="col-12 col-md-4 col-lg-6">
                   <div class="form-group">
                     <label>Expiry year</label>
-                    <input type="text" class="form-control" id="exp_year">
+                    <input type="text" class="form-control" id="exp_year" name="exp_year">
                   </div>
                 </div>
+                  
+                <div class="col-12 col-md-4 col-lg-6">
+                  <div class="form-group">
+                    <label>Payment Type</label>
+                    <select class="form-control" id="pur_type" name="pur_type">
+                        <option value="" disabled selected></option>
+                        <option value="kakao_pay">카카오페이</option>
+                        <option value="inisis">이니시스</option>
+                        <option value="inisis">페이코</option>
+                    </select>
+                  </div>
+                </div> 
+                  
               </div>
             </div>
           </div>
@@ -274,7 +285,7 @@
                   <label class="text-secondary">이름</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div id="confirm_username" class="mb-2">john_doe</div>
+                  <div id="confirm_username" class="mb-2"></div>
                 </div>
               </div>
               <div class="row">
@@ -282,7 +293,7 @@
                   <label class="text-secondary">Email ID</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div id="confirm_email" class="mb-2">john_doe@email.com</div>
+                  <div id="confirm_email" class="mb-2"></div>
                 </div>
               </div>
               <div class="row">
@@ -290,7 +301,7 @@
                   <label class="text-secondary">받는 사람</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div id="confirm_name" class="mb-2">John Doe</div>
+                  <div id="confirm_name" class="mb-2"></div>
                 </div>
               </div>
               <div class="row">
@@ -298,7 +309,7 @@
                   <label class="text-secondary">폰번호</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div id="confirm_phone" class="mb-2">01000000000</div>
+                  <div id="confirm_phone" class="mb-2"></div>
                 </div>
               </div>
               <div class="row">
@@ -306,7 +317,7 @@
                   <label class="text-secondary">주소</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div id="confirm_address" class="mb-2">111 W.App Ave. Suite 123, Sunway, CA</div>
+                  <div id="confirm_address" class="mb-2"></div>
                 </div>
               </div>
               <div class="row">
@@ -314,7 +325,7 @@
                   <label class="text-secondary">우편번호</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div id="confirm_zipcode" class="mb-2">94086</div>
+                  <div id="confirm_zipcode" class="mb-2"></div>
                 </div>
               </div>
               <div class="row">
@@ -322,7 +333,7 @@
                   <label class="text-secondary">지역</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div id="confirm_city" class="mb-2">CA</div>
+                  <div id="confirm_city" class="mb-2"></div>
                 </div>
               </div>
               <div class="row">
@@ -330,7 +341,7 @@
                   <label class="text-secondary">Card number</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div id="confirm_cardnum" class="mb-2">**** 2086</div>
+                  <div id="confirm_cardnum" class="mb-2"></div>
                 </div>
               </div>
               <div class="row">
@@ -338,7 +349,7 @@
                   <label class="text-secondary">Card Type</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div id="confirm_cardtype" class="mb-2">Visa</div>
+                  <div id="confirm_cardtype" class="mb-2"></div>
                 </div>
               </div>
               <div class="row">
@@ -346,7 +357,7 @@
                   <label class="text-secondary">Card Expiry</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div id="confirm_expiry" class="mb-2">12/20</div>
+                  <div id="confirm_expiry" class="mb-2"></div>
                 </div>
               </div>
             </div>
@@ -377,9 +388,20 @@
     <script src="${pageContext.request.contextPath}/js/payment/admin4b.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/payment/multi-step-form.js"></script>
     <script>
-    var payment = {
-    }
-    
+    function goPopup(){
+         // 주소검색을 수행할 팝업 페이지를 호출합니다.
+         // 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+         var pop = window.open("jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+         
+         // 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
+         //var pop = window.open("/payment/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
+      }
+      function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+      // 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다. 
+       document.form.zip_code.value = zipNo;//우편번호
+       document.form.address.value = addrDetail; //상세주소
+       document.form.city.value = roadAddrPart1;//도로명주소
+      }
     </script>
   </body>
 </html>
