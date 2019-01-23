@@ -18,7 +18,8 @@
         </ul>
       </div>
       <div class="row">
-        <div class="col-md-3"><a class="mb-2 btn btn-primary btn-block" href="">Compose Mail</a>
+        <div class="col-md-3">
+            <button type="button" class="mb-2 btn btn-primary btn-block" id="emailBtn">Compose Mail</button>
           <div class="tile p-0">
             <h4 class="tile-title folder-head">Folders</h4>
             <div class="tile-body">
@@ -26,8 +27,6 @@
                 <li class="nav-item active"><a class="nav-link" href="#"><i class="fa fa-inbox fa-fw"></i> Inbox<span class="badge badge-pill badge-primary float-right">12</span></a></li>
                   
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-envelope-o fa-fw"></i> Sent</a></li>
-                  
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-filter fa-fw"></i> Junk <span class="badge badge-pill badge-primary float-right">8</span></a></li>
                   
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-trash-o fa-fw"></i> Trash</a></li>
                   
@@ -177,25 +176,43 @@
           </div>
         </div>
       </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Header</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     </main>
     <!-- Essential javascripts for application to work-->
-    <script src="${pageContext.request.contextPath}/js/admin/jquery-3.2.1.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/admin/popper.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/admin/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/admin/main.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
     <!-- The javascript plugin to display page loading on top-->
-    <script src="${pageContext.request.contextPath}/js/admin/plugins/pace.min.js"></script>
+    <script src="js/plugins/pace.min.js"></script>
     <!-- Page specific javascripts-->
     <!-- Google analytics script-->
     <script type="text/javascript">
-      if(document.location.hostname == 'pratikborsadiya.in') {
-      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      	ga('create', 'UA-72504830-1', 'auto');
-      	ga('send', 'pageview');
-      }
+      $(document).ready(function(){
+         $("#emailBtn").click(function(){
+             $("#myModal").modal();
+         }); 
+      });
     </script>
   </body>
 </html>
