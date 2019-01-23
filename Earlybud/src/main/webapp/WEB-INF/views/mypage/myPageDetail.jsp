@@ -16,15 +16,7 @@
   <link rel="alternate" type="application/rss+xml" title="Atu &raquo; Comments Feed" href="https://demo.athemes.com/airi-shop/comments/feed/" />
   <link rel="alternate" type="application/rss+xml" title="Atu &raquo; Hello world! Comments Feed" href="https://demo.athemes.com/airi-shop/2018/08/20/hello-world/feed/" />
 
-  <script type="text/javascript">
-  function goPopup(){
-       var pop = window.open("juso.do","pop","width=570,height=420, scrollbars=yes, resizable=yes");
-    }
-    function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
-     document.form.roadAddrPart1.value = roadAddrPart1;
-     document.form.addrDetail.value = addrDetail;
-    }
-  </script>
+  
 
   <script type="text/javascript">
     window._wpemojiSettings = {
@@ -80,6 +72,9 @@
     }(window, document, window._wpemojiSettings);
   </script>
   <style type="text/css">
+  	.addrD{
+  	  width: 340px !important;
+  	}
     img.wp-smiley,
     img.emoji {
       display: inline !important;
@@ -294,6 +289,7 @@
       color: #595959;
     }
   </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
   <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
   <link rel='https://api.w.org/' href='https://demo.athemes.com/airi-shop/wp-json/' />
@@ -460,10 +456,13 @@
 
                 <div id="respond" class="comment-respond">
                   <form action="https://demo.athemes.com/airi-shop/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-                    <p class="comment-form-comment"><label for="comment">이메일<span class="required">*</span></label> <input id="comment" name="comment" type="text" value="" size="30" maxlength="245" required='required' /></p>
-                    <p class="comment-form-author"><label for="author">비밀번호 <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
-                    <p class="comment-form-email"><label for="email">주소 <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' onclick="goPopup();"/></p>
-                    <p class="comment-form-url"><label for="url">핸드폰 번호</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+                  <p class="comment-form-comment"><label for="comment">이메일<span class="required">*</span></label> <input id="comment" name="comment" type="email" value="mj@mj.com" size="30" maxlength="245" required='required' readonly/></p>
+                    <p class="comment-form-author"><label for="author">비밀번호 <span class="required">*</span></label> <input id="author" name="author" type="password" value="" size="30" maxlength="245" required='required' /></p>
+                    <p class="comment-form-address"><label for="email">주소 <span class="required">*</span></label>
+                    	<input id="roadAddrPart1" name="roadAddrPart1" type="text" required='required' onclick="goPopup();"/></p>
+	                      <input class="addrD" id="addrDetail" name="addrDetail" type="text" required='required' />
+	                      <input class="addrD" id="zipNo" name="zipNo" type="text" value="" required='required' /></p>
+	                  <p class="comment-form-url"><label for="url">핸드폰 번호</label> <input id="url" name="url" type="number" value="" size="30" maxlength="200" /></p>
                     <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="수정하기" /> <input type='hidden' name='comment_post_ID' value='1' id='comment_post_ID' />
                       <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
                     </p>
@@ -585,6 +584,16 @@
         };
         /* ]]> */
       </script>
+      <script type="text/javascript">
+		  function goPopup(){
+		       var pop = window.open("juso.do","pop","width=570,height=420, scrollbars=yes, resizable=yes");
+		    }
+		   function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+		     document.form.roadAddrPart1.value = roadAddrPart1;
+		     document.form.addrDetail.value = addrDetail;
+		     document.form.zipNo.value = zipNo;
+		    }
+	  </script>
       <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=3.4.3'></script>
       <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70'></script>
       <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4'></script>
