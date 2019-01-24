@@ -30,7 +30,7 @@ public class MemberTests {
 	/*
 	@Test
 	public void testInsertMember() {
-		String sql = "insert into tbl_member(userid, userpw, username) values (?,?,?)";
+		String sql = "insert into member(email, pwd, nickname) values (?,?,?)";
 		
 		for(int i = 0; i<100; i++) {
 			Connection con = null;
@@ -68,7 +68,7 @@ public class MemberTests {
 	*/
 	@Test
 	public void testInsertAuth() {
-		String sql = "insert into tbl_member_auth (userid, auth) values (?,?)";
+		String sql = "insert into authorities (email, authority) values (?,?)";
 		for(int i=0; i<100; i++) {
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -78,13 +78,10 @@ public class MemberTests {
 				pstmt = con.prepareStatement(sql);
 				
 				if(i<80) {
-					pstmt.setString(1, "user"+i);
+					pstmt.setString(1, "user"+i+"@email.com");
 					pstmt.setString(2, "ROLE_USER");
-				}else if(i<90) {
-					pstmt.setString(1, "manager"+i);
-					pstmt.setString(2, "ROLE_MEMBER");
 				}else {
-					pstmt.setString(1, "admin"+i);
+					pstmt.setString(1, "admin"+i+"@email.com");
 					pstmt.setString(2, "ROLE_ADMIN");
 				}
 				

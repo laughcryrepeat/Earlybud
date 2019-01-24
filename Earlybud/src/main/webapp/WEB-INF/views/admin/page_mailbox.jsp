@@ -19,7 +19,7 @@
       </div>
       <div class="row">
         <div class="col-md-3">
-            <button type="button" class="mb-2 btn btn-primary btn-block" id="emailBtn">Compose Mail</button>
+            <button type="button" class="mb-2 btn btn-primary btn-block" id="emailBtn1">전체공지 메일쓰기</button>
           <div class="tile p-0">
             <h4 class="tile-title folder-head">Folders</h4>
             <div class="tile-body">
@@ -44,25 +44,25 @@
               </div>
               <div class="btn-group">
                 <button class="btn btn-primary btn-sm" type="button"><i class="fa fa-trash-o"></i></button>
-                <button class="btn btn-primary btn-sm" type="button"><i class="fa fa-reply"></i></button>
-                <button class="btn btn-primary btn-sm" type="button"><i class="fa fa-share"></i></button>
+                <button id="emailBtn2" class="btn btn-primary btn-sm" type="button"><i class="fa fa-reply"></i></button>
                 <button class="btn btn-primary btn-sm" type="button"><i class="fa fa-refresh"></i></button>
               </div>
             </div>
             <div class="table-responsive mailbox-messages">
               <table class="table table-hover">
+                  
                 <tbody>
+                    
                   <tr>
                     <td>
                       <div class="animated-checkbox">
                         <label>
-                          <input type="checkbox"><span class="label-text"> </span>
+                          <input class="msg_check" type="checkbox"><span class="label-text"> </span>
                         </label>
                       </div>
                     </td>
-                    <td><a href="#"><i class="fa fa-star-o"></i></a></td>
-                    <td><a href="read-mail.html">John Doe</a></td>
-                    <td class="mail-subject"><b>A report on project almanac</b> - Lorem ipsum dolor sit amet adipisicing elit...</td>
+                    <td class="user_email">JohnDoe@email.com</td>
+                      <td class="request"><a data-toggle="modal" data-backdrop="static" data-keyboard="false" href="#msg_modal" onclick="requestMsg('JohnDoe@email.com')"><b>A report on project almanac</b></a> - Lorem ipsum dolor sit amet adipisicing elit...</td>
                     <td><i class="fa fa-paperclip"></i></td>
                     <td>8 mins ago</td>
                   </tr>
@@ -70,101 +70,18 @@
                     <td>
                       <div class="animated-checkbox">
                         <label>
-                          <input type="checkbox"><span class="label-text"> </span>
+                          <input class="msg_check" type="checkbox"><span class="label-text"> </span>
                         </label>
                       </div>
                     </td>
-                    <td><a href="#"><i class="fa fa-star"></i></a></td>
-                    <td><a href="read-mail.html">John Doe</a></td>
-                    <td><b>A report on some good project</b> - Lorem ipsum dolor sit amet adipisicing elit...</td>
-                    <td></td>
-                    <td>15 mins ago</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="animated-checkbox">
-                        <label>
-                          <input type="checkbox"><span class="label-text"> </span>
-                        </label>
-                      </div>
-                    </td>
-                    <td><a href="#"><i class="fa fa-star-o"></i></a></td>
-                    <td><a href="read-mail.html">John Doe</a></td>
-                    <td class="mail-subject"><b>A report on project almanac</b> - Lorem ipsum dolor sit amet adipisicing elit...</td>
+                    <td class="user_email">meke@email.com</td>
+                      <td class="request"><a data-toggle="modal" data-backdrop="static" data-keyboard="false" href="#msg_modal" onclick="requestMsg('meke@email.com')"><b>A report on project almanac</b></a> - Lorem ipsum dolor sit amet adipisicing elit...</td>
                     <td><i class="fa fa-paperclip"></i></td>
-                    <td>30 mins ago</td>
+                    <td>8 mins ago</td>
                   </tr>
-                  <tr>
-                    <td>
-                      <div class="animated-checkbox">
-                        <label>
-                          <input type="checkbox"><span class="label-text"> </span>
-                        </label>
-                      </div>
-                    </td>
-                    <td><a href="#"><i class="fa fa-star"></i></a></td>
-                    <td><a href="read-mail.html">John Doe</a></td>
-                    <td class="mail-subject"><b>A report on project almanac</b> - Lorem ipsum dolor sit amet adipisicing elit...</td>
-                    <td></td>
-                    <td>25 December</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="animated-checkbox">
-                        <label>
-                          <input type="checkbox"><span class="label-text"> </span>
-                        </label>
-                      </div>
-                    </td>
-                    <td><a href="#"><i class="fa fa-star-o"></i></a></td>
-                    <td><a href="read-mail.html">John Doe</a></td>
-                    <td class="mail-subject"><b>A report on project almanac</b> - Lorem ipsum dolor sit amet adipisicing elit...</td>
-                    <td><i class="fa fa-paperclip"></i></td>
-                    <td>20 December</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="animated-checkbox">
-                        <label>
-                          <input type="checkbox"><span class="label-text"> </span>
-                        </label>
-                      </div>
-                    </td>
-                    <td><a href="#"><i class="fa fa-star"></i></a></td>
-                    <td><a href="read-mail.html">John Doe</a></td>
-                    <td class="mail-subject"><b>A report on project almanac</b> - Lorem ipsum dolor sit amet adipisicing elit...</td>
-                    <td></td>
-                    <td>20 December</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="animated-checkbox">
-                        <label>
-                          <input type="checkbox"><span class="label-text"> </span>
-                        </label>
-                      </div>
-                    </td>
-                    <td><a href="#"><i class="fa fa-star"></i></a></td>
-                    <td><a href="read-mail.html">John Doe</a></td>
-                    <td class="mail-subject"><b>A report on project almanac</b> - Lorem ipsum dolor sit amet adipisicing elit...</td>
-                    <td><i class="fa fa-paperclip"></i></td>
-                    <td>20 December</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="animated-checkbox">
-                        <label>
-                          <input type="checkbox"><span class="label-text"> </span>
-                        </label>
-                      </div>
-                    </td>
-                    <td><a href="#"><i class="fa fa-star-o"></i></a></td>
-                    <td><a href="read-mail.html">John Doe</a></td>
-                    <td class="mail-subject"><b>A report on project almanac</b> - Lorem ipsum dolor sit amet adipisicing elit...</td>
-                    <td></td>
-                    <td>20 December</td>
-                  </tr>
+                  
                 </tbody>
+                  
               </table>
             </div>
             <div class="text-right"><span class="text-muted mr-2">Showing 1-15 out of 60</span>
@@ -178,20 +95,83 @@
       </div>
   
   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade" id="sendEmail" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">관리자이메일보내기</h4>
         <button type="button" class="close" data-dismiss="modal">×</button>
         </div>
         <div class="modal-body">
-          <p>Some text in the modal.</p>
+          <p>Send Email</p>
+            <form name="email_modal" method="post" action="email/send">
+                <input id="mailfrom" name="mailfrom" class="form-control" value="admin.email" type="hidden" >
+                <div class="form-group">
+                  <label class="control-label">제목</label>
+                  <input id="mailsubject" name="mailsubject" class="form-control" type="text" >
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Email</label>
+                  <input id="mailto" name="mailto" class="form-control" type="text" >
+                </div>
+                <div class="form-group">
+                  <label class="control-label">참조 CC</label>
+                  <input id="mailcc" name="mailcc" class="form-control" type="text" >
+                </div>
+                <div class="form-group">
+                  <label class="control-label">숨은참조 BCC</label>
+                  <input id="mailbcc" name="mailbcc" class="form-control" type="text" >
+                </div>
+                <div class="form-group">
+                  <label class="control-label">내용</label>
+                  <textarea id="mailcontent" name="mailcontent" class="form-control" rows="4" ></textarea>
+                </div>
+            </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" id="send" class="btn btn-default" >Send</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal2 -->
+  <div class="modal fade" id="msg_modal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal2 content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">문의 메세지보기</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        <div class="modal-body">
+          <p>Request Message</p>
+            <form name="msg_form" method="post" action="email/send">
+                <div class="form-group">
+                  <label class="control-label">제목</label>
+                  <input id="msg_subject" name="msg_subject" class="form-control" type="text" readonly >
+                </div>
+                <div class="form-group">
+                  <label class="control-label">From</label>
+                  <input id="msg_from" name="msg_from" class="form-control" readonly >
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Date</label>
+                  <input id="msg_date" name="msg_date" class="form-control" readonly >
+                </div>
+                <div class="form-group">
+                  <label class="control-label">내용</label>
+                  <textarea id="msg_content" name="msg_content" class="form-control" rows="4" readonly></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" id="reply" class="btn btn-default" data-dismiss="modal" >Reply</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -199,20 +179,47 @@
 
     </main>
     <!-- Essential javascripts for application to work-->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/js/admin/jquery-3.2.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/admin/popper.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/admin/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/admin/main.js"></script>
     <!-- The javascript plugin to display page loading on top-->
-    <script src="js/plugins/pace.min.js"></script>
-    <!-- Page specific javascripts-->
-    <!-- Google analytics script-->
+    <script src="${pageContext.request.contextPath}/js/admin/plugins/pace.min.js"></script>
+    <!-- Page specific javascript-->
     <script type="text/javascript">
+        var modal1 = $("#sendEmail");
+        var modal2 = $("#msg_modal");
+        var email = {};
       $(document).ready(function(){
-         $("#emailBtn").click(function(){
-             $("#myModal").modal();
+          $("#emailBtn1").click(function(){
+              modal1.find("input").val("");
+              modal1.find("textarea").val("");
+              $("#sendEmail").modal({backdrop: 'static', keyboard: false});
+              
          }); 
-      });
+          
+          $("#reply").click(function(){
+              $('#mailto').val(msg_form.msg_from.value);
+              $("#sendEmail").modal({backdrop: 'static', keyboard: false});
+         });
+          
+         $("#send").click(function(){
+              var serializeArray = modal1.serializeArray();
+              console.log("before send email");
+              $.ajax({
+                method: 'post',
+                url: '../admin/send_mail', 
+                data: serializeArray,
+                success: function(){
+                    console.log("success");
+                }
+            });
+            modal1.modal("hide");
+        });  
+      });  
+      function requestMsg(useremail){
+          $('#msg_from').val(useremail);
+      }
     </script>
   </body>
 </html>

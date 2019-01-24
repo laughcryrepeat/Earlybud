@@ -24,13 +24,13 @@
               <table class="table table-hover table-bordered" id="memberTable">
                 <thead>
                   <tr>
-                  	<th></th>
-                    <th>ID</th>
+                    <th></th>
                     <th>Email</th>
-                    <th>Region</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Buying</th>
+                    <th>Nickname</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Joindate</th>
+                    <th>Authority</th>
                   </tr>
                 </thead>
         <!-- no need tbody tag when using DataTables -->
@@ -96,17 +96,34 @@
     <!-- Google analytics script-->
     <script type="text/javascript">
     $(document).ready(function() {
-        $('#memberTable').DataTable( {
-            columnDefs: [ {
-                orderable: false,
-                className: 'select-checkbox',
-                targets:   0
-            } ],
-            select: {
-                style:    'os',
-                selector: 'td:first-child'
+        var table = $('#memberTable').DataTable( {
+            "processing" : true,
+            "serverSide" : true,
+            "ajax": {
+                url : '../admin/member_table',
+                data: 'json',
+                success: function(obj, textstatus){
+                    data: obj,
+                    columns : [
+                        {data:'nickname'},
+                        {date:'email'},
+                        {date:'phone'},
+                        {data:'address'},
+                        {date:'joindate'},
+                        {data:'authority'}
+                    ]
+                }
             },
-            order: [[ 1, 'asc' ]]
+            "columnDefs": [ {
+                "targets": -1,
+                "data": null,
+                "defaultContent": "<button>Click!</button>"
+            } ]
+        } );
+
+        $('#memberTable tbody').on( 'click', 'button', function () {
+            var data = table.row( $(this).parents('tr') ).data();
+            alert( data[0] +": data[0]" );
         } );
     } );
     </script>

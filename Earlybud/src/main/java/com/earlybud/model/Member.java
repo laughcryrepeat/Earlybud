@@ -11,13 +11,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Member {
-	private String userid;
-	private String userpw;
-	private String userName;
-
-	private Date regDate;
-	private Date updateDate;
-	private boolean enabled;
+	private String email;
+	private String pwd;
+	private String nickname;
+	private String phone;
+	private String addr;
+	private String detail_addr;
+	private Date joindate;
+	private Date dropdate;
+	private String item_liked;
 	private List<Auth> authList;
-
 }

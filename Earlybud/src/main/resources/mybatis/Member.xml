@@ -4,26 +4,29 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.earlybud.model.Member">
   	<resultMap type="Member" id="memberResult"><!-- dto mapping -->
-  		<result property="userid" column="USERID"/>
-  		<result property="userpw" column="USERPW"/>
-  		<result property="userName" column="USERNAME"/>
-  		<result property="regDate" column="REGDATE"/>
-  		<result property="updateDate" column="UPDATEDATE"/>
-  		<result property="enabled" column="ENABLED"/>
+  		<result property="email" column="EMAIL"/>
+  		<result property="pwd" column="PWD"/>
+  		<result property="nickname" column="NICKNAME"/>
+  		<result property="phone" column="PHONE"/>
+  		<result property="addr" column="ADDR"/>
+  		<result property="detail_addr" column="DETAIL_ADDR"/>
+  		<result property="joindate" column="JOINDATE"/>
+  		<result property="dropdate" column="DROPDATE"/>
+  		<result property="item_liked" column="ITEM_LIKED"/>
   		<collection property="authList" resultMap="authMap"></collection>
   	</resultMap>
   	
   	<resultMap type="com.earlybud.model.Auth" id="authMap">
-    	<result property="userid" column="USERID"/>
-    	<result property="auth" column="AUTH"/>
+    	<result property="email" column="EMAIL"/>
+    	<result property="authority" column="AUTHORITY"/>
  	</resultMap>
   	
   	<select id="read" resultMap="memberResult">
   	SELECT 
-  	mem.userid, userpw, username, enabled, regdate, updatedate, auth 
+  	mem.email, pwd, nickname, phone, addr, detail_addr, joindate, dropdate, item_liked, auth 
   	FROM 
-  	tbl_member mem LEFT OUTER JOIN tbl_member_auth auth on mem.userid = auth.userid 
-  	WHERE mem.userid = #{userid} 
+  	member mem LEFT OUTER JOIN tbl_member_auth auth on mem.email = auth.email 
+  	WHERE mem.email = #{email} 
   	</select>
   	
   </mapper>
