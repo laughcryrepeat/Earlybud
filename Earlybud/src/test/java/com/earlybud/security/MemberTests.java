@@ -43,13 +43,10 @@ public class MemberTests {
 				pstmt.setString(2, pwencoder.encode("pw"+i));
 				
 				if(i<80) {
-					pstmt.setString(1, "user"+i);
+					pstmt.setString(1, "user"+i+"@email.com");
 					pstmt.setString(3, "일반사용자"+i);
-				}else if(i<90) {
-					pstmt.setString(1, "manager"+i);
-					pstmt.setString(3, "운영자"+i);
 				}else {
-					pstmt.setString(1, "admin"+i);
+					pstmt.setString(1, "admin"+i+"@email.com");
 					pstmt.setString(3, "관리자"+i);
 				}
 				
@@ -63,9 +60,10 @@ public class MemberTests {
 					if(con != null) con.close();
 				}catch(Exception e) {}		
 			}			
-		}//
-	}
+		}
+	}//
 	*/
+	
 	@Test
 	public void testInsertAuth() {
 		String sql = "insert into authorities (email, authority) values (?,?)";
@@ -97,4 +95,5 @@ public class MemberTests {
 			}
 		}
 	}
+	
 }

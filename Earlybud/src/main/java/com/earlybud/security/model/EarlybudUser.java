@@ -18,14 +18,14 @@ public class EarlybudUser extends User {
 	
 	private Member member;
 	
-	public EarlybudUser(String email, String password, 
+	public EarlybudUser(String username, String password, 
 			Collection<? extends GrantedAuthority> authorities) {
-		super(email, password, authorities);
+		super(username, password, authorities);
 	}
-	public EarlybudUser(Member member) {
-		super(member.getEmail(), member.getPwd(), 
-				member.getAuthList().stream().map(auth -> new SimpleGrantedAuthority(auth.getAuthority())).collect(Collectors.toList()));
-		this.member = member;
+	public EarlybudUser(Member m) {
+		super(m.getEmail(), m.getPwd(), 
+				m.getAuthList().stream().map(auth -> new SimpleGrantedAuthority(auth.getAuthority())).collect(Collectors.toList()));
+		this.member = m;
 	}
 	
 }

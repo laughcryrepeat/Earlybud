@@ -17,7 +17,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Passion+One:900" rel="stylesheet">
 
 	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/error_style.css" />
+	<link type="text/css" rel="stylesheet" href="../css/error_style.css" />
 
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

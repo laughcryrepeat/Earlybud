@@ -52,17 +52,9 @@
             </div>
             <div class="table-responsive mailbox-messages">
               <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th>보낸사람</th>
-                    <th>내용</th>
-                    <th></th>
-                    <th>날짜</th>
-                  </tr>
-                </thead>  
+                 
                 <tbody>
-                  <c:forEach items="${listMsg}" var="Msg"> 
+                  <c:forEach items="${listSentMsg}" var="Msg"> 
                   <tr>
                     <td>
                       <div class="animated-checkbox">
@@ -71,7 +63,7 @@
                         </label>
                       </div>
                     </td>
-                    <td class="user_email">${Msg.sender}</td>
+                    <td class="user_email">${Msg.reciever}</td>
                       <td><a data-toggle="modal" data-backdrop="static" data-keyboard="false" href="#msg_modal" class="request"><b>${Msg.content}</b></a></td>
                     <td><i class="fa fa-envelope-o"></i></td>
                     <td>${Msg.send_date}</td>
@@ -142,11 +134,11 @@
       <!-- Modal2 content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">문의 메세지보기</h4>
+          <h4 class="modal-title">답변 메세지보기</h4>
         <button type="button" class="close" data-dismiss="modal">×</button>
         </div>
         <div class="modal-body">
-          <p>Request Message</p>
+          <p>Reply Message</p>
             <form name="msg_form" method="post" action="email/send">
                 <div class="form-group">
                   <label class="control-label">From</label>

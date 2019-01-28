@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import= "java.util.*,com.earlybud.model.Member"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@include file="header.jsp"%>
@@ -21,66 +21,42 @@
         <div class="col-md-12">
           <div class="tile">
             <div class="tile-body">
-              <table class="table table-hover table-bordered" id="memberTable">
+              <table id="memberTable" class="display" style="width:100%">
                 <thead>
                   <tr>
-                    <th></th>
                     <th>Email</th>
                     <th>Nickname</th>
                     <th>Phone</th>
                     <th>Address</th>
                     <th>Joindate</th>
                     <th>Authority</th>
+                    <th></th>
                   </tr>
                 </thead>
         <!-- no need tbody tag when using DataTables -->
                 <tbody>
-                  <tr>
-                  	<td></td>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
-                  </tr>
-                  <tr>
-                  	<td></td>
-                    <td>Garrett Winters</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>63</td>
-                    <td>2011/07/25</td>
-                    <td>$170,750</td>
-                  </tr>
-                  <tr>
-                  	<td></td>
-                    <td>Ashton Cox</td>
-                    <td>Junior Technical Author</td>
-                    <td>San Francisco</td>
-                    <td>66</td>
-                    <td>2009/01/12</td>
-                    <td>$86,000</td>
-                  </tr>
-                  <tr>
-                  	<td></td>
-                    <td>Cedric Kelly</td>
-                    <td>Senior Javascript Developer</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
-                    <td>2012/03/29</td>
-                    <td>$433,060</td>
-                  </tr>
-
-                </tbody>
+                <c:forEach items="${listM}" var="Member">
+	                 <tr>
+	                    <td>${Member.email}</td>
+	                    <td>${Member.nickname}</td>
+	                    <td>${Member.phone}</td>
+	                    <td>${Member.addr}</td>
+	                    <td>${Member.joindate}</td>
+	                    <td><c:forEach items="${Member.authList}" var="auth"> 
+								${auth.authority}
+							</c:forEach>
+						</td>
+						<td></td>
+	                  </tr>
+	             </c:forEach>
+                 </tbody>
               </table>
             </div>
           </div>
         </div>
       </div>
     </main>
-    
-    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.7/css/select.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <!-- Essential javascripts for application to work-->
     <script src="${pageContext.request.contextPath}/js/admin/jquery-3.2.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/admin/popper.min.js"></script>
@@ -90,42 +66,27 @@
     <script src="${pageContext.request.contextPath}/js/admin/plugins/pace.min.js"></script>
     <!-- Page specific javascripts-->
     <!-- Data table plugin-->
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/admin/plugins/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/admin/plugins/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js" charset="UTF-8"></script>
-    <!-- Google analytics script-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
-    $(document).ready(function() {
-        var table = $('#memberTable').DataTable( {
-            "processing" : true,
-            "serverSide" : true,
-            "ajax": {
-                url : '../admin/member_table',
-                data: 'json',
-                success: function(obj, textstatus){
-                    data: obj,
-                    columns : [
-                        {data:'nickname'},
-                        {date:'email'},
-                        {date:'phone'},
-                        {data:'address'},
-                        {date:'joindate'},
-                        {data:'authority'}
-                    ]
-                }
-            },
-            "columnDefs": [ {
-                "targets": -1,
-                "data": null,
-                "defaultContent": "<button>Click!</button>"
-            } ]
-        } );
-
-        $('#memberTable tbody').on( 'click', 'button', function () {
-            var data = table.row( $(this).parents('tr') ).data();
-            alert( data[0] +": data[0]" );
-        } );
+        $(document).ready(function() {
+    var table = $('#memberTable').DataTable( {
+        "columnDefs": [ {
+            "targets": -1,
+            "data": null,
+            "defaultContent": "<button>회원삭제</button>"
+        } ]
     } );
+ 
+    $('#memberTable tbody').on( 'click', 'button', function () {
+        var data = table.row( $(this).parents('tr') ).data();
+		if(confirm( data[0] +"회원을 정말 삭제하시겠습니까?") == true){
+			location.href='delete_member/'+ encodeURIComponent( data[0] ) ;
+        }else{
+            return false;
+        }
+    } );
+} );
     </script>
   </body>
 </html>

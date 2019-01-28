@@ -23,7 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		log.warn("Load User By UserName : "+email); //userName == userid
+		log.warn("Load User By Email : "+email); //email == userid
 		
 		Member member = dao.read(email);
 		

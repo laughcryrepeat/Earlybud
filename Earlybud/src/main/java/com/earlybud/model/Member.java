@@ -3,6 +3,8 @@ package com.earlybud.model;
 import java.sql.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Component
 public class Member {
 	private String email;
 	private String pwd;
@@ -20,5 +23,5 @@ public class Member {
 	private Date joindate;
 	private Date dropdate;
 	private String item_liked;
-	private List<Auth> authList;
+	private List<Authorities> authList;
 }
