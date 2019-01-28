@@ -22,7 +22,7 @@ public class MemberDaoTests {
 	
 	@Test
 	public void testRead() {
-		Member m = dao.read("admin90");
+		Member m = dao.read("admin90@email.com");
 		
 		log.info(m);
 		

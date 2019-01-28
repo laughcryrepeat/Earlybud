@@ -5,10 +5,11 @@
 <configuration>
 <typeAliases>
 	<typeAlias alias="Member" type="com.earlybud.model.Member"/>
-	<typeAlias alias="Auth" type="com.earlybud.model.Auth"/>
-
+	<typeAlias alias="Authorities" type="com.earlybud.model.Authorities"/>
+	<typeAlias alias="Message" type="com.earlybud.model.Message"/>
 </typeAliases>
 <mappers>
 	<mapper resource="mybatis/Member.xml"/>
+	<mapper resource="mybatis/Message.xml"/>
 </mappers>
 </configuration>

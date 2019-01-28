@@ -22,10 +22,10 @@ public class EarlybudUser extends User {
 			Collection<? extends GrantedAuthority> authorities) {
 		super(username, password, authorities);
 	}
-	public EarlybudUser(Member member) {
-		super(member.getUserid(), member.getUserpw(), 
-				member.getAuthList().stream().map(auth -> new SimpleGrantedAuthority(auth.getAuth())).collect(Collectors.toList()));
-		this.member = member;
+	public EarlybudUser(Member m) {
+		super(m.getEmail(), m.getPwd(), 
+				m.getAuthList().stream().map(auth -> new SimpleGrantedAuthority(auth.getAuthority())).collect(Collectors.toList()));
+		this.member = m;
 	}
 	
 }

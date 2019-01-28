@@ -13,8 +13,8 @@ public class MemberDaoImpl implements MemberDAO {
 	private String ns = "com.earlybud.model.Member";
 	
 	@Override
-	public Member read(String userid) {
-		return sqlSession.selectOne(ns+".read", userid);
+	public Member read(String email) {
+		return sqlSession.selectOne(ns+".read", email);
 	}
 
 }
