@@ -34,10 +34,11 @@
   	mem.email, nickname, phone, addr, detail_addr, joindate, dropdate, item_liked, authority 
   	FROM 
   	member mem LEFT OUTER JOIN authorities auth on mem.email = auth.email 
+  	where mem.dropdate is null
   	</select>
   	
-  	<delete id="deleteMember" parameterType="String">
-  	delete from member where email = #{email}
-  	</delete>
+  	<update id="dropMember" parameterType="String">
+  	update member set dropdate=sysdate where email = #{email}
+  	</update>
   	
   </mapper>

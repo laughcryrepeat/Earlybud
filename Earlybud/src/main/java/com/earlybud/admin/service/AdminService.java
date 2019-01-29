@@ -7,7 +7,7 @@ import com.earlybud.model.Message;
 
 public interface AdminService {
 	List<Member> listMember();
-	void deleteMember(String email);
+	void dropMember(String email);
 	List<Message> listMessage(String email);
 	List<Message> listSentMessage(String email);
 }

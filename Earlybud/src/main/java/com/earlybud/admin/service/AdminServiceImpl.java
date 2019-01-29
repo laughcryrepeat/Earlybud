@@ -26,9 +26,9 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void deleteMember(String email) {
+	public void dropMember(String email) {
 		log.info("del member service");
-		dao.deleteMember(email);
+		dao.dropMember(email);
 	}
 
 	@Override

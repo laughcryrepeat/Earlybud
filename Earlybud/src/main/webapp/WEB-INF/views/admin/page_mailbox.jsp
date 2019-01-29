@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import= "java.util.*,com.earlybud.model.Message"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <%@include file="header.jsp"%>
       
@@ -29,8 +30,6 @@
                 </li>
                   
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-envelope-o fa-fw"></i> Sent</a></li>
-                  
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-trash-o fa-fw"></i> Trash</a></li>
                   
               </ul>
             </div>
@@ -102,9 +101,8 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         </div>
         <div class="modal-body">
-          <p>Send Email</p>
-            <form name="email_modal" method="post" action="email/send">
-                <input id="mailfrom" name="mailfrom" class="form-control" value="admin.email" type="hidden" >
+            <form name="email_modal" id="email_modal" method="post">
+                <input id="mailfrom" name="mailfrom" class="form-control" value="<sec:authentication property="principal.username"/>" type="hidden" >
                 <div class="form-group">
                   <label class="control-label">제목</label>
                   <input id="mailsubject" name="mailsubject" class="form-control" type="text" >
@@ -147,7 +145,7 @@
         </div>
         <div class="modal-body">
           <p>Request Message</p>
-            <form name="msg_form" method="post" action="email/send">
+            <form name="msg_form" method="post">
                 <div class="form-group">
                   <label class="control-label">From</label>
                   <input id="msg_from" name="msg_from" class="form-control" readonly >
@@ -183,6 +181,26 @@
         var modal1 = $("#sendEmail");
         var modal2 = $("#msg_modal");
         var email = {};
+        jQuery.fn.serializeObject = function() {
+            var obj = null;
+            try {
+                if (this[0].tagName && this[0].tagName.toUpperCase() == "FORM") {
+                    var arr = this.serializeArray();
+                    if (arr) {
+                        obj = {};
+                        jQuery.each(arr, function() {
+                            obj[this.name] = this.value;
+                        });
+                    }//if ( arr ) {
+                }
+            } catch (e) {
+                alert(e.message);
+            } finally {
+            }
+         
+            return obj;
+        };
+
       $(document).ready(function(){
           $("#emailBtn1").click(function(){
               modal1.find("input").val("");
@@ -195,20 +213,6 @@
               $('#mailto').val(msg_form.msg_from.value);
               $("#sendEmail").modal({backdrop: 'static', keyboard: false});
          });
-          
-         $("#send").click(function(){
-              var serializeArray = modal1.serializeArray();
-              console.log("before send email");
-              $.ajax({
-                method: 'post',
-                url: '../admin/send_mail', 
-                data: serializeArray,
-                success: function(){
-                    console.log("success");
-                }
-            });
-            modal1.modal("hide");
-        });  
       });  
       $(".request").click(function(){
     	  var tr = $(this).parent().parent();
@@ -220,6 +224,24 @@
           $('#msg_date').val(senddate);
           $('#msg_content').val(content);
       });
+      $("#send").click(function(){
+          var form = $("#email_modal").serializeObject();
+        
+          console.log("before send email");
+          console.log("form: "+form);
+          console.log("JSON.stringify(form): "+JSON.stringify(form));
+          $.ajax({
+            method: 'post',
+            url: '../send_mail', 
+            data: JSON.stringify(form),
+            dataType: "json",
+            contentType: "application/json",
+            success: function(){
+                alert("mail sent!!");
+            }
+        });
+        modal1.modal("hide");
+    });
     </script>
   </body>
 </html>

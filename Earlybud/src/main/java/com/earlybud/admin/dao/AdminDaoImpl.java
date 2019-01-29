@@ -30,11 +30,11 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-	public void deleteMember(String email) {
+	public void dropMember(String email) {
 		log.info("del member dao");
 		System.out.println("del member dao");
 		System.out.println("email: "+email);
-		sqlSession.delete(ns+".deleteMember", email);
+		sqlSession.update(ns+".dropMember", email);
 	}
 
 	@Override
