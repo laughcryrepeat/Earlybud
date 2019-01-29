@@ -10,4 +10,6 @@ public interface AdminDao {
 	void dropMember(String email);
 	List<Message> listMessage(String email);
 	List<Message> listSentMessage(String email);
+	void sendMessage(Message msg);
+	int updateRead(int message_code);
 }

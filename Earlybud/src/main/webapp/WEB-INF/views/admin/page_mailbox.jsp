@@ -20,7 +20,7 @@
       </div>
       <div class="row">
         <div class="col-md-3">
-            <button type="button" class="mb-2 btn btn-primary btn-block" id="emailBtn1">전체공지 메일쓰기</button>
+            <button type="button" class="mb-2 btn btn-primary btn-block" id="emailBtn1">관리자 메일쓰기</button>
           <div class="tile p-0">
             <h4 class="tile-title folder-head">Folders</h4>
             <div class="tile-body">
@@ -66,13 +66,23 @@
                     <td>
                       <div class="animated-checkbox">
                         <label>
-                          <input class="msg_check" type="checkbox"><span class="label-text"> </span>
+                          <input class="msg_check" type="checkbox" name="chkbox" value="${Msg.sender}"><span class="label-text"> </span>
                         </label>
                       </div>
                     </td>
                     <td class="user_email">${Msg.sender}</td>
-                      <td><a data-toggle="modal" data-backdrop="static" data-keyboard="false" href="#msg_modal" class="request"><b>${Msg.content}</b></a></td>
-                    <td><i class="fa fa-envelope-o"></i></td>
+                    <td><a data-toggle="modal" data-backdrop="static" data-keyboard="false" href="#msg_modal" class="request"><b>${Msg.content}</b></a></td>
+                    <td>
+                    <c:choose>
+                    	<c:when test = "${Msg.read_check eq 0}">
+                    		<i  class="fa fa-envelope-o"></i>
+                    	</c:when>
+                    	<c:otherwise>
+                    		<i class="fa fa-envelope-open-o"></i>
+                    	</c:otherwise>
+                    	<input type="hidden" name="msg_code" value="${Msg.message_code}">
+                    </c:choose>
+                    </td>
                     <td>${Msg.send_date}</td>
                   </tr>
                   </c:forEach>            
@@ -203,8 +213,19 @@
 
       $(document).ready(function(){
           $("#emailBtn1").click(function(){
-              modal1.find("input").val("");
+        	  var select_val = "";
+        	  $(":checkbox[name='chkbox']:checked").each(function(pi,po){//다중체크박스 값 넣기
+        		  select_val += "," + po.value; 
+        		  });
+        	  if(select_val != "")select_val=select_val.substring(1);
+        	  /*
+        	  var items=[];
+        	  $('input[name="chkbox"]:checkbox:checked').each(function(){items.push($(this).val());});
+        	  var select_val = items.join(',');
+        	  */
+        	  modal1.find("input").val("");
               modal1.find("textarea").val("");
+              modal1.find("#mailto").val(select_val);
               $("#sendEmail").modal({backdrop: 'static', keyboard: false});
               
          }); 
@@ -213,10 +234,24 @@
               $('#mailto').val(msg_form.msg_from.value);
               $("#sendEmail").modal({backdrop: 'static', keyboard: false});
          });
-      });  
+      });
+      
       $(".request").click(function(){
     	  var tr = $(this).parent().parent();
-  			var sender = tr.find("td").eq(1).text();
+    	  tr.find("td").eq(3).find("i").removeClass('fa-envelope-o');
+    	  tr.find("td").eq(3).find("i").addClass('fa-envelope-open-o');
+    	  var msg_code = tr.find("td").eq(3).find("input").val();
+    	  $.ajax({
+              method: 'post',
+              url: '../update_read', 
+              data: {"msg_code":msg_code},
+              dataType: "json",
+              success: function(){
+                  console.log("update read check!!");
+              }
+    	  });
+    	  
+ 			var sender = tr.find("td").eq(1).text();
   			var content = tr.find("td").eq(2).text();
   			var senddate = tr.find("td").eq(4).text();
   			console.log("sender에 담긴 값 : "+sender);
@@ -224,6 +259,7 @@
           $('#msg_date').val(senddate);
           $('#msg_content').val(content);
       });
+      
       $("#send").click(function(){
           var form = $("#email_modal").serializeObject();
         

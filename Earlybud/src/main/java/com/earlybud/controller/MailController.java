@@ -34,8 +34,7 @@ public class MailController {
 	
 	private AdminService service;
 	
-	@PostMapping(value = "send_mail",
-			consumes = "application/json")
+	@PostMapping(value = "send_mail", consumes = "application/json")
 	public ResponseEntity<String> sendMail(@RequestBody Email email) {
 		System.out.println("mailcontroller");
 		System.out.println("mail:"+ email);
@@ -90,10 +89,19 @@ public class MailController {
 		}
 		
 		int insertCount = 1;
-		//insertCount = service.sendMessage();
-		return insertCount == 1
+		insertCount = service.sendMessage(email);
+		return insertCount >= 1
+				? new ResponseEntity<>("success", HttpStatus.OK)
+						: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);		
+	}
+	
+	@PostMapping(value="update_read", consumes = "application/json")
+	public ResponseEntity<String> updateRead(@RequestParam("msg_code") int msg_code) {
+		System.out.println("updateRead ajax");
+		int updateCount = 1;
+		updateCount = service.updateRead(msg_code);
+		return updateCount == 1
 				? new ResponseEntity<>("success", HttpStatus.OK)
 						: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		
 	}
 }

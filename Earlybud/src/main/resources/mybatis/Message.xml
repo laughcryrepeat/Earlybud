@@ -26,6 +26,10 @@
   	values(MESSAGE_CODE_SEQ.nextval,#{item_code},#{receiver},#{sender},#{content},sysdate,0) 
   	</insert>
   	
+  	<update id="updateRead" parameterType="Integer">
+  	update message set read_check = 1 where message_code =#{message_code}
+  	</update>
+  	
   	<delete id="deleteMessage" parameterType="String">
   	delete from message where email = #{email}
   	</delete>
