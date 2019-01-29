@@ -46,7 +46,7 @@
       <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="${pageContext.request.contextPath}/images/admin/login-user-icon48.png" alt="User Image">
         <div>
           <p class="app-sidebar__user-name"><sec:authentication property="principal.username"/></p>
-          <p class="app-sidebar__user-designation"><sec:authentication property="principal.member.userName"/></p>
+          <p class="app-sidebar__user-designation"><sec:authentication property="principal.member.nickname"/></p>
         </div>
       </div>
       <ul class="app-menu">
@@ -54,8 +54,8 @@
         
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">관리자문의</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="page_mailbox"><i class="icon fa fa-circle-o"></i> 메세지함</a></li>
-            <li><a class="treeview-item" href="page_mailbox"><i class="icon fa fa-circle-o"></i> 메세지함</a></li>
+            <li><a class="treeview-item" href='page_mailbox?email=<sec:authentication property="principal.username"/>' ><i class="icon fa fa-circle-o"></i> 받은메세지함</a></li>
+            <li><a class="treeview-item" href='sent_mailbox?email=<sec:authentication property="principal.username"/>' ><i class="icon fa fa-circle-o"></i> 보낸메세지함</a></li>
           </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">판매상품 관리</span><i class="treeview-indicator fa fa-angle-right"></i></a>
@@ -66,7 +66,7 @@
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">회원정보</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="member_data"><i class="icon fa fa-circle-o"></i> 회원 리스트</a></li>
+            <li><a class="treeview-item" href="member_data"  ><i class="icon fa fa-circle-o"></i> 회원 리스트</a></li>
           </ul>
         </li>
       </ul>

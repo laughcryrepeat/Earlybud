@@ -22,10 +22,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 	private MemberDAO dao;
 	
 	@Override
-	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-		log.warn("Load User By UserName : "+userName); //userName == userid
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		log.warn("Load User By Email : "+email); //email == userid
 		
-		Member member = dao.read(userName);
+		Member member = dao.read(email);
 		
 		log.warn("queried by member mapper: "+member);
 		
