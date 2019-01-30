@@ -27,7 +27,7 @@
     
 	<security:access-denied-handler ref="customAccessDenied" />
 
-	<!-- <security:csrf disabled="true"/> -->
+	<security:csrf disabled="true"/>
 
 	<security:logout logout-url="/customLogout" invalidate-session="true" />
 		
