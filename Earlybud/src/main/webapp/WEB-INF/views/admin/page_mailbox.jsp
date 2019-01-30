@@ -80,8 +80,8 @@
                     	<c:otherwise>
                     		<i class="fa fa-envelope-open-o"></i>
                     	</c:otherwise>
-                    	<input type="hidden" name="msg_code" value="${Msg.message_code}">
                     </c:choose>
+                    <input type="hidden" name="msg_code" value="${Msg.message_code}">
                     </td>
                     <td>${Msg.send_date}</td>
                   </tr>
@@ -241,11 +241,11 @@
     	  tr.find("td").eq(3).find("i").removeClass('fa-envelope-o');
     	  tr.find("td").eq(3).find("i").addClass('fa-envelope-open-o');
     	  var msg_code = tr.find("td").eq(3).find("input").val();
+    	  console.log("msg_code: "+msg_code);
     	  $.ajax({
               method: 'post',
               url: '../update_read', 
-              data: {"msg_code":msg_code},
-              dataType: "json",
+              data: "msg_code="+msg_code,
               success: function(){
                   console.log("update read check!!");
               }

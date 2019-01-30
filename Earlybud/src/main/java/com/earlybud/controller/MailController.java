@@ -10,6 +10,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -26,12 +27,14 @@ import com.earlybud.admin.service.AdminService;
 import com.earlybud.model.Email;
 import com.earlybud.model.Member;
 
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 @RestController
 public class MailController {
 	
+	@Setter(onMethod_ = { @Autowired })
 	private AdminService service;
 	
 	@PostMapping(value = "send_mail", consumes = "application/json")
@@ -95,9 +98,10 @@ public class MailController {
 						: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);		
 	}
 	
-	@PostMapping(value="update_read", consumes = "application/json")
+	@PostMapping(value="update_read")
 	public ResponseEntity<String> updateRead(@RequestParam("msg_code") int msg_code) {
 		System.out.println("updateRead ajax");
+		System.out.println("msg_code: "+msg_code);
 		int updateCount = 1;
 		updateCount = service.updateRead(msg_code);
 		return updateCount == 1

@@ -58,6 +58,7 @@ public class AdminDaoImpl implements AdminDao {
 
 	@Override
 	public int updateRead(int message_code) {
+		System.out.println("admin update message dao, message_code: "+message_code);
 		return sqlSession.update(ns1+".updateRead", message_code);
 	}
 
