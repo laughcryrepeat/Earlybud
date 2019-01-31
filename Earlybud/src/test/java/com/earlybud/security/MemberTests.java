@@ -30,7 +30,7 @@ public class MemberTests {
 	/*
 	@Test
 	public void testInsertMember() {
-		String sql = "insert into member(email, pwd, nickname) values (?,?,?)";
+		String sql = "insert into member(email, pwd, nickname, joindate) values (?,?,?,sysdate)";
 		
 		for(int i = 0; i<100; i++) {
 			Connection con = null;
