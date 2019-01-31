@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.earlybud.vo.CategoryVO">
+
+
+	<select id="getList" resultType="com.earlybud.vo.CategoryVO">
+		select ITEM_CODE, CAT_CODE, CAT_NAME, TITLE, SUMMARY, MAIN_IMAGE, IMAGE, NICKNAME, TO_CHAR(CUR_SUM, '999,999,999,999') as NOW_SUM, TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT from ITEM natural join MEMBER natural join CATEGORY natural join SELLER	
+	</select>
+	
+	<select id="read" resultType="com.earlybud.vo.CategoryVO">
+		select * from item where item_code = #{item_code}
+	</select>	
+
+</mapper>
