@@ -7,9 +7,11 @@
 	<typeAlias alias="Member" type="com.earlybud.model.Member"/>
 	<typeAlias alias="Authorities" type="com.earlybud.model.Authorities"/>
 	<typeAlias alias="Message" type="com.earlybud.model.Message"/>
+	<typeAlias alias="Category" type="com.earlybud.vo.CategoryVO"/>
 </typeAliases>
 <mappers>
 	<mapper resource="mybatis/Member.xml"/>
 	<mapper resource="mybatis/Message.xml"/>
+	<mapper resource="mybatis/Category.xml"/>
 </mappers>
 </configuration>
