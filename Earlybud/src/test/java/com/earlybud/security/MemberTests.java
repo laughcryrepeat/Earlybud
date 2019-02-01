@@ -61,9 +61,7 @@ public class MemberTests {
 				}catch(Exception e) {}		
 			}			
 		}
-	}//
-	*/
-	
+	}*/
 	@Test
 	public void testInsertAuth() {
 		String sql = "insert into authorities (email, authority) values (?,?)";
