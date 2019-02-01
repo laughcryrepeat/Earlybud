@@ -17,8 +17,7 @@
 		class="com.earlybud.security.CustomUserDetailsService"></bean>
 
 <security:http>
-	
-	<security:intercept-url	pattern="/mypage/**" access="hasRole('ROLE_MEMBER')" />
+	<security:intercept-url	pattern="/mypage/**" access="hasRole('ROLE_USER')" />
 	<security:intercept-url pattern="/admin/**"	access="hasRole('ROLE_ADMIN')" />
 	<!-- <security:form-login/> -->
         	<!-- login-page="/customLogin"
@@ -29,23 +28,25 @@
 
 	<security:csrf disabled="true"/>
 
-	<security:logout logout-url="/customLogout" invalidate-session="true" />
-		
-	<!-- <security:remember-me data-source-ref="dataSource" token-validity-seconds="604800" /> -->
-		
-	<!--when log out, tomcat was에서 발행하는 JSESSION_ID 쿠키, 자동로그임에서 사용된  remember-me 쿠키 삭제
 	<security:logout logout-url="/customLogout"
-			invalidate-session="true" delete-cookies="remember-me,JSESSION_ID" /> -->
+		invalidate-session="true" />
+		
+	<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800" />
+		
+	<!--when log out, tomcat was에서 발행하는 JSESSION_ID 쿠키, 자동로그임에서 사용된  remember-me 쿠키 삭제 -->
+	<security:logout logout-url="/customLogout"
+			invalidate-session="true" delete-cookies="remember-me,JSESSION_ID" />
 </security:http>
-
+<!--
 <security:authentication-manager>
 	<security:authentication-provider>
 		<security:user-service>
-			<security:user name="member@member.com" password="{noop}member" authorities="ROLE_MEMBER"/>
-			<security:user name="admin@admin.com" password="{noop}admin" authorities="ROLE_MEMBER, ROLE_ADMIN"/>
+			<security:user name="member" password="{noop}member" authorities="ROLE_MEMBER"/>
+			<security:user name="admin" password="{noop}admin" authorities="ROLE_MEMBER, ROLE_ADMIN"/>
 		</security:user-service>
 	</security:authentication-provider>
 </security:authentication-manager>
+-->
 <!--
 <security:authentication-manager>
 	<security:authentication-provider> 
@@ -57,12 +58,11 @@
 	</security:authentication-provider>
 </security:authentication-manager>
 -->
-<!-- 
 <security:authentication-manager>
 	<security:authentication-provider user-service-ref="customUserDetailsService">
 	<security:password-encoder ref="bcryptPasswordEncoder" />
 	</security:authentication-provider>
-</security:authentication-manager> -->
+</security:authentication-manager>
 
 
 </beans>

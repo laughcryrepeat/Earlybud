@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!doctype html>
 <html lang="en-US">
@@ -457,7 +458,7 @@
                 <div id="respond" class="comment-respond">
                   <form id="mypage" action="https://demo.athemes.com/airi-shop/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
                   <p class="comment-form-comment"><label for="comment">이메일<span class="required">*</span></label> 
-                  	<input id="comment" name="comment" type="email" value="member@member.com" size="30" maxlength="245" required='required' readonly/></p>
+                  	<input id="comment" name="comment" type="email" size="30" value="<sec:authentication property="principal.username"/>" maxlength="245" readonly></p>
                   <p class="comment-form-author"><label for="author">비밀번호 <span class="required">*</span></label> 
                   	<input id="password" name="password" type="password" value="member" size="30" maxlength="245" required='required' /></p>
                   <p class="comment-form-address"><label for="email">주소 <span class="required">*</span></label>

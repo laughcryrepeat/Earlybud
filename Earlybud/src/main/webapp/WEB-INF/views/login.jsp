@@ -24,27 +24,26 @@
       <div class="tab-content">
           <div id="signup">
             <h1>아직 회원이 아니신가요?</h1>
-            <form action="/" method="post">
+            <form action="/earlybud/join" method="post">
               <div class="field-wrap">
                 <label>
                   이름<span class="req">*</span>
                 </label>
-                <input type="text"required name="name" autocomplete="off" />
+                <input type="text"required name="nickname" autocomplete="off" />
               </div>
             <div class="field-wrap">
               <label>
                 이메일<span class="req">*</span>
               </label>
-              <input type="email"required name="password" autocomplete="off"/>
+              <input type="email"required name="email" autocomplete="off"/>
             </div>
             <div class="field-wrap">
               <label>
                 비밀번호<span class="req">*</span>
               </label>
-              <input name="password" type="password"required autocomplete="off"/>
+              <input type="password"required name="pwd" autocomplete="off"/>
             </div>
             <button id="join" type="submit" class="button button-block" onclick="if(!memberSubmit(this.form)){return false;}"/>회원가입</button>
-            <a class="button1 button-block" href="javascript:kakao()"><img class="img" src="images/login/kakaotalk.png">카카오톡으로 시작하기</a>
             </form>
           </div>
           <div id="login">
@@ -63,6 +62,7 @@
             </div>
             <p class="forgot"><a href="#">비밀번호를 잊으셨나요?</a></p>
             <button class="button button-block"/>Log In</button>
+            <a class="button1 button-block" href="javascript:kakao()"><img class="img" src="images/login/kakaotalk.png">카카오로 로그인</a>
             <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
             </form> 
           </div>

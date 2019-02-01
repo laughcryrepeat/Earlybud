@@ -21,6 +21,6 @@ public class MemberUploadController {
 	}
 	@RequestMapping(value="juso")
 	public String juso(@ModelAttribute("AddrVo") AddrVo addrvo) {
-		return "mypage/jusoPopup";
+		return "payment/jusoPopup";
 	}
 }
