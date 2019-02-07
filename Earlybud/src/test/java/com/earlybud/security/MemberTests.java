@@ -29,7 +29,7 @@ public class MemberTests {
 	private DataSource ds;
 	/*
 	@Test
-	public void testInsertMember() {
+	public void testInsertMember() { //유저 백개 만듦
 		String sql = "insert into member(email, pwd, nickname) values (?,?,?)";
 		
 		for(int i = 0; i<100; i++) {
@@ -64,7 +64,7 @@ public class MemberTests {
 	}//
 	*/
 	
-	@Test
+	@Test //그 백개에 권한 부여함
 	public void testInsertAuth() {
 		String sql = "insert into authorities (email, authority) values (?,?)";
 		for(int i=0; i<100; i++) {
