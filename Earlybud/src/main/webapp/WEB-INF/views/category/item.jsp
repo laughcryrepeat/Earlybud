@@ -15,18 +15,18 @@
 	
 	
 <!-- 추가 -->
-<link href="css/item/styles.1fbc7315.css" rel="stylesheet">
-<link rel="css/item/stylesheet" type="text/css" href="css/uikit.css">
+<link href="${pageContext.request.contextPath}/css/item/styles.1fbc7315.css" rel="stylesheet">
+<link rel="${pageContext.request.contextPath}/css/item/stylesheet" type="text/css" href="css/uikit.css">
 
-<script src="js/item/jquery-1.12.4.js"></script>
+<script src="${pageContext.request.contextPath}/js/item/jquery-1.12.4.js"></script>
 
-<script src="js/item/isMobile.min.js"></script>
-<script src='js/item/jquery.form.js'></script>
-<script src='js/item/jquery.scrollLock.min.js'></script>
-<script src='js/item/uikit.min.js'></script>
+<script src="${pageContext.request.contextPath}/js/item/isMobile.min.js"></script>
+<script src='${pageContext.request.contextPath}/js/item/jquery.form.js'></script>
+<script src='${pageContext.request.contextPath}/js/item/jquery.scrollLock.min.js'></script>
+<script src='${pageContext.request.contextPath}/js/item/uikit.min.js'></script>
 
 <!-- 공통 유틸 js -->
-<script src="js/item/commonUtil.js"></script>
+<script src="${pageContext.request.contextPath}/js/item/commonUtil.js"></script>
 <!-- 추가끝 -->	
 	
 <script type="text/javascript">
@@ -112,7 +112,7 @@
 	</style>
 	<link rel='stylesheet' id='airi-bootstrap-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/css/bootstrap/bootstrap.min.css?ver=1' type='text/css' media='all' />
 	<link rel='stylesheet' id='contact-form-7-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.0.2' type='text/css' media='all' />
-	<link rel='stylesheet' id='airi-style-css' href='css/item/ewwww.css' type='text/css' media='all' />
+	<link rel='stylesheet' id='airi-style-css' href='${pageContext.request.contextPath}/css/item/ewwww.css' type='text/css' media='all' />
 	<link rel='stylesheet' id='airi-font-awesome-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/css/font-awesome/css/font-awesome.min.css?ver=4.9.9' type='text/css' media='all' />
 	<link rel='stylesheet' id='elementor-icons-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=3.8.0' type='text/css' media='all' />
 	<link rel='stylesheet' id='elementor-animations-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=2.2.6' type='text/css' media='all' />
@@ -123,22 +123,22 @@
 	<!-- 추가2 -->
 	<link rel="dns-prefetch" href="https://cdn.wadiz.kr">
 	<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-	<link rel="icon" href="images/item/logo.png" sizes="16x16" type="image/png">
-	<link rel="icon" href="images/item/logo.png" sizes="32x32" type="image/png">
-	<link rel="apple-touch-icon-precomposed" href="images/item/logo.png">
-	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="images/item/logo.png">
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/item/logo.png">
-	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="images/item/logo.png">
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/item/logo.png">
-	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="images/item/logo.png">
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/item/logo.png">
-	<link rel="apple-touch-icon-precomposed" sizes="158x158" href="images/item/logo.png">
-	<link rel="apple-touch-icon-precomposed" sizes="167x167" href="images/item/logo.png">
-	<link rel="apple-touch-icon-precomposed" sizes="180x180" href="images/item/logo.png">
-	<link rel="apple-touch-icon" sizes="192x192" href="images/item/logo.png">
-	<link rel="icon" sizes="192x192" href="images/item/logo.png">
-	<link rel="mask-icon" href="images/item/logo.png" color="#00CCA3">
-	<link rel="shortcut icon" href="images/item/logo.png">
+	<link rel="icon" href="${pageContext.request.contextPath}/images/item/logo.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="${pageContext.request.contextPath}/images/item/logo.png" sizes="32x32" type="image/png">
+	<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/images/item/logo.png">
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="${pageContext.request.contextPath}/images/item/logo.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="${pageContext.request.contextPath}/images/item/logo.png">
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="${pageContext.request.contextPath}/images/item/logo.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="${pageContext.request.contextPath}/images/item/logo.png">
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="${pageContext.request.contextPath}/images/item/logo.png">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="${pageContext.request.contextPath}/images/item/logo.png">
+	<link rel="apple-touch-icon-precomposed" sizes="158x158" href="${pageContext.request.contextPath}/images/item/logo.png">
+	<link rel="apple-touch-icon-precomposed" sizes="167x167" href="${pageContext.request.contextPath}/images/item/logo.png">
+	<link rel="apple-touch-icon-precomposed" sizes="180x180" href="${pageContext.request.contextPath}/images/item/logo.png">
+	<link rel="apple-touch-icon" sizes="192x192" href="${pageContext.request.contextPath}/images/item/logo.png">
+	<link rel="icon" sizes="192x192" href="${pageContext.request.contextPath}/images/item/logo.png">
+	<link rel="mask-icon" href="${pageContext.request.contextPath}/images/item/logo.png" color="#00CCA3">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/item/logo.png">
 	<script type="text/javascript">
 	window.wadizWebManifest={"0":"equity-feedback.js?543e2719c82224c0cf5b","1":"equity-update-news.js?44d4674ab5c1bffc9817","2":"equity-w9-membership.js?bb0afd0a3bd010cf80e1","3":"reward-comment-app.js?5b061d94cde928f3a043","4":"reward-supporter-list-app.js?e6d34aa1f120bbe08ff9","5":"5.js?52d90970ce07d33e422d","6":"6.js?38cd1d78a22a27c536f4","7":"7.js?09e8428ae03b4c8fa199","8":"8.js?1d2c9bd6ce5af63c4cc5","9":"9.js?96f38514a3834dc2b384","10":"equity.js?ba4a59078f4ac7697352","11":"reward.js?e337ab95a32d72c7aa25","12":"landing.js?58480fea0ae45fe4547e","13":"coming.js?7f4059d8898d4924b31a","14":"equity-payment.js?9ddefa864fc858d4c761","15":"common.js?3441e2f6ee1fcac27a0e","16":"personal-message.js?3e57f726d36016907517","17":"account.js?0aded497b4b375998049","18":"studio.js?3c5f622faed521c5f3a8","19":"support-signature.js?a27535229cf39a168c04","20":"static/equity-join.js?93caf5bc1beed61afc2e","21":"equity-pre-quiz.js?c87fa3d0998b713c1b80","22":"static/openfunding.js?6e2c3b91b13273e46047","23":"static/wadiz2017.js?a4fb2ee339442ec6152b","24":"static/reward-open.js?3dabf8f27601e2c8aa2f","25":"static/equity-open.js?d47dd54b51347b9b1be1","26":"social.js?7f3ffdb4f9228d482664"};
 	window.wadiz = window.wadiz || {};window.wadiz.sessionUser="";</script>
@@ -147,7 +147,7 @@
 	
 	
 	
-	<style id='kirki-styles-airi-inline-css' type='text/css'>
+	<style id='kirki-styles-airi-inline-' type='text/css'>
 		h1,
 		h2,
 		h3,
@@ -376,7 +376,7 @@
 				<div class="row">
 					<div class="site-branding col-md-4 col-sm-6 col-9">
 						<a href="main" class="custom-logo-link" rel="home" itemprop="url">
-							<img width="80" height="50" src="images/item/earlybud.png" class="custom-logo"	alt="Atu" itemprop="logo" />
+							<img width="80" height="50" src="${pageContext.request.contextPath}/images/item/earlybud.png" class="custom-logo"	alt="Atu" itemprop="logo" />
 						</a> </div><!-- .site-branding -->
 
 					<div class="header-mobile-menu col-md-8 col-sm-6 col-3">
@@ -444,11 +444,11 @@
                             
                             
                                 <a href="/reward/list#category=CATE_0002">
-                                    문화예술
+                                     <c:out value="${item.CAT_NAME}"/>
                                 </a>
                             
                         </span>
-                            <h1>일상에서 만나는 전통예술의 재탄생</h1>
+                            <h1><c:out value="${item.TITLE}"/></h1>
                             <div class="project_sorting">
                                 <div class="tag_rel">
                                     
@@ -472,14 +472,14 @@
                                     <div id="main_image_slide" uk-slideshow="ratio: 5:3; animation: fade" class="uk-slideshow">
                                         <ul class="uk-slideshow-items" style="height: 415px;">                                            
                                                 <li class="uk-active uk-transition-active" style="z-index: -1;">
-                                                    <img src="images/item/ex1.png" class="img_g">
+                                                    <img src="${pageContext.request.contextPath}/uploads/reward/<c:out value="${item.MAIN_IMAGE}"/>" class="img_g">
                                                 </li>                                            
                                                         
                                         </ul>                                        
                                             <div class="main_image_nav_wrapper">
                                                 <div class="main_image_nav">                                                    
-                                                        <img class="selected" src="images/item/ex1.png" data-index="0">                                                    	
-                                                        <img src="images/item/ex2.png" data-index="1" class="">
+                                                        <img class="selected" src="${pageContext.request.contextPath}/uploads/reward/<c:out value="${item.MAIN_IMAGE}"/>" data-index="0">
+                                                        
                                                 </div>
                                             </div>
                                         
@@ -489,13 +489,13 @@
                                     <div class="user_profile">
                                         <span class="img_profile">
                                         
-                                            <img src="images/item/ex3.jpg">
+                                            <img src="${pageContext.request.contextPath}/uploads/member/profile/<c:out value="${item.IMAGE}"/>">
                                         
                                         </span>
                                         <div class="author_cont">
                                             <div class="builder_profile_wrapper">
-                                                <p><span class="txt_name">예술인협동조합</span></p>
-                                                <span class="txt_mail">n12seconds@gmail.com</span>
+                                                <p><span class="txt_name"><c:out value="${item.NICKNAME}"/></span></p>
+                                                <span class="txt_mail"><c:out value="${item.EMAIL}"/></span>
                                                 
                                                     <span class="sns_area">
                                                         <span class="box_links">
@@ -530,16 +530,23 @@
                             <div class="project_details">
                                 <div class="item_state">
                                     <p><span class="txt_statetitle">모인금액</span></p>
-                                    <span class="screen_out">현재 참여금액</span><span class="num_value">320,500</span> <span class="txt_value">원&nbsp;모금</span>
+                                    <span class="screen_out">현재 참여금액</span><span class="num_value"><c:out value="${item.NOW_SUM}"/></span> <span class="txt_value">원&nbsp;모금</span>
                                 </div>
                                 <div class="state_project">
                                     <div class="graph_support">
                                         <span class="screen_out">참여율</span>
                                         
-                                            <span class="bar_graph" style="width:45%"></span>
+                                    <c:choose>
+										<c:when test="${item.PERCENT > 100}">
+									    		<span class="bar_graph" style="width:100%;"></span>
+										</c:when>
+										<c:otherwise>
+									   		<span class="bar_graph" style="width:<c:out value="${item.PERCENT};"/>%"></span>
+										</c:otherwise>
+									</c:choose>
                                         
                                         
-                                        <span class="num_per">45%</span>
+                                        <span class="num_per"><c:out value="${item.PERCENT}"/>%</span>
                                     </div>
 
                                     <div class="item_state">
@@ -590,8 +597,8 @@
                                                     
                                                         <span class="sign_notice">성공해야<br>리워드</span>
                                                         <span class="txt">
-                                                        목표액 1억원에 미달하면 결제가 진행되지 않는 프로젝트입니다.<br>
-                                                        결제는 목표액달성시 1994년11월18일에 진행됩니다.
+                                                        목표액 <c:out value="${item.TARGET_SUM}"/>억원에 미달하면 결제가 진행되지 않습니다.<br>
+                                                        결제는 목표액달성시 <c:out value="${item.DEADLINE}"/>에 진행됩니다.
                                                     </span>
                                                     
                                                 
@@ -602,23 +609,23 @@
                                 </div>
 
                                 <div class="item_btns">
-                                    <a href="#none" class="link_share" id="link_share">공유 <span class="btn_icon"><img src="images/item/share.jpg"></span><span class="num_count" id="share_num_count">
+                                    <a href="#none" class="link_share" id="link_share">공유 <span class="btn_icon"><img src="${pageContext.request.contextPath}/images/item/share.jpg"></span><span class="num_count" id="share_num_count">
                                     
                                         
                                         
-                                            10
+                                            1994
                                         
                                     
                                 </span></a>
                                     <input type="hidden" id="like_count" value="5">
                                     <input type="hidden" id="interest_seq" value="">
-                                    <button type="button" class="btn_like" id="btn_like">관심<img src="images/item/ex4.jpg">
+                                    <button type="button" class="btn_like" id="btn_like">관심<img src="${pageContext.request.contextPath}/images/item/ex4.jpg">
                                         <span id="icon_like"></span>
                                         <span class="num_count" id="like_num_count">
                                     
                                         
                                         
-                                            5
+                                            1994
                                         
                                     
                                 </span></button>
@@ -676,7 +683,8 @@
 									
 									<h2 class="screen_out">소개</h2>
 									<div class="article_intro">
-										<p><img src="images/item/ex5.gif" alt="" width="680" height="475"><br><br><br><img src="images/item/ex6.jpg" alt="" width="680" height="8823"><img src="images/item/ex7.jpg" alt="" width="680" height="6984"><img src="images/item/ex8.jpg" alt="" width="680" height="9194"></p>
+										<p><img src="${pageContext.request.contextPath}/images/item/<c:out value="${item.IMAGE_ITEM}"/>" alt="" width="680" height="475"><br><br><br>
+										<img src="${pageContext.request.contextPath}/images/item/<c:out value="${item.IMAGE_ITEM}"/>" alt="" width="680" height="9194"></p>
 									</div>
 									<div id="accordionCont" class="accordion_g">
 										<h2 class="screen_out">프로젝트 주요안내</h2>
@@ -688,7 +696,7 @@
 										<p class="txt_process">여러분들의 관심과 참여로 더 나은 세상을 만들어 나가는 프로젝트가 실행됩니다.</p>
 										<ol class="list_order">
 											<li>
-												<span class="ico_comm ico_step1"></span>
+												<img src="${pageContext.request.contextPath}/images/50.PNG"/><br><br>
 												<span class="txt_order">1.회원가입</span>
 												<span class="fa fa-angle-right"></span>
 											</li>
@@ -810,12 +818,12 @@
 									    <span class="img_profile clear_empty_picture">
 									        
 									            
-									                <img src="/uploads/member/profile/MEMBER_20181122040733783.png" style="background: rgb(255, 255, 255);">
+									                <img src="${pageContext.request.contextPath}/uploads/member/profile/<c:out value="${item.IMAGE}"/>" style="background: rgb(255, 255, 255);">
 									            
 									            
 									        
 									    </span>
-									    <span class="txt_name">아뜰리빌</span>
+									    <span class="txt_name"><c:out value="${item.NICKNAME}"/></span>
 									</span>
 									
 															<span class="txt_time">2019-01-08 18:55</span>
@@ -1036,16 +1044,7 @@
                                 <form name="rewardForm" id="rewardForm" action="">
                                     <fieldset>
                                   
-			<ul class="list_reward">
-    
-    
-
-        
-            
-                
-            
-            
-        
+	<ul class="list_reward">
 
          <!-- 리워드 수량이 무한한 경우 -->
             <li>
@@ -1057,68 +1056,17 @@
                 </a>
             </li>
         
-        
-    
-
-        
-            
-                
-            
-            
-        
 
          <!-- 리워드 수량이 무한한 경우 -->
             <li>
                 <a href="/reward/6388/join/select?selectrewardseq=11964" class="box_reward">
                     <strong class="tit_reward">10원 펀딩</strong>
                     <p class="txt_desc">1번옵션</p>
-                    <span class="info_dely"><span class="tit_info">배송 예정일</span> : <span class="txt_info">2019년 1월 31일 순차배송</span></span>
+                    <span class="info_dely"><span class="tit_info">배송 예정일</span> : <span class="txt_info"><c:out value="${item.DEADLINE}"/> 순차배송</span></span>
                     <span class="txt_satea"><em class="num_state">7명</em> 참여하였습니다.</span>
                 </a>
             </li>
-        
-        
-    
-
-        
             
-                
-            
-            
-        
-
-         <!-- 리워드 수량이 무한한 경우 -->
-            <li>
-                <a href="/reward/6388/join/select?selectrewardseq=11963" class="box_reward">
-                    <strong class="tit_reward">18,900원 펀딩</strong>
-                    <p class="txt_desc">2번옵션</p>
-                    <span class="info_dely"><span class="tit_info">배송 예정일</span> : <span class="txt_info">2019년 1월 31일 순차배송</span></span>
-                    <span class="txt_satea"><em class="num_state">2명</em> 참여하였습니다.</span>
-                </a>
-            </li>
-        
-        
-    
-
-        
-            
-                
-            
-            
-        
-
-         <!-- 리워드 수량이 무한한 경우 -->
-            <li>
-                <a href="/reward/6388/join/select?selectrewardseq=11965" class="box_reward">
-                    <strong class="tit_reward">28,900원 펀딩</strong>
-                    <p class="txt_desc">만수르</p>
-                    <span class="info_dely"><span class="tit_info">배송 예정일</span> : <span class="txt_info">2019년 1월 31일 순차배송</span></span>
-                    <span class="txt_satea"><em class="num_state">7명</em> 참여하였습니다.</span>
-                </a>
-            </li>
-        
-        
-    
 </ul>
                                     </fieldset>
                                 </form>
@@ -1126,128 +1074,7 @@
                         
                     </div>
 
-                    
-                        <footer class="foot_cont">
-                            <h3 class="tit_rel">연관 프로젝트</h3>
-                            <ul class="list_prj">
-                                
-                                    <li>
-                                        <div class="box_project">
-                                            <a href="/reward/6482" class="link_card">
-                                                <span class="thumb_g" style="background-image:url('images/item/ex9.jpg')"></span>
-                                            </a>
-                                            <div class="info_project">
-                                                <span class="screen_out">프로젝트 제목</span>
-                                                <h4 class="tit_project"><a href="/reward/6482">머리에 모근을 틔워주세요!</a></h4>
-                                                
-
-
-
-
-
-
-
-
-    
-        
-    
-    
-
-<span class="user_profile">
-    <span class="img_profile clear_empty_picture">
-        
-            
-                <img src="images/item/ex10.png">
-            
-            
-        
-    </span>
-    <span class="txt_name">이건뭐</span>
-</span>
-
-                                            </div>
-                                        </div>
-                                    </li>
-                                
-                                    <li>
-                                        <div class="box_project">
-                                            <a href="/reward/6230" class="link_card">
-                                                <span class="thumb_g" style="background-image:url('images/item/ex11.jpg')"></span>
-                                            </a>
-                                            <div class="info_project">
-                                                <span class="screen_out">프로젝트 제목</span>
-                                                <h4 class="tit_project"><a href="/reward/6230">집에서 해결책을 찾다</a></h4>
-                                                
-
-
-
-
-
-
-
-
-    
-        
-    
-    
-
-<span class="user_profile">
-    <span class="img_profile clear_empty_picture">
-        
-            
-                <img src="images/item/ex12.jpg">
-            
-            
-        
-    </span>
-    <span class="txt_name">백수프로젝트</span>
-</span>
-
-                                            </div>
-                                        </div>
-                                    </li>
-                                
-                                    <li>
-                                        <div class="box_project">
-                                            <a href="/reward/6088" class="link_card">
-                                                <span class="thumb_g" style="background-image:url('images/item/ex13.jpg')"></span>
-                                            </a>
-                                            <div class="info_project">
-                                                <span class="screen_out">프로젝트 제목</span>
-                                                <h4 class="tit_project"><a href="/reward/6088">나린이네 쿠키</a></h4>
-                                                
-
-
-
-
-
-
-
-
-    
-        
-    
-    
-
-<span class="user_profile">
-    <span class="img_profile clear_empty_picture">
-        
-            
-                <img src="images/item/ex14.jpg">
-            
-            
-        
-    </span>
-    <span class="txt_name">꾸끼</span>
-</span>
-
-                                            </div>
-                                        </div>
-                                    </li>
-                                
-                            </ul>
-                        </footer>
-                    
+                                        
 
                 </article>
             </div> <!-- end CMain -->

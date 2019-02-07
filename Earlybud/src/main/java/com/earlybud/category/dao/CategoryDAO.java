@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Select;
 import com.earlybud.model.Item;
 import com.earlybud.vo.CategoryVO;
 import com.earlybud.vo.Criteria;
+import com.earlybud.vo.RewardVO;
 
 public interface CategoryDAO {
 	//@Select("select * from tbl_board where bno > 0")
@@ -17,7 +18,7 @@ public interface CategoryDAO {
 
 	//public Integer insertSelectKey(Item board);
 
-	public Item read(Long item_code);
+	public RewardVO read(Long item_code);
 
 	//public int delete(Long bno);
 
