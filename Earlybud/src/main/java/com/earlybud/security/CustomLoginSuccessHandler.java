@@ -22,9 +22,10 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 			throws IOException, ServletException {
 
 		log.warn("Login Success");
-
+			
 		List<String> roleNames = new ArrayList<>();
-
+		String userId = request.getParameter("username");
+		
 		auth.getAuthorities().forEach(authority -> {
 
 			roleNames.add(authority.getAuthority());
@@ -32,6 +33,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 		});
 
 		log.warn("ROLE NAMES: " + roleNames);
+		log.warn("USER NAME: " + userId);
 
 		if (roleNames.contains("ROLE_ADMIN")) {
 
@@ -39,12 +41,12 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 			return;
 		}
 		
-		if (roleNames.contains("ROLE_MEMBER")) {
+		if (roleNames.contains("ROLE_USER")) {
 
-			response.sendRedirect("earlybud");
+			response.sendRedirect("/earlybud/mypage");
 			return;
 		}
 		
-		response.sendRedirect("earlybud");
+		response.sendRedirect("/");
 	}
 }

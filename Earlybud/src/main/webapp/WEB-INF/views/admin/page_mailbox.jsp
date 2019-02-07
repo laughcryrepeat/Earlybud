@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import= "java.util.*,com.earlybud.model.Message"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <%@include file="header.jsp"%>
       
@@ -19,7 +20,7 @@
       </div>
       <div class="row">
         <div class="col-md-3">
-            <button type="button" class="mb-2 btn btn-primary btn-block" id="emailBtn1">전체공지 메일쓰기</button>
+            <button type="button" class="mb-2 btn btn-primary btn-block" id="emailBtn1">관리자 메일쓰기</button>
           <div class="tile p-0">
             <h4 class="tile-title folder-head">Folders</h4>
             <div class="tile-body">
@@ -29,8 +30,6 @@
                 </li>
                   
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-envelope-o fa-fw"></i> Sent</a></li>
-                  
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-trash-o fa-fw"></i> Trash</a></li>
                   
               </ul>
             </div>
@@ -67,13 +66,23 @@
                     <td>
                       <div class="animated-checkbox">
                         <label>
-                          <input class="msg_check" type="checkbox"><span class="label-text"> </span>
+                          <input class="msg_check" type="checkbox" name="chkbox" value="${Msg.sender}"><span class="label-text"> </span>
                         </label>
                       </div>
                     </td>
                     <td class="user_email">${Msg.sender}</td>
-                      <td><a data-toggle="modal" data-backdrop="static" data-keyboard="false" href="#msg_modal" class="request"><b>${Msg.content}</b></a></td>
-                    <td><i class="fa fa-envelope-o"></i></td>
+                    <td><a data-toggle="modal" data-backdrop="static" data-keyboard="false" href="#msg_modal" class="request"><b>${Msg.content}</b></a></td>
+                    <td>
+                    <c:choose>
+                    	<c:when test = "${Msg.read_check eq 0}">
+                    		<i  class="fa fa-envelope-o"></i>
+                    	</c:when>
+                    	<c:otherwise>
+                    		<i class="fa fa-envelope-open-o"></i>
+                    	</c:otherwise>
+                    </c:choose>
+                    <input type="hidden" name="msg_code" value="${Msg.message_code}">
+                    </td>
                     <td>${Msg.send_date}</td>
                   </tr>
                   </c:forEach>            
@@ -102,9 +111,8 @@
         <button type="button" class="close" data-dismiss="modal">×</button>
         </div>
         <div class="modal-body">
-          <p>Send Email</p>
-            <form name="email_modal" method="post" action="email/send">
-                <input id="mailfrom" name="mailfrom" class="form-control" value="admin.email" type="hidden" >
+            <form name="email_modal" id="email_modal" method="post">
+                <input id="mailfrom" name="mailfrom" class="form-control" value="<sec:authentication property="principal.username"/>" type="hidden" >
                 <div class="form-group">
                   <label class="control-label">제목</label>
                   <input id="mailsubject" name="mailsubject" class="form-control" type="text" >
@@ -147,7 +155,7 @@
         </div>
         <div class="modal-body">
           <p>Request Message</p>
-            <form name="msg_form" method="post" action="email/send">
+            <form name="msg_form" method="post">
                 <div class="form-group">
                   <label class="control-label">From</label>
                   <input id="msg_from" name="msg_from" class="form-control" readonly >
@@ -183,10 +191,41 @@
         var modal1 = $("#sendEmail");
         var modal2 = $("#msg_modal");
         var email = {};
+        jQuery.fn.serializeObject = function() {
+            var obj = null;
+            try {
+                if (this[0].tagName && this[0].tagName.toUpperCase() == "FORM") {
+                    var arr = this.serializeArray();
+                    if (arr) {
+                        obj = {};
+                        jQuery.each(arr, function() {
+                            obj[this.name] = this.value;
+                        });
+                    }//if ( arr ) {
+                }
+            } catch (e) {
+                alert(e.message);
+            } finally {
+            }
+         
+            return obj;
+        };
+
       $(document).ready(function(){
           $("#emailBtn1").click(function(){
-              modal1.find("input").val("");
+        	  var select_val = "";
+        	  $(":checkbox[name='chkbox']:checked").each(function(pi,po){//다중체크박스 값 넣기
+        		  select_val += "," + po.value; 
+        		  });
+        	  if(select_val != "")select_val=select_val.substring(1);
+        	  /*
+        	  var items=[];
+        	  $('input[name="chkbox"]:checkbox:checked').each(function(){items.push($(this).val());});
+        	  var select_val = items.join(',');
+        	  */
+        	  modal1.find("input").val("");
               modal1.find("textarea").val("");
+              modal1.find("#mailto").val(select_val);
               $("#sendEmail").modal({backdrop: 'static', keyboard: false});
               
          }); 
@@ -195,24 +234,24 @@
               $('#mailto').val(msg_form.msg_from.value);
               $("#sendEmail").modal({backdrop: 'static', keyboard: false});
          });
-          
-         $("#send").click(function(){
-              var serializeArray = modal1.serializeArray();
-              console.log("before send email");
-              $.ajax({
-                method: 'post',
-                url: '../admin/send_mail', 
-                data: serializeArray,
-                success: function(){
-                    console.log("success");
-                }
-            });
-            modal1.modal("hide");
-        });  
-      });  
+      });
+      
       $(".request").click(function(){
     	  var tr = $(this).parent().parent();
-  			var sender = tr.find("td").eq(1).text();
+    	  tr.find("td").eq(3).find("i").removeClass('fa-envelope-o');
+    	  tr.find("td").eq(3).find("i").addClass('fa-envelope-open-o');
+    	  var msg_code = tr.find("td").eq(3).find("input").val();
+    	  console.log("msg_code: "+msg_code);
+    	  $.ajax({
+              method: 'post',
+              url: '../update_read', 
+              data: "msg_code="+msg_code,
+              success: function(){
+                  console.log("update read check!!");
+              }
+    	  });
+    	  
+ 			var sender = tr.find("td").eq(1).text();
   			var content = tr.find("td").eq(2).text();
   			var senddate = tr.find("td").eq(4).text();
   			console.log("sender에 담긴 값 : "+sender);
@@ -220,6 +259,25 @@
           $('#msg_date').val(senddate);
           $('#msg_content').val(content);
       });
+      
+      $("#send").click(function(){
+          var form = $("#email_modal").serializeObject();
+        
+          console.log("before send email");
+          console.log("form: "+form);
+          console.log("JSON.stringify(form): "+JSON.stringify(form));
+          $.ajax({
+            method: 'post',
+            url: '../send_mail', 
+            data: JSON.stringify(form),
+            dataType: "json",
+            contentType: "application/json",
+            success: function(){
+                alert("mail sent!!");
+            }
+        });
+        modal1.modal("hide");
+    });
     </script>
   </body>
 </html>

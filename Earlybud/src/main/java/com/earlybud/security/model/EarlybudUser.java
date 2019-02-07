@@ -27,6 +27,5 @@ public class EarlybudUser extends User {
 				m.getAuthList().stream().map(auth -> new SimpleGrantedAuthority(auth.getAuthority())).collect(Collectors.toList()));
 		this.member = m;
 	}
-	
 }
 	

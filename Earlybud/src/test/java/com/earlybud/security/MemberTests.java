@@ -30,7 +30,7 @@ public class MemberTests {
 	/*
 	@Test
 	public void testInsertMember() { //유저 백개 만듦
-		String sql = "insert into member(email, pwd, nickname) values (?,?,?)";
+		String sql = "insert into member(email, pwd, nickname, joindate) values (?,?,?,?)";
 		
 		for(int i = 0; i<100; i++) {
 			Connection con = null;

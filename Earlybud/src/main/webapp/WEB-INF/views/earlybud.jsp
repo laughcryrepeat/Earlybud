@@ -852,15 +852,18 @@
 																<div class="athemes-project-wrap portfolio-section style1">
 																	<ul class="project-filter clearfix" id="filters">
 																		<li><a href="#" class="active" data-filter="*">전체보기</a></li>
-																		<li><a href='#' data-filter='.branding'>신규</a></li>
-																		<li><a href='#' data-filter='.graphics'>마감임박</a></li>
-																		<li><a href='#' data-filter='.graphics'>오픈예정</a></li>
-																		<li><a href='#' data-filter='.design'>종료</a></li>
+																		<li><a href='#' data-filter='.new'>신규</a></li>
+																		<li><a href='#' data-filter='.deadline'>마감임박</a></li>
+																		<li><a href='#' data-filter='.beopen'>오픈예정</a></li>
+																		<li><a href='#' data-filter='.end'>종료</a></li>
 																	</ul>
 																	<div class="roll-project fullwidth loading">
 																		<div class="loading-notice">Loading...</div>
 																		<div class="isotope-container" data-portfolio-effect="fadeInUp">
-																			<div class="project-item item isotope-item branding">
+																		
+																																		
+																		
+																			<div class="project-item item isotope-item new">
 																				<div class="project-inner">																			
 																					<div class="project-info">
 																						<h3 class="project-title">

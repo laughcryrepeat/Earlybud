@@ -56,7 +56,7 @@ public class AdminController {
 	public String deleteMember(@PathVariable("email") String email ) {
 		log.info("admin delete member");
 		System.out.println("email: "+email);
-		service.deleteMember(email);
+		service.dropMember(email);
 		return "redirect:/admin/member_data";
 	}
 	
@@ -75,4 +75,5 @@ public class AdminController {
 		model.addAttribute("listSentMsg", listSentMsg);
 		return "admin/sent_mailbox";
 	}
+	
 }

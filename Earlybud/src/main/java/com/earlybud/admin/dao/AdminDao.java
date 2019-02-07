@@ -7,7 +7,9 @@ import com.earlybud.model.Message;
 
 public interface AdminDao {
 	List<Member> listMember();
-	void deleteMember(String email);
+	void dropMember(String email);
 	List<Message> listMessage(String email);
 	List<Message> listSentMessage(String email);
+	void sendMessage(Message msg);
+	int updateRead(int message_code);
 }
