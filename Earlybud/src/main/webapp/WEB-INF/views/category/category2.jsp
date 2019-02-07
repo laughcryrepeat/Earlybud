@@ -8,71 +8,53 @@
 <main id="omcContainer" class="cont_support">
 			
 		    <h2 id="omcBody" class="screen_out">후원형 프로젝트</h2>
-		   
+		   <div class="cMain">
 		   <article id="mContent" class="project_list">
 		        	<h3 class="tit_section">프로젝트에 응원하고 리워드를 받는 펀딩</h3>
 		            <div class="box_category">
 		                <span class="screen_out">카테고리</span>
-		                <button type="button" class="btn_select">전체(1503)</button>
+		                <button type="button" class="btn_select">전체<span class="ico_comm"></span></button>
 		                <ul id="category_list" class="list_cate" role="tablist">
-		                    <li class="on" role="tab">
-		                        <a class="link_cate">전체<span class="num_count">(1503)</span></a>
+		                    <li class="on" role="tab" data-category-code="0">
+		                   		<a class="link_cate">전체</a>
 		                    </li>
 		                    
-                                <li role="tab" data-category-code="CATE_0001">
-                                    <a class="link_cate">
-                                      테크<span class="num_count">(127)</span>
-                                    </a>
-                                </li>
+                            <li role="tab" data-category-code="1">
+                            	<a class="link_cate">테크</a>
+                            </li>
 		                    
-                                <li role="tab" data-category-code="CATE_0002">
-                                    <a class="link_cate">
-                                      홈/리빙<span class="num_count">(264)</span>
-                                    </a>
-                                </li>
+                            <li role="tab" data-category-code="2">
+                            		<a class="link_cate">홈/리빙</a>
+                            </li>
 		                    
-                                <li role="tab" data-category-code="CATE_0003">
-                                    <a class="link_cate">
-                                        푸드<span class="num_count">(178)</span>
-                                    </a>
-                                </li>
+                            <li role="tab" data-category-code="3">
+                            		<a class="link_cate">푸드</a>
+                           </li>
 		                    
-                                <li role="tab" data-category-code="CATE_0005">
-                                    <a class="link_cate">
-                                       패션<span class="num_count">(294)</span>
-                                    </a>
-                                </li>
+                           <li role="tab" data-category-code="4">
+                                    <a class="link_cate">패션</a>
+                           </li>
 		                    
-                                <li role="tab" data-category-code="CATE_0006">
-                                    <a class="link_cate">
-                                        디자인<span class="num_count">(259)</span>
-                                    </a>
-                                </li>
+                           <li role="tab" data-category-code="5">
+                                    <a class="link_cate">디자인</a>
+                          </li>
 		                    
-                                <li role="tab" data-category-code="CATE_0007">
-                                    <a class="link_cate">
-                                        출판<span class="num_count">(217)</span>
-                                    </a>
-                                </li>
+                          <li role="tab" data-category-code="6">
+                                    <a class="link_cate">출판</a>
+                          </li>
 		                    
-                                <li role="tab" data-category-code="CATE_0010">
-                                    <a class="link_cate">
-                                        취미<span class="num_count">(76)</span>
-                                    </a>
-                                </li>
+                         <li role="tab" data-category-code="7">
+                                    <a class="link_cate">취미</a>
+                         </li>
 		                    
-                                <li role="tab" data-category-code="CATE_0012">
-                                    <a class="link_cate">
-                                       공연/컬쳐<span class="num_count">(44)</span>
-                                    </a>
-                                </li>
+                        <li role="tab" data-category-code="8">
+                                    <a class="link_cate">공연/컬쳐</a>
+                        </li>
 		                    
-                                <li role="tab" data-category-code="CATE_0013">
-                                    <a class="link_cate">
-                                        캠페인<span class="num_count">(44)</span>
-                                    </a>
-                                </li>
-		                    
+                        <li role="tab" data-category-code="9">
+                                    <a class="link_cate">캠페인</a>
+                        </li>
+                        
 		                </ul>
 		            </div>
 					<div class="wrap_project">
@@ -107,13 +89,13 @@
 			
 					<li class="project_card reward_project_card" data-project-seq="<c:out value="${list.ITEM_CODE}"/>" data-page-number="1">
 					    <div class="project_card_inner">
-					        <a href="/reward/<c:out value="${list.ITEM_CODE}"/>" class="project_detail_link" data-project-seq="<c:out value="${list.ITEM_CODE}"/>" data-page-number="1">
+					        <a href="reward?item_code=<c:out value="${list.ITEM_CODE}"/>" class="project_detail_link" data-project-seq="<c:out value="${list.ITEM_CODE}"/>" data-page-number="1">
 					            <span class="project_thumbnail" style="background-image:url('${pageContext.request.contextPath}/uploads/reward/<c:out value="${list.MAIN_IMAGE}')"/>"></span>
 					        </a>
 					        <div class="project_card_info">
 					            <span class="screen_out">프로젝트 제목</span>
 					            <h3 class="project_name">
-					                <a href="earlybud/category/reward/<c:out value="${list.ITEM_CODE}"/>" class="project_detail_link" data-project-seq="<c:out value="${list.ITEM_CODE}"/>" data-page-number="1">
+					                <a href="reward?item_code=<c:out value="${list.ITEM_CODE}"/>" class="project_detail_link" data-project-seq="<c:out value="${list.ITEM_CODE}"/>" data-page-number="1">
 					               		   <c:out value="${list.TITLE}"/>
 					                </a>
 					            </h3>
