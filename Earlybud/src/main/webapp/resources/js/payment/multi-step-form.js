@@ -1,14 +1,22 @@
 $("#pwd").keyup(function(){
     var str = formOrder.pwd.value;
+    var nick = formOrder.nickname.value;
     console.log(str);
     var request = $.ajax({
         url:"../payment/pwdCheck", 
-        method:"GET", 
-        data:{pwd:str}, 
+        method:"post", 
+        data:{pwd:str, nickname:nick}, 
         dataType:"html"});
 	    request.done(function(data){
-            $('#pwd_ok').css('color','blue');
-            $("#pwd_ok").html(data);
+	    	console.log("data: "+data);
+	    	console.log("typeof data: "+ typeof(data));
+	    	if(data){
+	            $('#pwd_ok').css('color','blue');
+	            $("#pwd_ok").html("비밀번호 확인"); 	
+	    	}else{
+	    		$('#pwd_ok').css('color','red');
+	            $("#pwd_ok").html("잘못된 비밀번호");
+	    	}
 	   });
 });
 
@@ -50,6 +58,7 @@ $(document).ready(function(){
         payment.pur_type= formOrder.pur_type.value;
         payment.exp_month = formOrder.exp_month.value;
         payment.exp_year = formOrder.exp_year.value;
+        payment.cardpwd = formOrder.cardpwd.value;
         
         $('#confirm_nickname').html(payment.nickname);
         $('#confirm_email').html(payment.email);

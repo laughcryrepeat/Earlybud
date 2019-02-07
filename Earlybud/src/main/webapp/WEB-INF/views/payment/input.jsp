@@ -233,9 +233,19 @@
                     <label>Expiry year</label>
                     <input type="text" class="form-control" id="exp_year" name="exp_year">
                   </div>
-                </div>
-                  
-                <div class="col-12 col-md-4 col-lg-6">
+                </div>   
+              </div>
+            </div>
+          </div>          
+          
+          <div class="row">
+            <div class="col-12 col-md-8 col-lg-7">
+              <div class="form-group">
+                <label>카드비밀번호 앞 두자리</label>
+                <input type="password" class="form-control" id="cardpwd" name="cardpwd">
+              </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-5">
                   <div class="form-group">
                     <label>Payment Type</label>
                     <select class="form-control" id="pur_type" name="pur_type">
@@ -245,11 +255,9 @@
                         <option value="inisis">페이코</option>
                     </select>
                   </div>
-                </div> 
-                  
-              </div>
             </div>
-          </div>
+          </div>         
+          
           <div class="d-none d-md-block">
             <hr>
             <div class="d-flex mb-3">

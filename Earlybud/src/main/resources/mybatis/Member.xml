@@ -41,4 +41,8 @@
   	update member set dropdate=sysdate where email = #{email}
   	</update>
   	
+  	<select id="pwdCheck" parameterType="String" resultType="String" >
+  	select pwd from member where nickname = #{nickname}
+  	</select>
+  	
   </mapper>
