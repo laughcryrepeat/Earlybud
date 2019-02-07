@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!doctype html>
 <html lang="en-US">
@@ -16,15 +17,7 @@
   <link rel="alternate" type="application/rss+xml" title="Atu &raquo; Comments Feed" href="https://demo.athemes.com/airi-shop/comments/feed/" />
   <link rel="alternate" type="application/rss+xml" title="Atu &raquo; Hello world! Comments Feed" href="https://demo.athemes.com/airi-shop/2018/08/20/hello-world/feed/" />
 
-  <script type="text/javascript">
-  function goPopup(){
-       var pop = window.open("juso.do","pop","width=570,height=420, scrollbars=yes, resizable=yes");
-    }
-    function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
-     document.form.roadAddrPart1.value = roadAddrPart1;
-     document.form.addrDetail.value = addrDetail;
-    }
-  </script>
+  
 
   <script type="text/javascript">
     window._wpemojiSettings = {
@@ -80,6 +73,9 @@
     }(window, document, window._wpemojiSettings);
   </script>
   <style type="text/css">
+  	.addrD{
+  	  width: 340px !important;
+  	}
     img.wp-smiley,
     img.emoji {
       display: inline !important;
@@ -294,6 +290,7 @@
       color: #595959;
     }
   </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
   <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
   <link rel='https://api.w.org/' href='https://demo.athemes.com/airi-shop/wp-json/' />
@@ -459,13 +456,21 @@
                 </header><!-- .entry-header -->
 
                 <div id="respond" class="comment-respond">
-                  <form action="https://demo.athemes.com/airi-shop/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-                    <p class="comment-form-comment"><label for="comment">이메일<span class="required">*</span></label> <input id="comment" name="comment" type="text" value="" size="30" maxlength="245" required='required' /></p>
-                    <p class="comment-form-author"><label for="author">비밀번호 <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
-                    <p class="comment-form-email"><label for="email">주소 <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" required='required' onclick="goPopup();"/></p>
-                    <p class="comment-form-url"><label for="url">핸드폰 번호</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
-                    <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="수정하기" /> <input type='hidden' name='comment_post_ID' value='1' id='comment_post_ID' />
-                      <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                  <form id="mypage" action="https://demo.athemes.com/airi-shop/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+                  <p class="comment-form-comment"><label for="comment">이메일<span class="required">*</span></label> 
+                  	<input id="comment" name="comment" type="email" size="30" value="<sec:authentication property="principal.username"/>" maxlength="245" readonly></p>
+                  <p class="comment-form-author"><label for="author">비밀번호 <span class="required">*</span></label> 
+                  	<input id="password" name="password" type="password" value="member" size="30" maxlength="245" required='required' /></p>
+                  <p class="comment-form-address"><label for="email">주소 <span class="required">*</span></label>
+                    <input id="roadAddrPart1" name="roadAddrPart1" type="text" required='required' onclick="goPopup();" readonly/></p>
+	                	<input class="addrD" id="addrDetail" name="addrDetail" type="text" required='required' />
+	                    <input class="addrD" id="zipNo" name="zipNo" type="text" value="" required='required' readonly/></p>
+	              <p class="comment-form-url"><label for="url">핸드폰 번호</label> 
+	              	<input id="phone" name="phone" type="number" value="" size="30" maxlength="200" /></p>
+                  <p class="form-submit">
+                    <input name="submit" type="submit" id="submit" class="submit" value="수정하기" onclick="if(!modifySumbit(this.form)){return false;}" /> 
+                    <input type='hidden' name='comment_post_ID' value='1' id='comment_post_ID' />
+                    <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
                     </p>
                     <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="b0c1d8b81d" /></p>
                     <p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="63" /></p>
@@ -585,6 +590,16 @@
         };
         /* ]]> */
       </script>
+      <script type="text/javascript">
+		  function goPopup(){
+		       var pop = window.open("juso.do","pop","width=570,height=420, scrollbars=yes, resizable=yes");
+		    }
+		   function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+		     mypage.roadAddrPart1.value = roadAddrPart1;
+		     mypage.addrDetail.value = addrDetail;
+		     mypage.zipNo.value = zipNo;
+		    }
+	  </script>
       <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=3.4.3'></script>
       <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70'></script>
       <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4'></script>
@@ -622,7 +637,32 @@
         });
       </script>
       <script async="async" type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/akismet/_inc/form.js?ver=4.0.8'></script>
-
+	  <script type="text/javascript">
+	  	function modifySumbit(check){
+	  		if(check.password.value==""){
+	  			alert("비밀번호를 입력하지 않았습니다");
+	  			check.password.focus();
+	  			return false;
+	  		}
+	  		var pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,16}$/;
+	  	    if(!pwCheck.test(check.password.value)){
+	  	        alert("비밀번호는 영어,숫자,특수문자 조합으로 해주세요.(글자수는 6~12)")
+	  	        check.password.focus();
+	  	        return false;
+	  	    }
+	  	    if(check.phone.value==""){
+	  	    	alert("핸드폰 번호를 입력하지 않았습니다.");
+	  	    	check.phone.focus();
+	  	    	return false;
+	  	    }
+	  	  var phoneCheck = /^((01[1|6|7|8|9])[1-9]+[0-9]{6,7})|(010[1-9][0-9]{7})$/;
+	      if(!phoneCheck.test(check.phone.value)){
+	          alert("전화번호 형식에 맞지 않습니다 ");
+	          check.phone.focus()
+	          return false;
+	      }
+	  	}
+	  </script>
 </body>
 
 </html>

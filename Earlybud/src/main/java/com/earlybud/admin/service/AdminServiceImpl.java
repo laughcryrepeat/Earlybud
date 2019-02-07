@@ -67,6 +67,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public int updateRead(int message_code) {
+		System.out.println("updateRead service, message_code: "+message_code);
 		return dao.updateRead(message_code);
 	}
 

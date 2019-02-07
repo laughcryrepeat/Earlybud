@@ -43,7 +43,7 @@
 //document.domain = "abc.go.kr";
 
 function init(){
-	var url = location.href;
+	var url = "http://localhost:8080/earlybud/mypage";
 	var confmKey = "U01TX0FVVEgyMDE5MDExMTE1NTY1NDEwODQ0MDk=";
 	var resultType = "4"; // 도로명주소 검색결과 화면 출력내용, 1 : 도로명, 2 : 도로명+지번, 3 : 도로명+상세건물명, 4 : 도로명+지번+상세건물명
 	var inputYn= "<%=inputYn%>";
@@ -56,6 +56,7 @@ function init(){
 		document.form.submit();
 	}else{
 		opener.jusoCallBack("<%=roadFullAddr%>","<%=roadAddrPart1%>","<%=addrDetail%>","<%=roadAddrPart2%>","<%=engAddr%>","<%=jibunAddr%>","<%=zipNo%>", "<%=admCd%>", "<%=rnMgtSn%>", "<%=bdMgtSn%>", "<%=detBdNmList%>", "<%=bdNm%>", "<%=bdKdcd%>", "<%=siNm%>", "<%=sggNm%>", "<%=emdNm%>", "<%=liNm%>", "<%=rn%>", "<%=udrtYn%>", "<%=buldMnnm%>", "<%=buldSlno%>", "<%=mtYn%>", "<%=lnbrMnnm%>", "<%=lnbrSlno%>", "<%=emdNo%>");
+		returnUrl = "http://localhost:8080/earlybud/mypage";
 		window.close();
 		}
 }
