@@ -20,7 +20,12 @@
     	<result property="email" column="EMAIL"/>
     	<result property="authority" column="AUTHORITY"/>
  	</resultMap>
-  	
+  	<insert id="insertMember" parameterType="Member" keyProperty="email">
+		insert into member (email, pwd, nickname, joindate) values ( #{email}, #{pwd}, #{nickname}, sysdate)
+  	</insert>
+  	<insert id="insertAuth">
+		insert into Authorities (email, authority) values ( #{email}, 'ROLE_USER')
+  	</insert>
   	<select id="read" resultMap="memberMap">
   	SELECT 
   	mem.email, pwd, nickname, phone, addr, detail_addr, joindate, dropdate, item_liked, authority 

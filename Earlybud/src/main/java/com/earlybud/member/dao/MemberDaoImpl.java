@@ -13,6 +13,17 @@ public class MemberDaoImpl implements MemberDAO {
 	private String ns = "com.earlybud.model.Member";
 	
 	@Override
+	public int save(Member member) {
+		int id = -1;
+		try {
+			id = sqlSession.insert(ns+".insertMember", member);
+			sqlSession.insert(ns+".insertAuth", member.getEmail());
+		} finally {
+		}
+		System.out.println("insert("+member+") : "+member.getEmail());
+		return id; 
+	}
+	@Override
 	public Member read(String email) {
 		return sqlSession.selectOne(ns+".read", email);
 	}
