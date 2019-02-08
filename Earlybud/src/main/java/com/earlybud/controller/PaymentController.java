@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.earlybud.payment.service.PaymentService;
+import com.earlybud.security.CustomNoOpPasswordEncoder;
 import com.earlybud.vo.AddrVo;
 import com.earlybud.vo.PaymentVo;
+import com.siot.IamportRestClient.IamportClient;
+import com.siot.IamportRestClient.request.ScheduleData;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -37,7 +40,9 @@ public class PaymentController {
 		log.info("nickname: "+nickname);
 		String pwdMatch = service.pwdCheckService(nickname);
 		log.info("pwdMatch: "+pwdMatch);
-		if(pwd.equals(pwdMatch)) {
+		CustomNoOpPasswordEncoder cpe = new CustomNoOpPasswordEncoder();
+		System.out.println("cpe.encode(pwd) :"+cpe.encode(pwd));
+		if(cpe.encode(pwd).equals(pwdMatch)) {
 			System.out.println("true");
 			return true;
 		}else {
@@ -54,7 +59,11 @@ public class PaymentController {
 	
 	@RequestMapping(value="reserve_payment", method=RequestMethod.POST)
 	public void reservePayment(PaymentVo paymentVo) {
+		String customer_uid = null;
 		log.info("reserve payment with Ajax");
 		log.info("paymentVo: "+paymentVo.getNickname());
+		IamportClient client = new IamportClient("6720365022563293","fR14uM6bvndQ4MUl2u0pJWLjkPH4tUHJMINhvTs0hGRmtLHvgHUZDGiYv02ZVKJItwZYqrYI8P4BBL6R");
+		ScheduleData schedule_data = new ScheduleData(customer_uid);
+		client.subscribeSchedule(schedule_data);
 	}
 }

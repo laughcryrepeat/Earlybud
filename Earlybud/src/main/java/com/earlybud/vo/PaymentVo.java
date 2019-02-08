@@ -17,8 +17,9 @@ public class PaymentVo {
 	private String addr2;
 	private String cardnum;
 	private String cardcvc;
-	private String cardtype;
+	private String birthdate;
 	private String pur_type;
 	private String exp_month;
 	private String exp_year;
+	private String cardpwd;
 }

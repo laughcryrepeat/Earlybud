@@ -78,6 +78,8 @@
             </small>
           </a>
         </div>
+        <input type="hidden" class="form-control" id="amount" name="amount" value="1000">
+        <input type="hidden" class="form-control" id="merchant_uid" name="merchant_uid" value="상품코드++시간">
         <div id="account-collapse" class="collapse show" data-parent="#formOrder">
           <div class="text-secondary mb-3">
             <small>Step 1 of 4</small>
@@ -216,21 +218,21 @@
           <div class="row">
             <div class="col-12 col-lg-7">
               <div class="form-group">
-                <label>카드타입</label>
-                <input type="text" class="form-control" id="cardtype" name="card_type">
+                <label>생년월일 6자리</label>
+                <input type="text" class="form-control" id="birthdate" name="birthdate">
               </div>
             </div>
             <div class="col-12 col-lg-5">
               <div class="row">
                 <div class="col-12 col-md-4 col-lg-6">
                   <div class="form-group">
-                    <label>Expiry month</label>
+                    <label>카드 유효기간 월 Month(MM)</label>
                     <input type="text" class="form-control" id="exp_month" name="exp_month">
                   </div>
                 </div>
                 <div class="col-12 col-md-4 col-lg-6">
                   <div class="form-group">
-                    <label>Expiry year</label>
+                    <label>카드 유효기간 년 Year(YYYY)</label>
                     <input type="text" class="form-control" id="exp_year" name="exp_year">
                   </div>
                 </div>   
@@ -354,10 +356,10 @@
               </div>
               <div class="row">
                 <div class="col-12 col-md-3 col-lg-2">
-                  <label class="text-secondary">Card Type</label>
+                  <label class="text-secondary">생년월일 6자리</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div id="confirm_cardtype" class="mb-2"></div>
+                  <div id="confirm_birthdate" class="mb-2"></div>
                 </div>
               </div>
               <div class="row">
