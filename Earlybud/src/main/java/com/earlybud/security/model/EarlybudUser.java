@@ -28,4 +28,3 @@ public class EarlybudUser extends User {
 		this.member = m;
 	}
 }
-	
