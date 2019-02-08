@@ -104,13 +104,25 @@
 	<link rel='stylesheet' id='elementor-frontend-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=2.2.6' type='text/css' media='all' />
 	<link rel='stylesheet' id='elementor-post-4-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/uploads/sites/92/elementor/css/post-4.css?ver=1540206708' type='text/css' media='all' />
 	<link rel='stylesheet' id='kirki-styles-airi-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/kirki/assets/css/kirki-styles.css?ver=3.0.33' type='text/css' media='all' />
+
+
 	
 
 	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
-<meta name="naver-site-verification" content="9cf6afa832a16b3ba913b7d07418de0d0c349d38"/>
-<link href="${pageContext.request.contextPath}/css/category/styles.87dc07fb.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/category/uikit.css">
+	<meta name="naver-site-verification" content="9cf6afa832a16b3ba913b7d07418de0d0c349d38"/>
+	<link href="${pageContext.request.contextPath}/css/category/styles.87dc07fb.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/category/uikit.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/category/styles.e7a1e095.css">
 	
+	<script src="${pageContext.request.contextPath}/js/category/jquery-1.12.4.js"></script>
+	<script src="${pageContext.request.contextPath}/js/category/isMobile.min.js"></script>
+	<script src='${pageContext.request.contextPath}/js/category/jquery.form.js'></script>
+	<script src='${pageContext.request.contextPath}/js/category/jquery.scrollLock.min.js'></script>
+	<script src='${pageContext.request.contextPath}/js/category/uikit.min.js'></script>
+
+<!-- 공통 유틸 js -->
+<script src="${pageContext.request.contextPath}/js/category/commonUtil.js"></script>
+		
 	<style id='kirki-styles-airi-inline-css' type='text/css'>
 		h1,
 		h2,
@@ -369,7 +381,7 @@
 
             // 해시 프래그먼트로부터 페이지 상태 복원
             var hashParams = CommonUtil.getHashParam();
-            var categoryCode = (hashParams.hasOwnProperty('category')) ? hashParams.category : null;
+            var categoryCode = (hashParams.hasOwnProperty('cat_code')) ? hashParams.category : null;
             var sorting = (hashParams.hasOwnProperty('sorting')) ? hashParams.sorting : null;
             UI.ProjectList.changeSelectedCategory(categoryCode);
             if (sorting) {
@@ -385,7 +397,7 @@
 	        loadInitialPage(initPage);
 		});
 
-        /**
+	    /**
          * 최초 페이지를 로드한다.
          * @param initPage {number} 최초 로드할 페이지
          */
@@ -398,7 +410,7 @@
             $('#listPrj').empty();
 
             UI.DynamicPageHelper.lockLoad();
-            loadProjectList(initPage, null, true);
+            loadProjectList(initPage, null, true);	//아래의 메소드 실행
         }
 
         /**

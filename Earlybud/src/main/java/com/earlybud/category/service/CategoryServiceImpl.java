@@ -8,6 +8,7 @@ import com.earlybud.category.dao.CategoryDAO;
 import com.earlybud.model.Item;
 import com.earlybud.vo.CategoryVO;
 import com.earlybud.vo.Criteria;
+import com.earlybud.vo.RewardVO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -29,7 +30,7 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 */
 	@Override
-	public Item get(Long item_code) {
+	public RewardVO get(Long item_code) {
 
 		log.info("get......" + item_code);
 

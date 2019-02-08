@@ -4,12 +4,13 @@ import java.util.List;
 import com.earlybud.model.Item;
 import com.earlybud.vo.CategoryVO;
 import com.earlybud.vo.Criteria;
+import com.earlybud.vo.RewardVO;
 
 public interface CategoryService {
 
 	//public void register(Item item);
 
-	public Item get(Long item_code);
+	public RewardVO get(Long item_code);
 
 	//public boolean modify(Item item);
 
