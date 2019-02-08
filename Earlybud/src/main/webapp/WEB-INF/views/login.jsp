@@ -35,13 +35,13 @@
               <label>
                 이메일<span class="req">*</span>
               </label>
-              <input type="email"required name="email" autocomplete="off"/>
+              <input type="email"required name="email" autocomplete="off" onkeyup="id_check(this.value)"/>
             </div>
             <div class="field-wrap">
               <label>
                 비밀번호<span class="req">*</span>
               </label>
-              <input type="password"required name="pwd" autocomplete="off"/>
+              <input type="password"required name="pwd" autocomplete="off" />
             </div>
             <button id="join" type="submit" class="button button-block" onclick="if(!memberSubmit(this.form)){return false;}"/>회원가입</button>
             </form>
@@ -70,6 +70,14 @@
 </div> <!-- /form -->
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script  src="js/login/index.js"></script>
+  <!-- <script type="text/javascript">
+  function id_check(str){
+	   var request = $.ajax({url:"join", method:"GET", data:{id:str}, dataType:"html"});
+	   request.done(function(data){
+		   $("#id_ok").html(data);
+	   });
+  }
+  </script> -->
   <script type="text/javascript">
   	Kakao.init('deaa60a748706f6b5879d19dfb26bf56');
   	function kakao(){

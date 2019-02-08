@@ -420,7 +420,7 @@
 																<div class="athemes-project-wrap portfolio-section style1">
 																	<ul class="project-filter clearfix" id="filters">
 																		<li><a href="#" class="active" data-filter="*">전체</a></li>
-																		<li><a href='#' data-filter='.branding'>테크</a></li>
+																		<li><a href='../' data-filter='.branding'>테크</a></li>
 																		<li><a href='#' data-filter='.design'>홈리빙</a></li>																																			
 																		<li><a href='#' data-filter='.graphics'>푸드</a></li>	
 																		<li><a href='#' data-filter='.branding'>패션</a></li>	

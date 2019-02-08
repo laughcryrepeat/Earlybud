@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.earlybud.model.Member;
 
@@ -17,7 +18,6 @@ public class EarlybudUser extends User {
 	private static final long serialVersionUID = 1L;
 	
 	private Member member;
-	
 	public EarlybudUser(String username, String password, 
 			Collection<? extends GrantedAuthority> authorities) {
 		super(username, password, authorities);

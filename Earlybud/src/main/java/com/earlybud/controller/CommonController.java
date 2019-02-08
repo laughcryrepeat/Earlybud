@@ -1,8 +1,14 @@
 package com.earlybud.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.http.HttpResponse;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,15 +17,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.earlybud.member.dao.MemberDAO;
 import com.earlybud.model.Member;
+import com.earlybud.security.CustomUserDetailsService;
 
 import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
 public class CommonController {
-
+	MemberDAO dao;
+	@Autowired
+	CustomUserDetailsService service;
 	@GetMapping("/accessError")
 	public void accessDenied(Authentication auth, Model model) {
 
@@ -48,11 +59,25 @@ public class CommonController {
 		System.out.println("code: " + code);
 	}
 	
+	/*@RequestMapping("/email_check")
+	public void emailCheck(HttpServletRequest request, HttpServletResponse response, String error, Model model, Member member) 
+		throws Exception{
+		String emailSearch = request.getParameter("email");
+		System.out.println("emailSearch: "+emailSearch);
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+	}*/
 	@RequestMapping("/join")
-	public void joinInput(String error, Model model, Member m) {
+	public Member join_input(@RequestParam("email") String email, @RequestParam("pwd") String pwd, @RequestParam("nickname") String nickname, String error, Model model)
+		throws Exception{
+		Member member = new Member();
+		member.setEmail(email);
+		member.setNickname(nickname);
+		member.setPwd(pwd);
+		System.out.println("[JOIN] NEW MEMBER :  " + member);
+		service.save(member);
 		log.info("JOIN error: " + error);
-		log.warn("[JOIN] NEW MEMBER name: "+ m.getNickname());
-		log.warn("[JOIN] NEW MEMBER email: "+ m.getEmail());
+		return member;
 	}
 	
 	@GetMapping("/customLogout")
