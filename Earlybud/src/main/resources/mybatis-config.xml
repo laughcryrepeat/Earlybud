@@ -8,7 +8,8 @@
 	<typeAlias alias="Authorities" type="com.earlybud.model.Authorities"/>
 	<typeAlias alias="Message" type="com.earlybud.model.Message"/>
 	<typeAlias alias="Category" type="com.earlybud.vo.CategoryVO"/>
-	<typeAlias alias="Reward" type="com.earlybud.vo.RewardVO"/>
+	<typeAlias alias="RewardVO" type="com.earlybud.vo.RewardVO"/>
+	<typeAlias alias="Type" type="com.earlybud.model.Type"/>
 </typeAliases>
 <mappers>
 	<mapper resource="mybatis/Member.xml"/>

@@ -218,12 +218,8 @@
 			color: #cfbaf4;
 		}
 
-		.menuStyle4 .contact-area .contact-block .contact-icon,
-		button,
-		.button,
-		input[type="button"],
-		input[type="reset"],
-		input[type="submit"] {
+		.menuStyle4 .contact-area .contact-block .contact-icon
+		{
 			border-color: #cfbaf4;
 		}
 
@@ -231,12 +227,7 @@
 		.menuStyle2 .main-navigation .current-menu-item:after,
 		.comments-area .comment-reply-link:hover,
 		.menuStyle4 .main-navigation .header-cta:before,
-		.menuStyle4 .main-navigation .header-cta,
-		button,
-		.button,
-		input[type="button"],
-		input[type="reset"],
-		input[type="submit"],
+		.menuStyle4 .main-navigation .header-cta,		
 		.menuStyle3 .main-navigation a:hover:after,
 		.menuStyle3 .main-navigation .current-menu-item:after {
 			background-color: #cfbaf4;
@@ -317,6 +308,31 @@
 		.widget a {
 			color: #595959;
 		}
+		.list_cmt {
+    margin-top:100px; border-top: 1px solid $silver;
+    > li {padding:20px 0 0;}
+    .cmt_output {position:relative;border-bottom:1px solid $silver;}
+    .cmt_comm {
+        padding-right:0;border:0 none;background-color:$white;
+        .box_cmt {
+            padding-right:85px;
+            .tf_cmt {color:$gray;}
+            .cmt_info {display:none;}
+            .btn_submit {bottom:0;width:85px;height:100%;background-color:$gray;}
+        }
+    }
+    .user_profile {
+        height:45px;
+        .img_profile {margin:0 20px;vertical-align:middle;}
+        .txt_name {font-size:$fs14;color:$dark;}
+    }
+    .txt_time {margin-left:20px;font-size:$fs13;color:$gray;}
+    .cont_cmt {padding:0 20px 30px 90px;font-size:$fs13;color:$gray;word-break:break-all}
+    .tool_set {
+        position:absolute;top:0;right:0;
+        button{height:28px;padding:0 12px;border:1px solid $linegray;font-size:$fs13;color:$gray;}
+    }
+}
 	</style>
 	<script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
 	<script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
@@ -551,53 +567,45 @@
 
                                     <div class="item_state">
                                         <p><span class="txt_statetitle">참여인원</span></p>
-                                        <span class="screen_out">참여자 수</span><span class="num_value">1994</span> <span class="txt_value">명 참여</span>
+                                        <span class="screen_out">참여자 수</span>
+                                        <span class="num_value">
+                                        
+                                        <c:out value="${item.TOTAL_PUR}"/>                                
+                                        
+                                        </span> 
+                                        <span class="txt_value">명 참여</span>
                                     </div>
 
                                     <div class="item_state">
                                         <p><span class="txt_statetitle">남은기간</span></p>
                                         
-                                            
-                                        <span class="num_value">
-                                            
-                                            
-                                            D-<span class="screen_out">Day</span>1994
-                                        </span><span class="txt_value"> 일 남음</span>
-                                            
-                                            
-                                        
-
-                                        
-                                            
-                                                
-                                                    
-                                                        
-                                                            <a href="/reward/6388/join/select" class="link_join">참여하기</a>
-                                                        
-                                                        
-                                                    
-                                                    
-                                                
-                                            
-                                            
-                                        
+                                        <c:choose>
+											<c:when test="${item.TIME > 0}">
+										    	<span class="num_value">
+		                                        	D-<span class="screen_out">Day</span><c:out value="${item.TIME}"/>
+		                                        </span>
+		                                        <span class="txt_value"> 일 남음</span>	
+		                                        <a href="/reward/6388/join/select" class="link_join">참여하기</a>                                        
+											</c:when>											
+											<c:when test="${item.TIME < 0}">
+													<span class="num_value">참여마감</span>
+													<span class="link_join">마감된 펀딩입니다</span>													
+											</c:when>
+											<c:otherwise>
+											   	<span class="num_value">오늘 자정까지</span>
+											   	<a href="/reward/6388/join/select" class="link_join">참여하기</a>
+											</c:otherwise>
+										</c:choose>
+										
                                     </div>
 
                                     
                                         <div class="txt_notice ">
                                             
-                                                
-                                                    
-                                                    
-                                                        
-                                                        
-                                                        
-                                                    
-                                                    
                                                     
                                                         <span class="sign_notice">성공해야<br>리워드</span>
                                                         <span class="txt">
-                                                        목표액 <c:out value="${item.TARGET_SUM}"/>억원에 미달하면 결제가 진행되지 않습니다.<br>
+                                                        목표액<c:out value="${item.TARGET}"/>원에 미달하면 결제가 진행되지 않습니다.<br>
                                                         결제는 목표액달성시 <c:out value="${item.DEADLINE}"/>에 진행됩니다.
                                                     </span>
                                                     
@@ -619,7 +627,7 @@
                                 </span></a>
                                     <input type="hidden" id="like_count" value="5">
                                     <input type="hidden" id="interest_seq" value="">
-                                    <button type="button" class="btn_like" id="btn_like">관심<img src="${pageContext.request.contextPath}/images/item/ex4.jpg">
+                                    <button type="button" class="btn_like" id="btn_like">관심<img src="${pageContext.request.contextPath}/images/item/good.jpg">
                                         <span id="icon_like"></span>
                                         <span class="num_count" id="like_num_count">
                                     
@@ -645,13 +653,13 @@
                                             <li class="on"><a href="/reward/6388/intro?isPreview=Y&amp;mockFlag=N" id="Intro" class="link_tab">소개</a></li>
 
                                             <li>
-                                                <a href="/reward/6388/news?mockFlag=N" id="News" class="link_tab">최근소식<span class="num_count">1</span></a>
+                                                <a href="/reward/6388/news?mockFlag=N" id="News" class="link_tab">공지</a>
                                             </li>
                                             <li>
-                                                <a href="/reward/6388/qna?isPreview=Y&amp;mockFlag=N" id="Qna" class="link_tab">Q&amp;A<span class="num_count"></span></a>
+                                                <a href="/reward/6388/qna?isPreview=Y&amp;mockFlag=N" id="Qna" class="link_tab">Q&amp;A</a>
                                             </li>
                                             <li>
-                                                <a href="/reward/6388/cheer?mockFlag=N" id="Cheer" class="link_tab">참여자<span class="skip">응원</span><span class="num_count">16</span></a>
+                                                <a href="/reward/6388/cheer?mockFlag=N" id="Cheer" class="link_tab">환불 및 <span class="skip">교환</span></a>
                                             </li>
                                             
                                                 
@@ -683,8 +691,7 @@
 									
 									<h2 class="screen_out">소개</h2>
 									<div class="article_intro">
-										<p><img src="${pageContext.request.contextPath}/images/item/<c:out value="${item.IMAGE_ITEM}"/>" alt="" width="680" height="475"><br><br><br>
-										<img src="${pageContext.request.contextPath}/images/item/<c:out value="${item.IMAGE_ITEM}"/>" alt="" width="680" height="9194"></p>
+										<p><img src="${pageContext.request.contextPath}/images/item/<c:out value="${item.IMAGE_ITEM}"/>" alt="" width="680" height="475"></p>
 									</div>
 									<div id="accordionCont" class="accordion_g">
 										<h2 class="screen_out">프로젝트 주요안내</h2>
@@ -696,27 +703,27 @@
 										<p class="txt_process">여러분들의 관심과 참여로 더 나은 세상을 만들어 나가는 프로젝트가 실행됩니다.</p>
 										<ol class="list_order">
 											<li>
-												<img src="${pageContext.request.contextPath}/images/50.PNG"/><br><br>
+												<img src="${pageContext.request.contextPath}/images/step1.PNG"/><br><br>
 												<span class="txt_order">1.회원가입</span>
 												<span class="fa fa-angle-right"></span>
 											</li>
 											<li>
-												<span class="ico_comm ico_step2"></span>
+												<img src="${pageContext.request.contextPath}/images/step2.PNG"/><br><br>
 												<span class="txt_order">2.프로젝트 선택</span>
 												<span class="fa fa-angle-right"></span>
 											</li>
 											<li>
-												<span class="ico_comm ico_step3"></span>
+												<img src="${pageContext.request.contextPath}/images/step3.PNG"/><br><br>
 												<span class="txt_order">3.참여하기</span>
 												<span class="fa fa-angle-right"></span>
 											</li>
 											<li>
-												<span class="ico_comm ico_step4"></span>
+												<img src="${pageContext.request.contextPath}/images/step4.PNG"/><br><br>
 												<span class="txt_order">4.결제</span>
 												<span class="fa fa-angle-right"></span>
 											</li>
 											<li>
-												<span class="ico_comm ico_step5"></span>
+												<img src="${pageContext.request.contextPath}/images/step5.PNG"/><br><br>
 												<span class="txt_order">5.리워드 수령</span>
 											</li>
 										</ol>
@@ -738,120 +745,106 @@
 												</div>
 											</fieldset>
 										</form>
-										<h2 class="screen_out">댓글</h2>
-										<ul class="list_cmt">
+								<h2 class="screen_out">댓글</h2>
+								<ul class="list_cmt">
 											
+					<!-- 댓글하나 시작 -->	
+										<li><div class="cmt_output">														
+											<span class="user_profile">
+											    <span class="img_profile">									        
+											    </span>
+											    <span class="txt_name">보리</span>
+											</span>
+											<span class="txt_time">2019-01-08 13:01</span>
+											<!-- 댓글 보이기 -->
+											<div class="cmt_content">
+												<p class="cont_cmt">응원합니다~</p>
 												
-													<li>
-												
-												
-													<div class="cmt_output">
-														
-																    
-									        
-									    
-									
-									
-									<span class="user_profile">
-									    <span class="img_profile">
-									        
-									            
-									            
-									        
-									    </span>
-									    <span class="txt_name">이순영</span>
-									</span>
-									
-														<span class="txt_time">2019-01-08 13:01</span>
-														<!-- 댓글 보이기 -->
-														<div class="cmt_content">
-															<p class="cont_cmt">
-																	1차 리워드 169900원 제품에 카펫포함인가요? 따로 구매해야되나요?</p>
+														<div class="tool_set">
+															<input type="hidden" name="commentSeq" value="30977">
+															<input type="hidden" name="updateId" value="225382">
+															<button type="button" class="btn_edit">수정</button>
+															<button type="button" class="btn_del">삭제</button>
 															
 														</div>
-														<!-- 댓글 수정  -->
-														<div class="edit_cmt" style="display:none">
-															<fieldset>
-																<legend class="screen_out">댓글달기</legend>
-																<div class="cmt_comm">
-																	<div class="box_cmt">
-																		<input type="hidden" name="commentSeq" value="30885">
-																		<input type="hidden" name="updateId" value="224800">
-																		<textarea cols="30" rows="5" class="tf_cmt" title="댓글 작성">1차 리워드 169900원 제품에 카펫포함인가요? 따로 구매해야되나요?</textarea>
-																		<div class="cmt_info">
-																			<span class="num_byte"><em>0</em> / 500byte</span>
-																		</div>
-																		<input type="submit" class="btn_submit" value="수정" title="수정">
-																	</div>
+											</div>
+											<!-- 댓글 수정  -->
+											<div class="edit_cmt" style="display:none">
+													<fieldset>
+														<legend class="screen_out">댓글달기</legend>
+														<div class="cmt_comm">
+															<div class="box_cmt">
+																<input type="hidden" name="commentSeq" value="30977">
+																<input type="hidden" name="updateId" value="225382">
+																<textarea cols="30" rows="5" class="tf_cmt" title="댓글 작성">응원합니다~</textarea>
+																<div class="cmt_info">
+																	<span class="num_byte"><em>0</em> / 500byte</span>
 																</div>
-															</fieldset>
+																<input type="submit" class="btn_submit" value="수정" title="수정">
+															</div>
+														</div>
+													</fieldset>
+												</div>
+											</div>									
+										</li>
+					<!-- 댓글하나 끝 -->
+												
+										<ul class="list_reply">
+												<li><div class="cmt_reply">
+														<span class="ico_comm">댓글의 답글</span>
+														<span class="user_profile">
+														    <span class="img_profile clear_empty_picture">
+														        <img src="${pageContext.request.contextPath}/uploads/member/profile/<c:out value="${item.IMAGE}"/>" style="background: rgb(255, 255, 255);">
+														    </span>
+												    		<span class="txt_name"><c:out value="${item.NICKNAME}"/></span>
+														</span>
+														<span class="txt_time">2019-01-08 18:55</span>
+														<p class="cont_cmt">네 고객님!<br>1차 리워드 169,900원은 카페트 미포함 가격이며<br>카페트 또한 1,2,3차 얼리버드 특가로 구매하실 수 있습니다!<br><br>카페트는 필수옵션이 아니며<br>카페트 없이도 사용하는데 지장은 없답니다!</p>
+													</div>
+												</li>
+										</ul>
+										
+										
+										<li><div class="cmt_output">
+											<span class="user_profile">
+											    <span class="img_profile clear_empty_picture">
+											    </span>
+											    <span class="txt_name">한송이</span>
+											</span>
+
+											<span class="txt_time">2019-01-16 16:26</span>
+											<!-- 댓글 보이기 -->
+											<div class="cmt_content">
+												<p class="cont_cmt">
+														와 포장도 이쁘고 가격도 훌륭하군요. </p>
+											</div>
+											<!-- 댓글 수정  -->
+											<div class="edit_cmt" style="display:none">
+												<fieldset>
+													<legend class="screen_out">댓글달기</legend>
+													<div class="cmt_comm">
+														<div class="box_cmt">
+															<input type="hidden" name="commentSeq" value="30973">
+															<input type="hidden" name="updateId" value="15">
+															<textarea cols="30" rows="5" class="tf_cmt" title="댓글 작성">와 포장도 이쁘고 가격도 훌륭하군요. </textarea>
+															<div class="cmt_info">
+																<span class="num_byte"><em>0</em> / 500byte</span>
+															</div>
+															<input type="submit" class="btn_submit" value="수정" title="수정">
 														</div>
 													</div>
-												
-												
-												
-											
-												
-												
-												
-													
-														<ul class="list_reply">
-													
-													<li>
-														<div class="cmt_reply">
-															<span class="ico_comm">댓글의 답글</span>
-															
-									
-									
-									
-									
-									
-									
-									
-									
-									    
-									        
-									    
-									    
-									
-									<span class="user_profile">
-									    <span class="img_profile clear_empty_picture">
-									        
-									            
-									                <img src="${pageContext.request.contextPath}/uploads/member/profile/<c:out value="${item.IMAGE}"/>" style="background: rgb(255, 255, 255);">
-									            
-									            
-									        
-									    </span>
-									    <span class="txt_name"><c:out value="${item.NICKNAME}"/></span>
-									</span>
-									
-															<span class="txt_time">2019-01-08 18:55</span>
-															<p class="cont_cmt">네 고객님!<br>1차 리워드 169,900원은 카페트 미포함 가격이며<br>카페트 또한 1,2,3차 얼리버드 특가로 구매하실 수 있습니다!<br><br>카페트는 필수옵션이 아니며<br>카페트 없이도 사용하는데 지장은 없답니다!</p>
-														</div>
-													</li>
-													
-														</ul>
-													
-												
-												
-													</li>
-												
-											
-												
-													<li>
-												
-												
-													<div class="cmt_output">
-																				
-							
-									
-										<div id="paging" class="paging_comm">
-											<a class="link_page on">1</a>&nbsp;
-									
-											<input id="pageIndex" name="pageIndex" type="hidden" value="1">
+												</fieldset>
+											</div>
 										</div>
-									</div>
+										</li>
+								</ul>		
+												
+							<div id="paging" class="paging_comm">
+								<a class="link_page on">1</a>&nbsp;
+						
+								<input id="pageIndex" name="pageIndex" type="hidden" value="1">
+							</div>
+								
 									
 									
 									<script type="text/javascript">
@@ -1033,9 +1026,6 @@
 									    }
 									
 									</script>
-									
-											            	
-									</li></ul></div>
                             </div></section>
                         </div>
 
@@ -1045,29 +1035,18 @@
                                     <fieldset>
                                   
 	<ul class="list_reward">
-
-         <!-- 리워드 수량이 무한한 경우 -->
+		<c:forEach items="${item.getOptionList()}" var="oplist">
+         	<!-- 리워드 수량이 무한한 경우 -->
             <li>
                 <a href="/reward/6388/join/select?selectrewardseq=11966" class="box_reward">
-                    <strong class="tit_reward">3,00000원 펀딩</strong>
-                    <p class="txt_desc">얼리버드 운영진에게 온기 전달하기</p>
-                    <span class="info_dely"><span class="tit_info">배송 예정일</span> : <span class="txt_info">리워드가 없습니다.</span></span>
-                    <span class="txt_satea"><em class="num_state">0명</em> 참여하였습니다.</span>
+                    <strong class="tit_reward">${oplist.OP_PRICE}원 펀딩</strong>
+                    <p class="txt_desc">${oplist.NAME}</p>
+                    <span class="info_dely"><span class="txt_info">${oplist.INFO}</span></span>
+                    <span class="txt_satea"><em class="num_state">${oplist.PURNUM}명</em> 참여하였습니다.</span>
                 </a>
-            </li>
-        
-
-         <!-- 리워드 수량이 무한한 경우 -->
-            <li>
-                <a href="/reward/6388/join/select?selectrewardseq=11964" class="box_reward">
-                    <strong class="tit_reward">10원 펀딩</strong>
-                    <p class="txt_desc">1번옵션</p>
-                    <span class="info_dely"><span class="tit_info">배송 예정일</span> : <span class="txt_info"><c:out value="${item.DEADLINE}"/> 순차배송</span></span>
-                    <span class="txt_satea"><em class="num_state">7명</em> 참여하였습니다.</span>
-                </a>
-            </li>
-            
-</ul>
+            </li> 
+        </c:forEach>
+	</ul>
                                     </fieldset>
                                 </form>
                             </div>
