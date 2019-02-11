@@ -1,8 +1,5 @@
 package com.earlybud.controller;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import java.io.*;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -26,6 +23,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.earlybud.member.dao.MemberDAO;
@@ -34,6 +32,9 @@ import com.earlybud.payment.service.PaymentService;
 import com.earlybud.security.CustomNoOpPasswordEncoder;
 import com.earlybud.vo.AddrVo;
 import com.earlybud.vo.PaymentVo;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.request.ScheduleData;
 import com.siot.IamportRestClient.request.ScheduleEntry;
@@ -88,8 +89,9 @@ public class PaymentController {
 	}
 	
 	@RequestMapping(value="reserve_payment", method=RequestMethod.POST)
-	public void registerBillingKey(HttpServletRequest request, HttpServletResponse response, PaymentVo paymentVo) {
+	public @ResponseBody String registerBillingKey(HttpServletRequest request ,HttpServletResponse response, PaymentVo paymentVo) {
 		// 연결
+		
 		String customer_uid = null;
 		log.info("registerBillingKey");
 		log.info("paymentVo nickname: "+paymentVo.getNickname());
@@ -99,8 +101,15 @@ public class PaymentController {
 		String pwd_2digit = paymentVo.getCardpwd();
 		
 		//Member member = dao.read(paymentVo.getEmail());
-		customer_uid = getCustomerUid(paymentVo.getNickname());
-		AccessToken auth = client.getAuth().getResponse();
+		customer_uid = getCustomerUid(paymentVo.getEmail());
+		
+		System.out.println("customer_uid: "+customer_uid);
+		System.out.println("card_number: "+card_number);
+		System.out.println("expiry: "+expiry);
+		System.out.println("birth: "+birth);
+		System.out.println("pwd_2digit: "+pwd_2digit);
+		
+		AccessToken auth = client.getAuth().getResponse();//토큰 가져오기
 		System.out.println("AccessToken auth: "+auth);
 		
 		try {
@@ -113,7 +122,12 @@ public class PaymentController {
 		
 			// 데이터
 			String param = "{\"card_number\": \""+card_number+"\", \"expiry\" : \""+expiry+"\", "
-					+ "\"birth\" : \""+birth+"\", \"pwd_2digit\" : \""+pwd_2digit+"\"}";
+					+ "\"birth\" : \""+birth+"\", \"pwd_2digit\" : \""+pwd_2digit+"\", \"pg\" : \"nictest04m\""
+					+ ",\"customer_name\":\""+paymentVo.getCard_owner()+"\""
+					+ ",\"customer_tel\":\""+paymentVo.getDel_phone()+"\" "
+					+ ",\"customer_email\": \""+paymentVo.getEmail()+"\""
+					+ ",\"customer_addr\": \""+paymentVo.getAddr1()+paymentVo.getAddr2()+"\" "
+					+ ",\"customer_postcode\": \""+paymentVo.getZip_code()+"\"}";
 			// 전송
 			OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
 			osw.write(param);
@@ -123,15 +137,27 @@ public class PaymentController {
 			BufferedReader br = null;
 			br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
 			String line = null;
+			String message = null;
 			while ((line = br.readLine()) != null) {
 			System.out.println(line);
-			System.out.println("response");
+			System.out.println("Billing key response!!!");
+			JsonParser jsonParser = new JsonParser();
+			JsonElement element = jsonParser.parse(line);
+			int code = element.getAsJsonObject().get("code").getAsInt();
+			message = element.getAsJsonObject().get("message").getAsString();
+			System.out.println("code = "+code);
+			System.out.println("message = "+message);
+			if(code==0) {
+				reservePayment(paymentVo, customer_uid);
+				return null;
+			}else {
+				return message;
 			}
+			
+			}			
 			// 닫기
 			osw.close();
-			br.close();
-			
-			reservePayment(paymentVo, customer_uid);			
+			br.close();		
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (ProtocolException e) {
@@ -141,38 +167,39 @@ public class PaymentController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 	
 	public void reservePayment(PaymentVo paymentVo, String customer_uid) {
 		log.info("reserve payment");
-		log.info("paymentVo: "+paymentVo.getNickname());
+		//log.info("paymentVo: "+paymentVo.getNickname());
 		//Member member = dao.read(paymentVo.getEmail());	
 		ScheduleData schedule_data = new ScheduleData(customer_uid);
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyymmdd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println("sdf: "+sdf);
 		Calendar cal = Calendar.getInstance();
-		cal.set(Calendar.HOUR, 0);
-		cal.set(Calendar.MINUTE, 15);
 		Date d;
 		String merchant_uid = getMerchantUid(paymentVo.getType_code());
 		try { //closingdate +1 and + 15 mins
 			d = sdf.parse(paymentVo.getSchedule_at());
 			cal.setTime(d);
 			cal.add(Calendar.DATE,1);
+			cal.add(Calendar.MINUTE, 15);
 			Date d1 = cal.getTime();
 			
 			System.out.println("cal: "+cal);
 			System.out.println("date d1: "+d1);
-			schedule_data.addSchedule(new ScheduleEntry(merchant_uid, d1, BigDecimal.valueOf(1004)));
+			schedule_data.addSchedule(new ScheduleEntry(merchant_uid, d1, BigDecimal.valueOf(100)));
 			
 			IamportResponse<List<Schedule>> schedule_response = client.subscribeSchedule(schedule_data);
-			System.out.println("예약 요청");
+			System.out.println("예약 요청 !");
 			System.out.println("schedule_response : "+schedule_response);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		
-		//customer_uid, merchant_uid update!! Paymentvo insert!!
+		//customer_uid, merchant_uid update!! paymentVo insert!!
 		//스케줄된 purchase_item 테이블 pur_state 칼럼 업데이트!!
 
 		/*cal.set(Calendar.YEAR, Integer.parseInt(closingdate.substring(0,4)));
@@ -187,6 +214,7 @@ public class PaymentController {
 		
 		IamportResponse<List<Schedule>> unschedule_response = client.unsubscribeSchedule(unschedule_data);
 		List<Schedule> cancelled_schedule = unschedule_response.getResponse();
+		System.out.println("cancelled_schedule: "+cancelled_schedule);
 		//스케줄된 purchase_item 테이블 cancel 칼럼 업데이트!!
 	}
 	
@@ -195,9 +223,9 @@ public class PaymentController {
 		//int n = (int) (Math.random() * 100) + 1;		
 		return type_code + "_" + df.format(new Date());
 	}
-	private String getCustomerUid(String nickname) {
+	private String getCustomerUid(String email) {
 		DateFormat df = new SimpleDateFormat("$$hhmmssSS");
 		//int n = (int) (Math.random() * 100) + 1;		
-		return nickname+ "_" + df.format(new Date());
+		return email+ "_" + df.format(new Date());
 	}
 }

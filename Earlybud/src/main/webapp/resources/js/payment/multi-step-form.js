@@ -26,8 +26,8 @@ $('[data-form-step]').on('click', function () {
 });
 
 $('#submit_btn').on('click', function(e) {
-    var serializeArray = $(this).serializeArray();
-    //alert(serializeArray);
+	//console.log( $('#formOrder').serializeArray());
+    var serializeArray = $('#formOrder').serializeArray();
     $('.nav-tabs-progress').find('.nav-item').last().addClass('complete');
     console.log("before ajax");
     $.ajax({
@@ -53,6 +53,7 @@ $(document).ready(function(){
         payment.addr1 = formOrder.addr1.value;
         payment.addr2 = formOrder.addr2.value;
         payment.cardnum = formOrder.cardnum.value;
+        payment.card_owner = formOrder.card_owner.value;
         payment.birthdate = formOrder.birthdate.value;
         payment.pur_type= formOrder.pur_type.value;
         payment.exp_month = formOrder.exp_month.value;
@@ -66,7 +67,7 @@ $(document).ready(function(){
         $('#confirm_zipcode').html(payment.zip_code);
         $('#confirm_addr1').html(payment.addr1);
         $('#confirm_addr2').html(payment.addr2);
-        $('#confirm_pur_type').html(payment.pur_type);
+        $('#confirm_cardowner').html(payment.card_owner);
         $('#confirm_cardnum').html(payment.cardnum);
         $('#confirm_birthdate').html(payment.birthdate);
         $('#confirm_expiry').html(payment.exp_year+"-"+payment.exp_month);

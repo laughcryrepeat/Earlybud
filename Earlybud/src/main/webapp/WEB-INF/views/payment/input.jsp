@@ -31,7 +31,7 @@
 <div class="container-fluid">
   
   <div class="callout callout-info">
-    선택하신 상품 : <a href="#">XXX</a> / 1번 타입 / 금액 : 20000원 / 결제예정일 : 3월 3일 
+    선택하신 상품 : <a href="#">XXX</a> / 1번 타입 / 금액 : 100원 / 결제예정일 : 3월 3일 
   </div>
   <div class="nav-tabs-responsive">
     <ul class="nav nav-tabs-progress nav-tabs-4 mb-4">
@@ -78,9 +78,9 @@
             </small>
           </a>
         </div>
-        <input type="hidden" class="form-control" id="amount" name="amount" value="1000">
-        <input type="hidden" class="form-control" id="schedule_at" name="schedule_at" value="1478150985">
-        <input type="hidden" class="form-control" id="type_code" name="type_code" value="상품타입코드">
+        <input type="hidden" class="form-control" id="amount" name="amount" value="100">
+        <input type="hidden" class="form-control" id="schedule_at" name="schedule_at" value="2019-05-05">
+        <input type="hidden" class="form-control" id="type_code" name="type_code" value="10100">
         <div id="account-collapse" class="collapse show" data-parent="#formOrder">
           <div class="text-secondary mb-3">
             <small>Step 1 of 4</small>
@@ -205,14 +205,14 @@
           <div class="row">
             <div class="col-12 col-md-8 col-lg-7">
               <div class="form-group">
-                <label>카드번호</label>
+                <label>카드번호(xxxx-xxxx-xxxx-xxxx)</label>
                 <input type="text" class="form-control" id="cardnum" name="cardnum">
               </div>
             </div>
             <div class="col-12 col-md-4 col-lg-5">
               <div class="form-group">
-                <label>CVC</label>
-                <input type="text" class="form-control" id="cardcvc" name="cardcvc">
+                <label>카드소지자 이름</label>
+                <input type="text" class="form-control" id="card_owner" name="card_owner">
               </div>
             </div>
           </div>
@@ -253,9 +253,9 @@
                     <label>Payment Type</label>
                     <select class="form-control" id="pur_type" name="pur_type">
                         <option value="" disabled selected></option>
-                        <option value="kakao_pay">카카오페이</option>
+                        <option value="nice">나이스페이먼츠</option>
                         <option value="inisis">이니시스</option>
-                        <option value="inisis">페이코</option>
+                        <option value="payco">페이코</option>
                     </select>
                   </div>
             </div>
@@ -293,7 +293,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-12 col-md-3 col-lg-2">
-                  <label class="text-secondary">이름</label>
+                  <label class="text-secondary">닉네임</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
                   <div id="confirm_nickname" class="mb-2"></div>
@@ -353,6 +353,14 @@
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
                   <div id="confirm_cardnum" class="mb-2"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-md-3 col-lg-2">
+                  <label class="text-secondary">카드 소지자</label>
+                </div>
+                <div class="col-12 col-md-9 col-lg-10">
+                  <div id="confirm_cardowner" class="mb-2"></div>
                 </div>
               </div>
               <div class="row">
