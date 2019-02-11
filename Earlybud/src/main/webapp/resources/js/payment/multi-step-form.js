@@ -53,7 +53,6 @@ $(document).ready(function(){
         payment.addr1 = formOrder.addr1.value;
         payment.addr2 = formOrder.addr2.value;
         payment.cardnum = formOrder.cardnum.value;
-        payment.cardcvc = formOrder.cardcvc.value;
         payment.birthdate = formOrder.birthdate.value;
         payment.pur_type= formOrder.pur_type.value;
         payment.exp_month = formOrder.exp_month.value;
@@ -70,6 +69,6 @@ $(document).ready(function(){
         $('#confirm_pur_type').html(payment.pur_type);
         $('#confirm_cardnum').html(payment.cardnum);
         $('#confirm_birthdate').html(payment.birthdate);
-        $('#confirm_expiry').html(payment.exp_month+"/"+payment.exp_year);
+        $('#confirm_expiry').html(payment.exp_year+"-"+payment.exp_month);
     });
 });

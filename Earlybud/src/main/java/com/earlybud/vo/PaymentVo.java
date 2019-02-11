@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PaymentVo {
+	private String type_code;
 	private String nickname;
 	private String email;
 	private String del_name;
@@ -16,10 +17,13 @@ public class PaymentVo {
 	private String addr1;
 	private String addr2;
 	private String cardnum;
-	private String cardcvc;
 	private String birthdate;
 	private String pur_type;
 	private String exp_month;
 	private String exp_year;
 	private String cardpwd;
+	private String amount;
+	private String schedule_at;
+	private String customer_uid;
+	private String merchant_uid;
 }

@@ -79,7 +79,8 @@
           </a>
         </div>
         <input type="hidden" class="form-control" id="amount" name="amount" value="1000">
-        <input type="hidden" class="form-control" id="merchant_uid" name="merchant_uid" value="상품코드++시간">
+        <input type="hidden" class="form-control" id="schedule_at" name="schedule_at" value="1478150985">
+        <input type="hidden" class="form-control" id="type_code" name="type_code" value="상품타입코드">
         <div id="account-collapse" class="collapse show" data-parent="#formOrder">
           <div class="text-secondary mb-3">
             <small>Step 1 of 4</small>
