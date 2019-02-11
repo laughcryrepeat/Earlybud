@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.http.HttpResponse;
 import org.apache.ibatis.annotations.Param;
@@ -18,10 +19,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.earlybud.login.kakao.KakaoAccessToken;
+import com.earlybud.login.kakao.KakaoUserInfo;
 import com.earlybud.member.dao.MemberDAO;
 import com.earlybud.model.Member;
 import com.earlybud.security.CustomUserDetailsService;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import lombok.extern.log4j.Log4j;
 
@@ -53,10 +58,22 @@ public class CommonController {
 			model.addAttribute("logout", "Logout!!");
 		}
 	}
-	@RequestMapping(value="/kakaologin", produces="application/json", method= {RequestMethod.GET, RequestMethod.POST})
-	public void kakaoLogin(@RequestParam("code") String code, HttpServletRequest request,
-			HttpServletResponse response) {
-		System.out.println("code: " + code);
+	@RequestMapping(value="/oauth", produces="application/json; charset=utf-8", method= {RequestMethod.GET, RequestMethod.POST})
+	public void kakaoLogin(@RequestParam("code") String code, RedirectAttributes ra, HttpSession session, HttpServletResponse response) throws IOException{
+		JsonNode jsonToken = KakaoAccessToken.getKakaoAccessToken(code);
+		JsonNode accessToken = jsonToken.get("access_token");
+		JsonNode userInfo = KakaoUserInfo.getKakaoUserInfo(accessToken);
+		String id = userInfo.path("id").asText();
+		String name = null;
+		String email = null;
+		
+		JsonNode properties = userInfo.path("properties");
+		JsonNode kakao_account = userInfo.path("kakao_account");
+		name = properties.path("nickname").asText();
+		email = kakao_account.path("email").asText();
+		
+		System.out.println("[email] : "+email+", [name] : "+name+", [id] : "+id);
+		
 	}
 	
 	/*@RequestMapping("/email_check")
