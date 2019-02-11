@@ -113,8 +113,8 @@
 		       var pop = window.open("juso.do","pop","width=570,height=420, scrollbars=yes, resizable=yes");
 		    }
 		   function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
-		     mypage.roadAddrPart1.value = roadAddrPart1;
-		     mypage.addrDetail.value = addrDetail;
+		     mypage.addr.value = roadAddrPart1;
+		     mypage.detail_addr.value = addrDetail;
 		     mypage.zipNo.value = zipNo;
 		    }
 	  </script>

@@ -35,7 +35,7 @@
               <label>
                 이메일<span class="req">*</span>
               </label>
-              <input id="email1" type="email"required name="email" onkeyup="id_check(this.value)"/>
+              <input type="email"required name="email" onkeyup="id_check(this.value)"/>
             </div>
             <div class="field-wrap">
               <label>
@@ -64,7 +64,6 @@
             </div>
             <p class="forgot"><a href="#">비밀번호를 잊으셨나요?</a></p>
             <button class="button button-block"/>Log In</button>
-            
             <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
             </form> 
           </div>

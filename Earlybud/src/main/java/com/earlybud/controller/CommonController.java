@@ -13,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -59,7 +61,7 @@ public class CommonController {
 		}
 	}
 	@RequestMapping(value="/oauth", produces="application/json; charset=utf-8", method= {RequestMethod.GET, RequestMethod.POST})
-	public void kakaoLogin(@RequestParam("code") String code, RedirectAttributes ra, HttpSession session, HttpServletResponse response) throws IOException{
+	public Member kakaoLogin(@RequestParam("code") String code, RedirectAttributes ra, HttpSession session, HttpServletResponse response) throws IOException{
 		JsonNode jsonToken = KakaoAccessToken.getKakaoAccessToken(code);
 		JsonNode accessToken = jsonToken.get("access_token");
 		JsonNode userInfo = KakaoUserInfo.getKakaoUserInfo(accessToken);
@@ -74,16 +76,15 @@ public class CommonController {
 		
 		System.out.println("[email] : "+email+", [name] : "+name+", [id] : "+id);
 		
+		Member member = new Member();
+		member.setEmail(email);
+		member.setNickname(name);
+		member.setPwd(id);
+		System.out.println("[JOIN] NEW MEMBER :  " + member);
+		service.save(member);
+		
+		return member;
 	}
-	
-	/*@RequestMapping("/email_check")
-	public void emailCheck(HttpServletRequest request, HttpServletResponse response, String error, Model model, Member member) 
-		throws Exception{
-		String emailSearch = request.getParameter("email");
-		System.out.println("emailSearch: "+emailSearch);
-		response.setContentType("text/html; charset=utf-8");
-		PrintWriter out = response.getWriter();
-	}*/
 	@RequestMapping("/join")
 	public Member join_input(@RequestParam("email") String email, @RequestParam("pwd") String pwd, @RequestParam("nickname") String nickname, String error, Model model)
 		throws Exception{
@@ -96,6 +97,15 @@ public class CommonController {
 		log.info("JOIN error: " + error);
 		return member;
 	}
+	
+	/*@RequestMapping("/email_check")
+	public void emailCheck(HttpServletRequest request, HttpServletResponse response, String error, Model model, Member member) 
+		throws Exception{
+		String emailSearch = request.getParameter("email");
+		System.out.println("emailSearch: "+emailSearch);
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+	}*/
 	
 	@GetMapping("/customLogout")
 	public void logoutGET() {

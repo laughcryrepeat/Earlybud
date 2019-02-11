@@ -26,6 +26,9 @@
   	<insert id="insertAuth">
 		insert into Authorities (email, authority) values ( #{email}, 'ROLE_USER')
   	</insert>
+  	<update id="memberUpdate" parameterType="Member" keyProperty="email">
+  		update Member set pwd = #{pwd}, addr=#{addr}, detail_addr = #{detail_addr}, phone=#{phone} where email=#{email}
+  	</update>
   	<select id="read" resultMap="memberMap">
   	SELECT 
   	mem.email, pwd, nickname, phone, addr, detail_addr, joindate, dropdate, item_liked, authority 
