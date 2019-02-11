@@ -216,25 +216,7 @@ blockquote {
 # Forms
 --------------------------------------------------------------*/
 
-button,
-.button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-	color: #fff;
-	font-size: 13px;
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	border: 2px solid #f0437e;
-	background-color: #f0437e;
-	padding: 14px 30px;
-	border-radius: 2px;
-	-webkit-transition: all 0.3s;
-	transition: all 0.3s;
-	cursor: pointer;
-	border-radius: 30px;
-}
+
 
 .menuStyle3 .top-bar button,
 .menuStyle3 .top-bar

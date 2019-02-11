@@ -576,5 +576,5 @@
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 		<script src="${pageContext.request.contextPath}/js/category/jquery.bxslider.js"></script>
-    <script src="${pageContext.request.contextPath}/js/category/ui.js"></script>
-    <script src="${pageContext.request.contextPath}/js/category/omc.ui.js"></script>
+    <script src="${pageContext.request.contextPath}/js/category/js/ui.js"></script>
+    <script src="${pageContext.request.contextPath}/js/category/js/omc.ui.js"></script>
