@@ -36,7 +36,6 @@
   	member mem LEFT OUTER JOIN authorities auth on mem.email = auth.email 
   	WHERE mem.email = #{email} 
   	</select>
-  	
   	<select id="listMember" resultMap="memberMap">
   	SELECT 
   	mem.email, nickname, phone, addr, detail_addr, joindate, dropdate, item_liked, authority 

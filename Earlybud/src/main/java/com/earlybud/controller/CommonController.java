@@ -48,7 +48,6 @@ public class CommonController {
 
 	@RequestMapping("/login")
 	public void loginInput(String error, String logout, Model model) {
-
 		log.info("LOGIN error: " + error);
 		log.info("logout: " + logout);
 
