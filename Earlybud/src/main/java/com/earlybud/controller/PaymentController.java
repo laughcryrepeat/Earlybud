@@ -88,7 +88,7 @@ public class PaymentController {
 		return "payment/jusoPopup";
 	}
 	
-	@RequestMapping(value="reserve_payment", method=RequestMethod.POST)
+	@RequestMapping(value="reserve_payment", method=RequestMethod.POST, produces="application/text; charset=utf8")
 	public @ResponseBody String registerBillingKey(HttpServletRequest request ,HttpServletResponse response, PaymentVo paymentVo) {
 		// 연결
 		
@@ -139,21 +139,20 @@ public class PaymentController {
 			String line = null;
 			String message = null;
 			while ((line = br.readLine()) != null) {
-			System.out.println(line);
-			System.out.println("Billing key response!!!");
-			JsonParser jsonParser = new JsonParser();
-			JsonElement element = jsonParser.parse(line);
-			int code = element.getAsJsonObject().get("code").getAsInt();
-			message = element.getAsJsonObject().get("message").getAsString();
-			System.out.println("code = "+code);
-			System.out.println("message = "+message);
-			if(code==0) {
-				reservePayment(paymentVo, customer_uid);
-				return null;
-			}else {
-				return message;
-			}
-			
+				System.out.println(line);
+				System.out.println("Billing key response!!!");
+				JsonParser jsonParser = new JsonParser();
+				JsonElement element = jsonParser.parse(line);
+				int code = element.getAsJsonObject().get("code").getAsInt();
+				System.out.println("code = "+code);
+				
+				if(code==0) {
+					reservePayment(paymentVo, customer_uid);
+				}else {
+					message = element.getAsJsonObject().get("message").getAsString();
+					System.out.println("message = "+message);
+					return message;
+				}
 			}			
 			// 닫기
 			osw.close();
@@ -201,6 +200,7 @@ public class PaymentController {
 		
 		//customer_uid, merchant_uid update!! paymentVo insert!!
 		//스케줄된 purchase_item 테이블 pur_state 칼럼 업데이트!!
+		//이메일과 쪽지 보내기.
 
 		/*cal.set(Calendar.YEAR, Integer.parseInt(closingdate.substring(0,4)));
 		cal.set(Calendar.MONTH, Integer.parseInt(closingdate.substring(4,6))-1);

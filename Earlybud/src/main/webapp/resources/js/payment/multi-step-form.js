@@ -34,13 +34,23 @@ $('#submit_btn').on('click', function(e) {
         method: 'post',
         url: '../payment/reserve_payment', 
         data: serializeArray,
-        success: function(){
-            console.log("success");
+        success: function(data){
+            console.log(data);
+            if(data){
+            	//alert(data);
+            	$("#contentBody").html(data);
+            	$('#fail_modal').modal({backdrop: 'static', keyboard: false});
+            }else{
+            	console.log("결제예약완료");
+            	$('#reserve_modal').modal({backdrop: 'static', keyboard: false});
+            }
         }
     });
   e.preventDefault();//기본이벤트 제거
 });
-
+$('.btn-secondary').on('click',function(){
+	location.href="input";
+});
 var payment = {}
 $(document).ready(function(){
     $('#confirm_btn').click(function(){

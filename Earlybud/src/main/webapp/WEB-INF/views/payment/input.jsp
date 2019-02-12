@@ -398,6 +398,48 @@
     </form>
   </div>
 </div>
+
+<!-- 성공모달 -->
+<div class="modal" tabindex="-1" id="reserve_modal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">상품구매완료</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>상품 결제가 예약되었습니다 </p>
+        <p>구매내역은 마이페이지에서 확인가능합니다.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 실패모달 -->
+<div class="modal" tabindex="-1" id="fail_modal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">입력정보오류</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+        <p>결제예약 오류 : 재시도 해주세요.</p>
+        <p id="contentBody"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- @@close -->
 <!-- Essential javascripts for application to work-->
     <script src="${pageContext.request.contextPath}/js/admin/jquery-3.2.1.min.js"></script>
