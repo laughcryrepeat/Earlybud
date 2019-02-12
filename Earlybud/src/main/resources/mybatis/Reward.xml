@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.earlybud.vo.RewardVO">
+	<resultMap type="RewardVO" id="RewardMap"><!-- dto mapping -->
+		<result property="TOTAL_PUR" column="TOTAL_PUR"/>
+  		<result property="CAT_NAME" column="CAT_NAME"/>
+  		<result property="TITLE" column="TITLE"/>
+  		<result property="MAIN_IMAGE" column="MAIN_IMAGE"/>
+  		<result property="IMAGE_ITEM" column="IMAGE_ITEM"/>
+  		<result property="NOW_SUM" column="NOW_SUM"/>
+  		<result property="PERCENT" column="PERCENT"/>
+  		<result property="TARGET" column="TARGET"/>
+  		<result property="DEADLINE" column="DEADLINE"/>
+  		<result property="CONTENT" column="CONTENT"/>
+  		<result property="IMAGE" column="IMAGE"/>
+  		<result property="EMAIL" column="EMAIL"/>
+  		<result property="NICKNAME" column="NICKNAME"/>
+  		<result property="TIME" column="TIME"/>
+  		<collection property="OptionList" resultMap="optionMap"></collection>
+  	</resultMap>  	
+	<resultMap type="Type" id="optionMap">
+    	<result property="TYPE_CODE" column="TYPE_CODE"/>
+    	<result property="NAME" column="NAME"/>
+    	<result property="INFO" column="INFO"/>
+    	<result property="OP_PRICE" column="OP_PRICE"/>
+    	<result property="PURNUM" column="PURNUM"/>
+ 	</resultMap>
+
+
+	<select id="readItem" resultMap="RewardMap" parameterType="LONG">
+		select 
+		TO_CHAR((select sum(PUR_NUM) from TYPE where ITEM_CODE= #{item_code}), '99,999')as TOTAL_PUR,
+		CAT_NAME, TITLE, MAIN_IMAGE, IMAGE_ITEM, 
+		TO_CHAR(CUR_SUM, '999,999,999,999') as NOW_SUM, 
+		TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, 
+		TO_CHAR(TARGET_SUM, '999,999,999') as TARGET, 
+		TO_CHAR(CLOSINGDATE, 'YYYY"년"MM"월"DD"일"' ) AS DEADLINE, 
+		CONTENT, IMAGE, EMAIL, NICKNAME, 
+		TRUNC(CLOSINGDATE-SYSDATE,0) as TIME, 
+		T.TYPE_CODE, T.NAME, T.INFO, 
+		TO_CHAR(T.PRICE, '999,999,999') as OP_PRICE, 
+		TO_CHAR(T.PUR_NUM, '99,999')as PURNUM from ITEM I natural join MEMBER natural join CATEGORY natural join SELLER 
+		left outer join TYPE T on I.ITEM_CODE=T.ITEM_CODE 
+		where I.ITEM_CODE =#{item_code}
+	</select>	
+		
+	<update id="UpdateSuccessN">
+		<![CDATA[
+			update ITEM set SUCCESS=2 
+			where TRUNC(CLOSINGDATE-SYSDATE,0)=-1 and ADMIN_CALL=1 and SUCCESS=0 
+		]]>
+	</update>
+	<update id="UpdateSuccessY" parameterType="long">
+		update ITEM set SUCCESS=1 where ITEM_CODE=#{ITEM_CODE} and ADMIN_CALL=1 and SUCCESS=0
+	</update>
+
+</mapper>

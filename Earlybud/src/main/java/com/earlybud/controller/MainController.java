@@ -30,8 +30,8 @@ public class MainController {
 	 model.addAttribute("list", service.getList());
 	 System.out.println("호우");
 	 
-	return "earlybud2";
+	return "earlybud";
 	 }
-
+////
 	
 }

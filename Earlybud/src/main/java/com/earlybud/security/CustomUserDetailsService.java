@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import com.earlybud.member.dao.MemberDAO;
 import com.earlybud.model.Member;
@@ -13,6 +15,7 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
+@Service
 public class CustomUserDetailsService implements UserDetailsService {
 
 	/* (non-Javadoc)
@@ -21,9 +24,12 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Setter(onMethod_ = { @Autowired })
 	private MemberDAO dao;
 	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		log.warn("Load User By Email : "+email); //email == userid
+		log.warn("Load User By email : "+email); //email == userid
 		
 		Member member = dao.read(email);
 		
@@ -31,5 +37,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 		
 		return member == null? null: new EarlybudUser(member);
 	}
-
+	public int save(Member member) {
+		member.setPwd(passwordEncoder.encode(member.getPwd()));
+		return dao.save(member);
+	}
 }
