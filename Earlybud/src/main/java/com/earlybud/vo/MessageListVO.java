@@ -1,6 +1,6 @@
 package com.earlybud.vo;
 
-public class MessageVO {
+public class MessageListVO {
 	private String MESSAGE_CODE;
 	private String ITEM_CODE;
 	private String RECEIVER;

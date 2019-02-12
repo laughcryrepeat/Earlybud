@@ -10,7 +10,7 @@
 	<typeAlias alias="Category" type="com.earlybud.vo.CategoryVO"/>
 	<typeAlias alias="MemberLike" type="com.earlybud.vo.MemberLikeVO"/>
 	<typeAlias alias="SellerLike" type="com.earlybud.vo.SellerLikeVO"/>
-	<typeAlias alias="Message" type="com.earlybud.vo.MessageVO"/>
+	<typeAlias alias="MessageList" type="com.earlybud.vo.MessageListVO"/>
 </typeAliases>
 <mappers>
 	<mapper resource="mybatis/Member.xml"/>
@@ -18,6 +18,6 @@
 	<mapper resource="mybatis/Category.xml"/>
 	<mapper resource="mybatis/MemberLike.xml"/>
 	<mapper resource="mybatis/SellerLike.xml"/>
-	<mapper resource="mybatis/Message.xml"/>
+	<mapper resource="mybatis/MessageList.xml"/>
 </mappers>
 </configuration>
