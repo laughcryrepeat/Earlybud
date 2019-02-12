@@ -29,8 +29,8 @@ public class MemberTests {
 	private DataSource ds;
 	/*
 	@Test
-	public void testInsertMember() {
-		String sql = "insert into member(email, pwd, nickname, joindate) values (?,?,?,sysdate)";
+	public void testInsertMember() { //유저 백개 만듦
+		String sql = "insert into member(email, pwd, nickname, joindate) values (?,?,?,?)";
 		
 		for(int i = 0; i<100; i++) {
 			Connection con = null;
@@ -61,8 +61,10 @@ public class MemberTests {
 				}catch(Exception e) {}		
 			}			
 		}
-	}*/
-	@Test
+	}//
+	*/
+	
+	@Test //그 백개에 권한 부여함
 	public void testInsertAuth() {
 		String sql = "insert into authorities (email, authority) values (?,?)";
 		for(int i=0; i<100; i++) {

@@ -5,13 +5,6 @@
 <%@include file="header.jsp" %>
 <!doctype html> 
 <html class="no-js">
-<style>
-.photo1{
-    width: 100px; height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-</style>
 
 
 
@@ -94,36 +87,27 @@
 			</div>
 			<div class="project-list">
 				<div id="projectCardList" class="card-list">
-
-
+					
 					<p class="top-notice"><i>최근 2개월 내에</i> <i>좋아하는 프로젝트로 설정한 프로젝트가 보여집니다.</i></p>
 	<ul>
 		<c:forEach items="${list}" var="list">
-		
-
 			<li class="reward">
 					<a href="/web/campaign/detail/24829">
 					<div class="project-card">
 						<div class="card-img-section">
-							<em class="project-img" style="background-image:url('${pageContext.request.contextPath}/images/like/<c:out value="${list.MAIN_IMAGE}')"/>"></em>
-						
+							<em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green002/2018/1022/20181022195147189_24829.jpg/wadiz/format/jpg/quality/80/optimize)"></em>
 							<em class="project-type reward">리워드</em>
 							                                    
 							
 							<div class="progressbar-wrap">
-								<dl><dt>
-									<span style="width:<c:out value="${list.PERCENT}"/>%">
-									</span>
-								</dt><dd>
-<!--  									<span class="percent">0%</span> 밑에줄 사실 공구상자에서는 font_percent임.. -->
-										<span class="percent">
-<%-- 										<fmt:parseNumber var="test" value="${list.CUR_SUM*100/list.TARGET_SUM}" integerOnly="true"/>${test} % --%>
-										<c:out value="${list.PERCENT}"/>%
-										</span><br> 
-									&nbsp; &nbsp;&nbsp;<span class="amount">&nbsp;   <c:out value="${list.NOW_SUM}"/>원 달성  </span>
-										
-<!-- 										<script type="text/javascript">	document.write(calDaysLeft())</script> -->
-							
+								<dl>
+									<dt><span style="width:0%"></span></dt>
+									<dd>
+										<span class="percent">0%</span>
+										<span class="amount"><c:out value="${list.CUR_SUM}"/> 원 달성</span>
+										<span class="days">					
+											5일 남음		
+										</span>
 									</dd>
 								</dl>
 							</div>
@@ -132,22 +116,11 @@
 						<div class="card-info-section">
 							<h4><c:out value="${list.SUMMARY}"/></h4>
 							<h5><c:out value="${list.NICKNAME}"/></h5>
+							
 							<div class="card-category">
 								
 										<span class="category1"><c:out value="${list.CAT_NAME}"/></span>
-										<span class="category2">
-								<c:choose>
-                                 <c:when test="${list.TIME > 0}">
-                                 <span class="days"><c:out value="${list.TIME}"/>일 남음</span> 
-                                 </c:when>                                 
-                                 <c:when test="${list.TIME < 0}">
-                                       <span class="days">마감됨</span>                                      
-                                 </c:when>
-                                 <c:otherwise>
-                                       <span class="days">오늘 자정까지</span>
-                                 </c:otherwise>
-                              </c:choose>
-										</span>
+										<span class="category2">성공해야 리워드</span>
 									
 							</div>
 							
@@ -157,7 +130,184 @@
 			</li>	
 			</c:forEach>
 		
-
+<!-- 			<li class="reward"> -->
+				
+<!-- 					<a href="/web/campaign/detail/26755"> -->
+					
+				
+<!-- 					<div class="project-card"> -->
+<!-- 						<div class="card-img-section"> -->
+<!-- 							<em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2019/0104/20190104155441998_26755.jpg/wadiz/format/jpg/quality/80/optimize)"></em> -->
+<!-- 							<em class="project-type reward">리워드</em> -->
+							                                    
+							
+<!-- 							<div class="progressbar-wrap"> -->
+<!-- 								<dl> -->
+<!-- 									<dt><span style="width:285%"></span></dt> -->
+<!-- 									<dd> -->
+<!-- 										<span class="percent">285%</span> -->
+<!-- 										<span class="amount">2,856,200원 달성</span> -->
+<!-- 										<span class="days"> -->
+<!-- 																	4일 남음 -->
+<!-- 										</span> -->
+<!-- 									</dd> -->
+<!-- 								</dl> -->
+<!-- 							</div> -->
+							
+							
+<!-- 						</div> -->
+<!-- 						<div class="card-info-section"> -->
+<!-- 							<h4>국내최고 동물복지! 산야초, 발효사료를 먹인 프리미엄 유정란! 킹스파머스</h4> -->
+<!-- 							<h5>영농조합법인 킹스파머스</h5> -->
+							
+<!-- 							<div class="card-category"> -->
+								
+<!-- 										<span class="category1">푸드</span> -->
+<!-- 										<span class="category2">성공해야 리워드</span> -->
+									
+<!-- 							</div> -->
+							
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</a> -->
+<!-- 			</li>	 -->
+		
+<!-- 			<li class="reward"> -->
+				
+					
+					
+<!-- 					<a href="/web/campaign/detail/25674"> -->
+					
+				
+<!-- 					<div class="project-card"> -->
+<!-- 						<div class="card-img-section"> -->
+<!-- 							<em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green002/2018/1228/20181228135443618_25674.jpg/wadiz/format/jpg/quality/80/optimize)"></em> -->
+<!-- 							<em class="project-type reward">리워드</em> -->
+							                                    
+							
+<!-- 							<div class="progressbar-wrap"> -->
+<!-- 								<dl> -->
+<!-- 									<dt><span style="width:207%"></span></dt> -->
+<!-- 									<dd> -->
+<!-- 										<span class="percent">207%</span> -->
+<!-- 										<span class="amount">2,077,300원 달성</span> -->
+<!-- 										<span class="days"> -->
+													
+<!-- 																2일 남음 -->
+															
+<!-- 										</span> -->
+<!-- 									</dd> -->
+<!-- 								</dl> -->
+<!-- 							</div> -->
+							
+							
+                            
+							
+<!-- 						</div> -->
+<!-- 						<div class="card-info-section"> -->
+<!-- 							<h4>씨앗이 주인공인 스낵, 슈퍼씨드</h4> -->
+<!-- 							<h5>SuperSeeds</h5> -->
+							
+<!-- 							<div class="card-category"> -->
+								
+<!-- 										<span class="category1">푸드</span> -->
+<!-- 										<span class="category2">성공해야 리워드 | 마감임박</span> -->
+									
+<!-- 							</div> -->
+							
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</a> -->
+<!-- 			</li>	 -->
+		
+<!-- 			<li class="reward"> -->
+				
+					
+					
+<!-- 					<a href="/web/campaign/detail/27037"> -->
+					
+				
+<!-- 					<div class="project-card"> -->
+<!-- 						<div class="card-img-section"> -->
+<!-- 							<em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green001/2019/0108/20190108140353197_27037.png/wadiz/format/jpg/quality/80/optimize)"></em> -->
+<!-- 							<em class="project-type reward">리워드</em> -->
+							                                    
+							
+<!-- 							<div class="progressbar-wrap"> -->
+<!-- 								<dl> -->
+<!-- 									<dt><span style="width:1601%"></span></dt> -->
+<!-- 									<dd> -->
+<!-- 										<span class="percent">1601%</span> -->
+<!-- 										<span class="amount">16,019,100원 달성</span> -->
+<!-- 										<span class="days"> -->
+															
+<!-- 																9일 남음 -->
+																																		
+<!-- 										</span> -->
+<!-- 									</dd> -->
+<!-- 								</dl> -->
+<!-- 							</div> -->
+							
+							
+<!-- 						</div> -->
+<!-- 						<div class="card-info-section"> -->
+<!-- 							<h4>[100% 국내한우] 설 떡국준비 끝! 51시간 푹 고아 탄생한 생활곰탕</h4> -->
+<!-- 							<h5>더머글</h5> -->
+							
+<!-- 							<div class="card-category"> -->
+								
+<!-- 										<span class="category1">푸드</span> -->
+<!-- 										<span class="category2">성공해야 리워드</span> -->
+									
+<!-- 							</div> -->
+							
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</a> -->
+<!-- 			</li>	 -->
+		
+<!-- 			<li class="reward"> -->
+				
+					
+<!-- 					<a href="/web/campaign/detail/26133"> -->
+					
+				
+<!-- 					<div class="project-card"> -->
+<!-- 						<div class="card-img-section"> -->
+<!-- 							<em class="project-img" style="background-image:url(https://cdn.wadiz.kr/wwwwadiz/green002/2019/0105/20190105181935085_26133.jpg/wadiz/format/jpg/quality/80/optimize)"></em> -->
+<!-- 							<em class="project-type reward">리워드</em> -->
+							                                    
+							
+<!-- 							<div class="progressbar-wrap"> -->
+<!-- 								<dl> -->
+<!-- 									<dt><span style="width:147%"></span></dt> -->
+<!-- 									<dd> -->
+<!-- 										<span class="percent">147%</span> -->
+<!-- 										<span class="amount">736,000원 달성</span> -->
+<!-- 										<span class="days"> -->
+														
+<!-- 																5일 남음 -->
+															
+<!-- 										</span> -->
+<!-- 									</dd> -->
+<!-- 								</dl> -->
+<!-- 							</div> -->
+							
+							
+<!-- 						</div> -->
+<!-- 						<div class="card-info-section"> -->
+<!-- 							<h4>올해 마지막 인싸롱패딩 : 동물보호후원 패션브랜드 씨크릿블루</h4> -->
+<!-- 							<h5>씨크릿블루</h5> -->
+							
+<!-- 							<div class="card-category"> -->
+								
+<!-- 										<span class="category1">패션·잡화</span> -->
+<!-- 										<span class="category2">성공해야 리워드</span> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</a> -->
+<!-- 			</li>	 -->
 			</ul>
 					
 						<p id="emptyProjectText" >좋아하는 프로젝트가 없습니다.<br/>프로젝트를 좋아해보실래요?<br/><br/>
@@ -176,7 +326,7 @@
 					<div class="mypage-project bg ">
 						<div class="tab-list">
 						</div>
-<!-- 								<p class="top-notice"><i>즐겨찾기에 등록한 판매자가 보여집니다.</i></p> -->
+								<p class="top-notice"><i>즐겨찾기에 등록한 판매자가 보여집니다.</i></p>
 											
 <div id="page-container">
 <!-- 판매자 리스트 시작 -->
@@ -191,21 +341,23 @@
    
 
       <div class="funding-box">
-     <strong>  &nbsp;  </strong> 
+        <strong>Best Maker</strong>
         <ul class="list-maker-all">
         <c:forEach items="${listS}" var="listS">
           <li>
-<!--             <span class="thumb-01"> 하하하 </span> -->
- 			<img style="width: 67px; height: 67px; border: 1px grey; border-radius: 90px; -moz-border-radius: 90px;
- 			-khtml-border-radius: 90px; -webkit-border-radius: 90px;" src="${pageContext.request.contextPath}/images/like/<c:out value="${listS.IMAGE}"/>"/>&nbsp; &nbsp;
- 			<a href='seller_items/<c:out value="${listS.EMAIL}"/>'><c:out value="${listS.NICKNAME}"/></a><br><br>
-			<img style="width: 67px; height: 67px; border: 2px solid violet; border-radius: 90px; -moz-border-radius: 90px;
- 			-khtml-border-radius: 90px; -webkit-border-radius: 90px;" src="${pageContext.request.contextPath}/images/like/<c:out value="${listS.IMAGE}"/>"/>&nbsp; &nbsp; <c:out value="${listS.NICKNAME}"/><br>
+            <span class="thumb-01"><c:out value="${listS.NICKNAME}"/></span>
+            <span class="thumb-02">고양이마음연구소</span>
+            <span class="thumb-03">두잇</span>
+            <span class="thumb-04">디자인그룹 엇모스트</span>
+            <span class="thumb-05">라미스천연비누</span>
+            <span class="thumb-06">스윗아이디어스</span>
+            <span class="thumb-07">스테디에이치디</span>
+            <span class="thumb-08">주식회사 핀즐</span>
           </li>
           </c:forEach>
         </ul>
       </div>
-    </div>ㄴ
+    </div>
   </div>
 </main>
 
