@@ -13,22 +13,9 @@ public class MemberLikeVO {
 	private Long TARGET_SUM;
 	private Long CUR_SUM;
 	private String SUMMARY;
-	private Date CLOSINGDATE;
+	private String TIME;
 	private String IMAGE;
 	private String INFO;
-	
-	
-	private String EMAIL;
-	private String PWD;
-	private String COL;
-	private String PHONE;
-	private String ADDR;
-	private String DETAIL_ADDR;
-	private Date JOINDATE;
-	private Date DROPDATE;
-	private Long CARDINFO; //String아닌가
-	private String BANKINFO;
-	private Long BANK_NUM;
-	private String ITEM_LIKED;
-	private String SELLER_LIKED;
+	private String PERCENT;
+	private String NOW_SUM;
 }
