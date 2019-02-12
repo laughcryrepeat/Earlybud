@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
 <!DOCTYPE html>
 <html>
 	<script type="text/javascript">
-	alert('х╦©Ь╟║ют©║ ╪╨╟Ьго©╢╫ю╢о╢ы.');
+	alert('М ▄Л⌡░Й╟─Л·┘Л≈░ Л└╠ЙЁ╣М∙≤Л≤─Л┼╣К▀┬К▀╓.');
 	location.href="/earlybud/mypage";
 	</script>
 </html>
