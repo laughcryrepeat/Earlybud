@@ -42,8 +42,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 		member.setPwd(passwordEncoder.encode(member.getPwd()));
 		return dao.save(member);
 	}
-	public int update(Member member) {
+  public int update(Member member) {
 		member.setPwd(passwordEncoder.encode(member.getPwd()));
 		return dao.update(member);
 	}
 }
+

@@ -31,7 +31,7 @@
 <div class="container-fluid">
   
   <div class="callout callout-info">
-    선택하신 상품 : <a href="#">XXX</a> / 1번 타입 / 금액 : 20000원 / 결제예정일 : 3월 3일 
+    선택하신 상품 : <a href="#">XXX</a> / 1번 타입 / 금액 : 100원 / 결제예정일 : 3월 3일 
   </div>
   <div class="nav-tabs-responsive">
     <ul class="nav nav-tabs-progress nav-tabs-4 mb-4">
@@ -78,6 +78,9 @@
             </small>
           </a>
         </div>
+        <input type="hidden" class="form-control" id="amount" name="amount" value="100">
+        <input type="hidden" class="form-control" id="schedule_at" name="schedule_at" value="2019-05-05">
+        <input type="hidden" class="form-control" id="type_code" name="type_code" value="10100">
         <div id="account-collapse" class="collapse show" data-parent="#formOrder">
           <div class="text-secondary mb-3">
             <small>Step 1 of 4</small>
@@ -202,54 +205,62 @@
           <div class="row">
             <div class="col-12 col-md-8 col-lg-7">
               <div class="form-group">
-                <label>카드번호</label>
+                <label>카드번호(xxxx-xxxx-xxxx-xxxx)</label>
                 <input type="text" class="form-control" id="cardnum" name="cardnum">
               </div>
             </div>
             <div class="col-12 col-md-4 col-lg-5">
               <div class="form-group">
-                <label>CVC</label>
-                <input type="text" class="form-control" id="cardcvc" name="cardcvc">
+                <label>카드소지자 이름</label>
+                <input type="text" class="form-control" id="card_owner" name="card_owner">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-12 col-lg-7">
               <div class="form-group">
-                <label>카드타입</label>
-                <input type="text" class="form-control" id="cardtype" name="card_type">
+                <label>생년월일 6자리</label>
+                <input type="text" class="form-control" id="birthdate" name="birthdate">
               </div>
             </div>
             <div class="col-12 col-lg-5">
               <div class="row">
                 <div class="col-12 col-md-4 col-lg-6">
                   <div class="form-group">
-                    <label>Expiry month</label>
+                    <label>카드 유효기간 월 Month(MM)</label>
                     <input type="text" class="form-control" id="exp_month" name="exp_month">
                   </div>
                 </div>
                 <div class="col-12 col-md-4 col-lg-6">
                   <div class="form-group">
-                    <label>Expiry year</label>
+                    <label>카드 유효기간 년 Year(YYYY)</label>
                     <input type="text" class="form-control" id="exp_year" name="exp_year">
                   </div>
-                </div>
-                  
-                <div class="col-12 col-md-4 col-lg-6">
+                </div>   
+              </div>
+            </div>
+          </div>          
+          
+          <div class="row">
+            <div class="col-12 col-md-8 col-lg-7">
+              <div class="form-group">
+                <label>카드비밀번호 앞 두자리</label>
+                <input type="password" class="form-control" id="cardpwd" name="cardpwd">
+              </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-5">
                   <div class="form-group">
                     <label>Payment Type</label>
                     <select class="form-control" id="pur_type" name="pur_type">
                         <option value="" disabled selected></option>
-                        <option value="kakao_pay">카카오페이</option>
+                        <option value="nice">나이스페이먼츠</option>
                         <option value="inisis">이니시스</option>
-                        <option value="inisis">페이코</option>
+                        <option value="payco">페이코</option>
                     </select>
                   </div>
-                </div> 
-                  
-              </div>
             </div>
-          </div>
+          </div>         
+          
           <div class="d-none d-md-block">
             <hr>
             <div class="d-flex mb-3">
@@ -282,7 +293,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-12 col-md-3 col-lg-2">
-                  <label class="text-secondary">이름</label>
+                  <label class="text-secondary">닉네임</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
                   <div id="confirm_nickname" class="mb-2"></div>
@@ -346,10 +357,18 @@
               </div>
               <div class="row">
                 <div class="col-12 col-md-3 col-lg-2">
-                  <label class="text-secondary">Card Type</label>
+                  <label class="text-secondary">카드 소지자</label>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10">
-                  <div id="confirm_cardtype" class="mb-2"></div>
+                  <div id="confirm_cardowner" class="mb-2"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-md-3 col-lg-2">
+                  <label class="text-secondary">생년월일 6자리</label>
+                </div>
+                <div class="col-12 col-md-9 col-lg-10">
+                  <div id="confirm_birthdate" class="mb-2"></div>
                 </div>
               </div>
               <div class="row">
@@ -379,6 +398,48 @@
     </form>
   </div>
 </div>
+
+<!-- 성공모달 -->
+<div class="modal" tabindex="-1" id="reserve_modal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">상품구매완료</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>상품 결제가 예약되었습니다 </p>
+        <p>구매내역은 마이페이지에서 확인가능합니다.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 실패모달 -->
+<div class="modal" tabindex="-1" id="fail_modal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">입력정보오류</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+        <p>결제예약 오류 : 재시도 해주세요.</p>
+        <p id="contentBody"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- @@close -->
 <!-- Essential javascripts for application to work-->
     <script src="${pageContext.request.contextPath}/js/admin/jquery-3.2.1.min.js"></script>

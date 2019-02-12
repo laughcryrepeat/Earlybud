@@ -1,15 +1,9 @@
 package com.earlybud.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.http.HttpResponse;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,9 +29,7 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 public class CommonController {
-	MemberDAO dao;
-	@Autowired
-	CustomUserDetailsService service;
+
 	@GetMapping("/accessError")
 	public void accessDenied(Authentication auth, Model model) {
 
@@ -85,16 +77,10 @@ public class CommonController {
 		return member;
 	}
 	@RequestMapping("/join")
-	public Member join_input(@RequestParam("email") String email, @RequestParam("pwd") String pwd, @RequestParam("nickname") String nickname, String error, Model model)
-		throws Exception{
-		Member member = new Member();
-		member.setEmail(email);
-		member.setNickname(nickname);
-		member.setPwd(pwd);
-		System.out.println("[JOIN] NEW MEMBER :  " + member);
-		service.save(member);
+	public void joinInput(String error, Model model, Member m) {
 		log.info("JOIN error: " + error);
-		return member;
+		log.warn("[JOIN] NEW MEMBER name: "+ m.getNickname());
+		log.warn("[JOIN] NEW MEMBER email: "+ m.getEmail());
 	}
 	
 	/*@RequestMapping("/email_check")

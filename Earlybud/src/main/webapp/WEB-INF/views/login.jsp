@@ -41,7 +41,7 @@
               <label>
                 비밀번호<span class="req">*</span>
               </label>
-              <input type="password"required name="pwd" autocomplete="off" />
+              <input type="password"required name="pwd" autocomplete="off"/>
             </div>
             <button id="join" type="submit" class="button button-block" onclick="if(!memberSubmit(this.form)){return false;}"/>회원가입</button>
             <a class="button1 button-block" href="https://kauth.kakao.com/oauth/authorize?client_id=e6572958e72ab54e8d05db03cfd4ac7e&redirect_uri=http://localhost:8080/earlybud/oauth&response_type=code&scope=account_email
@@ -71,7 +71,7 @@
 </div> <!-- /form -->
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script  src="js/login/index.js"></script>
-  <!-- <script type="text/javascript">
+<!-- <script type="text/javascript">
   function id_check(str){
 	   var request = $.ajax({url:"join", method:"GET", data:{id:str}, dataType:"html"});
 	   request.done(function(data){
@@ -79,5 +79,5 @@
 	   });
   }
   </script> -->
-  </body>
+</body>
 </html>

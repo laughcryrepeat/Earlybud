@@ -838,11 +838,7 @@
 												
 													
 								<section data-id="49c46783" class="elementor-element elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-element_type="section">
-									<div class="elementor-container elementor-column-gap-default"
-									
-									
-									
-									>
+									<div class="elementor-container elementor-column-gap-default">
 										<div class="elementor-row">
 											<div data-id="22bb505b" class="elementor-element elementor-element-22bb505b elementor-column elementor-col-100 elementor-top-column" data-element_type="column">
 												<div class="elementor-column-wrap elementor-element-populated">
@@ -861,196 +857,20 @@
 																		<div class="loading-notice">Loading...</div>
 																		<div class="isotope-container" data-portfolio-effect="fadeInUp">
 																		
-																																		
 																		
-																			<div class="project-item item isotope-item new">
+																	<c:forEach items="${list}" var="list">	
+																			<div class="project-item item isotope-item deadline">
 																				<div class="project-inner">																			
 																					<div class="project-info">
 																						<h3 class="project-title">
-																							<a href="item">1번프로젝트</a>
+																							<a href="item"><c:out value="${list.TITLE}"/></a>
 																						</h3>
 																					</div>
-																					<a href="#"><img src="http://demo.athemes.com/atu-portfolio/wp-content/uploads/sites/92/2018/08/Layer-3.png"/></a>
-																					
-																				
+																					<a href="item"><img src="${pageContext.request.contextPath}/uploads/reward/<c:out value="${list.MAIN_IMAGE}"/>"></a>
 																				</div>
 																			</div>
+																	</c:forEach>
 
-
-																			<div class="project-item item isotope-item graphics">
-																				<div class="project-inner">
-
-
-																					<div class="project-info">
-																						<h3 class="project-title">
-																							<a>Project title</a>
-																						</h3>
-																					</div>
-																					<a href="omy">
-																						<img src="http://demo.athemes.com/atu-portfolio/wp-content/uploads/sites/92/2018/08/Layer-13.png" />
-																					</a>
-																				</div>
-																			</div>
-
-
-																			<div class="project-item item isotope-item branding">
-																				<div class="project-inner">
-
-
-																					<div class="project-info">
-																						<h3 class="project-title">
-																							<a>Project title</a>
-																						</h3>
-																					</div>
-																					<a href="omy">
-																						<img src="http://demo.athemes.com/atu-portfolio/wp-content/uploads/sites/92/2018/08/Layer-1.png" />
-																					</a>
-																				</div>
-																			</div>
-
-
-																			<div class="project-item item isotope-item graphics">
-																				<div class="project-inner">
-
-
-																					<div class="project-info">
-																						<h3 class="project-title">
-																							<a>Project title</a>
-																						</h3>
-																					</div>
-																					<a href="omy">
-																						<img src="http://demo.athemes.com/atu-portfolio/wp-content/uploads/sites/92/2018/08/Layer-7.png" />
-																					</a>
-																				</div>
-																			</div>
-
-
-																			<div class="project-item item isotope-item design">
-																				<div class="project-inner">
-
-
-																					<div class="project-info">
-																						<h3 class="project-title">
-																							<a>Project title</a>
-																						</h3>
-																					</div>
-																					<a href="#">
-																						<img src="http://demo.athemes.com/atu-portfolio/wp-content/uploads/sites/92/2018/08/Layer-8.png" />
-																					</a>
-																				</div>
-																			</div>
-
-
-																			<div class="project-item item isotope-item design">
-																				<div class="project-inner">
-
-
-																					<div class="project-info">
-																						<h3 class="project-title">
-																							<a>Project title</a>
-																						</h3>
-																					</div>
-																					<a href="#">
-																						<img src="http://demo.athemes.com/atu-portfolio/wp-content/uploads/sites/92/2018/08/Layer-6.png" />
-																					</a>
-																				</div>
-																			</div>
-
-
-																			<div class="project-item item isotope-item design">
-																				<div class="project-inner">
-
-
-																					<div class="project-info">
-																						<h3 class="project-title">
-																							<a>Project title</a>
-																						</h3>
-																					</div>
-																					<a href="#">
-																						<img src="http://demo.athemes.com/atu-portfolio/wp-content/uploads/sites/92/2018/08/Layer-2.png" />
-																					</a>
-																				</div>
-																			</div>
-
-
-																			<div class="project-item item isotope-item design">
-																				<div class="project-inner">
-
-
-																					<div class="project-info">
-																						<h3 class="project-title">
-																							<a>Project title</a>
-																						</h3>
-																					</div>
-																					<a href="#">
-																						<img src="http://demo.athemes.com/atu-portfolio/wp-content/uploads/sites/92/2018/08/Layer-5.png" />
-																					</a>
-																				</div>
-																			</div>
-
-
-																			<div class="project-item item isotope-item branding">
-																				<div class="project-inner">
-
-
-																					<div class="project-info">
-																						<h3 class="project-title">
-																							<a>Project title</a>
-																						</h3>
-																					</div>
-																					<a href="#">
-																						<img src="http://demo.athemes.com/atu-portfolio/wp-content/uploads/sites/92/2018/08/Layer-9.png" />
-																					</a>
-																				</div>
-																			</div>
-
-
-																			<div class="project-item item isotope-item graphics">
-																				<div class="project-inner">
-
-
-																					<div class="project-info">
-																						<h3 class="project-title">
-																							<a>Project title</a>
-																						</h3>
-																					</div>
-																					<a href="#">
-																						<img src="http://demo.athemes.com/atu-portfolio/wp-content/uploads/sites/92/2018/08/Layer-10.png" />
-																					</a>
-																				</div>
-																			</div>
-
-
-																			<div class="project-item item isotope-item design">
-																				<div class="project-inner">
-
-
-																					<div class="project-info">
-																						<h3 class="project-title">
-																							<a>Project title</a>
-																						</h3>
-																					</div>
-																					<a href="#">
-																						<img src="http://demo.athemes.com/atu-portfolio/wp-content/uploads/sites/92/2018/08/Layer-11.png" />
-																					</a>
-																				</div>
-																			</div>
-
-
-																			<div class="project-item item isotope-item branding">
-																				<div class="project-inner">
-
-
-																					<div class="project-info">
-																						<h3 class="project-title">
-																							<a>Project title</a>
-																						</h3>
-																					</div>
-																					<a href="#">
-																						<img src="http://demo.athemes.com/atu-portfolio/wp-content/uploads/sites/92/2018/08/Layer-12.png" />
-																					</a>
-																				</div>
-																			</div>
 
 
 																		</div>

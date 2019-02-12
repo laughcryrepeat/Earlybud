@@ -404,11 +404,11 @@
           <nav id="site-navigation" class="main-navigation col-md-8">
             <div class="menu-menu-container">
               <ul id="primary-menu" class="menu">
-                <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a href="main">Home</a></li>
-				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">소개</a></li>
-				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">카테고리</a></li>
-				<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="login">로그인/회원가입</a></li>
-			</ul>
+                <li id="menu-item-115" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-115"><a href="https://demo.athemes.com/airi-shop/">Home</a></li>
+                <li id="menu-item-116" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-116"><a href="https://demo.athemes.com/airi-shop/blog/">Blog</a></li>
+                <li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-142"><a href="https://demo.athemes.com/airi-shop/about-us/">About us</a></li>
+                <li id="menu-item-118" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-118"><a href="https://demo.athemes.com/airi-shop/sample-page/">Sample Page</a></li>
+              </ul>
             </div>
             <ul class="header-search-cart">
               <li class="header-search">

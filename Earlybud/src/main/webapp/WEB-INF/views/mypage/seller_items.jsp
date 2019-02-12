@@ -434,28 +434,33 @@
     <div class="b-valign__ie7_helper">
       <![endif]-->
 
-      
 
+<c:forEach items="${OneList}" var="OneList" end="0">
       <div class="changable-content">
+
         <div class="b-avatar has-pad-bottom-dot5 is_vaporable" style="width: 96px">
   <div class="b-avatar__frame b-avatar__frame--bordered" style="width:96px; height:96px">
-    <img alt="6e65e28f-55c7-435a-a6c7-9b70c09f2233.jpg?ixlib=rb-1.1.0&amp;w=200&amp;h=250&amp;auto=format%2ccompress&amp;fit=facearea&amp;facepad=2" class="b-avatar__pic" src="https://tumblbug-upi.imgix.net/6e65e28f-55c7-435a-a6c7-9b70c09f2233.jpg?ixlib=rb-1.1.0&amp;w=200&amp;h=250&amp;auto=format%2Ccompress&amp;fit=facearea&amp;facepad=2.0&amp;ch=Save-Data&amp;mask=ellipse&amp;s=e12a24e82499e51c0400c49fcb4249fb" />
+    <img alt="6e65e28f-55c7-435a-a6c7-9b70c09f2233.jpg?ixlib=rb-1.1.0&amp;w=200&amp;h=250&amp;auto=format%2ccompress&amp;fit=facearea&amp;facepad=2" class="b-avatar__pic"
+    src='${pageContext.request.contextPath}/images/like/${OneList.IMAGE}' />
 </div>   
 </div>
 
         <h1 class="headline text-size_3xl is_vaporable">
-          문예춘추사
+          ${OneList.NICKNAME}
         </h1>
       <ul class="b-meta is_vaporable">
 
           <li class="b-meta__item is_first">
             <span class="b-meta__link">
               <i class="b-fontello b-fontello--tag "></i>
-              논픽션 분야 크리에이터
+              ${OneList.INFO}
             </span>
             </li > 
         </ul>
+
       </div>
+      </c:forEach>
+
         <!--b-media__body-->
         <!--b-media-->
       </div>
@@ -473,56 +478,72 @@
   
 
     <div class="row has-pad-bottom">
-      <!--  <div class="row has-gap-dot5">
-        <h3 class="text-size_m has-no-gap u-inline_block">만든 프로젝트</h3> 
-        <span class="text-theme_primary" style="margin-left: 6px;"> 
-          1
-        </span>개
-      </div>  아무리 해도 첫번째 아이템이랑 같은 줄에 안 들어가서, 일단 주석 처리함-->
+<c:forEach items="${OneList}" var="OneList">
       <div class="b-project-card">
   <figure class="b-project-card__head">
     <a class="b-project-card__head__link" href="/toolbook">
       <div class="b-project-card__head__link__inner">
         <div class="b-project-card__head__filter"></div>
-        <img src="https://tumblbug-pci.imgix.net/59e4705fa23235cff63a8ffd4eced13035809d9a/68d8d33f97f152e385ec230f1ca6da7e9972884d/7ff9524a7b5fd157e11612514a14d999ae825945/824d171f-bd6a-451a-b62d-5b4c6ce4db5a.jpg?ixlib=rb-1.1.0&amp;w=620&amp;h=465&amp;auto=format%2Ccompress&amp;lossless=true&amp;fit=crop&amp;s=069fc8d0d11fd0ee88e44fb211412e27" alt="" class="b-project-card__head__pic" />
+        <img src='${pageContext.request.contextPath}/images/like/<c:out value="${OneList.MAIN_IMAGE}"/>' alt="" class="b-project-card__head__pic" />
+        
+      
+
       </div>
     </a>
   </figure>
 
   <div class="b-project-card__body"> 
     <h3 class="b-project-card__title">
-      <a href="/toolbook" class="[ yoke yoke--theme_light ]">“독립적인 여성들을 위한” 비주얼 공구 가이드북</a>
+      <a href="/toolbook" class="[ yoke yoke--theme_light ]"><c:out value="${OneList.TITLE}"/></a>
     </h3>
     <p class="b-project-card__creator">
-      문예춘추사의 프로젝트
+     <c:out value="${OneList.NICKNAME}"/>의 프로젝트
     </p>
     <p class="b-project-card__blurb">
-      혼자 사는 데 든든하다. 누군가의 도움 없이 나 혼자 고친다. 참 쉬운 비주얼 공구 사용법
+    <c:out value="${OneList.SUMMARY}"/>
     </p>
   </div> 
   <div class="b-project-card__gauge [ b-gauge ]">
-    <div class="b-gauge__liquid" style="width: 100%"></div>
+  <c:choose>
+ 	 <c:when test="${OneList.PERCENT > 100}">
+   	 <div class="b-gauge__liquid" style="width:100%"></div>
+    </c:when>
+    <c:otherwise>
+    <div class="b-gauge__liquid" style="width:<c:out value="${OneList.PERCENT}"/>%"</div>
+    </c:otherwise>
+ </c:choose>
   </div> 
   <div class="b-project-card__figures">
 
     <div class="[ b-project-card__figure b-project-card__figure_for_amount ]">
       <span class="b-project-card__figure-title">모인 금액</span>
       <span class="b-project-card__figure-item">
-        6,735,400원
+        <c:out value="${OneList.NOW_SUM}"/> 원
         <span class="b-project-card__percentage">
-          336 %
+        <c:out value="${OneList.PERCENT}"/>%
         </span>
       </span>
     </div>
     <div class="[ b-project-card__figure b-project-card__figure_for_day ]">
         <span class="b-project-card__figure-title">남은 시간</span>
         <span class="b-project-card__figure-item">
-          27일
+        <c:choose>
+           <c:when test="${OneList.TIME > 0}">
+           <span class="days"><c:out value="${OneList.TIME}"/>일 남음</span> 
+           </c:when>                                 
+           <c:when test="${OneList.TIME < 0}">
+                 <span class="days">마감됨</span>                                      
+           </c:when>
+           <c:otherwise>
+                 <span class="days">오늘 자정까지</span>
+           </c:otherwise>
+        </c:choose>
         </span>
     </div>
     
   </div>
 </div>
+</c:forEach>
  <div class="b-project-card">
   <figure class="b-project-card__head">
     <a class="b-project-card__head__link" href="/toolbook">

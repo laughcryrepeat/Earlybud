@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.earlybud.vo.RewardVO">
+	
+	<select id="midnight" resultType="map">
+		<![CDATA[	 
+			SELECT pi.IMP_UID, pi.PUR_CODE, 
+					tm.ITEM_CODE, tm.TARGET_SUM, tm.CUR_SUM 
+			FROM ITEM tm, PURCHASE_ITEM pt, PURCHASE_INFO pi 
+			WHERE pt.ITEM_CODE=tm.ITEM_CODE and 
+					pt.PUR_CODE=pi.PUR_CODE and
+					tm.SUCCESS=0 and
+					TRUNC(tm.CLOSINGDATE-tm.SYSDATE,0)=-1
+		]]>
+	</select>	
+	
+</mapper>
