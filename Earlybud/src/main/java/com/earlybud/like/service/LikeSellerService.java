@@ -2,9 +2,8 @@ package com.earlybud.like.service;
 
 import java.util.List;
 
-import com.earlybud.vo.MemberLikeVO;
+import com.earlybud.vo.SellerLikeVO;
 
-public interface LikeService {
-	public List<MemberLikeVO> getList();
-	public List<MemberLikeVO> getOneSellerList(String email);
+public interface LikeSellerService {
+   public List<SellerLikeVO> getListS();
 }
