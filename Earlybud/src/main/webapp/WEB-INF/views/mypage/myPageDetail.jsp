@@ -456,21 +456,19 @@
                 </header><!-- .entry-header -->
 
                 <div id="respond" class="comment-respond">
-                  <form id="mypage" action="https://demo.athemes.com/airi-shop/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+                  <form id="mypage" action="memberUpload" method="post" id="commentform" class="comment-form" novalidate>
                   <p class="comment-form-comment"><label for="comment">이메일<span class="required">*</span></label> 
-                  	<input id="comment" name="comment" type="email" size="30" value="<sec:authentication property="principal.username"/>" maxlength="245" readonly></p>
+                  	<input id="email" name="email" type="text" size="30" value=<sec:authentication property="principal.username"/> maxlength="245" readonly></p>
                   <p class="comment-form-author"><label for="author">비밀번호 <span class="required">*</span></label> 
-                  	<input id="password" name="password" type="password" value="member" size="30" maxlength="245" required='required' /></p>
+                  	<input id="pwd" name="pwd" type="password" value="<sec:authentication property="principal.password"/>" size="30" maxlength="245" required='required' /></p>
                   <p class="comment-form-address"><label for="email">주소 <span class="required">*</span></label>
-                    <input id="roadAddrPart1" name="roadAddrPart1" type="text" required='required' onclick="goPopup();" readonly/></p>
-	                	<input class="addrD" id="addrDetail" name="addrDetail" type="text" required='required' />
+                    <input id="addr" name="addr" type="text" required='required' onclick="goPopup();" value="<sec:authentication property="principal.member.addr"/>" readonly/></p>
+	                	<input class="addrD" id="detail_addr" name="detail_addr" type="text" value="<sec:authentication property="principal.member.detail_addr"/>" />
 	                    <input class="addrD" id="zipNo" name="zipNo" type="text" value="" required='required' readonly/></p>
 	              <p class="comment-form-url"><label for="url">핸드폰 번호</label> 
-	              	<input id="phone" name="phone" type="number" value="" size="30" maxlength="200" /></p>
+	              	<input id="phone" name="phone" type="number" value="<sec:authentication property="principal.member.phone"/>" size="30" maxlength="200" /></p>
                   <p class="form-submit">
-                    <input name="submit" type="submit" id="submit" class="submit" value="수정하기" onclick="if(!modifySumbit(this.form)){return false;}" /> 
-                    <input type='hidden' name='comment_post_ID' value='1' id='comment_post_ID' />
-                    <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                    <input name="submit" type="submit" id="submit" class="submit" value="수정하기" /> 
                     </p>
                     <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="b0c1d8b81d" /></p>
                     <p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="63" /></p>

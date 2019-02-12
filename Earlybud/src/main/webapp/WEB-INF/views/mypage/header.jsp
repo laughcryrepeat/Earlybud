@@ -491,5 +491,57 @@ window.wadiz = window.wadiz || {};window.wadiz.sessionUser="571408206";</script>
 
 <!-- 여기부터 와디즈 판매자 리스트 내용 -->
 
-</head>
-</html>
+<body class="post-template-default single single-post postid-1 single-format-standard wp-custom-logo woocommerce-no-js menuStyle2 menuNotContained sticky-header woocommerce-active elementor-default">
+  <div id="page" class="site">
+    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+
+    <header id="masthead" class="site-header">
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="site-branding col-md-4 col-sm-6 col-9">
+            <a href="https://demo.athemes.com/airi-shop/" class="custom-logo-link" rel="home" itemprop="url"><img width="100" height="60" src="${pageContext.request.contextPath}/images/earlybud.png" class="custom-logo" alt="Atu" itemprop="logo" /></a> </div><!-- .site-branding -->
+
+          <div class="header-mobile-menu col-md-8 col-sm-6 col-3">
+            <button class="mobile-menu-toggle" aria-controls="primary-menu">
+              <span class="mobile-menu-toggle_lines"></span>
+              <span class="sr-only">Toggle mobile menu</span>
+            </button>
+          </div>
+
+          <nav id="site-navigation" class="main-navigation col-md-8">
+            <div class="menu-menu-container">
+              <ul id="primary-menu" class="menu">
+                <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a href="main">Home</a></li>
+				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">소개</a></li>
+				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">카테고리</a></li>
+				<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
+			</ul>
+            </div>
+            <ul class="header-search-cart">
+              <li class="header-search">
+                <div class="header-search-toggle"><a><i class="fa fa-search"></i></a></div>
+              </li>
+              <li class="header-cart-link">
+                <a class="cart-contents" href="https://demo.athemes.com/airi-shop" title="View your shopping cart">
+                  <i class="fa fa-shopping-bag"></i><span class="count">0</span>
+                </a>
+              </li>
+            </ul>
+          </nav><!-- #site-navigation -->
+
+        </div>
+      </div>
+      <div class="header-search-form">
+        <form role="search" method="get" class="search-form" action="https://demo.athemes.com/airi-shop/">
+          <label>
+            <span class="screen-reader-text">Search for:</span>
+            <input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+          </label>
+          <input type="submit" class="search-submit" value="Search" />
+        </form>
+      </div>
+
+    </header><!-- #masthead -->
+
