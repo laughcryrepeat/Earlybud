@@ -35,7 +35,7 @@
               <label>
                 이메일<span class="req">*</span>
               </label>
-              <input type="email"required name="email" autocomplete="off"/>
+              <input type="email"required name="email" onkeyup="id_check(this.value)"/>
             </div>
             <div class="field-wrap">
               <label>
@@ -44,6 +44,8 @@
               <input type="password"required name="pwd" autocomplete="off"/>
             </div>
             <button id="join" type="submit" class="button button-block" onclick="if(!memberSubmit(this.form)){return false;}"/>회원가입</button>
+            <a class="button1 button-block" href="https://kauth.kakao.com/oauth/authorize?client_id=e6572958e72ab54e8d05db03cfd4ac7e&redirect_uri=http://localhost:8080/earlybud/oauth&response_type=code&scope=account_email
+"><img class="img" src="images/login/kakaotalk.png">카카오로 회원가입</a>
             </form>
           </div>
           <div id="login">
@@ -62,7 +64,6 @@
             </div>
             <p class="forgot"><a href="#">비밀번호를 잊으셨나요?</a></p>
             <button class="button button-block"/>Log In</button>
-            <a class="button1 button-block" href="javascript:kakao()"><img class="img" src="images/login/kakaotalk.png">카카오로 로그인</a>
             <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
             </form> 
           </div>
@@ -70,26 +71,13 @@
 </div> <!-- /form -->
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script  src="js/login/index.js"></script>
-  <script type="text/javascript">
-  	Kakao.init('deaa60a748706f6b5879d19dfb26bf56');
-  	function kakao(){
-  		Kakao.Auth.loginForm({
-  			success: function(authObj) {
-  				Kakao.API.request({
-  			         url: '/v2/user/me',
-  			         success: function(res) {
-  			        	alert(JSON.stringify(res));
-  			         },
-  			         fail: function(error) {
-  			           alert(JSON.stringify(error));
-  			         }
-  			       });
-  			     },
-  			 fail: function(err) {
-  			       alert(JSON.stringify(err));
-  			}
-  		});
-  	};
-  </script>
+<!-- <script type="text/javascript">
+  function id_check(str){
+	   var request = $.ajax({url:"join", method:"GET", data:{id:str}, dataType:"html"});
+	   request.done(function(data){
+		   $("#id_ok").html(data);
+	   });
+  }
+  </script> -->
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.earlybud.member.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,6 +15,10 @@ public class MemberDaoImpl implements MemberDAO {
 	private String ns = "com.earlybud.model.Member";
 	
 	@Override
+	public Member read(String email) {
+		return sqlSession.selectOne(ns+".read", email);
+	}
+	@Override
 	public int save(Member member) {
 		int id = -1;
 		try {
@@ -24,8 +30,13 @@ public class MemberDaoImpl implements MemberDAO {
 		return id; 
 	}
 	@Override
-	public Member read(String email) {
-		return sqlSession.selectOne(ns+".read", email);
+	public int update(Member member) {
+		int id = -1;
+		try {
+			id = sqlSession.update(ns+".memberUpdate", member);
+		} finally {
+		}
+		System.out.println("회원 update("+member+") : "+member.getEmail());
+		return id;
 	}
-
 }

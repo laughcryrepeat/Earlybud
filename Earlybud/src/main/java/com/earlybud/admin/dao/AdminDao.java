@@ -2,10 +2,12 @@ package com.earlybud.admin.dao;
 
 import java.util.List;
 
+import com.earlybud.model.Item;
 import com.earlybud.model.Member;
 import com.earlybud.model.Message;
 
 public interface AdminDao {
+	List<Item> listItem();
 	List<Member> listMember();
 	void dropMember(String email);
 	List<Message> listMessage(String email);
