@@ -158,7 +158,7 @@ function tab(){
 		            <div class="box_category">
 		                <span class="screen_out">카테고리</span>
 		                <button type="button" class="btn_select">전체<span class="ico_comm"></span></button>
-		                <ul id="category_list" class="list_cate" role="tablist">
+		                 <ul id="category_list" class="list_cate" role="tablist">
 		                    <li class="on" role="tab" data-category-code="0">
 		                   		<a class="link_cate">전체</a>
 		                    </li>
@@ -200,15 +200,22 @@ function tab(){
                         </li>
                         
 		                </ul>
+		               
+		                <script>
+						function changeCategory(category){							
+							location.replace("category/"+category); 
+						}
+						</script>
+		                
+		                
 		            </div>
 					<div class="wrap_project">
 			            <!-- 2017-08-07 수정 클래스 추가 -->
 			            <div class="box_select">
-							<select id="sorting" name="sorting" class="select_sort" title="후원형 프로젝트 목록 분류">
-                                <option value="highest">펀딩금액순</option>
+							<select id="sorting" name="sorting" class="select_sort" title="후원형 프로젝트 목록 분류">                                
                                 <option value="impendence">마감임박순</option>
                                 <option value="latest">최신순</option>
-                                <option value="largest">참여자순</option>
+                                <option value="largest">인기순</option>
 								
 				        		
 				        		
