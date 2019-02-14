@@ -9,12 +9,14 @@
 	<typeAlias alias="Message" type="com.earlybud.model.Message"/>
 	<typeAlias alias="Category" type="com.earlybud.vo.CategoryVO"/>
 	<typeAlias alias="RewardVO" type="com.earlybud.vo.RewardVO"/>
-	<typeAlias alias="Type" type="com.earlybud.model.Type"/>
+	<typeAlias alias="ItemOption" type="com.earlybud.model.ItemOption"/>
+	<typeAlias alias="CategoryCode" type="com.earlybud.model.Category"/>
 </typeAliases>
 <mappers>
 	<mapper resource="mybatis/Member.xml"/>
 	<mapper resource="mybatis/Message.xml"/>
 	<mapper resource="mybatis/Category.xml"/>
 	<mapper resource="mybatis/Reward.xml"/>
+	<mapper resource="mybatis/CategoryCode.xml"/>
 </mappers>
 </configuration>

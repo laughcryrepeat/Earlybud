@@ -1,38 +1,58 @@
 package com.earlybud.vo;
 
-import lombok.Getter;
-import lombok.ToString;
-
-@Getter
-@ToString
 public class PageVO {
 
-  private int startPage;
-  private int endPage;
-  private boolean prev, next;
+	private int countPage;//한번 클릭할 때 나올 페이지 수
+	private int totalPage;//전체 product 갯수
+	private int first;//예를 들어 7부터
+	private int last;//12까지
 
-  private int total;
-  private Criteria cri;
-
-  public PageVO(Criteria cri, int total) {
-
-    this.cri = cri;
-    this.total = total;
-
-    this.endPage = (int) (Math.ceil(cri.getPageNum() / 10.0)) * 10;
-
-    this.startPage = this.endPage - 9;
-
-    int realEnd = (int) (Math.ceil((total * 1.0) / cri.getAmount()));
-
-    if (realEnd <= this.endPage) {
-      this.endPage = realEnd;
-    }
-
-    this.prev = this.startPage > 1;
-
-    this.next = this.endPage < realEnd;
-  }
-  
+	{
+		first = 1;
+		countPage = 5;
+	}
+	public PageVO() {}
+	public PageVO(int countPage, int totalPage, int first, int last) {
+		super();
+		this.countPage = countPage;
+		this.totalPage = totalPage;
+		this.first = first;
+		this.last = last;
+	}
+	
+	public void cal(int first, int totalPage) {
+		this.totalPage = totalPage;
+		if(first>=totalPage) {
+			first = totalPage;
+		}
+		last = first+countPage;
+		if(last>=totalPage) {
+			last = totalPage;
+		}
+	}
+	public int getCountPage() {
+		return countPage;
+	}
+	public void setCountPage(int countPage) {
+		this.countPage = countPage;
+	}
+	public int getTotalPage() {
+		return totalPage;
+	}
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
+	}
+	public int getFirst() {
+		return first;
+	}
+	public void setFirst(int first) {
+		this.first = first;
+	}
+	public int getLast() {
+		return last;
+	}
+	public void setLast(int last) {
+		last = first+totalPage;
+	}
 }
 

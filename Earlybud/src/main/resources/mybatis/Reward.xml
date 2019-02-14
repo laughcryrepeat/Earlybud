@@ -20,7 +20,7 @@
   		<result property="TIME" column="TIME"/>
   		<collection property="OptionList" resultMap="optionMap"></collection>
   	</resultMap>  	
-	<resultMap type="Type" id="optionMap">
+	<resultMap type="ItemOption" id="optionMap">
     	<result property="TYPE_CODE" column="TYPE_CODE"/>
     	<result property="NAME" column="NAME"/>
     	<result property="INFO" column="INFO"/>
