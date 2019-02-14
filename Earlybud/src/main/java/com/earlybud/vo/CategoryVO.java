@@ -3,6 +3,7 @@ package com.earlybud.vo;
 import java.util.Date;
 
 import lombok.Data;
+import oracle.sql.DATE;
 
 @Data //롬복으로 getter,setter자동셋팅하기 위해서
 public class CategoryVO {
@@ -17,4 +18,5 @@ public class CategoryVO {
   private String NICKNAME;
   private String NOW_SUM;
   private String PERCENT;
+  private Date CLOSINGDATE;
 }

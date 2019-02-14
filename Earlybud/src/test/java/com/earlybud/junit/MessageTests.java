@@ -36,9 +36,9 @@ public class MessageTests {
 				con = ds.getConnection();
 				pstmt = con.prepareStatement(sql);
 				
-				pstmt.setString(1, "admin90@email.com");
+				pstmt.setString(1, "admin90@email.com"); //보내는사람이 admin90@email.com
 				if(i<50) {
-					pstmt.setString(2, "user"+i+"@email.com");
+					pstmt.setString(2, "user"+i+"@email.com"); //50명한테 보냄
 					pstmt.setString(3, "관리자에게 메세지"+i);
 				}
 				

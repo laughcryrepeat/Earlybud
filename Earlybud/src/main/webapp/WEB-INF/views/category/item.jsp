@@ -585,7 +585,7 @@
 		                                        	D-<span class="screen_out">Day</span><c:out value="${item.TIME}"/>
 		                                        </span>
 		                                        <span class="txt_value"> 일 남음</span>	
-		                                        <a href="/reward/6388/join/select" class="link_join">참여하기</a>                                        
+		                                        <span class="link_join">펀딩 진행중</span>                                     
 											</c:when>											
 											<c:when test="${item.TIME < 0}">
 													<span class="num_value">참여마감</span>
@@ -593,7 +593,7 @@
 											</c:when>
 											<c:otherwise>
 											   	<span class="num_value">오늘 자정까지</span>
-											   	<a href="/reward/6388/join/select" class="link_join">참여하기</a>
+											   	<span class="link_join">펀딩 진행중</span>		
 											</c:otherwise>
 										</c:choose>
 										
@@ -1038,7 +1038,7 @@
 		<c:forEach items="${item.getOptionList()}" var="oplist">
          	<!-- 리워드 수량이 무한한 경우 -->
             <li>
-                <a href="/reward/6388/join/select?selectrewardseq=11966" class="box_reward">
+                <a href="payment/input/${oplist.TYPE_CODE}" class="box_reward">
                     <strong class="tit_reward">${oplist.OP_PRICE}원 펀딩</strong>
                     <p class="txt_desc">${oplist.NAME}</p>
                     <span class="info_dely"><span class="txt_info">${oplist.INFO}</span></span>

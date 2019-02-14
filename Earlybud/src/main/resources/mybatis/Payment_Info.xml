@@ -2,7 +2,29 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.earlybud.vo.RewardVO">
+<mapper namespace="com.earlybud.model.Payment_Info">
+	<resultMap type="Payment_Info" id="Payment_Info_Map">
+   		<result property="nickname" column="NICKNAME"/> 
+   		<result property="email" column="EMAIL"/> 
+   		<result property="del_name" column="DEL_NAME"/> 
+   		<result property="del_phone" column="DEL_PHONE"/> 
+   		<result property="zip_code" column="ZIP_CODE"/> 
+   		<result property="addr1" column="ADDR1"/> 
+   		<result property="addr2" column="ADDR2"/>
+   		<result property="card_owner" column="CARD_OWNER"/>
+   		<result property="cardnum" column="CARDNUM"/>
+   		<result property="birthdate" column="BIRTHDATE"/>
+   		<result property="pur_type" column="PUR_TYPE"/>
+   		<result property="exp_month" column="EXP_MONTH"/>
+   		<result property="exp_year" column="EXP_YEAR"/>
+   		<result property="cardpwd" column="CARDPWD"/>
+   		<result property="amount" column="AMOUNT"/>
+   		<result property="schedule_at" column="SCHEDULE_AT"/>
+   		<result property="type_code" column="TYPE_CODE"/>
+   		<result property="customer_uid" column="CUSTOMER_UID"/>
+   		<result property="merchant_uid" column="MERCHANT_UID"/>
+   		<result property="imp_uid" column="IAM_UID"/>
+   	</resultMap>
 	
 	<select id="midnight" resultType="map">
 		<![CDATA[	 
