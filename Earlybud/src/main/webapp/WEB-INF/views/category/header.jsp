@@ -420,8 +420,8 @@
          * @param init {boolean} [optional] 첫 로드일 경우 true
          */
         function loadProjectList(page, order, init) {
-            var sorting = UI.ProjectList.getSortingValue();
-            var projectCategory = UI.ProjectList.getSelectedCategoryCode();
+           // var sorting = UI.ProjectList.getSortingValue();
+           // var projectCategory = UI.ProjectList.getSelectedCategoryCode();
 
             if (init) {
                 UI.DynamicPageHelper.showInitLoading($('#listPrj'));
