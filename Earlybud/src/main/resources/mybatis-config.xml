@@ -28,6 +28,7 @@
 	<mapper resource="mybatis/MessageList.xml"/>
 	<mapper resource="mybatis/Reward.xml"/>
 	<mapper resource="mybatis/CategoryCode.xml"/>
+	<mapper resource="mybatis/Type.xml"/>
 	<mapper resource="mybatis/Payment_Info.xml"/>
 	<mapper resource="mybatis/Item.xml"/>
 	<mapper resource="mybatis/Purchase_Item.xml"/>
