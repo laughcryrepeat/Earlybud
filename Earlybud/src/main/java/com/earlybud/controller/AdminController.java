@@ -1,6 +1,7 @@
 package com.earlybud.controller;
 
 import java.util.List;
+import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.earlybud.admin.service.AdminService;
+import com.earlybud.model.Item;
 import com.earlybud.model.Member;
 import com.earlybud.model.Message;
 
@@ -36,8 +38,13 @@ public class AdminController {
 	}
 	
 	@GetMapping("item_data")
-	public void listItem() {
+	public void listItem(Model model) {
 		log.info("admin item list");
+		List<Item> listItem  = service.listItem();
+		model.addAttribute("listItem", listItem);
+		Date now = new Date(System.currentTimeMillis());
+		System.out.println("now: "+now);
+		model.addAttribute("now",now);
 	}
 	
 	@GetMapping("encore_data")

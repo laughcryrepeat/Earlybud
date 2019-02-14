@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.earlybud.model.Item">
+  	<resultMap type="Item" id="itemMap"><!-- dto mapping -->
+  		<result property="item_code" column="ITEM_CODE"/>
+  		<result property="cat_code" column="CAT_CODE"/>
+  		<result property="title" column="TITLE"/>
+  		<result property="summary" column="SUMMARY"/>
+  		<result property="content" column="CONTENT"/>
+  		<result property="main_image" column="MAIN_IMAGE"/>
+  		<result property="image_item" column="IMAGE_ITEM"/>
+  		<result property="target_sum" column="TARGET_SUM"/>
+  		<result property="cur_sum" column="CUR_SUM"/>
+  		<result property="opendate" column="OPENDATE"/>
+  		<result property="closingdate" column="CLOSINGDATE"/>
+  		<result property="admincall" column="ADMINCALL"/>
+  		<result property="success" column="SUCCESS"/>
+  		<result property="view_count" column="VIEW_COUNT"/>
+  		<result property="encore_num" column="ENCORE_NUM"/>
+  		<result property="encore" column="ENCORE"/>
+  		<result property="encore_time" column="ENCORE_TIME"/>
+  		<result property="email" column="EMAIL"/>
+  		<result property="cat_name" column="CAT_NAME"/>
+  	</resultMap>
+
+  	<select id="listItem" resultType="Item">
+  	select * from ITEM natural join CATEGORY
+  	</select>
+  	
+  	<select id="selectItems" resultType="Item">
+  	SELECT 
+  	mem.email, nickname, phone, addr, detail_addr, joindate, dropdate, item_liked, authority 
+  	FROM 
+  	member mem LEFT OUTER JOIN authorities auth on mem.email = auth.email 
+  	where mem.dropdate is null
+  	</select>
+  	
+  	<update id="approveItem" parameterType="String">
+  	update member set dropdate=sysdate where email = #{email}
+  	</update>
+  	
+  	<update id="rejectItem" parameterType="String">
+  	update member set dropdate=sysdate where email = #{email}
+  	</update>
+  	
+  </mapper>
