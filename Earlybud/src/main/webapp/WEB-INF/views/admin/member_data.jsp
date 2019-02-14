@@ -85,8 +85,8 @@
 	        }else{
 	            return false;
 	        }
-	    } );
-	} );
+	    });
+	});
     </script>
   </body>
 </html>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,14 +43,24 @@ public class AdminController {
 		log.info("admin item list");
 		List<Item> listItem  = service.listItem();
 		model.addAttribute("listItem", listItem);
+		
 		Date now = new Date(System.currentTimeMillis());
 		System.out.println("now: "+now);
 		model.addAttribute("now",now);
 	}
 	
+	@PostMapping("admincall")
+	public void updateAdmincall(Long item_code) {
+		log.info("update admincall");
+		System.out.println("admincall item_code: "+item_code);
+	}
+	
 	@GetMapping("encore_data")
-	public void listEncore() {
+	public void listEncore(Model model) {
 		log.info("admin encore list");
+		List<Item> listItem = service.listItem();
+		model.addAttribute("listItem",listItem);	
+		
 	}
 	
 	@GetMapping("member_data")

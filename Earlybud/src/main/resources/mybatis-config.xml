@@ -15,6 +15,7 @@
 	<typeAlias alias="Type" type="com.earlybud.model.Type"/>
 	<typeAlias alias="Payment_Info" type="com.earlybud.model.Payment_Info"/>
 	<typeAlias alias="Item" type="com.earlybud.model.Item"/>
+	<typeAlias alias="Purchase_Item" type="com.earlybud.model.Purchase_Item"/>
 </typeAliases>
 <mappers>
 	<mapper resource="mybatis/Member.xml"/>
@@ -26,5 +27,6 @@
 	<mapper resource="mybatis/Reward.xml"/>
 	<mapper resource="mybatis/Payment_Info.xml"/>
 	<mapper resource="mybatis/Item.xml"/>
+	<mapper resource="mybatis/Purchase_Item.xml"/>
 </mappers>
 </configuration>

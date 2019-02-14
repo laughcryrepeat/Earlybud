@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +32,7 @@
 <div class="container-fluid">
   
   <div class="callout callout-info">
-    선택하신 상품 : <a href="#">XXX</a> / 1번 타입 / 금액 : 100원 / 결제예정일 : 3월 3일 
+    선택하신 상품 : <a href="#">XXX</a> / 1번 타입 / 금액 : 100원 / 펀딩 마감일 : 3월 3일 
   </div>
   <div class="nav-tabs-responsive">
     <ul class="nav nav-tabs-progress nav-tabs-4 mb-4">
@@ -89,13 +90,13 @@
             <div class="col-12 col-md-6 col-lg-6">
               <div class="form-group">
                 <label>Nick name</label>
-                <input type="text" class="form-control" id="nickname" name="nickname">
+                <input type="text" class="form-control" id="nickname" name="nickname" value='<sec:authentication property="principal.member.nickname"/>'>
               </div>
             </div>
             <div class="col-12 col-md-6 col-lg-6">
               <div class="form-group">
                 <label>E-mail</label>
-                <input type="text" class="form-control" id="email" name="email">
+                <input type="text" class="form-control" id="email" name="email" value='<sec:authentication property="principal.username"/>'>
               </div>
             </div>
           </div>
