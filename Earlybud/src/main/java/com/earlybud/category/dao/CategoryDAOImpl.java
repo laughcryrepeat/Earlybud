@@ -28,15 +28,15 @@ public class CategoryDAOImpl implements CategoryDAO {
 		return listI;
 	}
 	
-	/*
+	
 	@Override
-	public List<CategoryVO> getList(){
+	public List<CategoryVO> getMainList(){
 		log.info("CategoryDAO");
 		System.out.println("Categorydao");
 		List<CategoryVO> listI = sqlSession.selectList(ns+".getList");
 		System.out.println("Item list size: "+listI.size());
 		return listI;
-	}*/
+	}
 	@Override
 	public int count() {
 		return sqlSession.selectOne(ns+".count");

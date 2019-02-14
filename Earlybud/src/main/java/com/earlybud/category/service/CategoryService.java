@@ -10,7 +10,8 @@ import com.earlybud.vo.PageVO;
 
 public interface CategoryService {
 	
-	//public List<CategoryVO> cateListService();
+
+	public List<CategoryVO> getList();
 	public List<Category> cateListService();
 	int countService();
 	List<CategoryVO> itemListService(PageVO vo);

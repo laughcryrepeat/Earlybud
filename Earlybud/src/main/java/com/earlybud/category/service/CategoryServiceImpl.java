@@ -20,18 +20,18 @@ public class CategoryServiceImpl implements CategoryService {
 
 	private CategoryDAO dao;
 
-	
 	 @Override
 	 public List<Category> cateListService() {
 		 log.info("getList..........");	
 		 return dao.getList();	 
 	}	
-	 /*
+	 
 	 @Override
-	 public List<CategoryVO> cateListService() {
+	 public List<CategoryVO> getList() {
 		 log.info("getList..........");	
-		 return dao.getList();	 
-	}	 */
+		 return dao.getMainList();	 
+	}	 
+
 	 @Override
 	public int countService() {
 		return dao.count();

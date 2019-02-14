@@ -423,7 +423,7 @@
 								<ul id="primary-menu" class="menu">
 									<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-4 current_page_item menu-item-43"><a href="main">Home</a></li>
 									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">소개</a></li>
-									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">카테고리</a></li>									
+									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category/0">카테고리</a></li>									
 									<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="https://demo.athemes.com/airi-portfolio/about-us/">로그인/회원가입</a></li>
 								</ul>
 							</div>

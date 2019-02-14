@@ -13,7 +13,7 @@ import com.earlybud.vo.PageVO;
 public interface CategoryDAO {
 	
 	public List<Category> getList();
-	//public List<CategoryVO> getList();
+	public List<CategoryVO> getMainList();
 	int count();
 	List<CategoryVO> itemList(PageVO vo);
 	public List<CategoryVO> selectCategory(HashMap map);
