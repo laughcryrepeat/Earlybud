@@ -12,6 +12,8 @@
 	<typeAlias alias="SellerLike" type="com.earlybud.vo.SellerLikeVO"/>
 	<typeAlias alias="MessageList" type="com.earlybud.vo.MessageListVO"/>
 	<typeAlias alias="RewardVO" type="com.earlybud.vo.RewardVO"/>
+  <typeAlias alias="ItemOption" type="com.earlybud.model.ItemOption"/>
+	<typeAlias alias="CategoryCode" type="com.earlybud.model.Category"/>
 	<typeAlias alias="Type" type="com.earlybud.model.Type"/>
 	<typeAlias alias="Payment_Info" type="com.earlybud.model.Payment_Info"/>
 	<typeAlias alias="Item" type="com.earlybud.model.Item"/>
@@ -25,8 +27,10 @@
 	<mapper resource="mybatis/SellerLike.xml"/>
 	<mapper resource="mybatis/MessageList.xml"/>
 	<mapper resource="mybatis/Reward.xml"/>
+  <mapper resource="mybatis/CategoryCode.xml"/>
 	<mapper resource="mybatis/Payment_Info.xml"/>
 	<mapper resource="mybatis/Item.xml"/>
 	<mapper resource="mybatis/Purchase_Item.xml"/>
 </mappers>
+
 </configuration>
