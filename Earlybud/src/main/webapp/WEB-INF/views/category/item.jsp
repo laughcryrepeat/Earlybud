@@ -407,7 +407,7 @@
 							<ul id="primary-menu" class="menu">
 								<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a href="main">Home</a></li>
 								<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">소개</a></li>
-								<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44 current-menu-item page_item page-item-4 current_page_item menu-item-43"><a href="category">카테고리</a></li>
+								<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44 current-menu-item page_item page-item-4 current_page_item menu-item-43"><a href="category/0">카테고리</a></li>
 								<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="https://demo.athemes.com/airi-portfolio/about-us/">로그인/회원가입</a></li>
 							</ul>
 						</div>
@@ -585,7 +585,7 @@
 		                                        	D-<span class="screen_out">Day</span><c:out value="${item.TIME}"/>
 		                                        </span>
 		                                        <span class="txt_value"> 일 남음</span>	
-		                                        <a href="/reward/6388/join/select" class="link_join">참여하기</a>                                        
+		                                        <span class="link_join">펀딩 진행중</span>                                     
 											</c:when>											
 											<c:when test="${item.TIME < 0}">
 													<span class="num_value">참여마감</span>
@@ -593,7 +593,7 @@
 											</c:when>
 											<c:otherwise>
 											   	<span class="num_value">오늘 자정까지</span>
-											   	<a href="/reward/6388/join/select" class="link_join">참여하기</a>
+											   	<span class="link_join">펀딩 진행중</span>		
 											</c:otherwise>
 										</c:choose>
 										
@@ -1038,7 +1038,7 @@
 		<c:forEach items="${item.getOptionList()}" var="oplist">
          	<!-- 리워드 수량이 무한한 경우 -->
             <li>
-                <a href="/reward/6388/join/select?selectrewardseq=11966" class="box_reward">
+                <a href="payment/input/${oplist.TYPE_CODE}" class="box_reward">
                     <strong class="tit_reward">${oplist.OP_PRICE}원 펀딩</strong>
                     <p class="txt_desc">${oplist.NAME}</p>
                     <span class="info_dely"><span class="txt_info">${oplist.INFO}</span></span>

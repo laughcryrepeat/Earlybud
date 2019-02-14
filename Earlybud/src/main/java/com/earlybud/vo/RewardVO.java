@@ -2,7 +2,7 @@ package com.earlybud.vo;
 
 import java.util.List;
 import lombok.Data;
-import com.earlybud.model.Type;
+import com.earlybud.model.ItemOption;
 
 @Data //롬복으로 getter,setter자동셋팅하기 위해서
 public class RewardVO {
@@ -21,7 +21,7 @@ public class RewardVO {
   private String EMAIL;	//판매자 이메일
   private String NICKNAME; //판매자 닉네임
   private String TIME; //남은시간 몇일인지//숫자로 받아서 0일경우(펀딩마감 당일일 경우) "오늘 자정까지" 라고 문구 띄우기, 마이너스면 끝난 펀딩이라고 띄우기 - 뷰단에서 처리
-  private List<Type> OptionList; 
+  private List<ItemOption> OptionList; 
   //select TYPE_CODE, ITEM_CODE, NAME, INFO, TO_CHAR(PRICE, '999,999,999'), PUR_NUM from TYPE where ITEM_CODE=4;
 
   public void show(){

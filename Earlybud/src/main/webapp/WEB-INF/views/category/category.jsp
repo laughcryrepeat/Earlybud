@@ -158,57 +158,32 @@ function tab(){
 		            <div class="box_category">
 		                <span class="screen_out">카테고리</span>
 		                <button type="button" class="btn_select">전체<span class="ico_comm"></span></button>
-		                <ul id="category_list" class="list_cate" role="tablist">
-		                    <li class="on" role="tab" data-category-code="0">
-		                   		<a class="link_cate">전체</a>
-		                    </li>
-		                    
-                            <li role="tab" data-category-code="1">
-                            	<a class="link_cate">테크</a>
-                            </li>
-		                    
-                            <li role="tab" data-category-code="2">
-                            		<a class="link_cate">홈/리빙</a>
-                            </li>
-		                    
-                            <li role="tab" data-category-code="3">
-                            		<a class="link_cate">푸드</a>
-                           </li>
-		                    
-                           <li role="tab" data-category-code="4">
-                                    <a class="link_cate">패션</a>
-                           </li>
-		                    
-                           <li role="tab" data-category-code="5">
-                                    <a class="link_cate">디자인</a>
-                          </li>
-		                    
-                          <li role="tab" data-category-code="6">
-                                    <a class="link_cate">출판</a>
-                          </li>
-		                    
-                         <li role="tab" data-category-code="7">
-                                    <a class="link_cate">취미</a>
-                         </li>
-		                    
-                        <li role="tab" data-category-code="8">
-                                    <a class="link_cate">공연/컬쳐</a>
-                        </li>
-		                    
-                        <li role="tab" data-category-code="9">
-                                    <a class="link_cate">캠페인</a>
-                        </li>
-                        
+		                <ul id="category_list" class="list_cate" role="tablist">		                    
+		                    <c:forEach items="${list_category}" var="list_category">
+								<c:if test="${list_category.CAT_CODE eq 0}">
+									<li><a href="../category/${list_category.CAT_CODE}" data-filter="*" onclick="changeCategory(${list_category.CAT_CODE})" <c:if test="${category eq list_category.CAT_CODE}">class="selected"</c:if>>전체</a></li>
+								</c:if>
+								<c:if test="${list_category.CAT_CODE ne 0}">
+									<li><a href="../category/${list_category.CAT_CODE}" data-filter="*" onclick="changeCategory(${list_category.CAT_CODE})" <c:if test="${category eq list_category.CAT_CODE}">class="selected"</c:if>>${list_category.CAT_NAME}</a></li>
+								</c:if>
+							</c:forEach>
 		                </ul>
+		               
+		                <script>
+						function changeCategory(category){							
+							location.replace(category); 
+						}
+						</script>
+		                
+		                
 		            </div>
 					<div class="wrap_project">
 			            <!-- 2017-08-07 수정 클래스 추가 -->
 			            <div class="box_select">
-							<select id="sorting" name="sorting" class="select_sort" title="후원형 프로젝트 목록 분류">
-                                <option value="highest">펀딩금액순</option>
+							<select id="sorting" name="sorting" class="select_sort" title="후원형 프로젝트 목록 분류">                                
                                 <option value="impendence">마감임박순</option>
                                 <option value="latest">최신순</option>
-                                <option value="largest">참여자순</option>
+                                <option value="largest">인기순</option>
 								
 				        		
 				        		
