@@ -32,6 +32,7 @@ import com.earlybud.payment.service.PaymentService;
 import com.earlybud.security.CustomNoOpPasswordEncoder;
 import com.earlybud.vo.AddrVo;
 import com.earlybud.model.Payment_Info;
+import com.earlybud.model.Purchase_Item;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.siot.IamportRestClient.IamportClient;
@@ -197,9 +198,21 @@ public class PaymentController {
 			e.printStackTrace();
 		}
 		
-		//customer_uid, merchant_uid update!! paymentVo insert!!
-		//스케줄된 purchase_item 테이블 pur_state 칼럼 업데이트!!
+		java.sql.Date now = new java.sql.Date(new java.util.Date().getTime());
+		
+		Purchase_Item purItem = new Purchase_Item(merchant_uid, customer_uid, pi.getEmail(), pi.getType_code(), pi.getAmount(), now, null, null, null, null);
+		//customer_uid, merchant_uid update!! payment_Info insert!!
+		service.insertPurchaseItem(purItem);//스케줄된 Purchase_Item insert!!
+		
+		Payment_Info payInfo = new Payment_Info(merchant_uid, pi.getNickname(), pi.getEmail(), pi.getDel_name(), pi.getDel_phone(),
+				pi.getZip_code(), pi.getAddr1(), pi.getAddr2(), pi.getCard_owner(), pi.getCardnum(),
+				pi.getBirthdate(), pi.getPur_type(), pi.getExp_month(), pi.getExp_year(), pi.getCardpwd(),
+				pi.getAmount(), pi.getSchedule_at(), pi.getType_code());
+		service.insertPaymentInfo(payInfo);//구매금액 아이템 Payment_Info 테이블 업데이트.
+		
+		//Type purnum update!!
 		//이메일과 쪽지 보내기.
+		
 
 		/*cal.set(Calendar.YEAR, Integer.parseInt(closingdate.substring(0,4)));
 		cal.set(Calendar.MONTH, Integer.parseInt(closingdate.substring(4,6))-1);
@@ -207,9 +220,9 @@ public class PaymentController {
 		cal.set(Calendar.HOUR, 00);
 		cal.set(Calendar.MINUTE, 10);*/
 	}
-	public void canclePayment(Payment_Info pi) {
-		UnscheduleData unschedule_data = new UnscheduleData(pi.getCustomer_uid());
-		unschedule_data.addMerchantUid(pi.getMerchant_uid());
+	public void canclePayment(Purchase_Item pItem) {
+		UnscheduleData unschedule_data = new UnscheduleData(pItem.getCustomer_uid());
+		unschedule_data.addMerchantUid(pItem.getMerchant_uid());
 		
 		IamportResponse<List<Schedule>> unschedule_response = client.unsubscribeSchedule(unschedule_data);
 		List<Schedule> cancelled_schedule = unschedule_response.getResponse();
@@ -217,7 +230,7 @@ public class PaymentController {
 		//스케줄된 purchase_item 테이블 cancel 칼럼 업데이트!!
 	}
 	
-	private String getMerchantUid(String type_code) {
+	private String getMerchantUid(Long type_code) {
 		DateFormat df = new SimpleDateFormat("$$hhmmssSS");
 		//int n = (int) (Math.random() * 100) + 1;		
 		return type_code + "_" + df.format(new Date());

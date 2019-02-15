@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Payment_Info {
+	private String merchant_uid;//구매상품 테이블과 연결.
+	//payment/input 에서 받아온 값들
 	private String nickname;
 	private String email;
 	private String del_name;
@@ -22,10 +24,7 @@ public class Payment_Info {
 	private String exp_month;
 	private String exp_year;
 	private String cardpwd;
-	private String amount;
+	private Long amount;
 	private String schedule_at;
-	private String type_code;
-	private String customer_uid;
-	private String merchant_uid;
-	private String imp_uid;
+	private Long type_code;
 }

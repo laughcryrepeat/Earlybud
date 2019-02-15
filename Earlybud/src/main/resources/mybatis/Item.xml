@@ -26,23 +26,15 @@
   	</resultMap>
 
   	<select id="listItem" resultType="Item">
-  	select * from ITEM natural join CATEGORY
+  	select * from ITEM natural join CATEGORY order by ITEM_CODE desc
   	</select>
   	
-  	<select id="selectItems" resultType="Item">
-  	SELECT 
-  	mem.email, nickname, phone, addr, detail_addr, joindate, dropdate, item_liked, authority 
-  	FROM 
-  	member mem LEFT OUTER JOIN authorities auth on mem.email = auth.email 
-  	where mem.dropdate is null
-  	</select>
-  	
-  	<update id="approveItem" parameterType="String">
-  	update member set dropdate=sysdate where email = #{email}
+  	<update id="approveItem" parameterType="Integer">
+  	update ITEM set ADMINCALL=1 where ITEM_CODE = #{item_code}
   	</update>
   	
-  	<update id="rejectItem" parameterType="String">
-  	update member set dropdate=sysdate where email = #{email}
+  	<update id="rejectItem" parameterType="Integer">
+  	update ITEM set ADMINCALL=NULL where ITEM_CODE = #{item_code}
   	</update>
   	
   </mapper>

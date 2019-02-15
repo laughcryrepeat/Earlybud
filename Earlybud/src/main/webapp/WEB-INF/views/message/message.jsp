@@ -6,13 +6,93 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 <head>
+<%
+	String sender = null;
+	if (session.getAttribute("sender") != null) {
+		sender =  (String) session.getAttribute("sender");
+	}
+	String receiver = null;
+	if (request.getParameter("receiver") != null){
+		receiver = (String) request.getParameter("receiver");
+	}
+
+%>
+<script type = "text/javascript">
+	function autoClosingAlert(selector, delay){
+		var alert = $(selector).alert();
+		window.setTimeout(function(){alert.hide()}, delay);
+	}
+	function submitFunction(){
+		var sender = '<%= sender %>';
+		var receiver = '<%= receiver %>';
+		var content = $('#content');
+		$.ajax({
+			type: "POST",
+			url: "./chatSubmitServlet",
+			data: {
+				sender: encodeURIComponent(sender),
+				receiver: encodeURIComponent(receiver),
+				content: encodeURIComponent(content)
+			},
+			success: function(result){
+				if(result == 1){
+					aucoClosingAlert('#successMessage', 2000);
+				}else if(result == 0){
+					aucoClosingAlert('#dangerMessage', 2000);
+				}else{
+					aucoClosingAlert('#warningMessage', 2000);
+				}
+			}
+		})
+		$('#chatContent').val('');
+	}
+</script>
 
 <link href="css/message/message.css" type="text/css" rel="stylesheet">
 
 </head>
 <body>
+<script type = "text/javascript" src = "/resources/js/messageList/message.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var operForm = $("#operForm");
+		
+		$("button[data-oper='modify]").on("click", function(e){
+			operForm.attr("action", "/message/modify").submit();
+		});
+	})
+
+
+</script>
+<script type = "text/javascript" src="/resources/js/messageList/message.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		console.log(messageListService);
+	});
+	
+</script>
+
+
+<script type = "text/javascript" src="/resources/js/messageList/message.js"></script>
+<script type="text/javascript">
+	console.log("==========");
+	console.log("JS TEST");
+	var bnoValue = '<c:out value="${message.message_code}"/>';
+	
+	//for message add test
+	messageService.add(
+		{message:"JS TEST", sender:"red@gmail.com", message_code:message_code}
+		,
+		function(result){
+			alert("RESULT: "+result);
+		}
+	);
+	
+</script>
+
 <div class="container">
 <h3 class=" text-center">EarlyBud 판매자 문의</h3>
 <div class="messaging">
@@ -30,74 +110,28 @@
                 </span> </div>
             </div>
           </div>
+          
           <div class="inbox_chat">
-            <div class="chat_list active_chat">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Sunil Rajput <span class="chat_date">Jan 15</span></h5>
-                  <p>우리 얼리버드 대성공해랏~</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Hyunhwa Oh <span class="chat_date">Dec 25</span></h5>
-                  <p>호호 귀요미</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Myungji Kang <span class="chat_date">Jan 14</span></h5>
-                  <p>아이야~~</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Yujin Choi <span class="chat_date">Dec 25</span></h5>
-                  <p>보리보리 보리보리</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Narin Kim <span class="chat_date">Dec 25</span></h5>
-                  <p>쿠키사랑해 헉헉</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
-                </div>
-              </div>
-            </div>
+          <c:forEach items="${listM}" var="listM">
+
+			            <div class="chat_list active_chat">
+			              <div class="chat_people">
+			                <div class="chat_img"> <img src="${pageContext.request.contextPath}/images/like/<c:out value="${listM.IMAGE}"/>" alt="sunil"> </div>
+			                <div class="chat_ib">
+			                  <h5>${listM.NICKNAME}</h5>
+
+			                  <plow>${listM.INFO}</plow>
+<%-- 			                  <p>${listM.INFO}</p> --%>
+			                </div>
+			              </div>
+			            </div>
+          </c:forEach>
+<%-- 			            <c:if test=${msgSent.MESSAGE_CODE_SEQ lt msgReceived.MESSAGE_CODE_SEQ}> --%>
+
           </div>
         </div>
+        
+        
         <div class="mesgs">
           <div class="msg_history">
             <div class="incoming_msg">
@@ -140,8 +174,8 @@
           </div>
           <div class="type_msg">
             <div class="input_msg_write">
-              <input type="text" class="write_msg" placeholder="Type a message" />
-              <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+              <input type="text" class="content" placeholder="Type a message" />
+              <button class="msg_send_btn" type="button" onclick="submitFunction();"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
             </div>
           </div>
         </div>

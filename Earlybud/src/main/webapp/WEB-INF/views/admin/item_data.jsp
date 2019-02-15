@@ -46,8 +46,7 @@
                                             </tr>
                         <!-------------------------------------------------->
                         				<c:forEach items="${listItem}" var="Item">
-                                            <tr>
-                                                <td>${Item.item_code}</td>
+                                            <tr><td>${Item.item_code}</td>
                                                 <td><img src="${pageContext.request.contextPath}/uploads/reward/${Item.main_image}" alt="" /></td>
                                                 <td>${Item.title}</td>
                                                 <td>
@@ -89,8 +88,8 @@
                                                 <td>
                                                 	<c:choose>
                                                 	<c:when test="${Item.admincall eq 0}">
-                                                    	<button data-toggle="tooltip" title="Approve" class="pd-setting-ed"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                                    	<button data-toggle="tooltip" title="Reject" class="pd-setting-ed"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
+                                                    	<button data-toggle="tooltip" title="Approve" class="pd-setting-ed approve_btn"><i class="fa fa-check" aria-hidden="true"></i></button>
+                                                    	<button data-toggle="tooltip" title="Reject" class="pd-setting-ed reject_btn"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
                                                     </c:when>
                                                     </c:choose>
                                                 </td>
@@ -199,6 +198,7 @@
           </div>
         </div>
       </div>
+      
     </main>
     <!-- Essential javascripts for application to work-->
     <script src="${pageContext.request.contextPath}/js/admin/jquery-3.2.1.min.js"></script>
@@ -210,6 +210,34 @@
     <!-- Page specific javascripts-->
     <!-- Google analytics script-->
     <script type="text/javascript">
+    $('.approve_btn').on('click',function(){
+    	var row = $(this).parent().parent().find("td");
+    	var code = row.eq(0).text();
+    	console.log("this itemCode: "+code);
+    	$.ajax({
+            method: 'post',
+            url: '../admin/approveItem', 
+            data: "item_code="+code,
+            success: function(){
+                console.log("update admincall!!");
+                row.eq(8).hide();
+            }
+  	  });
+    });
+    
+	$('.reject_btn').on('click',function(){
+		var code = $(this).parent().parent().find("td").eq(0).text();
+    	console.log("this itemCode: "+code);
+    	$.ajax({
+            method: 'post',
+            url: '../admin/rejectItem', 
+            data: "item_code="+code,
+            success: function(){
+                console.log("update reject admincall!!");
+            }
+  	  });
+    });
+    
       if(document.location.hostname == 'pratikborsadiya.in') {
       	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
