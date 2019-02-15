@@ -50,13 +50,14 @@ public class AdminController {
 	}
 	
 	@PostMapping("approveItem")
-	public String updateApproveItem(int item_code) {
+	public @ResponseBody String updateApproveItem(int item_code) {
 		log.info("update approveItem");
 		System.out.println("approve call item_code: "+item_code);
 		int i =service.updateApproveItem(item_code);
 		System.out.println("update row: "+i);
 		if(i>0) {
-			return "redirect:/admin/item_data";
+			System.out.println("update");
+			return "update";
 		}
 		return null;
 	}

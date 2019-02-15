@@ -218,10 +218,9 @@
             method: 'post',
             url: '../admin/approveItem', 
             data: "item_code="+code,
-            success: function(data){
+            success: function(){
                 console.log("update admincall!!");
-                console.log("data: "+data);
-                //row.eq(8).hide();
+                row.eq(8).hide();
             }
   	  });
     });
