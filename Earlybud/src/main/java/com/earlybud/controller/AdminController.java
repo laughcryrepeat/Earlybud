@@ -49,10 +49,23 @@ public class AdminController {
 		model.addAttribute("now",now);
 	}
 	
-	@PostMapping("admincall")
-	public void updateAdmincall(Long item_code) {
-		log.info("update admincall");
-		System.out.println("admincall item_code: "+item_code);
+	@PostMapping("approveItem")
+	public String updateApproveItem(int item_code) {
+		log.info("update approveItem");
+		System.out.println("approve call item_code: "+item_code);
+		int i =service.updateApproveItem(item_code);
+		System.out.println("update row: "+i);
+		if(i>0) {
+			return "redirect:/admin/item_data";
+		}
+		return null;
+	}
+	
+	@PostMapping("rejectItem")
+	public void updateRejectItem(int item_code) {
+		log.info("update approveItem");
+		System.out.println("reject call item_code: "+item_code);
+		int i = service.updateRejectItem(item_code);
 	}
 	
 	@GetMapping("encore_data")
@@ -60,7 +73,6 @@ public class AdminController {
 		log.info("admin encore list");
 		List<Item> listItem = service.listItem();
 		model.addAttribute("listItem",listItem);	
-		
 	}
 	
 	@GetMapping("member_data")

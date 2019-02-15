@@ -210,6 +210,7 @@ public class PaymentController {
 				pi.getAmount(), pi.getSchedule_at(), pi.getType_code());
 		service.insertPaymentInfo(payInfo);//구매금액 아이템 Payment_Info 테이블 업데이트.
 		
+		//Type purnum update!!
 		//이메일과 쪽지 보내기.
 		
 

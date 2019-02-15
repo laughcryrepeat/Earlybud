@@ -29,6 +29,18 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
+	public int updateApproveItem(int item_code) {
+		log.info("updateAdmincall service");
+		return dao.updateApproveItem(item_code);
+	}
+	
+	@Override
+	public int updateRejectItem(int item_code) {
+		log.info("updateAdmincall service");
+		return dao.updateRejectItem(item_code);
+	}
+	
+	@Override
 	public List<Member> listMember() {
 		log.info("listmember service");
 		return dao.listMember();

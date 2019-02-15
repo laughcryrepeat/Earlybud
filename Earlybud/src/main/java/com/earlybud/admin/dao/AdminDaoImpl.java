@@ -30,6 +30,22 @@ public class AdminDaoImpl implements AdminDao {
 	}
 	
 	@Override
+	public int updateApproveItem(int item_code) {
+		log.info("update approve Admincall dao");
+		System.out.println("approve dao:"+item_code);
+		
+		int i =sqlSession.update(ns3 + ".approveItem", item_code);
+		System.out.println(""+i);
+		return i;
+	}
+	
+	@Override
+	public int updateRejectItem(int item_code) {
+		log.info("update reject Admincall dao");
+		return sqlSession.update(ns3+".rejectItem", item_code);
+	}
+	
+	@Override
 	public List<Member> listMember() {
 		log.info("memberdao");
 		System.out.println("memberdao");

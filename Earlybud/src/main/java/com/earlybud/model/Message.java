@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Message {
-	private long message_code;
-	private long item_code;
+	private int message_code;
+	private int item_code;
 	private String receiver;
 	private String sender;
 	private String content;

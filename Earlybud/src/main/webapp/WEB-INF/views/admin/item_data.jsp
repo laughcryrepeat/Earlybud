@@ -211,20 +211,32 @@
     <!-- Google analytics script-->
     <script type="text/javascript">
     $('.approve_btn').on('click',function(){
-    	var code = $(this).parent().parent().find("td").eq(0).text();
+    	var row = $(this).parent().parent().find("td");
+    	var code = row.eq(0).text();
     	console.log("this itemCode: "+code);
     	$.ajax({
             method: 'post',
-            url: '../admin/admincall', 
+            url: '../admin/approveItem', 
             data: "item_code="+code,
-            success: function(){
+            success: function(data){
                 console.log("update admincall!!");
+                console.log("data: "+data);
+                //row.eq(8).hide();
             }
   	  });
     });
     
 	$('.reject_btn').on('click',function(){
-    	
+		var code = $(this).parent().parent().find("td").eq(0).text();
+    	console.log("this itemCode: "+code);
+    	$.ajax({
+            method: 'post',
+            url: '../admin/rejectItem', 
+            data: "item_code="+code,
+            success: function(){
+                console.log("update reject admincall!!");
+            }
+  	  });
     });
     
       if(document.location.hostname == 'pratikborsadiya.in') {

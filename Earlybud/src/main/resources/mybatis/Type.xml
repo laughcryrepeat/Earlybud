@@ -12,7 +12,7 @@
    		<result property="purnum" column="PURNUM"/> 
    	</resultMap> 
   	
-   	<select id="selectType" resultType="Type" parameterType="Long"> 
+   	<select id="selectType" resultType="Type" parameterType="Long">
    	select * from TYPE where TYPE_CODE = #{type_code} 
    	</select> 
 	
