@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +32,7 @@
 <div class="container-fluid">
   
   <div class="callout callout-info">
-    선택하신 상품 : <a href="#">XXX</a> / 1번 타입 / 금액 : 100원 / 결제예정일 : 3월 3일 
+    선택하신 상품 : <a href="#">XXX</a> / 1번 타입 / 금액 : 100원 / 펀딩 마감일 : 3월 3일 
   </div>
   <div class="nav-tabs-responsive">
     <ul class="nav nav-tabs-progress nav-tabs-4 mb-4">
@@ -89,13 +90,13 @@
             <div class="col-12 col-md-6 col-lg-6">
               <div class="form-group">
                 <label>Nick name</label>
-                <input type="text" class="form-control" id="nickname" name="nickname">
+                <input type="text" class="form-control" id="nickname" name="nickname" value='<sec:authentication property="principal.member.nickname"/>'>
               </div>
             </div>
             <div class="col-12 col-md-6 col-lg-6">
               <div class="form-group">
                 <label>E-mail</label>
-                <input type="text" class="form-control" id="email" name="email">
+                <input type="text" class="form-control" id="email" name="email" value='<sec:authentication property="principal.username"/>'>
               </div>
             </div>
           </div>
@@ -145,7 +146,7 @@
             <div class="col-12 col-lg-6">
              <div class="form-group">
                 <label>폰번호</label>
-                <input type="text" class="form-control" id="del_phone" name="del_phone">
+                <input type="text" class="form-control" id="del_phone" name="del_phone" maxlength="11">
              </div>
             </div>
           </div>
@@ -205,8 +206,8 @@
           <div class="row">
             <div class="col-12 col-md-8 col-lg-7">
               <div class="form-group">
-                <label>카드번호(xxxx-xxxx-xxxx-xxxx)</label>
-                <input type="text" class="form-control" id="cardnum" name="cardnum">
+                <label>카드번호</label>
+                <input type="text" class="form-control" id="cardnum" name="cardnum" data-inputmask="'mask': '9999-9999-9999-9999'">
               </div>
             </div>
             <div class="col-12 col-md-4 col-lg-5">
@@ -220,21 +221,21 @@
             <div class="col-12 col-lg-7">
               <div class="form-group">
                 <label>생년월일 6자리</label>
-                <input type="text" class="form-control" id="birthdate" name="birthdate">
+                <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="ex ) 190213" maxlength="6">
               </div>
             </div>
             <div class="col-12 col-lg-5">
               <div class="row">
                 <div class="col-12 col-md-4 col-lg-6">
                   <div class="form-group">
-                    <label>카드 유효기간 월 Month(MM)</label>
-                    <input type="text" class="form-control" id="exp_month" name="exp_month">
+                    <label>카드 유효기간 월 Month</label>
+                    <input type="text" class="form-control" id="exp_month" name="exp_month" placeholder="ex ) 07" maxlength="2">
                   </div>
                 </div>
                 <div class="col-12 col-md-4 col-lg-6">
                   <div class="form-group">
-                    <label>카드 유효기간 년 Year(YYYY)</label>
-                    <input type="text" class="form-control" id="exp_year" name="exp_year">
+                    <label>카드 유효기간 년 Year</label>
+                    <input type="text" class="form-control" id="exp_year" placeholder="ex ) 2019" name="exp_year" maxlength="4">
                   </div>
                 </div>   
               </div>
@@ -245,7 +246,7 @@
             <div class="col-12 col-md-8 col-lg-7">
               <div class="form-group">
                 <label>카드비밀번호 앞 두자리</label>
-                <input type="password" class="form-control" id="cardpwd" name="cardpwd">
+                <input type="password" class="form-control" id="cardpwd" name="cardpwd" maxlength="2">
               </div>
             </div>
             <div class="col-12 col-md-4 col-lg-5">
@@ -448,7 +449,10 @@
     <!-- Page specific javascripts-->
     <script src="${pageContext.request.contextPath}/js/payment/admin4b.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/payment/multi-step-form.js"></script>
+    <script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
     <script>
+    $(":input").inputmask();
+    
     function goPopup(){
          // 주소검색을 수행할 팝업 페이지를 호출합니다.
          // 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.

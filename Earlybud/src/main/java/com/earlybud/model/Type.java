@@ -1,13 +1,17 @@
 package com.earlybud.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Type {
-	private String TYPE_CODE;
-	private String NAME;
-	private String INFO;
-	private String OP_PRICE;
-	private String PURNUM;
-	
+	private Long type_code;
+	private Long item_code;
+	private String name;
+	private String info;
+	private Long price;
+	private Long purnum;
 }

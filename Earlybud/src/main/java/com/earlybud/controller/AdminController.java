@@ -1,18 +1,21 @@
 package com.earlybud.controller;
 
 import java.util.List;
+import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.earlybud.admin.service.AdminService;
+import com.earlybud.model.Item;
 import com.earlybud.model.Member;
 import com.earlybud.model.Message;
 
@@ -36,13 +39,41 @@ public class AdminController {
 	}
 	
 	@GetMapping("item_data")
-	public void listItem() {
+	public void listItem(Model model) {
 		log.info("admin item list");
+		List<Item> listItem  = service.listItem();
+		model.addAttribute("listItem", listItem);
+		
+		Date now = new Date(System.currentTimeMillis());
+		System.out.println("now: "+now);
+		model.addAttribute("now",now);
+	}
+	
+	@PostMapping("approveItem")
+	public @ResponseBody String updateApproveItem(int item_code) {
+		log.info("update approveItem");
+		System.out.println("approve call item_code: "+item_code);
+		int i =service.updateApproveItem(item_code);
+		System.out.println("update row: "+i);
+		if(i>0) {
+			System.out.println("update");
+			return "update";
+		}
+		return null;
+	}
+	
+	@PostMapping("rejectItem")
+	public void updateRejectItem(int item_code) {
+		log.info("update approveItem");
+		System.out.println("reject call item_code: "+item_code);
+		int i = service.updateRejectItem(item_code);
 	}
 	
 	@GetMapping("encore_data")
-	public void listEncore() {
+	public void listEncore(Model model) {
 		log.info("admin encore list");
+		List<Item> listItem = service.listItem();
+		model.addAttribute("listItem",listItem);	
 	}
 	
 	@GetMapping("member_data")

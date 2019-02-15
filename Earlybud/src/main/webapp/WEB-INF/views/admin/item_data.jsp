@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import= "java.util.*,java.sql.Date,com.earlybud.model.Item"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%@include file="header.jsp"%>
 
@@ -43,22 +44,58 @@
                                                 <th>목표금액</th>
                                                 <th>관리자승인</th>
                                             </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><img src="${pageContext.request.contextPath}/images/admin/book-1.jpg" alt="" /></td>
-                                                <td>Web Development Book</td>
+                        <!-------------------------------------------------->
+                        				<c:forEach items="${listItem}" var="Item">
+                                            <tr><td>${Item.item_code}</td>
+                                                <td><img src="${pageContext.request.contextPath}/uploads/reward/${Item.main_image}" alt="" /></td>
+                                                <td>${Item.title}</td>
                                                 <td>
-                                                    <button class="pd-setting">Active</button>
+ <!-- 날짜계산 -->                                                   
+<fmt:parseDate value="${Item.opendate}" var="strPlanDate" pattern="yyyy-MM-dd"/>
+<fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate"></fmt:parseNumber>
+<fmt:parseDate value="${Item.closingdate}" var="endPlanDate" pattern="yyyy-MM-dd"/>
+<fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate"></fmt:parseNumber>
+<fmt:parseDate value="${now}" var="nowDateformat" pattern="yyyy-MM-dd" />
+<fmt:parseNumber value="${nowDateformat.time / (1000*60*60*24)}" integerOnly="true" var="nowDate"></fmt:parseNumber>
+<c:choose>
+	<c:when test = "${endDate - nowDate < 0}">
+		<button class="dp-setting">Finished</button>
+	</c:when>
+	<c:otherwise>
+		<c:choose>
+			<c:when test = "${strDate - nowDate >= 0}">
+				<c:choose>
+					<c:when test = "${Item.admincall eq 0}">
+						<button class="ds-setting">Await Approval</button>
+					</c:when>
+					<c:otherwise>
+						<button class="ps-setting">Due</button>
+					</c:otherwise>
+				</c:choose>
+			</c:when>
+			<c:otherwise>
+				<button class="pd-setting">Active</button>
+			</c:otherwise>
+		</c:choose>
+	</c:otherwise>
+</c:choose>
+<!-- ${nowDate}/${endDate}/${strDate}  -->                                                                                       
                                                 </td>
-                                                <td>출판</td>
-                                                <td>66%</td>
-                                                <td>1000만원</td>
-                                                <td>1500만원</td>
+                                                <td>${Item.cat_name}</td>
+                                                <td><fmt:formatNumber value="${Item.cur_sum/Item.target_sum * 100 }" pattern=".00" />%</td>
+                                                <td><fmt:formatNumber value="${Item.cur_sum}" type="number"/></td>
+                                                <td><fmt:formatNumber value="${Item.target_sum}" type="number"/></td>
                                                 <td>
-                                                    <button data-toggle="tooltip" title="Approve" class="pd-setting-ed"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                                    <button data-toggle="tooltip" title="Reject" class="pd-setting-ed"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
+                                                	<c:choose>
+                                                	<c:when test="${Item.admincall eq 0}">
+                                                    	<button data-toggle="tooltip" title="Approve" class="pd-setting-ed approve_btn"><i class="fa fa-check" aria-hidden="true"></i></button>
+                                                    	<button data-toggle="tooltip" title="Reject" class="pd-setting-ed reject_btn"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
+                                                    </c:when>
+                                                    </c:choose>
                                                 </td>
                                             </tr>
+                                         </c:forEach>
+                        <!-------------------------------------------------->
                                             <tr>
                                                 <td>2</td>
                                                 <td><img src="${pageContext.request.contextPath}/images/admin/book-2.jpg" alt="" /></td>
@@ -161,6 +198,7 @@
           </div>
         </div>
       </div>
+      
     </main>
     <!-- Essential javascripts for application to work-->
     <script src="${pageContext.request.contextPath}/js/admin/jquery-3.2.1.min.js"></script>
@@ -172,6 +210,34 @@
     <!-- Page specific javascripts-->
     <!-- Google analytics script-->
     <script type="text/javascript">
+    $('.approve_btn').on('click',function(){
+    	var row = $(this).parent().parent().find("td");
+    	var code = row.eq(0).text();
+    	console.log("this itemCode: "+code);
+    	$.ajax({
+            method: 'post',
+            url: '../admin/approveItem', 
+            data: "item_code="+code,
+            success: function(){
+                console.log("update admincall!!");
+                row.eq(8).hide();
+            }
+  	  });
+    });
+    
+	$('.reject_btn').on('click',function(){
+		var code = $(this).parent().parent().find("td").eq(0).text();
+    	console.log("this itemCode: "+code);
+    	$.ajax({
+            method: 'post',
+            url: '../admin/rejectItem', 
+            data: "item_code="+code,
+            success: function(){
+                console.log("update reject admincall!!");
+            }
+  	  });
+    });
+    
       if(document.location.hostname == 'pratikborsadiya.in') {
       	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

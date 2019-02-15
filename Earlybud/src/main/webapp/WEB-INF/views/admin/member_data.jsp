@@ -69,24 +69,24 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
-    var table = $('#memberTable').DataTable( {
-        "columnDefs": [ {
-            "targets": -1,
-            "data": null,
-            "defaultContent": "<button>회원삭제</button>"
-        } ]
-    } );
- 
-    $('#memberTable tbody').on( 'click', 'button', function () {
-        var data = table.row( $(this).parents('tr') ).data();
-		if(confirm( data[0] +"회원을 정말 삭제하시겠습니까?") == true){
-			location.href='delete_member/'+ encodeURIComponent( data[0] ) ;
-        }else{
-            return false;
-        }
-    } );
-} );
+	$(document).ready(function() {
+	    var table = $('#memberTable').DataTable( {
+	        "columnDefs": [ {
+	            "targets": -1,
+	            "data": null,
+	            "defaultContent": "<button>회원삭제</button>"
+	        } ]
+	    } );
+	 
+	    $('#memberTable tbody').on( 'click', 'button', function () {
+	        var data = table.row( $(this).parents('tr') ).data();
+			if(confirm( data[0] +"회원을 정말 삭제하시겠습니까?") == true){
+				location.href='delete_member/'+ encodeURIComponent( data[0] ) ;
+	        }else{
+	            return false;
+	        }
+	    });
+	});
     </script>
   </body>
 </html>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.earlybud.model.Email;
+import com.earlybud.model.Item;
 import com.earlybud.model.Member;
 import com.earlybud.model.Message;
 
@@ -19,6 +20,30 @@ public class AdminDaoImpl implements AdminDao {
 	private SqlSession sqlSession;
 	private String ns = "com.earlybud.model.Member";
 	private String ns1= "com.earlybud.model.Message";
+	private String ns3= "com.earlybud.model.Item";
+	
+	@Override
+	public List<Item> listItem() {
+		log.info("listItem dao");
+		List<Item> listItem = sqlSession.selectList(ns3+".listItem");
+		return listItem;
+	}
+	
+	@Override
+	public int updateApproveItem(int item_code) {
+		log.info("update approve Admincall dao");
+		System.out.println("approve dao:"+item_code);
+		
+		int i =sqlSession.update(ns3 + ".approveItem", item_code);
+		System.out.println(""+i);
+		return i;
+	}
+	
+	@Override
+	public int updateRejectItem(int item_code) {
+		log.info("update reject Admincall dao");
+		return sqlSession.update(ns3+".rejectItem", item_code);
+	}
 	
 	@Override
 	public List<Member> listMember() {
@@ -26,7 +51,7 @@ public class AdminDaoImpl implements AdminDao {
 		System.out.println("memberdao");
 		List<Member> listM = sqlSession.selectList(ns+".listMember");
 		System.out.println("member list size: "+listM.size());
-		System.out.println("member auth: "+ listM.get(100));
+		//System.out.println("member auth: "+ listM.get(100));
 		return listM;
 	}
 

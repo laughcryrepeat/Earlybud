@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.earlybud.admin.dao.AdminDao;
 import com.earlybud.model.Email;
+import com.earlybud.model.Item;
 import com.earlybud.model.Member;
 import com.earlybud.model.Message;
 
@@ -19,6 +20,25 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Setter(onMethod_ = { @Autowired })
 	private AdminDao dao;
+	
+	
+	@Override
+	public List<Item> listItem() {
+		log.info("listItem service");
+		return dao.listItem();
+	}
+	
+	@Override
+	public int updateApproveItem(int item_code) {
+		log.info("updateAdmincall service");
+		return dao.updateApproveItem(item_code);
+	}
+	
+	@Override
+	public int updateRejectItem(int item_code) {
+		log.info("updateAdmincall service");
+		return dao.updateRejectItem(item_code);
+	}
 	
 	@Override
 	public List<Member> listMember() {

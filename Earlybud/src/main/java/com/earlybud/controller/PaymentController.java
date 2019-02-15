@@ -31,8 +31,8 @@ import com.earlybud.model.Member;
 import com.earlybud.payment.service.PaymentService;
 import com.earlybud.security.CustomNoOpPasswordEncoder;
 import com.earlybud.vo.AddrVo;
-import com.earlybud.vo.PaymentVo;
-import com.google.gson.JsonArray;
+import com.earlybud.model.Payment_Info;
+import com.earlybud.model.Purchase_Item;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.siot.IamportRestClient.IamportClient;
@@ -89,19 +89,19 @@ public class PaymentController {
 	}
 	
 	@RequestMapping(value="reserve_payment", method=RequestMethod.POST, produces="application/text; charset=utf8")
-	public @ResponseBody String registerBillingKey(HttpServletRequest request ,HttpServletResponse response, PaymentVo paymentVo) {
+	public @ResponseBody String registerBillingKey(HttpServletRequest request ,HttpServletResponse response, Payment_Info pi) {
 		// 연결
 		
 		String customer_uid = null;
 		log.info("registerBillingKey");
-		log.info("paymentVo nickname: "+paymentVo.getNickname());
-		String card_number = paymentVo.getCardnum();
-		String expiry = paymentVo.getExp_year() +"-"+ paymentVo.getExp_month() ;
-		String birth = paymentVo.getBirthdate();
-		String pwd_2digit = paymentVo.getCardpwd();
+		log.info("paymentVo nickname: "+pi.getNickname());
+		String card_number = pi.getCardnum();
+		String expiry = pi.getExp_year() +"-"+ pi.getExp_month() ;
+		String birth = pi.getBirthdate();
+		String pwd_2digit = pi.getCardpwd();
 		
 		//Member member = dao.read(paymentVo.getEmail());
-		customer_uid = getCustomerUid(paymentVo.getEmail());
+		customer_uid = getCustomerUid(pi.getEmail());
 		
 		System.out.println("customer_uid: "+customer_uid);
 		System.out.println("card_number: "+card_number);
@@ -123,11 +123,11 @@ public class PaymentController {
 			// 데이터
 			String param = "{\"card_number\": \""+card_number+"\", \"expiry\" : \""+expiry+"\", "
 					+ "\"birth\" : \""+birth+"\", \"pwd_2digit\" : \""+pwd_2digit+"\", \"pg\" : \"nictest04m\""
-					+ ",\"customer_name\":\""+paymentVo.getCard_owner()+"\""
-					+ ",\"customer_tel\":\""+paymentVo.getDel_phone()+"\" "
-					+ ",\"customer_email\": \""+paymentVo.getEmail()+"\""
-					+ ",\"customer_addr\": \""+paymentVo.getAddr1()+paymentVo.getAddr2()+"\" "
-					+ ",\"customer_postcode\": \""+paymentVo.getZip_code()+"\"}";
+					+ ",\"customer_name\":\""+pi.getCard_owner()+"\""
+					+ ",\"customer_tel\":\""+pi.getDel_phone()+"\" "
+					+ ",\"customer_email\": \""+pi.getEmail()+"\""
+					+ ",\"customer_addr\": \""+pi.getAddr1()+pi.getAddr2()+"\" "
+					+ ",\"customer_postcode\": \""+pi.getZip_code()+"\"}";
 			// 전송
 			OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
 			osw.write(param);
@@ -147,7 +147,7 @@ public class PaymentController {
 				System.out.println("code = "+code);
 				
 				if(code==0) {
-					reservePayment(paymentVo, customer_uid);
+					reservePayment(pi, customer_uid);
 				}else {
 					message = element.getAsJsonObject().get("message").getAsString();
 					System.out.println("message = "+message);
@@ -169,7 +169,7 @@ public class PaymentController {
 		return null;
 	}
 	
-	public void reservePayment(PaymentVo paymentVo, String customer_uid) {
+	public void reservePayment(Payment_Info pi, String customer_uid) {
 		log.info("reserve payment");
 		//log.info("paymentVo: "+paymentVo.getNickname());
 		//Member member = dao.read(paymentVo.getEmail());	
@@ -179,9 +179,9 @@ public class PaymentController {
 		System.out.println("sdf: "+sdf);
 		Calendar cal = Calendar.getInstance();
 		Date d;
-		String merchant_uid = getMerchantUid(paymentVo.getType_code());
+		String merchant_uid = getMerchantUid(pi.getType_code());
 		try { //closingdate +1 and + 15 mins
-			d = sdf.parse(paymentVo.getSchedule_at());
+			d = sdf.parse(pi.getSchedule_at());
 			cal.setTime(d);
 			cal.add(Calendar.DATE,1);
 			cal.add(Calendar.MINUTE, 15);
@@ -198,9 +198,21 @@ public class PaymentController {
 			e.printStackTrace();
 		}
 		
-		//customer_uid, merchant_uid update!! paymentVo insert!!
-		//스케줄된 purchase_item 테이블 pur_state 칼럼 업데이트!!
+		java.sql.Date now = new java.sql.Date(new java.util.Date().getTime());
+		
+		Purchase_Item purItem = new Purchase_Item(merchant_uid, customer_uid, pi.getEmail(), pi.getType_code(), pi.getAmount(), now, null, null, null, null);
+		//customer_uid, merchant_uid update!! payment_Info insert!!
+		service.insertPurchaseItem(purItem);//스케줄된 Purchase_Item insert!!
+		
+		Payment_Info payInfo = new Payment_Info(merchant_uid, pi.getNickname(), pi.getEmail(), pi.getDel_name(), pi.getDel_phone(),
+				pi.getZip_code(), pi.getAddr1(), pi.getAddr2(), pi.getCard_owner(), pi.getCardnum(),
+				pi.getBirthdate(), pi.getPur_type(), pi.getExp_month(), pi.getExp_year(), pi.getCardpwd(),
+				pi.getAmount(), pi.getSchedule_at(), pi.getType_code());
+		service.insertPaymentInfo(payInfo);//구매금액 아이템 Payment_Info 테이블 업데이트.
+		
+		//Type purnum update!!
 		//이메일과 쪽지 보내기.
+		
 
 		/*cal.set(Calendar.YEAR, Integer.parseInt(closingdate.substring(0,4)));
 		cal.set(Calendar.MONTH, Integer.parseInt(closingdate.substring(4,6))-1);
@@ -208,9 +220,9 @@ public class PaymentController {
 		cal.set(Calendar.HOUR, 00);
 		cal.set(Calendar.MINUTE, 10);*/
 	}
-	public void canclePayment(PaymentVo paymentVo) {
-		UnscheduleData unschedule_data = new UnscheduleData(paymentVo.getCustomer_uid());
-		unschedule_data.addMerchantUid(paymentVo.getMerchant_uid());
+	public void canclePayment(Purchase_Item pItem) {
+		UnscheduleData unschedule_data = new UnscheduleData(pItem.getCustomer_uid());
+		unschedule_data.addMerchantUid(pItem.getMerchant_uid());
 		
 		IamportResponse<List<Schedule>> unschedule_response = client.unsubscribeSchedule(unschedule_data);
 		List<Schedule> cancelled_schedule = unschedule_response.getResponse();
@@ -218,7 +230,7 @@ public class PaymentController {
 		//스케줄된 purchase_item 테이블 cancel 칼럼 업데이트!!
 	}
 	
-	private String getMerchantUid(String type_code) {
+	private String getMerchantUid(Long type_code) {
 		DateFormat df = new SimpleDateFormat("$$hhmmssSS");
 		//int n = (int) (Math.random() * 100) + 1;		
 		return type_code + "_" + df.format(new Date());
