@@ -13,8 +13,7 @@
 	<typeAlias alias="MessageList" type="com.earlybud.vo.MessageListVO"/>
 	<typeAlias alias="RewardVO" type="com.earlybud.vo.RewardVO"/>
 	<typeAlias alias="ItemOption" type="com.earlybud.model.ItemOption"/>
-	<typeAlias alias="CategoryCode" type="com.earlybud.model.Category"/>
-	<typeAlias alias="Type" type="com.earlybud.model.Type"/>
+	<typeAlias alias="CategoryCode" type="com.earlybud.model.Category"/>	
 	<typeAlias alias="Payment_Info" type="com.earlybud.model.Payment_Info"/>
 	<typeAlias alias="Item" type="com.earlybud.model.Item"/>
 
