@@ -11,6 +11,7 @@
 	<typeAlias alias="MemberLike" type="com.earlybud.vo.MemberLikeVO"/>
 	<typeAlias alias="SellerLike" type="com.earlybud.vo.SellerLikeVO"/>
 	<typeAlias alias="MessageList" type="com.earlybud.vo.MessageListVO"/>
+	<typeAlias alias="MessagePeopleList" type="com.earlybud.vo.MessagePeopleListVO"/>
 </typeAliases>
 <mappers>
 	<mapper resource="mybatis/Member.xml"/>
@@ -19,5 +20,6 @@
 	<mapper resource="mybatis/MemberLike.xml"/>
 	<mapper resource="mybatis/SellerLike.xml"/>
 	<mapper resource="mybatis/MessageList.xml"/>
+	<mapper resource="mybatis/MessagePeopleList.xml"/>
 </mappers>
 </configuration>

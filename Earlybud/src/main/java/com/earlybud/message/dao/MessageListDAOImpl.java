@@ -39,7 +39,7 @@ public class MessageListDAOImpl implements MessageListDAO {
 	public List<MessageListVO> getIamSenderList(String email) {
 		log.info("Message I sent ListDAO");
 		System.out.println("One Member's Sent Message List");
-		List<MessageListVO> IamSenderList = sqlSession.selectList(ns + "IamSender", email);
+		List<MessageListVO> IamSenderList = sqlSession.selectList(ns + "IamSenderx", email);
 		return IamSenderList;
 	}
 
@@ -47,7 +47,42 @@ public class MessageListDAOImpl implements MessageListDAO {
 	public List<MessageListVO> getYouareSenderList(String email) {
 		log.info("Message You Sent ListDAO");
 		System.out.println("One Member's Received Message List");
-		List<MessageListVO> YouareSenderList = sqlSession.selectList(ns + "YouareSender", email);
+		List<MessageListVO> YouareSenderList = sqlSession.selectList(ns + "YouareSenderx", email);
 		return YouareSenderList;
 	}
+
+	@Override
+	public int sendMessage() {
+		log.info("Send One Message");
+		System.out.println("Send One Message");
+		int send = sqlSession.insert(ns + "sendMessage");
+		return send;
+	}
+
+	@Override
+	public int sendMessageX(MessageListVO vo) {
+		log.info("Send One Message");
+		System.out.println("Send One Message");
+		int send = sqlSession.insert(ns + "sendMessage", vo);
+		return send;
+	}
+
+
+	@Override
+	public int changeRead() {
+		log.info("Update Message Read");
+		System.out.println("changeRead");
+		int send = sqlSession.insert(ns + "changeRead");
+		return send;
+	}
+
+	@Override
+	public int changeReadX(String message_code) {
+		log.info("Update Message Read");
+		System.out.println("changeRead");
+		int send = sqlSession.insert(ns + "changeRead", message_code);
+		return send;
+	}
+
+
 }

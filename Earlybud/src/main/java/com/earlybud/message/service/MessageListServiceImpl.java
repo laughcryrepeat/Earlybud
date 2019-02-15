@@ -41,4 +41,27 @@ public class MessageListServiceImpl implements MessageListService {
 		return dao.getYouareSenderList(email);
 	}
 
+	@Override
+	public int sendMessage() {
+		log.info("sending a message");
+		return dao.sendMessage();
+	}
+	
+	@Override
+	public int sendMessageX(MessageListVO vo) {
+		log.info("sending a message");
+		return dao.sendMessageX(vo);
+	}
+
+	@Override
+	public int changeRead() {
+		log.info("Read a message");
+		return dao.changeRead();
+	}
+
+	@Override
+	public int changeReadX(String message_code) {
+		log.info("Read a message");
+		return dao.changeReadX(message_code);
+	}
 }

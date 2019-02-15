@@ -1,5 +1,8 @@
 package com.earlybud.vo;
 
+import lombok.Data;
+
+@Data 
 public class MessageListVO {
 	private String MESSAGE_CODE;
 	private String ITEM_CODE;
