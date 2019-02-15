@@ -18,7 +18,6 @@
 	if (request.getParameter("receiver") != null){
 		receiver = (String) request.getParameter("receiver");
 	}
-
 %>
 <script type = "text/javascript">
 	function autoClosingAlert(selector, delay){
@@ -64,8 +63,6 @@
 			operForm.attr("action", "/message/modify").submit();
 		});
 	})
-
-
 </script>
 <script type = "text/javascript" src="/resources/js/messageList/message.js"></script>
 <script type="text/javascript">
@@ -186,4 +183,4 @@
       
     </div></div>
     </body>
-    </html>
+</html>
