@@ -82,9 +82,9 @@
             </small>
           </a>
         </div>
-        <input type="hidden" class="form-control" id="amount" name="amount" value="100">
+        <input type="hidden" class="form-control" id="amount" name="amount" value='${itemMap.get("PRICE")}'>
         <input type="hidden" class="form-control" id="schedule_at" name="schedule_at" value="2019-05-05">
-        <input type="hidden" class="form-control" id="type_code" name="type_code" value="10100">
+        <input type="hidden" class="form-control" id="type_code" name="type_code" value="${type_code}">
         <div id="account-collapse" class="collapse show" data-parent="#formOrder">
           <div class="text-secondary mb-3">
             <small>Step 1 of 4</small>

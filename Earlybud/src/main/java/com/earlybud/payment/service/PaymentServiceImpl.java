@@ -22,17 +22,17 @@ public class PaymentServiceImpl implements PaymentService {
 	private PaymentDao dao;
 	
 	@Override
-	public HashMap<String, Object> selectTypeInfo(Long type_code) {
+	public HashMap<String, Object> selectTypeInfo(long type_code) {
 		return dao.selectTypeInfo(type_code);
 	}
 	
 	@Override
-	public Type selectType(Long type_code) {
+	public Type selectType(long type_code) {
 		return dao.selectType(type_code);
 	}
 	
 	@Override
-	public Item selectItem(Long item_code) {
+	public Item selectItem(long item_code) {
 		return dao.selectItem(item_code);
 	}
 	

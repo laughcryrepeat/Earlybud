@@ -26,7 +26,7 @@ public class PaymentDaoImpl implements PaymentDao {
 	private String ns4 = "com.earlybud.model.Item";
 	
 	@Override
-	public HashMap<String, Object> selectTypeInfo(Long type_code) {
+	public HashMap<String, Object> selectTypeInfo(long type_code) {
 		HashMap<String,Object> itemMap = sqlSession.selectOne(ns4+".selectTypeInfo", type_code);
 		System.out.println("selectTypeInfo after sql");
 		System.out.println("itemMap: "+itemMap);
@@ -35,13 +35,13 @@ public class PaymentDaoImpl implements PaymentDao {
 	}
 	
 	@Override
-	public Type selectType(Long type_code) {
+	public Type selectType(long type_code) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(ns3+".selectType", type_code);
 	}
 	
 	@Override
-	public Item selectItem(Long item_code) {
+	public Item selectItem(long item_code) {
 		return sqlSession.selectOne(ns4+".selectItem", item_code);
 	}
 	

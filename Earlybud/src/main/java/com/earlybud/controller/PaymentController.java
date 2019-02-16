@@ -65,7 +65,7 @@ public class PaymentController {
 	IamportClient client = new IamportClient("6720365022563293","fR14uM6bvndQ4MUl2u0pJWLjkPH4tUHJMINhvTs0hGRmtLHvgHUZDGiYv02ZVKJItwZYqrYI8P4BBL6R");
 	
 	@GetMapping("input/{type_code}")
-	public String paymentInput(@PathVariable("type_code") Long type_code, Model model) {
+	public String paymentInput(@PathVariable("type_code") long type_code, Model model) {
 		log.info("payment input");
 		System.out.println("type_code: "+type_code);
 		//Type type = service.selectType(type_code);
@@ -75,6 +75,7 @@ public class PaymentController {
 		//model.addAttribute("item",item);
 		HashMap<String,Object> itemMap = service.selectTypeInfo(type_code);
 		model.addAttribute("itemMap",itemMap);
+		model.addAttribute("type_code",type_code);
 		return "payment/input";
 	}
 	
