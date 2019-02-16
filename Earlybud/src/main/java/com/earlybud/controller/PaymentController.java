@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,20 +20,24 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.earlybud.member.dao.MemberDAO;
+import com.earlybud.model.Item;
 import com.earlybud.model.Member;
 import com.earlybud.payment.service.PaymentService;
 import com.earlybud.security.CustomNoOpPasswordEncoder;
 import com.earlybud.vo.AddrVo;
 import com.earlybud.model.Payment_Info;
 import com.earlybud.model.Purchase_Item;
+import com.earlybud.model.Type;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.siot.IamportRestClient.IamportClient;
@@ -59,9 +64,18 @@ public class PaymentController {
 	
 	IamportClient client = new IamportClient("6720365022563293","fR14uM6bvndQ4MUl2u0pJWLjkPH4tUHJMINhvTs0hGRmtLHvgHUZDGiYv02ZVKJItwZYqrYI8P4BBL6R");
 	
-	@GetMapping("input")
-	public void paymentInput() {
+	@GetMapping("input/{type_code}")
+	public String paymentInput(@PathVariable("type_code") Long type_code, Model model) {
 		log.info("payment input");
+		System.out.println("type_code: "+type_code);
+		//Type type = service.selectType(type_code);
+		//System.out.println("item_code: "+type.getItem_code());
+		//Item item = service.selectItem(type.getItem_code());
+		//model.addAttribute("type",type);
+		//model.addAttribute("item",item);
+		HashMap<String,Object> itemMap = service.selectTypeInfo(type_code);
+		model.addAttribute("itemMap",itemMap);
+		return "payment/input";
 	}
 	
 	@RequestMapping("pwdCheck")
@@ -211,6 +225,7 @@ public class PaymentController {
 		service.insertPaymentInfo(payInfo);//구매금액 아이템 Payment_Info 테이블 업데이트.
 		
 		//Type purnum update!!
+		
 		//이메일과 쪽지 보내기.
 		
 

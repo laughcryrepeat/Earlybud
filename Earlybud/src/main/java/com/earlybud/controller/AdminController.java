@@ -63,10 +63,15 @@ public class AdminController {
 	}
 	
 	@PostMapping("rejectItem")
-	public void updateRejectItem(int item_code) {
+	public @ResponseBody String updateRejectItem(int item_code) {
 		log.info("update approveItem");
 		System.out.println("reject call item_code: "+item_code);
 		int i = service.updateRejectItem(item_code);
+		if(i>0) {
+			System.out.println("reject");
+			return "reject";
+		}
+		return null;
 	}
 	
 	@GetMapping("encore_data")
