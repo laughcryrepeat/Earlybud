@@ -46,5 +46,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 		member.setPwd(passwordEncoder.encode(member.getPwd()));
 		return dao.update(member);
 	}
+  public Member userDetail(String email) {
+	  return dao.read(email);
+	  
+  }
 }
 
