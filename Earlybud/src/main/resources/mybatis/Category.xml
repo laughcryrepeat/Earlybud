@@ -31,14 +31,13 @@
       		FROM(select ITEM_CODE, CAT_CODE, CAT_NAME, TITLE, SUMMARY, MAIN_IMAGE, IMAGE, 
       		NICKNAME, TO_CHAR(CUR_SUM, '999,999,999,999') as NOW_SUM, 
       		TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, SUCCESS, 
-      		CLOSINGDATE from ITEM natural join MEMBER 
+      		CLOSINGDATE, TRUNC(CLOSINGDATE-SYSDATE,0) as TIME from ITEM natural join MEMBER 
       		natural join CATEGORY natural join SELLER
-      			WHERE 
-	                CAT_CODE in 
-	                <foreach collection="categoryList" item="item" index="index" separator="," open="(" close=")">
-	                    #{item}
-	                </foreach>
-	                and SUCCESS=(${end_code}) and ADMINCALL=1
+      			WHERE       			
+      				<if test="catcode != 0">     
+      					CAT_CODE = ${catcode} and					
+					</if>					
+	            SUCCESS=(${end_code}) and ADMINCALL=1
       			ORDER BY ${standard}
       			) q) 
       		WHERE rn 

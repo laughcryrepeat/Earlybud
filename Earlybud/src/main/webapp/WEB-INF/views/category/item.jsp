@@ -464,24 +464,7 @@
                                 </a>
                             
                         </span>
-                            <h1><c:out value="${item.TITLE}"/></h1>
-                            <div class="project_sorting">
-                                <div class="tag_rel">
-                                    
-                                        <span class="screen_out">관련 태그</span>
-                                        
-                                        
-                                        
-                                            
-                                                
-                                                    
-                                                        <a href="#none" class="link_tag">#예술
-</a>
-                                                    
-                                        
-                                    
-                                </div>
-                            </div>
+                            <h1><c:out value="${item.TITLE}"/></h1>                            
                         </header>
                         <div class="summary_cont">
                             <div class="project_info">                                

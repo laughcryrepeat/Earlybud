@@ -4,25 +4,6 @@
 
 <%@include file="header.jsp" %>
 
- <script>
-// 		function changeCategory(CAT_CODE){	
-// 				console.log("여기여기여기여기");
-// 				var $categoryList = $('#category_list');	
-				
-// 		        $categoryList.find('li').each(function(){
-// 		                if ($(this).data('category-code') === CAT_CODE) {
-// 		                    $(this).addClass('on');
-// 		                } else {
-// 		                    $(this).removeClass('on');
-// 		                }
-// 		            });
-
-// 	            if ($categoryList.find('li.on').length < 1) {
-// 	                $categoryList.children('li:first').addClass('on');
-// 	            }
-// 	  }			
-</script>
-
 
 <main id="omcContainer" class="cont_support">
 			
@@ -35,7 +16,7 @@
 		                <button type="button" class="btn_select">전체<span class="ico_comm"></span></button>
 		                <ul id="category_list" class="list_cate" role="tablist">		                    
 		                   <c:forEach items="${list_category}" var="list_category">
-								<li <c:if test="${catcode eq list_category.CAT_CODE}">class="on"</c:if>><a href="../category/${list_category.CAT_CODE}" data-filter="*">${list_category.CAT_NAME}</a></li>
+								<li <c:if test="${catcode eq list_category.CAT_CODE}">class="on"</c:if>><a href="/../earlybud/category/${list_category.CAT_CODE}" data-filter="*">${list_category.CAT_NAME}</a></li>
 						</c:forEach>
 		               </ul>
 		               
@@ -128,7 +109,18 @@
 			                        <span class="invest_rate">
 			                            <c:out value="${list.PERCENT}"/>%
 			                        </span>
-			                    </div>	                  
+			                    </div>	
+			                    <c:choose>
+			                   	   <c:when test="${list.TIME > 0}">
+								    	 <span class="funding_type"><c:out value="${list.TIME}"/>일 남음</span>       
+									</c:when>											
+									<c:when test="${list.TIME < 0}">
+											 <span class="funding_type">종료</span>  												
+									</c:when>
+									<c:otherwise>
+									   	<span class="funding_type">오늘자정</span>		
+									</c:otherwise>
+			                    </c:choose>			                    			                                    
 					        </div>
 					    </div>
 					</li>			    
