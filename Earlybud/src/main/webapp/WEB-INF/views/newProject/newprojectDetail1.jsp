@@ -14,39 +14,34 @@
                 </header><!-- .entry-header -->
                 <div id="respond" class="comment-respond">
                   <form action="newprojectDetail2" method="post" enctype="multipart/form-data" id="myproject" class="comment-form" novalidate>
-                    <p class="comment-form-comment"><label for="comment">프로젝트 카테고리<span class="required">*</span></label>
-                    		<select id="cat_select" name="custValueCode">
+                    <p class="comment-form-comment"><label for="cat_code">프로젝트 카테고리<span class="required">*</span></label>
+                    		<select id="cat_code" name="cat_code">
 							    <option value="" selected="" disabled="">    카테고리 선택하기       </option>
-							    <option value="001">테크·가전</option>
-							    <option value="002">패션·잡화</option>
-							    <option value="003">뷰티</option>
-							    <option value="004">푸드</option>
-							    <option value="005">홈리빙</option>
-							    <option value="006">디자인소품</option>
-							    <option value="007">여행·레저</option>
-							    <option value="008">스포츠·모빌리티</option>
-							    <option value="009">반려동물</option>
-							    <option value="010">공연·컬쳐</option>
-							    <option value="011">소셜·캠페인</option>
-							    <option value="012">교육·키즈</option>
-							    <option value="013">게임·취미</option>
-							    <option value="014">출판</option>
-							    <option value="015">기부·후원</option>
+							    <option value="1">테크</option>
+							    <option value="2">홈리빙</option>
+							    <option value="3">푸드</option>
+							    <option value="4">패션</option>
+							    <option value="5">디자인</option>
+							    <option value="6">출판</option>
+							    <option value="7">취미</option>
+							    <option value="8">공연/컬처</option>
+							    <option value="9">캠페인</option>
 							</select>
                     </p>
-                    <p class="comment-form-author"><label for="author">프로젝트 제목<span class="required">*</span></label> <input id="title" name="title" type="text" value="" size="30" maxlength="245" required='required' /></p>
+                    <p class="comment-form-author"><label for="author">프로젝트 제목<span class="required">*</span></label> 
+                    	<input id="title" name="title" type="text" value="" size="30" maxlength="245" required='required' /></p>
                     <p class="comment-form-email"><label for="main_image">프로젝트 대표이미지<span class="required">*</span></label>
                     	<input id="main_image" type="text" class="upload-name" value="" size="30" maxlength="245" required='required' onclick="check()" readonly/>
                     	<input id="image_file" name="main_image" type="file" id="submit" class="file-hidden" value="file" required="required"></p>
                     <p class="comment-form-url">
                 	    <span>
                         <label for="startDate1">시작일<span class="required">*</span></label>
-                          <input class = "dateC" type="text" id="startDate1" name="startDate" required='required'/>
+                          <input class = "dateC" type="text" id="startDate1" name="opendate" required='required'/>
                       </span>
                       &nbsp;&nbsp;&nbsp;&nbsp;
                       <span>
                         <label for="endDate1">마감일<span class="required">*</span></label>
-                          <input class = "dateC" type="text" id="endDate1" name="endDate" required='required'/>
+                          <input class = "dateC" id="endDate1" type="text" name="closingdate" required='required'/>
                       </span>
                      </p>
                     <section id="categories-2" class="widget widget_categories">

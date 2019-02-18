@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!doctype html>
 <html>
 
@@ -20,10 +20,10 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.js"></script>
 
   <!-- include summernote -->
-  <link rel="stylesheet" href="summernote/dist/summernote-bs4.css">
-  <script type="text/javascript" src="summernote/dist/summernote-bs4.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/summernote/dist/summernote-bs4.css">
+  <script type="text/javascript" src="${pageContext.request.contextPath}/summernote/dist/summernote-bs4.js"></script>
 
-  <link rel="stylesheet"  href="summernote/examples/example.css">
+  <link rel="stylesheet"  href="${pageContext.request.contextPath}/summernote/examples/example.css">
 
   <script type="text/javascript">
     $(document).ready(function() {
@@ -209,13 +209,17 @@
     .widget_categories li:hover a {
       color: #db79f5;
     }
-
+	input[type="submit"] {
+      border-color: #ffffff;
+      background-color: #e1e1e1;
+      position: relative !important;
+      left: 500px !important;
+    }
     .menuStyle4 .contact-area .contact-block .contact-icon,
     button,
     .button,
     input[type="button"],
-    input[type="reset"],
-    input[type="submit"] {
+    input[type="reset"]{
       border-color: #db79f5;
     }
 
@@ -228,7 +232,6 @@
     .button,
     input[type="button"],
     input[type="reset"],
-    input[type="submit"],
     .menuStyle3 .main-navigation a:hover:after,
     .menuStyle3 .main-navigation .current-menu-item:after {
       background-color: #db79f5;
@@ -415,7 +418,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="site-branding col-md-4 col-sm-6 col-9">
-            <a href="https://demo.athemes.com/airi-shop/" class="custom-logo-link" rel="home" itemprop="url"><img width="100" height="60" src="images/earlybud.png" class="custom-logo" alt="Atu" itemprop="logo" /></a> </div><!-- .site-branding -->
+            <a href="https://demo.athemes.com/airi-shop/" class="custom-logo-link" rel="home" itemprop="url"><img width="100" height="60" src="${pageContext.request.contextPath}/images/earlybud.png" class="custom-logo" alt="Atu" itemprop="logo" /></a> </div><!-- .site-branding -->
 
           <div class="header-mobile-menu col-md-8 col-sm-6 col-3">
             <button class="mobile-menu-toggle" aria-controls="primary-menu">
@@ -427,10 +430,10 @@
           <nav id="site-navigation" class="main-navigation col-md-8">
             <div class="menu-menu-container">
               <ul id="primary-menu" class="menu">
-                <li id="menu-item-115" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-115"><a href="https://demo.athemes.com/airi-shop/">Home</a></li>
-                <li id="menu-item-116" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-116"><a href="https://demo.athemes.com/airi-shop/blog/">Blog</a></li>
-                <li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-142"><a href="https://demo.athemes.com/airi-shop/about-us/">About us</a></li>
-                <li id="menu-item-118" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-118"><a href="https://demo.athemes.com/airi-shop/sample-page/">Sample Page</a></li>
+                <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a href="main">Home</a></li>
+				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">소개</a></li>
+				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">카테고리</a></li>
+				<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
               </ul>
             </div>
             <ul class="header-search-cart">
@@ -475,15 +478,18 @@
                 </header><!-- .entry-header -->
 
                 <div id="respond" class="comment-respond">
-                  <form action="https://demo.athemes.com/airi-shop/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-                    <p class="comment-form-url"><label for="url">목표 금액<span class="required">*</span></label> <input id="target" name="target" type="url" value="" size="30" maxlength="200" /></p>
-                    <p class="comment-form-author"><label for="author">프로젝트 요약<span class="required">*</span></label> <input id="summary" name="summary" type="text" value="" size="30" maxlength="600" /></p>
-                    <p class="comment-form-email"><label for="email">선물 구성(옵션)</label> <input id="optionlist" name="optionlist" type="text" value="" size="30" maxlength="100" required='required' /></p>
-                    <p class="comment-form-comment"><label for="comment">프로젝트 스토리</label><span class="required">*</span><textarea id="content" class="summernote" name="content" cols="45" rows="8" maxlength="65525" required="required"></textarea></p>
+                  <form action="newprojectDetail3" method="post" enctype="multipart/form-data" id="myproject" class="comment-form" novalidate>
+                    <p class="comment-form-url"><label for="url">목표 금액<span class="required">*</span></label> 
+                    	<input id="target_sum" name="target_sum" type="number" value="" size="30" maxlength="200" /></p>
+                    <p class="comment-form-author"><label for="author">프로젝트 요약<span class="required">*</span></label> 
+                    	<input id="summary" name="summary" type="text" value="" size="30" maxlength="600" /></p>
+                    <p class="comment-form-email"><label for="email">선물 구성(옵션)</label> 
+                    	<input id="type_code" name="type_code" type="text" value="" size="30" maxlength="100" required='required' /></p>
+                    <p class="comment-form-comment"><label for="comment">프로젝트 스토리</label><span class="required">*</span>
+                    	<textarea id="content" class="summernote" name="content" cols="45" rows="8" maxlength="65525" required="required"></textarea></p>
                     <section id="categories-2" class="widget widget_categories">
                       <ul>
-                        <li class="cat-item cat-item-1"><a href="newprojectDetail3"> 다음 페이지 </a>
-                        </li>
+                        <input name="submit" type="submit" class="submit" value="다음페이지" />
                       </ul>
                     </section>
                     <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="b0c1d8b81d" /></p>

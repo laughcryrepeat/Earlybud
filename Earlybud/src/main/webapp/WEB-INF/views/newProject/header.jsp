@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!doctype html>
 <html lang="en-US">
 
@@ -29,8 +30,13 @@
   <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
   <script type="text/javascript">
     $(function(){
-    	$("#startDate1").datepicker();
-        $("#endDate1").datepicker();
+    	$("#startDate1").datepicker({dateFormat: 'yy-mm-dd'});
+        $("#endDate1").datepicker({ dateFormat: 'yy-mm-dd' }).bind("change",function(){
+            var minValue = $(this).val();
+            minValue = $.datepicker.parseDate("yy-mm-dd", minValue);
+            minValue.setDate(minValue.getDate()+1);
+            $("#endDate1").datepicker( "option", "minDate", minValue );
+        })
     });
   </script>
   <script type="text/javascript">
@@ -432,7 +438,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="site-branding col-md-4 col-sm-6 col-9">
-            <a href="https://demo.athemes.com/airi-shop/" class="custom-logo-link" rel="home" itemprop="url"><img width="100" height="60" src="images/earlybud.png" class="custom-logo" alt="Atu" itemprop="logo" /></a> </div><!-- .site-branding -->
+            <a href="https://demo.athemes.com/airi-shop/" class="custom-logo-link" rel="home" itemprop="url"><img width="100" height="60" src="${pageContext.request.contextPath}/images/earlybud.png" class="custom-logo" alt="Atu" itemprop="logo" /></a> </div><!-- .site-branding -->
 
           <div class="header-mobile-menu col-md-8 col-sm-6 col-3">
             <button class="mobile-menu-toggle" aria-controls="primary-menu">
@@ -444,11 +450,11 @@
           <nav id="site-navigation" class="main-navigation col-md-8">
             <div class="menu-menu-container">
               <ul id="primary-menu" class="menu">
-                <li id="menu-item-115" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-115"><a href="https://demo.athemes.com/airi-shop/">Home</a></li>
-                <li id="menu-item-116" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-116"><a href="https://demo.athemes.com/airi-shop/blog/">Blog</a></li>
-                <li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-142"><a href="https://demo.athemes.com/airi-shop/about-us/">About us</a></li>
-                <li id="menu-item-118" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-118"><a href="https://demo.athemes.com/airi-shop/sample-page/">Sample Page</a></li>
-              </ul>
+                <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a href="main">Home</a></li>
+				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">소개</a></li>
+				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">카테고리</a></li>
+				<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
+				</ul>
             </div>
             <ul class="header-search-cart">
               <li class="header-search">

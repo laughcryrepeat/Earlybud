@@ -32,7 +32,7 @@ public class MemberUploadController {
 	public String mypage(Model model){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
-		System.out.println("접속자: "+service.userDetail(email));
+		System.out.println("컨트롤러 접속자: "+service.userDetail(email));
 		model.addAttribute("user", service.userDetail(email));
 		return "/mypage/myPageDetail";
 	}
@@ -45,14 +45,13 @@ public class MemberUploadController {
 			@RequestParam("pwd") String pwd, @RequestParam("addr") String addr, @RequestParam("detail_addr") String detail_addr,
 			@RequestParam("phone") String phone,String error, Model model)
 		throws Exception{
-		Member m = new Member();
-		m.setEmail(member.getEmail());
-		m.setPwd(pwd);
-		m.setAddr(addr);
-		m.setDetail_addr(detail_addr);
-		m.setPhone(phone);
-		service.update(m);
-		log.info("회원정보가 수정되었습니다. 회원명: "+m);
-		return m;
+		member.setEmail(member.getEmail());
+		member.setPwd(pwd);
+		member.setAddr(addr);
+		member.setDetail_addr(detail_addr);
+		member.setPhone(phone);
+		service.update(member);
+		log.info("회원정보가 수정되었습니다. 회원명: "+member);
+		return member;
 	}
 }
