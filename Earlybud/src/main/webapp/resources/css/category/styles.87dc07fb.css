@@ -1787,7 +1787,7 @@ select {
 
 .prj_type_support .graph_support .num_per,
 .prj_type_support .num {
-  color: #6fa101; }
+  color: #b09bd6; }
 
 .prj_type_stock .graph_support .bar_graph {
   background-color: #05a7e2; }
@@ -19284,7 +19284,7 @@ a.fc-more:hover {
       vertical-align: top; }
 
 .reward_project_card .invest_rate, .reward_project_card .state_number {
-  color: #6fa101; }
+  color: #b09bd6; }
 
 .reward_project_card .bar_graph {
   background-color: #cfbaf4; }

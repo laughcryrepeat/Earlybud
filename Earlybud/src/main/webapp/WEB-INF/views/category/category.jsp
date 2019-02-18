@@ -4,148 +4,23 @@
 
 <%@include file="header.jsp" %>
 
-<script  type="text/javascript">
-var UI = UI || {
-	/**
-     * 프로젝트 목록 조회 페이지
-     */
-    ProjectList: {
-        /**
-         * 현재 화면에서 선택되있는 정렬 조건 값을 조회
-         * @returns {string}
-         */
-        getSortingValue: function() {
-            var $sorting = $('#sorting');
-            return ($sorting.length) ? $sorting.val() : '';
-        },
-        /**
-         * 현재 화면에서 선택되있는 카테고리의 코드를 조회
-         * @return {string} 선택된 카테고리 코드, DB에서 분류하는 코드와 동일한 값을 사용한다.
-         */
-        getSelectedCategoryCode: function() {
-            var $selectedCategory = $('#category_list').find('li.on');
-            return ($selectedCategory.length === 1) ? $selectedCategory.eq(0).data('category-code') : '';
-        },
-        /**
-         * 특정 카테고리에 선택 효과를 준다
-         * @param categoryCode {string} 프로젝트 카테고리 코드
-         */
-        changeSelectedCategory: function(categoryCode) {
-            var $categoryList = $('#category_list');
-            $categoryList.find('li').each(function() {
-                if ($(this).data('category-code') === categoryCode) {
-                    $(this).addClass('on');
-                } else {
-                    $(this).removeClass('on');
-                }
-            });
+ <script>
+// 		function changeCategory(CAT_CODE){	
+// 				console.log("여기여기여기여기");
+// 				var $categoryList = $('#category_list');	
+				
+// 		        $categoryList.find('li').each(function(){
+// 		                if ($(this).data('category-code') === CAT_CODE) {
+// 		                    $(this).addClass('on');
+// 		                } else {
+// 		                    $(this).removeClass('on');
+// 		                }
+// 		            });
 
-            if ($categoryList.find('li.on').length < 1) {
-                $categoryList.children('li:first').addClass('on');
-            }
-        }
-    }
-}
-
-// tab
-function tab(){
-
-    var tabOn = $(".list_cate .on a, .menu_list .on a"),
-        btnSelect = $(".btn_select"),
-        tabOnName = tabOn.text();
-    btnSelect.html(tabOnName);
-
-    function tabmenu(){
-        var ww = $(window).width(),
-            tab = $(".list_cate, .menu_list"),
-            tabMenuItem = $(".list_cate li, .menu_list li"),
-            tabMenu = $(".list_cate .link_cate, .menu_list li a, .list_cate a"),
-            tabFstMenu = $(".list_cate li:first-child .link_cate, .menu_list li:first-child a");
-
-        if(tab.parents().hasClass("section_part")){
-            //console.log('dddd')
-            if(ww < 1024 || isMobile.any){
-                btnSelect.on("click",function() {
-
-                    tab.toggleClass("open");
-                    event.stopPropagation();
-
-                });
-                tabMenu.on("click",function() {
-                    var tabName = $(this).text();
-                    btnSelect.html(tabName);
-                    tabMenuItem.removeClass("on");
-                    $(this).parent(tabMenuItem).addClass("on");
-                    tab.removeClass("open");
-                });
-            }else{
-
-                tabMenu.on("click",function() {
-                    tabMenuItem.removeClass("on");
-                    $(this).parent(tabMenuItem).addClass("on");
-                });
-
-            }
-        }else if(tab.parents().hasClass("select_cate")){
-
-            //console.log('dddd')
-            if(ww < 768 || isMobile.any){
-                btnSelect.on("click",function() {
-
-                    tab.toggleClass("open");
-                    event.stopPropagation();
-
-                });
-                tabMenu.on("click",function() {
-                    var tabName = $(this).text();
-                    btnSelect.html(tabName);
-                    tabMenuItem.removeClass("on");
-                    $(this).parent(tabMenuItem).addClass("on");
-                    tab.removeClass("open");
-                });
-            }else{
-
-                tabMenu.on("click",function() {
-                    tabMenuItem.removeClass("on");
-                    $(this).parent(tabMenuItem).addClass("on");
-                });
-
-            }
-        } else {
-            //console.log(ww);
-            if(ww < 640 || isMobile.any){
-                btnSelect.on("click",function() {
-
-                    tab.toggleClass("open");
-                    event.stopPropagation();
-
-                });
-                tabMenu.on("click",function() {
-                    var tabName = $(this).text();
-                    btnSelect.html(tabName);
-                    tabMenuItem.removeClass("on");
-                    $(this).parent(tabMenuItem).addClass("on");
-                    tab.removeClass("open");
-                });
-            }else{
-
-                tabMenu.on("click",function() {
-                    tabMenuItem.removeClass("on");
-                    $(this).parent(tabMenuItem).addClass("on");
-                });
-
-            }
-        }
-    }
-
-    $(window).on({
-        load : function() {
-            tabmenu();
-        }
-    });
-}
-
-
+// 	            if ($categoryList.find('li.on').length < 1) {
+// 	                $categoryList.children('li:first').addClass('on');
+// 	            }
+// 	  }			
 </script>
 
 
@@ -159,37 +34,32 @@ function tab(){
 		                <span class="screen_out">카테고리</span>
 		                <button type="button" class="btn_select">전체<span class="ico_comm"></span></button>
 		                <ul id="category_list" class="list_cate" role="tablist">		                    
-		                    <c:forEach items="${list_category}" var="list_category">
-								<c:if test="${list_category.CAT_CODE eq 0}">
-									<li><a href="../category/${list_category.CAT_CODE}" data-filter="*" onclick="changeCategory(${list_category.CAT_CODE})" <c:if test="${category eq list_category.CAT_CODE}">class="selected"</c:if>>전체</a></li>
-								</c:if>
-								<c:if test="${list_category.CAT_CODE ne 0}">
-									<li><a href="../category/${list_category.CAT_CODE}" data-filter="*" onclick="changeCategory(${list_category.CAT_CODE})" <c:if test="${category eq list_category.CAT_CODE}">class="selected"</c:if>>${list_category.CAT_NAME}</a></li>
-								</c:if>
-							</c:forEach>
-		                </ul>
+		                   <c:forEach items="${list_category}" var="list_category">
+								<li <c:if test="${catcode eq list_category.CAT_CODE}">class="on"</c:if>><a href="../category/${list_category.CAT_CODE}" data-filter="*">${list_category.CAT_NAME}</a></li>
+						</c:forEach>
+		               </ul>
 		               
-		                <script>
-						function changeCategory(category){							
-							location.replace(category); 
-						}
-						</script>
-		                
+		               
+		        <%
+					int count = 0;
+				%>
 		                
 		            </div>
 					<div class="wrap_project">
 			            <!-- 2017-08-07 수정 클래스 추가 -->
 			            <div class="box_select">
-							<select id="sorting" name="sorting" class="select_sort" title="후원형 프로젝트 목록 분류">                                
-                                <option value="impendence">마감임박순</option>
-                                <option value="latest">최신순</option>
-                                <option value="largest">인기순</option>
-								
-				        		
-				        		
-				        	</select>
+							<select id="order_code" id="order_code" class="select_sort" onchange="chageSelect()">                                
+                                <option <c:if test="${order eq 'start_date desc'}">selected</c:if> value="start_date desc">최신순</option>
+					  			<option <c:if test="${order eq 'apply_qty/success_qty desc'}">selected</c:if> value="apply_qty/success_qty desc">인기순</option>
+                                <option <c:if test="${order eq 'target_date'}">selected</c:if> value="target_date">마감 임박순</option>
+						  	</select>
+						  	
+						  	<select name="end_code" id="end_code" class="select_sort" onchange="chageSelect()">
+							  <option value="'0'" <c:if test="${end eq '0'}">selected</c:if>>진행중</option>
+							  <option value="'2', '1'" <c:if test="${end ne '0'}">selected</c:if>>종료</option>
+							</select>
 			        	</div>
-
+			        	
 			        	<!-- // 2017-08-07 수정 클래스 추가 -->
 			        	<span class="screen_out">프로젝트 목록</span>
 			            <ul class="list_prj" id="listPrj">
@@ -200,7 +70,7 @@ function tab(){
    			<span class="first_page_flag" style="display: none;"></span>
 
 
-			<div class="page-wrapper" style="display: block; overflow: auto;">
+			<div id=mycontainer class="page-wrapper" style="display: block; overflow: auto;">
 			
 			
 				<c:forEach items="${list}" var="list">
@@ -272,6 +142,7 @@ function tab(){
 		</ul>
   	</div>
   </article>
+  </div>
 </main>
 
 
