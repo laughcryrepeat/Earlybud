@@ -35,7 +35,7 @@ import lombok.extern.log4j.Log4j;
 //@RequestMapping(value = "category")
 //@RequestMapping("/category/*")	
 @AllArgsConstructor
-public class CategoryController {
+public class CategoryController {///////
 	
 	//private ItemService service;
 	private CategoryService service;
