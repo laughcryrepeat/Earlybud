@@ -30,7 +30,7 @@
       FROM (SELECT  q.*, rownum rn 
       		FROM(select ITEM_CODE, CAT_CODE, CAT_NAME, TITLE, SUMMARY, MAIN_IMAGE, IMAGE, 
       		NICKNAME, TO_CHAR(CUR_SUM, '999,999,999,999') as NOW_SUM, 
-      		TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, 
+      		TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, SUCCESS, 
       		CLOSINGDATE from ITEM natural join MEMBER 
       		natural join CATEGORY natural join SELLER
       			WHERE 
