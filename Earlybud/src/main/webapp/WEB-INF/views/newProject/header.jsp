@@ -1,40 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!doctype html>
-<html>
+<html lang="en-US">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="profile" href="http://gmpg.org/xfn/11">
-
-
-
   <!-- include jquery -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+
 
   <!-- include libs stylesheets -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.css" />
   <script src="http://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.5/umd/popper.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.js"></script>
-
-  <!-- include summernote -->
-  <link rel="stylesheet" href="summernote/dist/summernote-bs4.css">
-  <script type="text/javascript" src="summernote/dist/summernote-bs4.js"></script>
-
-  <link rel="stylesheet"  href="summernote/examples/example.css">
-
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('.summernote').summernote({
-        height: 300,
-        tabsize: 2
-      });
-    });
-  </script>
-
-
 
   <style id="kirki-css-vars">:root{}</style>
   <title>EarlyBud &#8211; MyPage</title>
@@ -42,6 +23,16 @@
   <link rel="alternate" type="application/rss+xml" title="Atu &raquo; Feed" href="https://demo.athemes.com/airi-shop/feed/" />
   <link rel="alternate" type="application/rss+xml" title="Atu &raquo; Comments Feed" href="https://demo.athemes.com/airi-shop/comments/feed/" />
   <link rel="alternate" type="application/rss+xml" title="Atu &raquo; Hello world! Comments Feed" href="https://demo.athemes.com/airi-shop/2018/08/20/hello-world/feed/" />
+  <!--datepicker  -->
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+  <script type="text/javascript">
+    $(function(){
+    	$("#startDate1").datepicker();
+        $("#endDate1").datepicker();
+    });
+  </script>
   <script type="text/javascript">
     window._wpemojiSettings = {
       "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/",
@@ -96,6 +87,22 @@
     }(window, document, window._wpemojiSettings);
   </script>
   <style type="text/css">
+  	.comment-form-email input[type="file"]{
+  		position: absolute !important; 
+  		width: 1px !important;
+  		height: 1px !important;
+  		padding: 0 !important;
+  		margin: -1px !important;
+  		overflow: hidden !important;
+  		clip:rect(0,0,0,0) !important;
+  		border: 0 !important;
+  	}
+  	.cat_select{
+  		width: 550px;
+  	}
+  	.dateC{
+      width: 270px !important;
+    }
     img.wp-smiley,
     img.emoji {
       display: inline !important;
@@ -108,7 +115,11 @@
       background: none !important;
       padding: 0 !important;
     }
-
+    .file{
+      background-color: #ffffff !important;
+      border: none !important;
+      padding: 0 !important;
+    }
     .active {
       background-color: #db79f5 !important;
     }
@@ -117,10 +128,12 @@
       background-color: #db79f5 !important;
       border: none !important;
     }
+    
     form{
       position: relative !important;
       left: 100px !important;
     }
+    
     form .form-submit{
       position: relative !important;
       top: 50px !important;
@@ -209,13 +222,17 @@
     .widget_categories li:hover a {
       color: #db79f5;
     }
-
+	input[type="submit"] {
+      border-color: #ffffff;
+      background-color: #e1e1e1;
+      position: relative !important;
+      left: 500px !important;
+    }
     .menuStyle4 .contact-area .contact-block .contact-icon,
     button,
     .button,
     input[type="button"],
-    input[type="reset"],
-    input[type="submit"] {
+    input[type="reset"]{
       border-color: #db79f5;
     }
 
@@ -228,7 +245,6 @@
     .button,
     input[type="button"],
     input[type="reset"],
-    input[type="submit"],
     .menuStyle3 .main-navigation a:hover:after,
     .menuStyle3 .main-navigation .current-menu-item:after {
       background-color: #db79f5;
@@ -384,6 +400,7 @@
         border-radius: 30px;
         margin: 15px auto 0;
         display: block;
+        border: none;
       }
     }
 
@@ -458,191 +475,3 @@
       </div>
 
     </header><!-- #masthead -->
-    <div id="content" class="site-content">
-
-      <div class="container">
-        <div class="row">
-          <div id="primary" class="content-area layout-default col-lg-8">
-            <main id="main" class="site-main">
-
-
-              <article id="post-1" class="post-1 post type-post status-publish format-standard hentry category-uncategorized">
-
-
-                <header class="entry-header">
-                  <span class="posted-on">EarlyBud</span>
-                  <h1 class="entry-title">프로젝트 올리기</h1>
-                </header><!-- .entry-header -->
-
-                <div id="respond" class="comment-respond">
-                  <form action="https://demo.athemes.com/airi-shop/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-                    <p class="comment-form-url"><label for="url">목표 금액<span class="required">*</span></label> <input id="target" name="target" type="url" value="" size="30" maxlength="200" /></p>
-                    <p class="comment-form-author"><label for="author">프로젝트 요약<span class="required">*</span></label> <input id="summary" name="summary" type="text" value="" size="30" maxlength="600" /></p>
-                    <p class="comment-form-email"><label for="email">선물 구성(옵션)</label> <input id="optionlist" name="optionlist" type="text" value="" size="30" maxlength="100" required='required' /></p>
-                    <p class="comment-form-comment"><label for="comment">프로젝트 스토리</label><span class="required">*</span><textarea id="content" class="summernote" name="content" cols="45" rows="8" maxlength="65525" required="required"></textarea></p>
-                    <section id="categories-2" class="widget widget_categories">
-                      <ul>
-                        <li class="cat-item cat-item-1"><a href="newprojectDetail3"> 다음 페이지 </a>
-                        </li>
-                      </ul>
-                    </section>
-                    <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="b0c1d8b81d" /></p>
-                    <p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="63" /></p>
-                  </form>
-
-                </div><!-- #respond -->
-
-          </div><!-- #comments -->
-
-          </main><!-- #main -->
-        </div><!-- #primary -->
-
-
-
-        <div id="sidebar-footer" class="footer-widgets" role="complementary">
-          <div class="container">
-            <div class="row">
-              <div class="sidebar-column col-md-3">
-                <section id="text-2" class="widget widget_text">
-                  <div class="textwidget">
-                    <p><img class="alignnone size-full wp-image-350" src="//demo.athemes.com/atu-shop/wp-content/uploads/sites/93/2018/09/airishop..png" alt="" width="66" height="24" /></p>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia dese mollit anim id est laborum.</p>
-                    <p><span style="color: #bfbfbf;">@2018 atu. All rights reserved.</span></p>
-                  </div>
-                </section>
-              </div>
-
-
-              <div class="sidebar-column col-md-3">
-                <section id="text-3" class="widget widget_text">
-                  <h3 class="widget-title">Contact us</h3>
-                  <div class="textwidget">
-                    <p><span style="color: #bfbfbf;">Email:</span> office@example.org</p>
-                    <p><span style="color: #bfbfbf;">Phone:</span> (+88) 999.888</p>
-                    <p><span style="color: #bfbfbf;">Address:</span> 25 Canal St., New York</p>
-                  </div>
-                </section>
-              </div>
-
-              <div class="sidebar-column col-md-3">
-                <section id="nav_menu-2" class="widget widget_nav_menu">
-                  <h3 class="widget-title">Quick links</h3>
-                  <div class="menu-quick-links-container">
-                    <ul id="menu-quick-links" class="menu">
-                      <li id="menu-item-119" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-119"><a href="#">About us</a></li>
-                      <li id="menu-item-120" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-120"><a href="#">Terms of service</a></li>
-                      <li id="menu-item-121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-121"><a href="#">Privacy policy</a></li>
-                    </ul>
-                  </div>
-                </section>
-              </div>
-              <div class="sidebar-column col-md-3">
-                <section id="athemes_social_widget-2" class="widget widget_athemes_social_widget">
-                  <h3 class="widget-title">Follow us</h3>
-                  <div class="menu-social-container">
-                    <ul id="menu-social" class="menu social-media-list clearfix">
-                      <li id="menu-item-122" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-122"><a href="https://facebook.com"><span class="screen-reader-text">Facebook</span></a></li>
-                      <li id="menu-item-123" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-123"><a href="https://twitter.com"><span class="screen-reader-text">Twitter</span></a></li>
-                      <li id="menu-item-124" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-124"><a href="https://instagram.com"><span class="screen-reader-text">Instagram</span></a></li>
-                      <li id="menu-item-125" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-125"><a href="https://linkedin.com"><span class="screen-reader-text">Linkedin</span></a></li>
-                    </ul>
-                  </div>
-                </section>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <footer id="colophon" class="site-footer">
-          <div class="container">
-            <div class="row">
-
-              <div class="site-info col-md-12">
-
-                <a href="https://wordpress.org/">Proudly powered by WordPress</a>
-                <span class="sep"> | </span>
-                Theme: <a href="https://athemes.com/theme/airi">Airi</a> by aThemes. </div><!-- .site-info -->
-
-            </div>
-          </div>
-        </footer><!-- #colophon -->
-      </div><!-- #page -->
-
-      <script type="text/javascript">
-        var c = document.body.className;
-        c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
-        document.body.className = c;
-      </script>
-      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/elementor/assets/lib/slick/slick.min.js?ver=1.8.1'></script>
-      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/airi-pro//js/elementor.js?ver=20181010'></script>
-      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/imagesloaded.min.js?ver=3.2.0'></script>
-      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/js/vendor/navigation.js?ver=20180717'></script>
-      <script type='text/javascript'>
-        /* <![CDATA[ */
-        var wpcf7 = {
-          "apiSettings": {
-            "root": "https:\/\/demo.athemes.com\/airi-shop\/wp-json\/contact-form-7\/v1",
-            "namespace": "contact-form-7\/v1"
-          },
-          "recaptcha": {
-            "messages": {
-              "empty": "Please verify that you are not a robot."
-            }
-          }
-        };
-        /* ]]> */
-      </script>
-      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.0.2'></script>
-      <script type='text/javascript'>
-        /* <![CDATA[ */
-        var wc_add_to_cart_params = {
-          "ajax_url": "\/airi-shop\/wp-admin\/admin-ajax.php",
-          "wc_ajax_url": "\/airi-shop\/?wc-ajax=%%endpoint%%",
-          "i18n_view_cart": "View cart",
-          "cart_url": "https:\/\/demo.athemes.com\/airi-shop",
-          "is_cart": "",
-          "cart_redirect_after_add": "no"
-        };
-        /* ]]> */
-      </script>
-      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=3.4.3'></script>
-      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70'></script>
-      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4'></script>
-      <script type='text/javascript'>
-        /* <![CDATA[ */
-        var woocommerce_params = {
-          "ajax_url": "\/airi-shop\/wp-admin\/admin-ajax.php",
-          "wc_ajax_url": "\/airi-shop\/?wc-ajax=%%endpoint%%"
-        };
-        /* ]]> */
-      </script>
-      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=3.4.3'></script>
-      <script type='text/javascript'>
-        /* <![CDATA[ */
-        var wc_cart_fragments_params = {
-          "ajax_url": "\/airi-shop\/wp-admin\/admin-ajax.php",
-          "wc_ajax_url": "\/airi-shop\/?wc-ajax=%%endpoint%%",
-          "cart_hash_key": "wc_cart_hash_c5a0d8ee19d1bc2cabc0f451f4f6d11f",
-          "fragment_name": "wc_fragments_c5a0d8ee19d1bc2cabc0f451f4f6d11f"
-        };
-        /* ]]> */
-      </script>
-      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=3.4.3'></script>
-      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/js/vendor/skip-link-focus-fix.js?ver=20151215'></script>
-      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/js/vendor/scripts.js?ver=20180223'></script>
-      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/js/custom/custom.min.js?ver=20180223'></script>
-      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/comment-reply.min.js?ver=4.9.9'></script>
-      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/wp-embed.min.js?ver=4.9.9'></script>
-      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/kirki/modules/webfont-loader/vendor-typekit/webfontloader.js?ver=3.0.28'></script>
-      <script type='text/javascript'>
-        WebFont.load({
-          google: {
-            families: ['Work Sans:500,400:cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai']
-          }
-        });
-      </script>
-      <script async="async" type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/akismet/_inc/form.js?ver=4.0.8'></script>
-
-</body>
-
-</html>

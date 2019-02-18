@@ -24,7 +24,14 @@
   		<result property="email" column="EMAIL"/>
   		<result property="cat_name" column="CAT_NAME"/>
   	</resultMap>
-
+	<!--
+	<resultMap id="payItemMap" type="java.util.HashMap">
+		<result column="title" property="title"/>
+        <result column="name" property="name"/>
+        <result column="price" property="price" javaType="int"/>
+        <result column="closingdate" property="closingdate"/>
+	</resultMap>
+	-->
   	<select id="listItem" resultType="Item">
   	select * from ITEM natural join CATEGORY order by ITEM_CODE desc
   	</select>
@@ -36,5 +43,14 @@
   	<update id="rejectItem" parameterType="Integer">
   	update ITEM set ADMINCALL=NULL where ITEM_CODE = #{item_code}
   	</update>
+  	
+  	<select id="selectItem" parameterType="Long" resultType="Item">
+  	select * from ITEM where ITEM_CODE= #{item_code}
+  	</select>
+  	
+  	<select id="selectTypeInfo" parameterType="Long" resultType="java.util.HashMap"> 
+	select price, closingdate, name, title from ITEM natural join TYPE 
+	where type_code = #{type_code}
+	</select>
   	
   </mapper>
