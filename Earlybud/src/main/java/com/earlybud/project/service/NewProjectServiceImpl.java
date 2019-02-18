@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.earlybud.model.Item;
 import com.earlybud.model.Seller;
+import com.earlybud.model.Type;
 import com.earlybud.project.dao.NewProjectDao;
 
 import lombok.Setter;
@@ -20,10 +21,13 @@ public class NewProjectServiceImpl implements NewProjectService {
 		System.out.println("서비스 들어왔어용");
 		return dao.save(item);
 	}
-	public int update(Item item) {
-		return dao.update(item);
+	public int update(Item item, Type type) {
+		System.out.println("서비스 들어왔어용");
+		return dao.update(item, type);
 	}
 	public int update2(Seller seller) {
+		System.out.println("서비스 들어왔어용");
 		return dao.update2(seller);
+		
 	}
 }

@@ -27,7 +27,7 @@
             <form action="/earlybud/join" method="post">
               <div class="field-wrap">
                 <label>
-                  이름<span class="req">*</span>
+                  닉네임<span class="req">*</span>
                 </label>
                 <input type="text"required name="nickname" autocomplete="off" />
               </div>

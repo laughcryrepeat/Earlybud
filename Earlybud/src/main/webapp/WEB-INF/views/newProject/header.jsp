@@ -31,12 +31,7 @@
   <script type="text/javascript">
     $(function(){
     	$("#startDate1").datepicker({dateFormat: 'yy-mm-dd'});
-        $("#endDate1").datepicker({ dateFormat: 'yy-mm-dd' }).bind("change",function(){
-            var minValue = $(this).val();
-            minValue = $.datepicker.parseDate("yy-mm-dd", minValue);
-            minValue.setDate(minValue.getDate()+1);
-            $("#endDate1").datepicker( "option", "minDate", minValue );
-        })
+        $("#endDate1").datepicker({ dateFormat: 'yy-mm-dd' });
     });
   </script>
   <script type="text/javascript">

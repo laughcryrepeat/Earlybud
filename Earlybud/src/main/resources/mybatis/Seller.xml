@@ -5,15 +5,15 @@
   <mapper namespace="com.earlybud.model.Seller">
   	<resultMap type="Seller" id="sellerMap"><!-- dto mapping -->
   		<result property="email" column="email"/>
-  		<result property="image" column="ITEM_CODE"/>
-  		<result property="seller_profile" column="seller_profile"/>
+  		<result property="image" column="image"/>
+  		<result property="info" column="info"/>
   		<result property="seller_loc" column="seller_loc"/>
   		<result property="seller_account" column="seller_account"/>
   	</resultMap>
   	
-  	<insert id="insertItem3" parameterType="String">
-  	update ITEM set
-  	image = #{image}, seller_profile = #{seller_profile}, seller_loc = #{seller_loc}, seller_account=#{seller_account}
-  	where email = #{email}
+  	<insert id="insertItem3" parameterType="Seller">
+  	insert into Seller (email, image, info, seller_loc, seller_account) 
+  	values 
+  	(#{email}, #{image}, #{info}, #{seller_loc}, #{seller_account})
   	</insert>
   </mapper>

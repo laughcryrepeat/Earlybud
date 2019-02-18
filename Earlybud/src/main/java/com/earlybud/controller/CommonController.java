@@ -48,10 +48,11 @@ public class CommonController {
    }
 
    @RequestMapping("/login")
-   public void loginInput(String error, String logout, Model model, HttpSession session) {
+   public void loginInput(HttpServletRequest request, String error, String logout, Model model, HttpSession session) {
       log.info("LOGIN error: " + error);
       log.info("logout: " + logout);
-
+      String referer = request.getHeader("Referer");
+      request.getSession().setAttribute("prevPage", referer);
       if (error != null) {
          model.addAttribute("error", "Login Error Check Your Account");
       }

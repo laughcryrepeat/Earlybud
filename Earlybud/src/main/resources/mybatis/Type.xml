@@ -24,5 +24,8 @@
    	<update id="updatePurnum" parameterType="Long"> 
    	update message set purnum += 1 where type_code =#{type_code}
    	</update>  
-  	
+  	<insert id="insertOption" parameterType="long">
+  	insert into TYPE(item_code, type_code, info, name, price, purnum) 
+  	values(#{item_code}, #{type_code}, #{info}, #{name}, #{price}, #{purnum})
+  	</insert>
   </mapper>

@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class Seller {
 	private String email;
 	private String image;
-	private String seller_profile;
+	private String info;
 	private String seller_loc;
-	private long seller_account;
+	private String seller_account;
 }
