@@ -35,7 +35,8 @@
   <div class="callout callout-info">
     선택하신 상품 : <a href="#">${itemMap.get("TITLE")}</a> / 타입 : ${itemMap.get("NAME")} /
      금액 : <fmt:formatNumber value='${itemMap.get("PRICE")}' type="number"/> 원 /
-     펀딩 마감일 : ${itemMap.get("CLOSINGDATE")} 
+  	<fmt:formatDate value='${itemMap.get("CLOSINGDATE+1")}' var="endPlanDate" pattern="yyyy-MM-dd"/>
+     펀딩 마감일 : ${endPlanDate}
   </div>
   <div class="nav-tabs-responsive">
     <ul class="nav nav-tabs-progress nav-tabs-4 mb-4">
@@ -83,7 +84,7 @@
           </a>
         </div>
         <input type="hidden" class="form-control" id="amount" name="amount" value='${itemMap.get("PRICE")}'>
-        <input type="hidden" class="form-control" id="schedule_at" name="schedule_at" value="2019-05-05">
+        <input type="hidden" class="form-control" id="schedule_at" name="schedule_at" value="${endPlanDate}">
         <input type="hidden" class="form-control" id="type_code" name="type_code" value="${type_code}">
         <div id="account-collapse" class="collapse show" data-parent="#formOrder">
           <div class="text-secondary mb-3">
@@ -93,13 +94,13 @@
             <div class="col-12 col-md-6 col-lg-6">
               <div class="form-group">
                 <label>Nick name</label>
-                <input type="text" class="form-control" id="nickname" name="nickname" value='<sec:authentication property="principal.member.nickname"/>'>
+                <input type="text" class="form-control" id="nickname" name="nickname" value='<sec:authentication property="principal.member.nickname"/>' readonly>
               </div>
             </div>
             <div class="col-12 col-md-6 col-lg-6">
               <div class="form-group">
                 <label>E-mail</label>
-                <input type="text" class="form-control" id="email" name="email" value='<sec:authentication property="principal.username"/>'>
+                <input type="text" class="form-control" id="email" name="email" value='<sec:authentication property="principal.username"/>' readonly>
               </div>
             </div>
           </div>

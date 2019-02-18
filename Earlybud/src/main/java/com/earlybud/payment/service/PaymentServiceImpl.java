@@ -52,8 +52,13 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 
 	@Override
-	public void updateType(Long type_code) {
+	public void updateType(long type_code) {
 		dao.updateType(type_code);
+	}
+
+	@Override
+	public void updateSum(long price, long type_code) {
+		dao.updateSum(price, type_code);
 	}
 
 }

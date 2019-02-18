@@ -69,10 +69,20 @@ public class PaymentDaoImpl implements PaymentDao {
 
 
 	@Override
-	public void updateType(Long type_code) {
+	public void updateType(long type_code) {
 		System.out.println("type update dao");
 		int i=sqlSession.update(ns3+".updatePurnum", type_code);
 		System.out.println("type update: "+i);
 	}
+
+	@Override
+	public void updateSum(long price, long type_code) {
+		System.out.println("update item price sum");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("price",price);
+		map.put("type_code", type_code);
+		int i = sqlSession.update(ns4+".updateSum", map);
+		System.out.println("item price sum update: "+i);
+	}	
 
 }

@@ -49,8 +49,12 @@
   	</select>
   	
   	<select id="selectTypeInfo" parameterType="Long" resultType="java.util.HashMap"> 
-	select price, closingdate, name, title from ITEM natural join TYPE 
+	select price, closingdate+1, name, title from ITEM natural join TYPE 
 	where type_code = #{type_code}
 	</select>
+	
+	<update id="updateSum" parameterType="hashMap">
+	update ITEMset CUR_SUM += #{price} where 
+	</update>
   	
   </mapper>

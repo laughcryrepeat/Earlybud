@@ -74,8 +74,10 @@ public class PaymentController {
 		//model.addAttribute("type",type);
 		//model.addAttribute("item",item);
 		HashMap<String,Object> itemMap = service.selectTypeInfo(type_code);
+		System.out.println("itemMap.get('CLOSINGDATE+1'):"+itemMap.get("CLOSINGDATE+1"));
 		model.addAttribute("itemMap",itemMap);
 		model.addAttribute("type_code",type_code);
+		
 		return "payment/input";
 	}
 	
@@ -185,9 +187,7 @@ public class PaymentController {
 	}
 	
 	public void reservePayment(Payment_Info pi, String customer_uid) {
-		log.info("reserve payment");
-		//log.info("paymentVo: "+paymentVo.getNickname());
-		//Member member = dao.read(paymentVo.getEmail());	
+		log.info("reserve payment");	
 		ScheduleData schedule_data = new ScheduleData(customer_uid);
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -195,10 +195,10 @@ public class PaymentController {
 		Calendar cal = Calendar.getInstance();
 		Date d;
 		String merchant_uid = getMerchantUid(pi.getType_code());
-		try { //closingdate +1 and + 15 mins
+		try { //closingdate+1 and + 15 mins
 			d = sdf.parse(pi.getSchedule_at());
 			cal.setTime(d);
-			cal.add(Calendar.DATE,1);
+			//cal.add(Calendar.DATE,1);
 			cal.add(Calendar.MINUTE, 15);
 			Date d1 = cal.getTime();
 			
@@ -225,9 +225,11 @@ public class PaymentController {
 				pi.getAmount(), pi.getSchedule_at(), pi.getType_code());
 		service.insertPaymentInfo(payInfo);//구매금액 아이템 Payment_Info 테이블 업데이트.
 		
-		//Type purnum update!!
+		//Type purnum update!! 아이템 Item 테이블 팔린 금액 더하기.
+		service.updateType(pi.getType_code());
+		service.updateSum(pi.getAmount(),pi.getType_code());
 		
-		//이메일과 쪽지 보내기.
+		//이후 뷰단으로 돌아가서 ajax로  결제 컨펌 이메일과 쪽지 보내기.
 		
 
 		/*cal.set(Calendar.YEAR, Integer.parseInt(closingdate.substring(0,4)));
@@ -244,6 +246,8 @@ public class PaymentController {
 		List<Schedule> cancelled_schedule = unschedule_response.getResponse();
 		System.out.println("cancelled_schedule: "+cancelled_schedule);
 		//스케줄된 purchase_item 테이블 cancel 칼럼 업데이트!!
+		
+		//취소결제 이메일 메세지
 	}
 	
 	private String getMerchantUid(Long type_code) {

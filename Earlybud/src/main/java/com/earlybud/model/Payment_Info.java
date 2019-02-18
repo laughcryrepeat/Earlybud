@@ -24,7 +24,7 @@ public class Payment_Info {
 	private String exp_month;
 	private String exp_year;
 	private String cardpwd;
-	private Long amount;
+	private long amount;
 	private String schedule_at;
-	private Long type_code;
+	private long type_code;
 }
