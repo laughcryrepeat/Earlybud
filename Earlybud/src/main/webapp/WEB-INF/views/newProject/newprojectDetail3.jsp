@@ -487,7 +487,12 @@
                     	<input id="option_type" name="option_type" type="text" value="" size="30" maxlength="100" required='required' /></p>
                     	<div id="myModal" class="modal">
                     		<div class="modal-content">
-                    			<p>190218 옵션 모달창을 띄움</p>
+                    			<p>
+                    				<input id="type_code" name="type_code" type="text" size="1" maxlength="2" />
+                    				<input id="name" name="name" type="text" size="20" maxlength="60" />
+                    				<input id="info" name="info" type="text" size="30" maxlength="100" />
+                    				<input id="purnum" name="purnum" type="text" size="5" maxlength="10" />
+                    			</p>
                     		</div>
                     	</div>
                     <p class="comment-form-comment"><label for="comment">프로젝트 스토리</label><span class="required">*</span>
