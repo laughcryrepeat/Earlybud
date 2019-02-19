@@ -74,7 +74,7 @@ public class PaymentController {
 		//model.addAttribute("type",type);
 		//model.addAttribute("item",item);
 		HashMap<String,Object> itemMap = service.selectTypeInfo(type_code);
-		System.out.println("itemMap.get('CLOSINGDATE+1'):"+itemMap.get("CLOSINGDATE+1"));
+		System.out.println("itemMap.get('CLOSINGDATE-1'):"+itemMap.get("CLOSINGDATE-1"));
 		model.addAttribute("itemMap",itemMap);
 		model.addAttribute("type_code",type_code);
 		
@@ -106,7 +106,7 @@ public class PaymentController {
 	}
 	
 	@RequestMapping(value="reserve_payment", method=RequestMethod.POST, produces="application/text; charset=utf8")
-	public @ResponseBody String registerBillingKey(HttpServletRequest request ,HttpServletResponse response, Payment_Info pi) {
+	public @ResponseBody String registerBillingKey(HttpServletRequest request ,HttpServletResponse response, Payment_Info pi, long item_code) {
 		// 연결
 		
 		String customer_uid = null;
@@ -164,7 +164,7 @@ public class PaymentController {
 				System.out.println("code = "+code);
 				
 				if(code==0) {
-					reservePayment(pi, customer_uid);
+					reservePayment(pi, customer_uid, item_code);
 				}else {
 					message = element.getAsJsonObject().get("message").getAsString();
 					System.out.println("message = "+message);
@@ -186,7 +186,7 @@ public class PaymentController {
 		return null;
 	}
 	
-	public void reservePayment(Payment_Info pi, String customer_uid) {
+	public void reservePayment(Payment_Info pi, String customer_uid, long item_code) {
 		log.info("reserve payment");	
 		ScheduleData schedule_data = new ScheduleData(customer_uid);
 		
@@ -198,7 +198,7 @@ public class PaymentController {
 		try { //closingdate+1 and + 15 mins
 			d = sdf.parse(pi.getSchedule_at());
 			cal.setTime(d);
-			//cal.add(Calendar.DATE,1);
+			cal.add(Calendar.DATE,1);
 			cal.add(Calendar.MINUTE, 15);
 			Date d1 = cal.getTime();
 			
@@ -215,7 +215,8 @@ public class PaymentController {
 		
 		java.sql.Date now = new java.sql.Date(new java.util.Date().getTime());
 		
-		Purchase_Item purItem = new Purchase_Item(merchant_uid, customer_uid, pi.getEmail(), pi.getType_code(), pi.getAmount(), now, null, null, null, null);
+		Purchase_Item purItem = new Purchase_Item(merchant_uid, customer_uid, pi.getEmail(), item_code, 
+				pi.getType_code(), pi.getAmount(), now, null, null, null, null);
 		//customer_uid, merchant_uid update!! payment_Info insert!!
 		service.insertPurchaseItem(purItem);//스케줄된 Purchase_Item insert!!
 		
@@ -229,8 +230,7 @@ public class PaymentController {
 		service.updateType(pi.getType_code());
 		service.updateSum(pi.getAmount(),pi.getType_code());
 		
-		//이후 뷰단으로 돌아가서 ajax로  결제 컨펌 이메일과 쪽지 보내기.
-		
+		//이후 뷰단으로 돌아가서 ajax로  결제 컨펌 이메일과 쪽지 보내기.(결제파트 완료)
 
 		/*cal.set(Calendar.YEAR, Integer.parseInt(closingdate.substring(0,4)));
 		cal.set(Calendar.MONTH, Integer.parseInt(closingdate.substring(4,6))-1);
@@ -246,8 +246,8 @@ public class PaymentController {
 		List<Schedule> cancelled_schedule = unschedule_response.getResponse();
 		System.out.println("cancelled_schedule: "+cancelled_schedule);
 		//스케줄된 purchase_item 테이블 cancel 칼럼 업데이트!!
-		
-		//취소결제 이메일 메세지
+		//Type purnum 한개빼는것 update!! 아이템 Item 테이블 팔린 금액 빼기.
+		//취소 이메일 메세지
 	}
 	
 	private String getMerchantUid(Long type_code) {
