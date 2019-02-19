@@ -3,7 +3,7 @@ $("#pwd").keyup(function(){
     var nick = formOrder.nickname.value;
     console.log(str);
     var request = $.ajax({
-        url:"../payment/pwdCheck", 
+        url:"/earlybud/payment/pwdCheck", 
         method:"post", 
         data:{pwd:str, nickname:nick}, 
         dataType:"html"});
@@ -27,12 +27,13 @@ $('[data-form-step]').on('click', function () {
 
 $('#submit_btn').on('click', function(e) {
 	//console.log( $('#formOrder').serializeArray());
+	var info = $('.callout-info').text();
     var serializeArray = $('#formOrder').serializeArray();
     $('.nav-tabs-progress').find('.nav-item').last().addClass('complete');
     console.log("before ajax");
     $.ajax({
         method: 'post',
-        url: '../payment/reserve_payment', 
+        url: '/earlybud/payment/reserve_payment', 
         data: serializeArray,
         success: function(data){
             console.log(data);
@@ -42,14 +43,36 @@ $('#submit_btn').on('click', function(e) {
             	$('#fail_modal').modal({backdrop: 'static', keyboard: false});
             }else{
             	console.log("결제예약완료");
+            	console.log("mailto: "+formOrder.email.value);
+            	console.log("nickname:"+formOrder.nickname.value);
+            	console.log("info: "+info);
+            	$.ajax({
+            		type:'post',
+                    url: '/earlybud/send_mail',
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                    	"mailto": formOrder.email.value,
+                    	"mailsubject": "얼리버드 상품 결제예약이 완료되었습니다.",
+                    	"mailcontent": "주문하신 상품 "+ info +" 자정에 예약결제됩니다. 예약 내역은 마이페이지에서 확인가능합니다."
+                    	}),
+                    success: function(){
+                        console.log("확인 메일&메세지 보냄");
+                        //$('#reserve_modal').modal({backdrop: 'static', keyboard: false});
+                        
+                    }
+                });
             	$('#reserve_modal').modal({backdrop: 'static', keyboard: false});
             }
         }
     });
   e.preventDefault();//기본이벤트 제거
 });
-$('.btn-secondary').on('click',function(){
-	location.href="input";
+$('#fail').on('click',function(){
+	location.href="../input/"+formOrder.type_code.value;
+});
+$('#done').on('click',function(){
+	location.href="/earlybud/reward?item_code="+formOrder.item_code.value;
 });
 var payment = {}
 $(document).ready(function(){

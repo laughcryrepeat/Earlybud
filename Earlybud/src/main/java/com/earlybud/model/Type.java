@@ -13,5 +13,5 @@ public class Type {
 	private String name;
 	private String info;
 	private Long price;
-	private Long purnum;
+	private Long pur_num;
 }

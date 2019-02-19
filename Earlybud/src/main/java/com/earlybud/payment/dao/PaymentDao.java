@@ -14,5 +14,6 @@ public interface PaymentDao {
 	String pwdCheck(String nickname);
 	void insertPurchaseItem(Purchase_Item purItem);
 	void insertPaymentInfo(Payment_Info payInfo);
-	void updateType(Long type_code);
+	void updateType(long type_code);
+	void updateSum(long price, long type_code);
 }
