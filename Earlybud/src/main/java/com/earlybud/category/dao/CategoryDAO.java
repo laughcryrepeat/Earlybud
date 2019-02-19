@@ -14,7 +14,7 @@ public interface CategoryDAO {
 	
 	public List<Category> getList();
 	public List<CategoryVO> getMainList();
-	int count();
+	int countItem(HashMap map);
 	List<CategoryVO> itemList(PageVO vo);
 	public List<CategoryVO> selectCategory(HashMap map);
 }

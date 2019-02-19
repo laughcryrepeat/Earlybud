@@ -8,6 +8,7 @@ import com.earlybud.model.ItemOption;
 public class RewardVO {
   
   private String TOTAL_PUR;	//총판매량
+  private String CAT_CODE;
   private String CAT_NAME;
   private String TITLE;
   private String MAIN_IMAGE;

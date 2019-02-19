@@ -1,34 +1,4 @@
 @charset "UTF-8";
-@font-face {
-  font-family: 'Spoqa Han Sans';
-  font-style: normal;
-  font-weight: 200;
-  src: local(SpoqaHanSans-Thin), url("/omc/asset/fonts/SpoqaHanSans-Thin.woff2") format("woff2"), url("/omc/asset/fonts/SpoqaHanSans-Thin.woff") format("woff"), url("/omc/asset/fonts/SpoqaHanSans-Thin.otf") format("opentype"); }
-
-@font-face {
-  font-family: 'Spoqa Han Sans';
-  font-style: normal;
-  font-weight: 300;
-  src: local(SpoqaHanSans-Light), url("/omc/asset/fonts/SpoqaHanSans-Light.woff2") format("woff2"), url("/omc/asset/fonts/SpoqaHanSans-Light.woff") format("woff"), url("/omc/asset/fonts/SpoqaHanSans-Light.otf") format("opentype"); }
-
-@font-face {
-  font-family: 'Spoqa Han Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: local(NotoSansKR-Regular), url("/omc/asset/fonts/SpoqaHanSans-Regular.woff2") format("woff2"), url("/omc/asset/fonts/SpoqaHanSans-Regular.woff") format("woff"), url("/omc/asset/fonts/SpoqaHanSans-Regular.otf") format("opentype"); }
-
-@font-face {
-  font-family: 'Spoqa Han Sans';
-  font-style: normal;
-  font-weight: 500;
-  src: local(NotoSansKR-Bold), url("/omc/asset/fonts/SpoqaHanSans-Bold.woff2") format("woff2"), url("/omc/asset/fonts/SpoqaHanSans-Bold.woff") format("woff"), url("/omc/asset/fonts/SpoqaHanSans-Bold.otf") format("opentype"); }
-
-@font-face {
-  font-family: 'FontAwesome';
-  src: url("/omc/asset/fonts/fontawesome-webfont.eot?v=4.7.0");
-  src: url("/omc/asset/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("/omc/asset/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("/omc/asset/fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("/omc/asset/fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("/omc/asset/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
-  font-weight: normal;
-  font-style: normal; }
 
 .fa {
   display: inline-block;
@@ -12171,7 +12141,7 @@ a.fc-more:hover {
     border: 1px solid #d6d6d6;
     border-radius: 5px;
     background-color: #fff;
-    background-image: url(/omc/asset/images/ico_down.png);
+    background-image: url(ico_down.png);
     background-repeat: no-repeat;
     background-position: 100% 50%;
     color: #cfbaf4;

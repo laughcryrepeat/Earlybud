@@ -14,13 +14,7 @@
 	<link rel='dns-prefetch' href='//s.w.org' />
 	<link rel="alternate" type="application/rss+xml" title="Atu &raquo; Feed" href="https://demo.athemes.com/airi-portfolio/feed/" />
 	<link rel="alternate" type="application/rss+xml" title="Atu &raquo; Comments Feed" href="https://demo.athemes.com/airi-portfolio/comments/feed/" />
-<script type="text/javascript">
-	$(function(){
-		$('.project-filter').mouseenter(function(){
-			$('.project-filter').css("background-color", '#cfbaf4')
-		});
-	});
-</script>
+
 	<script type="text/javascript">
 		window._wpemojiSettings = {
 			"baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/",
@@ -101,7 +95,6 @@
 	<link rel='stylesheet' id='airi-font-awesome-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/css/font-awesome/css/font-awesome.min.css?ver=4.9.9' type='text/css' media='all' />
 	<link rel='stylesheet' id='elementor-icons-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=3.8.0' type='text/css' media='all' />
 	<link rel='stylesheet' id='elementor-animations-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=2.2.6' type='text/css' media='all' />
-	<link rel='stylesheet' id='elementor-frontend-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=2.2.6' type='text/css' media='all' />
 	<link rel='stylesheet' id='elementor-post-4-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/uploads/sites/92/elementor/css/post-4.css?ver=1540206708' type='text/css' media='all' />
 	<link rel='stylesheet' id='kirki-styles-airi-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/kirki/assets/css/kirki-styles.css?ver=3.0.33' type='text/css' media='all' />
 	
@@ -282,8 +275,6 @@
 			color: #595959;
 		}
 	</style>
-	<script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
-	<script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
 	<link rel='https://api.w.org/' href='https://demo.athemes.com/airi-portfolio/wp-json/' />
 	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://demo.athemes.com/airi-portfolio/xmlrpc.php?rsd" />
 	<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://demo.athemes.com/airi-portfolio/wp-includes/wlwmanifest.xml" />
@@ -346,167 +337,6 @@
 <!-- End Facebook Pixel Code -->
 
     
-    <script type="text/javascript">
-	    $(document).ready(function(){
-	        // 실제 카테고리 변경 처리는 ui.js 에서
-            // 여기선 프로젝트를 다시 로드하기만 한다
-            $('#category_list li').click(function() {
-                if ($(this).data('category-code')) {
-                    $('#sorting').val('latest');
-                } else {
-                    $('#sorting').val('highest');
-                }
-
-                changeHashParameters();
-                loadInitialPage(1);
-            });
-
-            $('#sorting').change(function() {
-                $(this).blur();
-                changeHashParameters();
-                loadInitialPage(1);
-			});
-
-            // 해시 프래그먼트로부터 페이지 상태 복원
-            var hashParams = CommonUtil.getHashParam();
-            var categoryCode = (hashParams.hasOwnProperty('category')) ? hashParams.category : null;
-            var sorting = (hashParams.hasOwnProperty('sorting')) ? hashParams.sorting : null;
-            UI.ProjectList.changeSelectedCategory(categoryCode);
-            if (sorting) {
-                $('#sorting').val(sorting);
-            }
-
-            // 스크롤링을 통한 자동 프로젝트 목록 로딩을 위한 설정
-            UI.DynamicPageHelper.setPrevPageLoader(loadPrevPage);
-            UI.DynamicPageHelper.setNextPageLoader(loadNextPage);
-            var initPage = (hashParams.hasOwnProperty('page')) ? parseInt(hashParams.page) : 1;
-            initPage = (initPage) ? initPage : 1;
-            UI.DynamicPageHelper.on(initPage);
-	        loadInitialPage(initPage);
-		});
-
-        /**
-         * 최초 페이지를 로드한다.
-         * @param initPage {number} 최초 로드할 페이지
-         */
-        function loadInitialPage(initPage) {
-            if (!initPage || typeof initPage !== 'number') {
-                console.error('페이지가 지정되지 않았습니다.');
-            }
-            UI.DynamicPageHelper.resetInitPage(initPage);
-
-            $('#listPrj').empty();
-
-            UI.DynamicPageHelper.lockLoad();
-            loadProjectList(initPage, null, true);
-        }
-
-        /**
-         * 프로젝트 목록을 페이지 단위로 조회한다.
-         * @param page {number} (required) 로드할 페이지
-         * @param order {null|string} [optional] 로드 내용을 붙일 위치 목록의 위('prev') 또는 아래(null|'next')
-         * @param init {boolean} [optional] 첫 로드일 경우 true
-         */
-        function loadProjectList(page, order, init) {
-           // var sorting = UI.ProjectList.getSortingValue();
-           // var projectCategory = UI.ProjectList.getSelectedCategoryCode();
-
-            if (init) {
-                UI.DynamicPageHelper.showInitLoading($('#listPrj'));
-			} else {
-                UI.DynamicPageHelper.showLoading($('#listPrj'), order);
-			}
-
-            $.ajax({
-                url: '/project/list',
-                type: 'POST',
-                dataType: 'html',
-                data: {
-                    projectType: 'reward',
-                    pageIndex: page,
-                    sorting: sorting,
-                    projectCategory: projectCategory
-                },
-                success: function(data) {
-                    var lastScrollTop = $(document).scrollTop();
-
-                    if (order && order === 'prev') {
-                        $('#listPrj').prepend(data);
-                    } else {
-                        $('#listPrj').append(data);
-                    }
-
-                    $('.project_card[data-page-number="' + page + '"]').find('.project_detail_link').click(function() {
-                        var projectSeq = $(this).data('project-seq');
-                        var page = $(this).data('page-number');
-                        changeHashParameters(projectSeq, page);
-                    });
-
-                    if (init) {
-                        var hashParams = CommonUtil.getHashParam();
-                        var projectSeq = (hashParams.hasOwnProperty('projectSeq')) ? parseInt(hashParams.projectSeq) : '';
-                        var $projectCard = $('.project_card[data-project-seq="' + projectSeq + '"]');
-
-                        if ($projectCard.length) {
-                            $(document).scrollTop($projectCard.offset().top - 300);
-                        }
-                    } else if (order === 'prev') {
-                        $(document).scrollTop(lastScrollTop + $('.page-wrapper').eq(0).height());
-                    }
-                },
-                complete: function() {
-                    UI.DynamicPageHelper.hideLoading();
-                    UI.DynamicPageHelper.unlockLoad();
-                }
-            });
-        }
-
-        /**
-         * 이전 페이지 로더
-         */
-		function loadPrevPage() {
-		    if ($('.first_page_flag').length !== 0) {
-		        return;
-			}
-
-            UI.DynamicPageHelper.lockLoad();
-            var page = UI.DynamicPageHelper.getPrevPageNumber();
-            loadProjectList(page, 'prev');
-        }
-
-        /**
-         * 다음 페이지 로더
-         */
-        function loadNextPage() {
-            if ($('.last_page_flag').length !== 0) {
-                return;
-            }
-
-            UI.DynamicPageHelper.lockLoad();
-            var page = UI.DynamicPageHelper.getNextPageNumber();
-            loadProjectList(page, 'next');
-        }
-
-        /**
-         * URL Hash fragment 를 변경한다.
-         * Hash fragment는 다이나믹 페이지 렌더링을 할 때만 필요하고 해당 기능을 사용하지 않으면 관리할 필요없다.
-         * @param projectSeq {string} [optional] 프로젝트 식별번호
-         * @param page {string} [optional] 페이지 번호
-         */
-        function changeHashParameters(projectSeq, page) {
-            var categoryCode = UI.ProjectList.getSelectedCategoryCode();
-            var sorting = UI.ProjectList.getSortingValue();
-            var hashParam = '';
-
-            hashParam += '&page=' + ((page) ? page : 1);
-
-            hashParam = (categoryCode) ? (hashParam + '&category=' + categoryCode) : hashParam;
-            hashParam = (sorting) ? (hashParam + '&sorting=' + sorting) : hashParam;
-            hashParam = (projectSeq) ? (hashParam + '&projectSeq=' + projectSeq) : hashParam;
-
-            location.hash = hashParam;
-		}
-    </script>
 </head>
 
 <body class="home page-template page-template-page-templates page-template-template_page-builder page-template-page-templatestemplate_page-builder-php page page-id-4 wp-custom-logo menuStyle2 menuContained sticky-header elementor-default elementor-page elementor-page-4">
@@ -562,7 +392,3 @@
 
 		</header><!-- #masthead -->
 		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
-		<script src="${pageContext.request.contextPath}/js/category/jquery.bxslider.js"></script>
-    <script src="${pageContext.request.contextPath}/js/category/ui.js"></script>
-    <script src="${pageContext.request.contextPath}/js/category/omc.ui.js"></script>
