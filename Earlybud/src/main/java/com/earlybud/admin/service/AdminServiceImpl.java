@@ -65,7 +65,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int sendMessage(Email email) {
 		String mailto = email.getMailto();
-		String sender = email.getMailfrom();
+		String sender = "laughcryrepeat@naver.com";
 		String mailsubject = email.getMailsubject();
 		String content = mailsubject+ "/" + email.getMailcontent();
 		String recievers[] = null;

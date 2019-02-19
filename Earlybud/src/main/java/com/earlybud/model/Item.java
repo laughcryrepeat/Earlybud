@@ -24,8 +24,8 @@ public class Item {
   private long cur_sum;
   private Date opendate;
   private Date closingdate;
-  private long admincall;
-  private long success;
+  private int admincall;
+  private int success;
   private long view_count; 
   private long encore_num;
   private long encore;

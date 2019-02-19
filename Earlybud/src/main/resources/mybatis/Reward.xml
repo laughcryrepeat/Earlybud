@@ -5,6 +5,7 @@
 <mapper namespace="com.earlybud.vo.RewardVO">
 	<resultMap type="RewardVO" id="RewardMap"><!-- dto mapping -->
 		<result property="TOTAL_PUR" column="TOTAL_PUR"/>
+		<result property="CAT_CODE" column="CAT_CODE"/>
   		<result property="CAT_NAME" column="CAT_NAME"/>
   		<result property="TITLE" column="TITLE"/>
   		<result property="MAIN_IMAGE" column="MAIN_IMAGE"/>
@@ -32,7 +33,7 @@
 	<select id="readItem" resultMap="RewardMap" parameterType="LONG">
 		select 
 		TO_CHAR((select sum(PUR_NUM) from TYPE where ITEM_CODE= #{item_code}), '99,999')as TOTAL_PUR,
-		CAT_NAME, TITLE, MAIN_IMAGE, IMAGE_ITEM, 
+		CAT_CODE, CAT_NAME, TITLE, MAIN_IMAGE, IMAGE_ITEM, 
 		TO_CHAR(CUR_SUM, '999,999,999,999') as NOW_SUM, 
 		TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, 
 		TO_CHAR(TARGET_SUM, '999,999,999') as TARGET, 

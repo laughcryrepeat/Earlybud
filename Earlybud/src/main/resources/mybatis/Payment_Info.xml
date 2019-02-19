@@ -36,4 +36,13 @@
 		]]>
 	</select>	
 	
+	<insert id="insertPayInfo" parameterType="Payment_Info">
+	insert into PAYMENT_INFO (MERCHANT_UID,NICKNAME,EMAIL,DEL_NAME,
+	DEL_PHONE,ZIP_CODE,ADDR1,ADDR2,CARD_OWNER,CARDNUM,BIRTHDATE,
+	PUR_TYPE,EXP_MONTH,EXP_YEAR,CARDPWD,AMOUNT,SCHEDULE_AT,TYPE_CODE) values
+	(#{merchant_uid},#{nickname},#{email},#{del_name},#{del_phone},#{zip_code},#{addr1},#{addr2},
+	#{card_owner},#{cardnum},#{birthdate},#{pur_type},#{exp_month},#{exp_year},#{cardpwd},
+	#{amount},#{schedule_at},#{type_code})
+	</insert>
+	
 </mapper>
