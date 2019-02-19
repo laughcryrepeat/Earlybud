@@ -140,6 +140,15 @@
   <link rel='stylesheet' id='airi-font-awesome-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/css/font-awesome/css/font-awesome.min.css?ver=4.9.9' type='text/css' media='all' />
   <link rel='stylesheet' id='kirki-styles-airi-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/kirki/assets/css/kirki-styles.css?ver=3.0.33' type='text/css' media='all' />
   <style id='kirki-styles-airi-inline-css' type='text/css'>
+    .option_code{
+		width: 50px !important;
+	}
+	.option_name{
+		width: 180px !important;
+	}
+	.option_info{
+		width: 300px !important;
+	}
     h1,
     h2,
     h3,
@@ -222,7 +231,7 @@
     input[type="reset"]{
       border-color: #db79f5;
     }
-
+	
     .menuStyle2 .main-navigation a:hover:after,
     .menuStyle2 .main-navigation .current-menu-item:after,
     .comments-area .comment-reply-link:hover,
@@ -478,7 +487,7 @@
                 </header><!-- .entry-header -->
 
                 <div id="respond" class="comment-respond">
-                  <form action="newprojectDetail3" method="post" enctype="multipart/form-data" id="myproject" class="comment-form" novalidate>
+                  <form action="newprojectCheck" method="post" enctype="multipart/form-data" id="myproject" class="comment-form" novalidate>
                     <p class="comment-form-url"><label for="url">목표 금액<span class="required">*</span></label> 
                     	<input id="target_sum" name="target_sum" type="number" value="" size="30" maxlength="200" /></p>
                     <p class="comment-form-author"><label for="author">프로젝트 요약<span class="required">*</span></label> 
@@ -487,12 +496,12 @@
                     	<input id="option_type" name="option_type" type="text" value="" size="30" maxlength="100" required='required' /></p>
                     	<div id="myModal" class="modal">
                     		<div class="modal-content">
-                    			<p>
-                    				<input id="type_code" name="type_code" type="text" size="1" maxlength="2" />
-                    				<input id="name" name="name" type="text" size="20" maxlength="60" />
-                    				<input id="info" name="info" type="text" size="30" maxlength="100" />
-                    				<input id="purnum" name="purnum" type="text" size="5" maxlength="10" />
-                    			</p>
+                    			<div>
+                    				<label for="type_code">No.&emsp;&emsp;&emsp;&emsp;&emsp;옵션 이름&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;옵션 설명&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                    				<input class="option_code" id="type_code" name="type_code" type="text" size="10" maxlength="20" />
+                    				<input class="option_name" id="type_name" name="name" type="text" size="20" maxlength="60" />
+                    				<input class="option_info" id="info" name="info" type="text" size="30" maxlength="100" />
+                    			</div>
                     		</div>
                     	</div>
                     <p class="comment-form-comment"><label for="comment">프로젝트 스토리</label><span class="required">*</span>
@@ -678,6 +687,12 @@
 	  pick.onclick = function(){
 		  mymodal.style.display = "block";
 	  }
+	  window.onclick = function(event) {
+          if (event.target == mymodal) {
+        	  myproject.option_type.value = "코드: "+ type_code.value + " 옵션이름: " + type_name.value + " 옵션설명: " + info.value; 
+              mymodal.style.display = "none";
+          }
+      }
 	  </script>
 	
 </body>

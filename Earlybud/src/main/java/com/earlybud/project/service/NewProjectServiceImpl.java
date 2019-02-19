@@ -21,9 +21,9 @@ public class NewProjectServiceImpl implements NewProjectService {
 		System.out.println("서비스 들어왔어용");
 		return dao.save(item);
 	}
-	public int update(Item item, Type type) {
+	public int update(Item item) {
 		System.out.println("서비스 들어왔어용");
-		return dao.update(item, type);
+		return dao.update(item);
 	}
 	public int update2(Seller seller) {
 		System.out.println("서비스 들어왔어용");

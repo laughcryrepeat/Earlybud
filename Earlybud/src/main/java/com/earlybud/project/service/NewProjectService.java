@@ -6,6 +6,6 @@ import com.earlybud.model.Type;
 
 public interface NewProjectService {
 	public int save(Item item);
-	public int update(Item item, Type type);
+	public int update(Item item);
 	public int update2(Seller seller);
 }

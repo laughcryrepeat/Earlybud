@@ -6,6 +6,6 @@ import com.earlybud.model.Type;
 
 public interface NewProjectDao {
 	public int save(Item item);
-	public int update(Item item, Type type);
+	public int update(Item item);
 	public int update2(Seller seller);
 }

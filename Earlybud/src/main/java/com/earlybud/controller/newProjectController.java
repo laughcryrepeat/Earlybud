@@ -8,6 +8,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -20,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.earlybud.model.Item;
 import com.earlybud.model.Seller;
+import com.earlybud.model.Type;
 import com.earlybud.project.service.NewProjectService;
 import com.earlybud.security.CustomUserDetailsService;
 
@@ -87,7 +89,7 @@ public class newProjectController {
 		Date startDate = new  SimpleDateFormat("yyyy-MM-dd").parse(opendate);
 		Date endDate = new  SimpleDateFormat("yyyy-MM-dd").parse(closingdate);
 		java.sql.Date openDate = new java.sql.Date(startDate.getTime());
-		java.sql.Date closingDate = new java.sql.Date(endDate.getTime());
+		java.sql.Date closingDate = new java.sql.Date(endDate.getTime() + TimeUnit.DAYS.toMillis( 1 ));
 		
 		Item item = new Item();
 		item.setEmail(email);
@@ -102,11 +104,24 @@ public class newProjectController {
 		return "newProject/newprojectDetail3";
 	}
 	@RequestMapping("newprojectCheck")
-	public void newProjectCheck(@RequestParam("target_sum") long target_sum, @RequestParam("summary") String summary,
-			@RequestParam("type_code") long type_code, @RequestParam String content) {
+	public void newProjectCheck(@RequestParam long target_sum, @RequestParam String summary,
+			@RequestParam String option_type, @RequestParam String content){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
-		
-		System.out.println("프로젝트 생성 p3: "+target_sum+", " +summary+", " +type_code+", " +content);
+		String typeCode = option_type.substring(option_type.indexOf("코드: ")+4, option_type.indexOf(" 옵션이름: "));
+		long type_code = Long.parseLong(typeCode);
+		String name = option_type.substring(option_type.indexOf(" 옵션이름: ")+7, option_type.lastIndexOf(" 옵션설명: "));
+		String info = option_type.substring(option_type.indexOf(" 옵션설명: ")+7);
+		System.out.println("프로젝트 생성 p3: "+target_sum+", " +summary+","+type_code+","+name + ","+info);
+		Item item = new Item();
+		item.setEmail(email);
+		item.setTarget_sum(target_sum);
+		item.setSummary(summary);
+		item.setContent(content);
+		/*Type type = new Type();
+		type.setType_code(type_code);
+		type.setName(name);
+		type.setInfo(info);*/
+		projectS.update(item);
 	}
 }

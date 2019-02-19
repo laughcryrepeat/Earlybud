@@ -28,14 +28,13 @@ public class NewProjectDaoImpl implements NewProjectDao {
 		System.out.println("2page insert("+item+")");
 		return p;
 	}
-	public int update(Item item, Type type) {
+	public int update(Item item) {
 		int p = -1;
 		try {
 			p = sqlSession.update(ns+".insertItem2", item);
-			p = sqlSession.insert(ns+".insertOption", type);
 		} finally {
 		}
-		System.out.println("3page insert("+item+", "+type+")");
+		System.out.println("3page insert("+item+")");
 		return p;
 	}
 	public int update2(Seller seller) {
