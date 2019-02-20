@@ -14,11 +14,15 @@
    	</resultMap> 
   	
    	<select id="listMessage" resultType="Message" parameterType="String"> 
-   	select * from message where receiver = #{email} 
+   	select * from message where receiver = #{email} order by message_code desc
    	</select> 
   	
    	<select id="listSentMessage" resultType="Message" parameterType="String"> 
-   	select * from message where sender = #{email} 
+   	select * from message where sender = #{email} order by message_code desc
+   	</select>
+   	
+   	<select id="countNewMessage" resultType="Integer" parameterType="String"> 
+   	select count(*) from message where receiver = #{email} and read_check<![CDATA[ < ]]>1 
    	</select> 
   	
    	<insert id="sendMessage" parameterType="Message"> 
