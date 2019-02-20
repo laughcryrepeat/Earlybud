@@ -2,8 +2,11 @@
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
+	<form action="/earlybud/login" method="post" id="form">
+	<input type="hidden" name="username" value="${email}"/>
+	<input type="hidden" name="password" value="${pw}"/>
+	</form>
 	<script type="text/javascript">
-	alert('회원가입에 성공하였습니다.');
-	location.href="/earlybud/mypage";
+		document.getElementById("form").submit();
 	</script>
 </html>
