@@ -18,11 +18,14 @@
 
 <security:http>
 	<security:intercept-url	pattern="/mypage/**" access="hasRole('ROLE_USER')" />
+	<security:intercept-url	pattern="/payment/**" access="hasRole('ROLE_USER')" />
+	<security:intercept-url	pattern="/newproject/**" access="hasRole('ROLE_USER')" />
 	<security:intercept-url pattern="/admin/**"	access="hasRole('ROLE_ADMIN')" />
 	<!-- <security:form-login/> -->
         	<!-- login-page="/customLogin"
         	authentication-success-handler-ref="customLoginSuccess" -->
     <security:form-login login-page="/login" authentication-success-handler-ref="customLoginSuccess"/>
+    <security:form-login login-page="/oauth" authentication-success-handler-ref="customLoginSuccess"/>
     
 	<security:access-denied-handler ref="customAccessDenied" />
 

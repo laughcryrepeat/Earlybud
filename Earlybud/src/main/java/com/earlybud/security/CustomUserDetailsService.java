@@ -1,7 +1,5 @@
 package com.earlybud.security;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,7 +7,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.earlybud.controller.MemberUploadController;
 import com.earlybud.member.dao.MemberDAO;
 import com.earlybud.model.Member;
 import com.earlybud.security.model.EarlybudUser;
@@ -38,6 +35,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 		log.warn("queried by member mapper: "+member);
 		return member == null? null: new EarlybudUser(member);
 	}
+	public Member readM(String email) {
+		System.out.println("여기는 커스텀 유저");
+		return dao.readM(email);
+	}
 	public int save(Member member) {
 		member.setPwd(passwordEncoder.encode(member.getPwd()));
 		return dao.save(member);
@@ -46,5 +47,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 		member.setPwd(passwordEncoder.encode(member.getPwd()));
 		return dao.update(member);
 	}
+  public Member userDetail(String email) {
+	  return dao.read(email);
+	  
+  }
 }
 

@@ -454,34 +454,16 @@
             <div class="cMain">
                 <article id="mContent" class="project_intro">
                     <div class="top_box">
-                        <header class="head_cont">
-                        <span class="txt_category">
-                            <span class="screen_out">카테고리</span>
-                            
-                            
-                                <a href="/reward/list#category=CATE_0002">
-                                     <c:out value="${item.CAT_NAME}"/>
-                                </a>
-                            
-                        </span>
-                            <h1><c:out value="${item.TITLE}"/></h1>
+                        <header class="head_cont">                        
+                            <h1><c:out value="${item.TITLE}"/></h1>  
                             <div class="project_sorting">
                                 <div class="tag_rel">
-                                    
                                         <span class="screen_out">관련 태그</span>
-                                        
-                                        
-                                        
-                                            
-                                                
-                                                    
-                                                        <a href="#none" class="link_tag">#예술
-</a>
-                                                    
-                                        
-                                    
+                                        <a href="/../earlybud/category/${item.CAT_CODE}" class="link_tag">  #${item.CAT_NAME}  </a>
                                 </div>
                             </div>
+                            
+                                                      
                         </header>
                         <div class="summary_cont">
                             <div class="project_info">                                
@@ -588,8 +570,8 @@
 		                                        <span class="link_join">펀딩 진행중</span>                                     
 											</c:when>											
 											<c:when test="${item.TIME < 0}">
-													<span class="num_value">참여마감</span>
-													<span class="link_join">마감된 펀딩입니다</span>													
+													<span class="num_value">종료</span>
+													<span class="link_join">앵콜 요청하기</span>													
 											</c:when>
 											<c:otherwise>
 											   	<span class="num_value">오늘 자정까지</span>

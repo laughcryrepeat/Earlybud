@@ -21,8 +21,12 @@
 		select ITEM_CODE, CAT_CODE, CAT_NAME, TITLE, SUMMARY, MAIN_IMAGE, IMAGE, NICKNAME, TO_CHAR(CUR_SUM, '999,999,999,999') as NOW_SUM, TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, CLOSINGDATE from ITEM natural join MEMBER natural join CATEGORY natural join SELLER order by CAT_CODE	
 	</select>
 		
-	<select id="count" resultType="int">
-	     select count(*) from item where ADMINCALL=1
+	<select id="countItem" resultType="int" parameterType="hashmap">
+	     select count(*) from ITEM where CAT_CODE in 
+	     	<foreach collection="categoryList" item="item" index="index" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+	     and ADMINCALL=1
 	</select>	
 	
 	<select id="SelectCategory" resultType="com.earlybud.vo.CategoryVO" parameterType="hashmap">
@@ -30,15 +34,15 @@
       FROM (SELECT  q.*, rownum rn 
       		FROM(select ITEM_CODE, CAT_CODE, CAT_NAME, TITLE, SUMMARY, MAIN_IMAGE, IMAGE, 
       		NICKNAME, TO_CHAR(CUR_SUM, '999,999,999,999') as NOW_SUM, 
-      		TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, 
-      		CLOSINGDATE from ITEM natural join MEMBER 
+      		TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, SUCCESS, 
+      		CLOSINGDATE, TRUNC(CLOSINGDATE-SYSDATE,0) as TIME from ITEM natural join MEMBER 
       		natural join CATEGORY natural join SELLER
-      			WHERE 
-	                CAT_CODE in 
+      			WHERE       			
+      				CAT_CODE in 
 	                <foreach collection="categoryList" item="item" index="index" separator="," open="(" close=")">
 	                    #{item}
-	                </foreach>
-	                and SUCCESS=(${end_code}) and ADMINCALL=1
+	                </foreach>			
+	           and SUCCESS=(${end_code}) and ADMINCALL=1
       			ORDER BY ${standard}
       			) q) 
       		WHERE rn 

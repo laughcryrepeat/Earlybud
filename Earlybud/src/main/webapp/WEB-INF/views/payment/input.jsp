@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import= "java.util.*,com.earlybud.model.Type,com.earlybud.model.Item"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!DOCTYPE html>
@@ -32,7 +33,11 @@
 <div class="container-fluid">
   
   <div class="callout callout-info">
-    선택하신 상품 : <a href="#">XXX</a> / 1번 타입 / 금액 : 100원 / 펀딩 마감일 : 3월 3일 
+    선택하신 상품 : <a href="#">${itemMap.get("TITLE")}</a> / 
+    타입 : ${itemMap.get("NAME")} /
+    금액 : <fmt:formatNumber value='${itemMap.get("PRICE")}' type="number"/> 원 /
+  <fmt:formatDate value='${itemMap.get("CLOSINGDATE-1")}' var="endPlanDate" pattern="yyyy-MM-dd"/>
+    펀딩 마감일 : ${endPlanDate}
   </div>
   <div class="nav-tabs-responsive">
     <ul class="nav nav-tabs-progress nav-tabs-4 mb-4">
@@ -79,9 +84,10 @@
             </small>
           </a>
         </div>
-        <input type="hidden" class="form-control" id="amount" name="amount" value="100">
-        <input type="hidden" class="form-control" id="schedule_at" name="schedule_at" value="2019-05-05">
-        <input type="hidden" class="form-control" id="type_code" name="type_code" value="10100">
+        <input type="hidden" class="form-control" id="amount" name="amount" value='${itemMap.get("PRICE")}'>
+        <input type="hidden" class="form-control" id="schedule_at" name="schedule_at" value="${endPlanDate}">
+        <input type="hidden" class="form-control" id="type_code" name="type_code" value="${type_code}">
+        <input type="hidden" class="form-control" id="item_code" name="item_code" value='${itemMap.get("ITEM_CODE")}'>
         <div id="account-collapse" class="collapse show" data-parent="#formOrder">
           <div class="text-secondary mb-3">
             <small>Step 1 of 4</small>
@@ -90,13 +96,13 @@
             <div class="col-12 col-md-6 col-lg-6">
               <div class="form-group">
                 <label>Nick name</label>
-                <input type="text" class="form-control" id="nickname" name="nickname" value='<sec:authentication property="principal.member.nickname"/>'>
+                <input type="text" class="form-control whiteinput" id="nickname" name="nickname" value='<sec:authentication property="principal.member.nickname"/>' readonly>
               </div>
             </div>
             <div class="col-12 col-md-6 col-lg-6">
               <div class="form-group">
                 <label>E-mail</label>
-                <input type="text" class="form-control" id="email" name="email" value='<sec:authentication property="principal.username"/>'>
+                <input type="text" class="form-control whiteinput" id="email" name="email" value='<sec:authentication property="principal.username"/>' readonly>
               </div>
             </div>
           </div>
@@ -415,7 +421,7 @@
         <p>구매내역은 마이페이지에서 확인가능합니다.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="done" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -435,7 +441,7 @@
         <p id="contentBody"></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="fail" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -456,7 +462,7 @@
     function goPopup(){
          // 주소검색을 수행할 팝업 페이지를 호출합니다.
          // 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
-         var pop = window.open("jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+         var pop = window.open("../jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
          
          // 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
          //var pop = window.open("/payment/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 

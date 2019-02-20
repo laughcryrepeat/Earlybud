@@ -4,14 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Type {
-	private long type_code;
-	private long item_code;
-	private String name;
+@Data
+public class Seller {
+	private String email;
+	private String image;
 	private String info;
-	private long price;
-	private long pur_num;
+	private String seller_loc;
+	private String seller_account;
 }

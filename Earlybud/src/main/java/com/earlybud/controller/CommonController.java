@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.earlybud.login.kakao.KakaoAccessToken;
@@ -28,6 +29,7 @@ import com.earlybud.login.kakao.KakaoUserInfo;
 import com.earlybud.member.dao.MemberDAO;
 import com.earlybud.model.Member;
 import com.earlybud.security.CustomUserDetailsService;
+import com.earlybud.security.model.EarlybudUser;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import lombok.extern.log4j.Log4j;
@@ -35,7 +37,6 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 public class CommonController {
-   MemberDAO dao;
    @Autowired
    CustomUserDetailsService service;
    @GetMapping("/accessError")
@@ -47,10 +48,13 @@ public class CommonController {
    }
 
    @RequestMapping("/login")
-   public void loginInput(String error, String logout, Model model) {
-      log.info("LOGIN error: " + error);
+   public void loginInput(HttpServletRequest request, String error, String logout, Model model, 
+		   HttpSession session) {
+	   
+	  log.info("LOGIN error: " + error);
       log.info("logout: " + logout);
-
+      String referer = request.getHeader("Referer");
+      request.getSession().setAttribute("prevPage", referer);
       if (error != null) {
          model.addAttribute("error", "Login Error Check Your Account");
       }
@@ -60,7 +64,9 @@ public class CommonController {
       }
    }
    @RequestMapping(value="/oauth", produces="application/json; charset=utf-8", method= {RequestMethod.GET, RequestMethod.POST})
-   public Member kakaoLogin(@RequestParam("code") String code, RedirectAttributes ra, HttpSession session, HttpServletResponse response) throws IOException{
+   public Member kakaoLogin(@RequestParam("code") String code, HttpServletRequest request, String error, String logout,
+		   RedirectAttributes ra, HttpSession session, HttpServletResponse response, 
+		   Model model) throws IOException{
       JsonNode jsonToken = KakaoAccessToken.getKakaoAccessToken(code);
       JsonNode accessToken = jsonToken.get("access_token");
       JsonNode userInfo = KakaoUserInfo.getKakaoUserInfo(accessToken);
@@ -72,16 +78,21 @@ public class CommonController {
       JsonNode kakao_account = userInfo.path("kakao_account");
       name = properties.path("nickname").asText();
       email = kakao_account.path("email").asText();
-      
       System.out.println("[email] : "+email+", [name] : "+name+", [id] : "+id);
-      
+
+      if(service.readM(email) != null) {
+    	  model.addAttribute("email", email);
+    	  model.addAttribute("pw", id);
+    	  return service.readM(email);
+      }
       Member member = new Member();
       member.setEmail(email);
       member.setNickname(name);
       member.setPwd(id);
       System.out.println("[JOIN] NEW MEMBER :  " + member);
       service.save(member);
-      
+      model.addAttribute("email", email);
+	  model.addAttribute("pw", id);
       return member;
    }
    @RequestMapping("/join")

@@ -27,7 +27,7 @@
             <form action="/earlybud/join" method="post">
               <div class="field-wrap">
                 <label>
-                  이름<span class="req">*</span>
+                  닉네임<span class="req">*</span>
                 </label>
                 <input type="text"required name="nickname" autocomplete="off" />
               </div>
@@ -35,7 +35,7 @@
               <label>
                 이메일<span class="req">*</span>
               </label>
-              <input type="email"required name="email" onkeyup="id_check(this.value)"/>
+              <input type="email"required name="email"/>
             </div>
             <div class="field-wrap">
               <label>
@@ -54,17 +54,21 @@
               <label>
                 이메일<span class="req">*</span>
               </label>
-              <input type="email"required name="username" autocomplete="off"/>
+              <input type="email" name="username"/>
             </div>
             <div class="field-wrap">
               <label>
                 비밀번호<span class="req">*</span>
               </label>
-              <input type="password"required name="password" autocomplete="off"/>
+              <input type="password" name="password"/>
             </div>
             <p class="forgot"><a href="#">비밀번호를 잊으셨나요?</a></p>
+              <a class="button1 button-block" href="https://kauth.kakao.com/oauth/authorize?client_id=e6572958e72ab54e8d05db03cfd4ac7e&redirect_uri=http://localhost:8080/earlybud/oauth&response_type=code&scope=account_email
+"><img class="img" src="images/login/kakaotalk.png">카카오로 로그인</a>
             <button class="button button-block"/>Log In</button>
-            <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
+            	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
+            
+			</script>
             </form> 
           </div>
       </div><!-- tab-content -->

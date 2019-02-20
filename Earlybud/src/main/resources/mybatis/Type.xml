@@ -9,7 +9,7 @@
    		<result property="name" column="NAME"/> 
    		<result property="info" column="INFO"/> 
    		<result property="price" column="PRICE"/> 
-   		<result property="purnum" column="PURNUM"/> 
+   		<result property="pur_num" column="PUR_NUM"/> 
    	</resultMap> 
   	
    	<select id="selectType" resultType="Type" parameterType="Long">
@@ -17,12 +17,19 @@
    	</select> 
 	
    	<insert id="insertType" parameterType="Type"> 
-   	insert into TYPE(type_code,item_code,name,info,price,purnum)  
-   	values(TYPE_CODE_SEQ.nextval,#{item_code},#{name},#{info},#{price},#{purnum})  
+   	insert into TYPE(type_code,item_code,name,info,price,pur_num)  
+   	values(TYPE_CODE_SEQ.nextval,#{item_code},#{name},#{info},#{price},#{pur_num})  
    	</insert> 
   	
    	<update id="updatePurnum" parameterType="Long"> 
-   	update message set purnum += 1 where type_code =#{type_code}
+   	update TYPE set pur_num = (pur_num+1) where type_code =#{type_code}
    	</update>  
-  	
+   	
+  	<insert id="insertOption" parameterType="Type">
+  		<selectKey keyProperty="type_code" resultType="Type" order="AFTER">
+  		select type_code from TYPE where item_code=#{item_code}
+  		</selectKey>
+  	insert into TYPE(item_code, type_code, info, name, price) 
+  	values(#{item_code}, TYPE_CODE_SEQ.nextval, #{info}, #{name}, #{price})
+  	</insert>
   </mapper>

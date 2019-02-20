@@ -14,7 +14,6 @@
 
 <meta property="og:title" content="Wadiz Maker Awards 2018" />
 <meta property="og:url" content="https://www.wadiz.kr/web/wpage/bestMaker2018">
-<meta property="og:image" content="https://cdn.wadiz.kr/resources/static/img/share_bestmaker2018.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:description" content="2018년 변화를 이끌어 주었던 7개 부문 베스트 메이커 100을 소개합니다. ">
@@ -542,6 +541,6 @@ window.wadiz = window.wadiz || {};window.wadiz.sessionUser="571408206";</script>
           <input type="submit" class="search-submit" value="Search" />
         </form>
       </div>
-
+	
     </header><!-- #masthead -->
 

@@ -38,8 +38,8 @@ public class CategoryDAOImpl implements CategoryDAO {
 		return listI;
 	}
 	@Override
-	public int count() {
-		return sqlSession.selectOne(ns+".count");
+	public int countItem(HashMap map) {
+		return sqlSession.selectOne(ns+".countItem", map);
 	}
 	@Override
 	public List<CategoryVO> itemList(PageVO vo){
