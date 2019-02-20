@@ -45,12 +45,18 @@
   	</update>
   	
   	<insert id="insertItem" parameterType="Item">
+  		<selectKey keyProperty="item_code" resultType="Item" order="AFTER">
+  		select * from ITEM where email=#{email}
+  		</selectKey>
   	insert into ITEM(email, cat_code, title, main_image, opendate, closingdate, item_code) 
   	values 
   	(#{email}, #{cat_code}, #{title}, #{main_image}, #{opendate}, #{closingdate}, ITEM_CODE_SEQ.nextval)
   	</insert>
   	
   	<update id="insertItem2" parameterType="Item" keyProperty="email">
+  		<selectKey keyProperty="item_code" resultType="Item" order="AFTER">
+  		select * from ITEM where email=#{email}
+  		</selectKey>
   	update ITEM set 
   	target_sum = #{target_sum}, summary=#{summary}, content=#{content}
   	where email=#{email}

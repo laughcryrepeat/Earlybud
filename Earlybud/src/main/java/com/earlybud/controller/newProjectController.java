@@ -44,9 +44,10 @@ public class newProjectController {
 		return "newProject/newproject";
 	}
 	@RequestMapping("newprojectDetail1")
-	public String newProjectDetail1() {
+	public String newProjectDetail1(Seller seller) throws IOException{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
+		if(projectS.select(email) != null) return "newProject/newprojectDetail2";
 		System.out.println("1st page email: "+email);
 		return "newProject/newprojectDetail1";
 	}
@@ -56,16 +57,16 @@ public class newProjectController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
 		System.out.println("1st page email: "+email);
+		Seller seller = new Seller();
 		String fileName=image.getOriginalFilename();
 		long size = image.getSize();
 		String contentType = image.getContentType();
 		byte[] fileContents = image.getBytes();
 		image.transferTo(new File("D:\\Download\\"+fileName));
-		System.out.println("프로젝트 생성 p1: "+ fileName + ", " + info + ", " + seller_loc + ", " + seller_account);
-		
-		Seller seller = new Seller();
-		seller.setEmail(email);
 		seller.setImage(fileName);
+		System.out.println("프로젝트 생성 p1: " + info + ", " + seller_loc + ", " + seller_account);
+		
+		seller.setEmail(email);
 		seller.setInfo(info);
 		seller.setSeller_loc(seller_loc);
 		seller.setSeller_account(seller_account);
@@ -108,20 +109,25 @@ public class newProjectController {
 			@RequestParam String option_type, @RequestParam String content){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
-		String typeCode = option_type.substring(option_type.indexOf("코드: ")+4, option_type.indexOf(" 옵션이름: "));
-		long type_code = Long.parseLong(typeCode);
+		String typeprice = option_type.substring(option_type.indexOf("가격: ")+4, option_type.indexOf(" 옵션이름: "));
+		long price = Long.parseLong(typeprice);
 		String name = option_type.substring(option_type.indexOf(" 옵션이름: ")+7, option_type.lastIndexOf(" 옵션설명: "));
 		String info = option_type.substring(option_type.indexOf(" 옵션설명: ")+7);
-		System.out.println("프로젝트 생성 p3: "+target_sum+", " +summary+","+type_code+","+name + ","+info);
+		System.out.println("프로젝트 생성 p3: "+target_sum+", " +summary+","+price+","+name + ","+info);
 		Item item = new Item();
 		item.setEmail(email);
 		item.setTarget_sum(target_sum);
 		item.setSummary(summary);
 		item.setContent(content);
-		/*Type type = new Type();
-		type.setType_code(type_code);
-		type.setName(name);
-		type.setInfo(info);*/
 		projectS.update(item);
+		System.out.println("아이템코드? " + item.getItem_code());
+		long item_code = (long) item.getItem_code();
+		Type type = new Type();
+		type.setItem_code(item_code);
+		type.setPrice(price);
+		type.setName(name);
+		type.setInfo(info);
+		projectS.save2(type);
+		System.out.println("저장완료");
 	}
 }

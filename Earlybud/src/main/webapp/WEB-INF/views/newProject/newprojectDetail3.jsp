@@ -141,10 +141,10 @@
   <link rel='stylesheet' id='kirki-styles-airi-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/kirki/assets/css/kirki-styles.css?ver=3.0.33' type='text/css' media='all' />
   <style id='kirki-styles-airi-inline-css' type='text/css'>
     .option_code{
-		width: 50px !important;
+		width: 100px !important;
 	}
 	.option_name{
-		width: 180px !important;
+		width: 130px !important;
 	}
 	.option_info{
 		width: 300px !important;
@@ -497,7 +497,7 @@
                     	<div id="myModal" class="modal">
                     		<div class="modal-content">
                     			<div>
-                    				<label for="type_code">No.&emsp;&emsp;&emsp;&emsp;&emsp;옵션 이름&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;옵션 설명&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                    				<label for="type_code">가격&emsp;&emsp;&emsp;&emsp;&emsp;옵션 이름&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;옵션 설명&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
                     				<input class="option_code" id="type_code" name="type_code" type="text" size="10" maxlength="20" />
                     				<input class="option_name" id="type_name" name="name" type="text" size="20" maxlength="60" />
                     				<input class="option_info" id="info" name="info" type="text" size="30" maxlength="100" />
@@ -689,7 +689,7 @@
 	  }
 	  window.onclick = function(event) {
           if (event.target == mymodal) {
-        	  myproject.option_type.value = "코드: "+ type_code.value + " 옵션이름: " + type_name.value + " 옵션설명: " + info.value; 
+        	  myproject.option_type.value = "가격: "+ type_code.value + " 옵션이름: " + type_name.value + " 옵션설명: " + info.value; 
               mymodal.style.display = "none";
           }
       }
