@@ -55,7 +55,7 @@
 			              <div class="chat_people">
 			                <div class="chat_img"> <img src="${pageContext.request.contextPath}/images/like/<c:out value="${listM.IMAGE}"/>" alt="sunil"> </div>
 			                <div class="chat_ib">
-			                  <h5><a href="../red@gmail.com/${listM.EMAIL}">${listM.NICKNAME}</a></h5>
+			                  <h5><a href="red@gmail.com/${listM.EMAIL}">${listM.NICKNAME}</a></h5>
 			                  <plow>${listM.INFO}</plow>
 			                </div>
 			              </div>

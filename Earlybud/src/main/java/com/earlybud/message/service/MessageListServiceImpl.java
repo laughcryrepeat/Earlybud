@@ -48,9 +48,9 @@ public class MessageListServiceImpl implements MessageListService {
 	}
 	
 	@Override
-	public int sendMessageX(MessageListVO vo) {
+	public int sendMessageX(String email, String receiver, String content) {
 		log.info("sending a message");
-		return dao.sendMessageX(vo);
+		return dao.sendMessageX(email, receiver, content);
 	}
 
 	@Override
@@ -63,5 +63,17 @@ public class MessageListServiceImpl implements MessageListService {
 	public int changeReadX(String message_code) {
 		log.info("Read a message");
 		return dao.changeReadX(message_code);
+	}
+
+	@Override
+	public List<MessageListVO> getAllMessagesWithYou() {
+		log.info("get messages");
+		return dao.AllMessagesWithYou();
+	}
+
+	@Override
+	public List<MessageListVO> getAllMessagesWithYou(String email, String receiver) {
+		log.info("get messages");
+		return dao.AllMessagesWithYou(email, receiver);
 	}
 }

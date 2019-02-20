@@ -10,8 +10,10 @@ public interface MessageListDAO {
 	public List<MessageListVO> getYouareSenderList();
 	public List<MessageListVO> getIamSenderList(String email);
 	public List<MessageListVO> getYouareSenderList(String email);
+	public List<MessageListVO> AllMessagesWithYou();
+	public List<MessageListVO> AllMessagesWithYou(String email, String receiver);
 	public int sendMessage();
-	public int sendMessageX(MessageListVO vo);
+	public int sendMessageX(String email, String receiver, String content);
 	public int changeRead();
 	public int changeReadX(String message_code);
 }
