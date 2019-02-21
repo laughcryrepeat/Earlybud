@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -77,84 +76,4 @@
 	where ITEM_CODE = ( select ITEM_CODE from TYPE where TYPE_CODE = #{type_code})
 	</update>
 
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.earlybud.model.Item">
-  	<resultMap type="Item" id="itemMap"><!-- dto mapping -->
-  		<result property="item_code" column="ITEM_CODE"/>
-  		<result property="cat_code" column="CAT_CODE"/>
-  		<result property="title" column="TITLE"/>
-  		<result property="summary" column="SUMMARY"/>
-  		<result property="content" column="CONTENT"/>
-  		<result property="main_image" column="MAIN_IMAGE"/>
-  		<result property="image_item" column="IMAGE_ITEM"/>
-  		<result property="target_sum" column="TARGET_SUM"/>
-  		<result property="cur_sum" column="CUR_SUM"/>
-  		<result property="opendate" column="OPENDATE"/>
-  		<result property="closingdate" column="CLOSINGDATE"/>
-  		<result property="admincall" column="ADMINCALL"/>
-  		<result property="success" column="SUCCESS"/>
-  		<result property="view_count" column="VIEW_COUNT"/>
-  		<result property="encore_num" column="ENCORE_NUM"/>
-  		<result property="encore" column="ENCORE"/>
-  		<result property="encore_time" column="ENCORE_TIME"/>
-  		<result property="email" column="EMAIL"/>
-  		<result property="cat_name" column="CAT_NAME"/>
-  	</resultMap>
-	<!--
-	<resultMap id="payItemMap" type="java.util.HashMap">
-		<result column="title" property="title"/>
-        <result column="name" property="name"/>
-        <result column="price" property="price" javaType="int"/>
-        <result column="closingdate" property="closingdate"/>
-	</resultMap>
-	-->
-  	<select id="listItem" resultType="Item">
-  	select * from ITEM natural join CATEGORY order by ITEM_CODE desc
-  	</select>
-  	
-  	<update id="approveItem" parameterType="Integer">
-  	update ITEM set ADMINCALL=1 where ITEM_CODE = #{item_code}
-  	</update>
-  	
-  	<update id="rejectItem" parameterType="Integer">
-  	update ITEM set ADMINCALL=NULL where ITEM_CODE = #{item_code}
-  	</update>
-  	
-  	<insert id="insertItem" parameterType="Item">
-  		<selectKey keyProperty="item_code" resultType="Item" order="AFTER">
-  		select * from ITEM where email=#{email}
-  		</selectKey>
-  	insert into ITEM(email, cat_code, title, main_image, opendate, closingdate, item_code) 
-  	values 
-  	(#{email}, #{cat_code}, #{title}, #{main_image}, #{opendate}, #{closingdate}, ITEM_CODE_SEQ.nextval)
-  	</insert>
-  	
-  	<update id="insertItem2" parameterType="Item" keyProperty="email">
-  		<selectKey keyProperty="item_code" resultType="Item" order="AFTER">
-  		select * from ITEM where email=#{email}
-  		</selectKey>
-  	update ITEM set 
-  	target_sum = #{target_sum}, summary=#{summary}, content=#{content}
-  	where email=#{email}
-  	</update>
-  	
-  	<select id="selectItem" parameterType="Long" resultType="Item">
-  	select * from ITEM where ITEM_CODE= #{item_code}
-  	</select>
-  	
-  	<select id="selectTypeInfo" parameterType="Long" resultType="java.util.HashMap"> 
-	select price, closingdate-1, name, title, item_code from ITEM natural join TYPE 
-	where type_code = #{type_code}
-	</select>
-	
-	<update id="updateSum" parameterType="hashMap">
-	update ITEM set CUR_SUM = ( CUR_SUM + #{price} ) 
-	where ITEM_CODE = ( select ITEM_CODE from TYPE where TYPE_CODE = #{type_code})
-	</update>
-
->>>>>>> stash
   </mapper>
