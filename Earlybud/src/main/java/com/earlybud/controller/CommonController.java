@@ -108,7 +108,13 @@ public class CommonController {
       log.info("JOIN error: " + error);
       return member;
    }
-
+   @RequestMapping("/customLogout")
+   public String logoutPost() {
+	   Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	   String email = authentication.getName();
+      log.info("로그아웃: "+email);
+      return "customLogout";
+   }
    /*@RequestMapping("/email_check")
    public void emailCheck(HttpServletRequest request, HttpServletResponse response, String error, Model model, Member member) 
       throws Exception{
@@ -117,12 +123,6 @@ public class CommonController {
       response.setContentType("text/html; charset=utf-8");
       PrintWriter out = response.getWriter();
    }*/
-   @RequestMapping("/customLogout")
-   public String logoutPost() {
-	   Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-	   String email = authentication.getName();
-      log.info("로그아웃: "+email);
-      return "customLogout";
-   }
+
 
 }
