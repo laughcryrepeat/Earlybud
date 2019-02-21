@@ -7,13 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-  
-<h1> Logout Page</h1>
+<% session.invalidate();   
+response.sendRedirect("login");%>
+<!-- 
+<form action="/earlybud/logout" method='post' id="form">
 
-<form action="/customLogout" method='post'>
+<input type="hidden"name="username"value="${email}"/>
 <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
-<button>로그아웃</button>
 </form>
-
+<script type="text/javascript">
+		document.getElementById("form").submit();
+	</script> -->
 </body>
 </html>

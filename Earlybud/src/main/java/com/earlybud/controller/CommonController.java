@@ -11,6 +11,7 @@ import org.apache.http.HttpResponse;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -116,17 +117,12 @@ public class CommonController {
       response.setContentType("text/html; charset=utf-8");
       PrintWriter out = response.getWriter();
    }*/
-   
-   @GetMapping("/customLogout")
-   public void logoutGET() {
-
-      log.info("custom logout");
-   }
-
-   @PostMapping("/customLogout")
-   public void logoutPost() {
-
-      log.info("post custom logout");
+   @RequestMapping("/customLogout")
+   public String logoutPost() {
+	   Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	   String email = authentication.getName();
+      log.info("로그아웃: "+email);
+      return "customLogout";
    }
 
 }

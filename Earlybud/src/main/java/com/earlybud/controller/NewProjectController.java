@@ -1,7 +1,5 @@
 package com.earlybud.controller;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -27,7 +25,7 @@ import com.earlybud.security.CustomUserDetailsService;
 
 @Controller
 @RequestMapping("/newproject/*")
-public class newProjectController {
+public class NewProjectController {
 	
 	@Autowired
 	CustomUserDetailsService service;

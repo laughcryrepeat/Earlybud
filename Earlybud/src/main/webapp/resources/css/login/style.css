@@ -153,7 +153,10 @@ textarea {
 .top-row > div:last-child {
   margin: 0;
 }
-
+.buF{
+	width: 40% !important;
+	font-size: 1rem !important;
+}
 .button {
   margin: 5px;
   border: 0;

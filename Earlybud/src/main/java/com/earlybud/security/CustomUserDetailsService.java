@@ -49,7 +49,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 	}
   public Member userDetail(String email) {
 	  return dao.read(email);
-	  
   }
+  public int updatePwd(Member member) {
+		member.setPwd(passwordEncoder.encode(member.getPwd()));
+		return dao.updatePwd(member);
+	}
+  
 }
 

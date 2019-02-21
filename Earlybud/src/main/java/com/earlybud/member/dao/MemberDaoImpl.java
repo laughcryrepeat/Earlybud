@@ -44,4 +44,14 @@ public class MemberDaoImpl implements MemberDAO {
 		System.out.println("회원 update("+member+") : "+member.getEmail());
 		return id;
 	}
+	@Override
+	public int updatePwd(Member member) {
+		int p = -1;
+		try {
+			p = sqlSession.update(ns+".pwdUpdate", member);
+		} finally {
+		}
+		System.out.println("회원 update("+member+") : "+member.getEmail());
+		return p;
+	}
 }
