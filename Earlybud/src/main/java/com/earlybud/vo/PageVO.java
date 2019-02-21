@@ -9,7 +9,7 @@ public class PageVO {
 
 	{
 		first = 1;
-		countPage = 5;
+		countPage = 3;
 	}
 	public PageVO() {}
 	public PageVO(int countPage, int totalPage, int first, int last) {

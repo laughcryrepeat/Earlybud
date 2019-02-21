@@ -9,9 +9,9 @@
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
-
-<main id="omcContainer" class="cont_support">
-			
+	<a style="display:scroll;position:fixed;bottom:0px;right:0px;" href="#" title="맨 위로"><img src="images/category/totop.png" border="0"></a>
+	
+	<main id="omcContainer" class="cont_support">
 		    <h2 id="omcBody" class="screen_out">후원형 프로젝트</h2>
 		   <div class="cMain">
 		   <article id="mContent" class="project_list">
@@ -113,7 +113,7 @@
 	      		 							
 	      		 							str+="<li class=\"project_card reward_project_card\" data-project-seq=\""+this.item_CODE+"\" data-page-number=\"1\">"	
 			      		 						 +"<div class=\"project_card_inner\">"
-			      							  	 +"<a href=\"/../earlybud/reward?item_code="+this.item_CODE+"\" class=\"project_detail_link\" data-project-seq=\""
+			      							  	 +"<a href=\"/../earlybud/reward?item_code=\""+this.item_CODE+"\" class=\"project_detail_link\" data-project-seq="
 			      							  	 +this.item_CODE+"\" data-page-number=\"1\">"
 			      								 +"<span class=\"project_thumbnail\" style=\"background-image:url('${pageContext.request.contextPath}/uploads/reward/"
 			      							  	 +this.main_IMAGE
@@ -237,44 +237,75 @@
 			
 			</div><!-- ENDS Filter container -->
 
-		<button type="button" onclick="moreList()" style="background-color:white;margin-left:25%;margin-right:25%;text-align: center;width:50%;font-size: 18px;padding: 10px;vertical-align: middle;" />
-					Read more
-		</button>
 		</ul>
 		
-		<script type="text/javascript">		
-				var category = ${catcode};
-				console.log("캣코드테스트 "+"${catcode}");
-				var data = JSON.stringify({first:start,catcode:category});
-				function moreList(){
-					/*var arr = new Array(); //Object를 배열로 저장할 Array
-					var obj = new Object(); //key, value형태로 저장할 Object
-			        
-					obj.first = start;
-					obj.category = category;
-					arr.push(obj);*/
-					var data = {}
-				    data["first"] = start;
+		
+	<script type="text/javascript">
+ 
+   	 var lastScrollTop = 0;
+   	 var easeEffect = 'easeInQuint';
+     
+    // 1. 스크롤 이벤트 발생
+    $(window).scroll(function(){ // ① 스크롤 이벤트 최초 발생
+         
+        var currentScrollTop = $(window).scrollTop();
+        var orderValue = "CUR_SUM/TARGET_SUM desc";
+		var endValue = "'0'";
+		var start = ${first};
+        /* 
+            =================   다운 스크롤인 상태  ================
+        */
+        if( currentScrollTop - lastScrollTop > 0 ){
+            // down-scroll : 현재 게시글 다음의 글을 불러온다.
+            console.log("down-scroll");
+            var category = ${catcode};
+			console.log("캣코드는 여기에용 "+"${catcode}");
+			var data = JSON.stringify({first:start,catcode:category});
+			
+            // 2. 현재 스크롤의 top 좌표가  > (게시글을 불러온 화면 height - 윈도우창의 height) 되는 순간
+            if ($(window).scrollTop() >= ($(document).height() - $(window).height()) ){ //② 현재스크롤의 위치가 화면의 보이는 위치보다 크다면
+                 
+                // 3. class가 scrolling인 것의 요소 중 마지막인 요소를 선택한 다음 그것의 data-bno속성 값을 받아온다.
+                //      즉, 현재 뿌려진 게시글의 마지막 bno값을 읽어오는 것이다.( 이 다음의 게시글들을 가져오기 위해 필요한 데이터이다.)
+				moreList();
+                // 여기서 class가 listToChange인 것중 가장 처음인 것을 찾아서 그 위치로 이동하자.
+             //   var position = $(".project_name:first").offset();// 위치 값                 
+                // 이동  위로 부터 position.top px 위치로 스크롤 하는 것이다. 그걸 500ms 동안 애니메이션이 이루어짐.
+              //  $('html,body').stop().animate({scrollTop : position.top }, 600, easeEffect);
+     
+            }//if : 현재 스크롤의 top 좌표가  > (게시글을 불러온 화면 height - 윈도우창의 height) 되는 순간
+             
+            // lastScrollTop을 현재 currentScrollTop으로 갱신해준다.
+            lastScrollTop = currentScrollTop;
+        }// 다운스크롤인 상태
+        
+        
+        
+        
+        
+                
+    })	
+    
+    function moreList(){
+	                var data = {}
+	                data["first"] = start;
 				    data["catcode"] ="${catcode}";
 				    data["order_code"] = orderValue;
 				    data["end_code"] = endValue;
 				    console.log("catcode: ${catcode}");
-				    console.log("캣코드정확히 "+data["catcode"]);
-					$.ajax({
-      		 			type : 'post',  // 요청 method 방식
-      		 			url : '/../earlybud/category/add',// 요청할 서버의 url
-      		 			headers : {
-      		 				"Content-Type" : "application/json",
-      		 				"X-HTTP-Method-Override" : "POST"
-      		 			},
-      		 			dataType : 'json', // 서버로부터 되돌려받는 데이터의 타입을 명시하는 것이다.
-      		 			/*data : JSON.stringify({ // 서버로 보낼 데이터 명시
-      		 				first : start
-      		 			}),*/
-      		 			data : JSON.stringify(data),
-      		 			//data : param,
-      		 			success : function(data){// ajax 가 성공했을시에 수행될 function이다. 이 function의 파라미터는 서버로 부터 return받은 데이터이다.
-      		 				start+=8;
+	            
+	             // 4. ajax를 이용하여 현재 뿌려진 게시글의 마지막 bno를 서버로 보내어 그 다음 20개의 게시물 데이터를 받아온다.
+	                $.ajax({
+	                    type : 'post',  // 요청 method 방식
+	                    url : '/../earlybud/category/add',// 요청할 서버의 url
+	                    headers : {
+	                        "Content-Type" : "application/json",
+	                        "X-HTTP-Method-Override" : "POST"
+	                    },
+	                    dataType : 'json', // 서버로부터 되돌려받는 데이터의 타입을 명시하는 것이다.
+	                    data : JSON.stringify(data),
+	                    success : function(data){// ajax 가 성공했을시에 수행될 function이다. 이 function의 파라미터는 서버로 부터 return받은 데이터이다.
+	  		 				start+=8;
 	      		 			var str = "";
 	      		 			console.log("되나?");
 	      		 			// 5. 받아온 데이터가 ""이거나 null이 아닌 경우에 DOM handling을 해준다.
@@ -283,39 +314,38 @@
 	      		 				$(data).each(
 	      		 						// 7. 새로운 데이터를 갖고 html코드형태의 문자열을 만들어준다.
 	      		 					
-      		 						function(){
-      		 							console.log(this);
-      		 							var percent = this.percent;
-      		 							
-      		 							var success = '0';
-      		 							if(this.success=='2'){
-      		 								success="<span class=\"funding_type\">실패</span>";
-      		 							}else if(this.success=='1'){
-      		 								success="<span class=\"funding_type\">성공</span>";
-      		 							}else{
-      		 									success="<span class=\"funding_type\">"															
+	  		 						function(){
+	  		 							console.log(this);
+	  		 							var percent = this.percent;
+	  		 							
+	  		 							var success = '0';
+	  		 							if(this.success=='2'){
+	  		 								success="<span class=\"funding_type\">실패</span>";
+	  		 							}else if(this.success=='1'){
+	  		 								success="<span class=\"funding_type\">성공</span>";
+	  		 							}else{
+	  		 									success="<span class=\"funding_type\">"															
 												+this.time
 												+"일 남음"
 												+"</span>";
-      		 							}     		 							      		 							
-      		 							var percent2 = percent;
-      		 							if(percent>=100){
-      		 								percent2 = 100;
-      		 							}
-      		 							
-      		 							str+="<li class=\"project_card reward_project_card\" data-project-seq=\""+this.item_CODE+"\" data-page-number=\"1\">"	
+	  		 							}     		 							      		 							
+	  		 							var percent2 = percent;
+	  		 							if(percent>=100){
+	  		 								percent2 = 100;
+	  		 							}
+	  		 							
+	  		 							str+="<li class=\"project_card reward_project_card\" data-project-seq=\""+this.item_CODE+"\" data-page-number=\"1\">"	
 	      		 						 +"<div class=\"project_card_inner\">"
-	      							  	 +"<a href=\"/../earlybud/reward?item_code=\""+this.item_CODE+"\" class=\"project_detail_link\" data-project-seq=\""
+	      							  	 +"<a href=\"/../earlybud/reward?item_code="+this.item_CODE+"\" class=\"project_detail_link\" data-project-seq=\""
 	      							  	 +this.item_CODE+"\" data-page-number=\"1\">"
 	      								 +"<span class=\"project_thumbnail\" style=\"background-image:url('${pageContext.request.contextPath}/uploads/reward/"
 	      							  	 +this.main_IMAGE
 	      							  	 +"\"></span></a><div class=\"project_card_info\">"
 	      							     +"<span class=\"screen_out\">프로젝트 제목</span><h3 class=\"project_name\">"
-	      							     +"<a href=\"/../earlybud/reward?item_code=\""
+	      							     +"<a href=\"/../earlybud/reward?item_code="+this.item_CODE
+	      							     +"\" class=\"project_detail_link\" data-project-seq="
 	      							     +this.item_CODE
-	      							     +"\" class=\"project_detail_link\" data-project-seq=\""
-	      							     +this.item_CODE
-	      							     +"\" data-page-number=\"1\">"
+	      							     +" data-page-number=\"1\">"
 	      							     +this.title
 	      							     +"</a></h3><p class=\"project_simple_text\"><span class=\"screen_out\">프로젝트 설명</span>"
 	      							     +this.summary
@@ -334,7 +364,7 @@
 	 		 							 +success
 	 		 						     +"</div></div></li>";
 	                    });// each
-	                            // 8. 이전까지 뿌려졌던 데이터를 비워주고, <th>헤더 바로 밑에 위에서 만든 str을  뿌려준다.                      
+	                            // 8. 이전까지 뿌려졌던 데이터를 비워주고, <th>헤더 바로 밑에 위에서 만든 str을  뿌려준다.  
 	                            $("#mycontainer").append(str);
 	                            /*$(".add").append("뭐얄ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ");
 	                            $("#filter-container").after(str);*/
@@ -342,45 +372,20 @@
 		                    else{ // 9. 만약 서버로 부터 받아온 데이터가 없으면 그냥 아무것도 하지말까..
 		                    	alert("더 불러올 데이터가 없습니다.");
 		                    }// else
-                    	}// success
-					});// ajax
-				}				
-		</script>
-		
-		
+	                	}// success
+	                });// ajax
+          	  }
+    
+    
+    
+    
+    
+    </script>         	
+                        	
+
 		
   	</div>	<!--ENDS WRAPPER -->
   </article>
-  
-		  <script>
-		$(function(){
-			/*스크롤 탑*/
-		
-			$(window).scroll(function(){
-				setTimeout(scroll_top, 300);//화살표가 반응하여 생기는 시간
-			});
-		
-			$(".gotop").hover( function(){
-				scroll_top()
-			})		
-		
-			$("#gotop").click(function(){
-				$("html, body").animate({ scrollTop: 0 }, 300);//화살표 클릭시 화면 스크롤 속도
-					return false;
-		    });
-		})
-		
-		/*스크롤 탑*/
-		function scroll_top(){
-			$("#gotop").fadeIn("slow");
-		}
-		</script>
-		
-		<div id="gotop" class="gotop">
-			<div></div>
-		</div>
-  
-  
   </div>
 </main>
 
