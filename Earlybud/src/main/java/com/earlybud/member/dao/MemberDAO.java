@@ -10,3 +10,4 @@ public interface MemberDAO {
 	public Member read(String email);
  	public int update(Member member);
 }
+
