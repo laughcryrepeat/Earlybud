@@ -13,7 +13,7 @@ public interface CategoryService {
 
 	public List<CategoryVO> getList();
 	public List<Category> cateListService();
-	int countService();
+	int countItemService(HashMap map);
 	List<CategoryVO> itemListService(PageVO vo);
 	public List<CategoryVO> selectCategoryService(HashMap map);
 }

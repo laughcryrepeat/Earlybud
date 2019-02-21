@@ -120,7 +120,7 @@
 <%-- 										<fmt:parseNumber var="test" value="${list.CUR_SUM*100/list.TARGET_SUM}" integerOnly="true"/>${test} % --%>
 										<c:out value="${list.PERCENT}"/>%
 										</span><br> 
-									&nbsp; &nbsp;&nbsp;<span class="amount">&nbsp;   <c:out value="${list.NOW_SUM}"/>원 달성  </span>
+									&nbsp; &nbsp;&nbsp;<span class="amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<c:out value="${list.NOW_SUM}"/>원 달성</span>
 										
 <!-- 										<script type="text/javascript">	document.write(calDaysLeft())</script> -->
 							
@@ -196,16 +196,15 @@
         <c:forEach items="${listS}" var="listS">
           <li>
 <!--             <span class="thumb-01"> 하하하 </span> -->
- 			<img style="width: 67px; height: 67px; border: 1px grey; border-radius: 90px; -moz-border-radius: 90px;
- 			-khtml-border-radius: 90px; -webkit-border-radius: 90px;" src="${pageContext.request.contextPath}/images/like/<c:out value="${listS.IMAGE}"/>"/>&nbsp; &nbsp;
- 			<a href='seller_items/<c:out value="${listS.EMAIL}"/>'><c:out value="${listS.NICKNAME}"/></a><br><br>
-			<img style="width: 67px; height: 67px; border: 2px solid violet; border-radius: 90px; -moz-border-radius: 90px;
- 			-khtml-border-radius: 90px; -webkit-border-radius: 90px;" src="${pageContext.request.contextPath}/images/like/<c:out value="${listS.IMAGE}"/>"/>&nbsp; &nbsp; <c:out value="${listS.NICKNAME}"/><br>
+ 			<span style="font-size:1.5em;"><img style="width: 67px; height: 67px; border: 1px grey; border-radius: 90px; -moz-border-radius: 90px;
+ 				-khtml-border-radius: 90px; -webkit-border-radius: 90px;" src="${pageContext.request.contextPath}/images/like/<c:out value="${listS.IMAGE}"/>"/>&nbsp; &nbsp;
+ 			<a href='seller_items/<c:out value="${listS.EMAIL}"/>'><c:out value="${listS.NICKNAME}"/></a></span><br><br>
+			
           </li>
           </c:forEach>
         </ul>
       </div>
-    </div>ㄴ
+    </div>
   </div>
 </main>
 

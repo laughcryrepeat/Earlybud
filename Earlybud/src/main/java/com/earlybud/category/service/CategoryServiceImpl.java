@@ -33,8 +33,8 @@ public class CategoryServiceImpl implements CategoryService {
 	}	 
 
 	 @Override
-	public int countService() {
-		return dao.count();
+	public int countItemService(HashMap map) {
+		return dao.countItem(map);
 	}
 	 @Override
 	public List<CategoryVO> itemListService(PageVO vo) {

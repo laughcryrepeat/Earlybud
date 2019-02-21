@@ -1,5 +1,7 @@
 package com.earlybud.vo;
 
+import java.sql.Date;
+
 import lombok.Data;
 
 @Data 
@@ -9,6 +11,6 @@ public class MessageListVO {
 	private String RECEIVER;
 	private String SENDER;
 	private String CONTENT;
-	private String SEND_DATE;
+	private Date SEND_DATE;
 	private String READ_CHECK;
 }

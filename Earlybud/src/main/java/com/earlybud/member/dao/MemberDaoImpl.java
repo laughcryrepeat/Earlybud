@@ -15,6 +15,11 @@ public class MemberDaoImpl implements MemberDAO {
 	private String ns = "com.earlybud.model.Member";
 	
 	@Override
+	public Member readM(String email) {
+		System.out.println("여기는 dao");
+		return sqlSession.selectOne(ns+".sel_member", email);
+	}
+	@Override
 	public Member read(String email) {
 		return sqlSession.selectOne(ns+".read", email);
 	}

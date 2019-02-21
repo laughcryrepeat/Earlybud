@@ -20,7 +20,9 @@
     	<result property="email" column="EMAIL"/>
     	<result property="authority" column="AUTHORITY"/>
  	</resultMap>
-
+	<select id="sel_member" resultMap="memberMap">
+		select * from Member where email=#{email}
+	</select>
   	<insert id="insertMember" parameterType="Member" keyProperty="email">
 		insert into member (email, pwd, nickname, joindate) values ( #{email}, #{pwd}, #{nickname}, sysdate)
   	</insert>
