@@ -16,4 +16,5 @@ public interface AdminDao {
 	List<Message> listSentMessage(String email);
 	void sendMessage(Message msg);
 	int updateRead(int message_code);
+	int countNewMessage(String email);
 }
