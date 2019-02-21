@@ -362,7 +362,8 @@
 		
 			$(".gotop").hover( function(){
 				scroll_top()
-			})		
+			})
+		
 		
 			$("#gotop").click(function(){
 				$("html, body").animate({ scrollTop: 0 }, 300);//화살표 클릭시 화면 스크롤 속도

@@ -38,7 +38,11 @@
 	<mapper resource="mybatis/Payment_Info.xml"/>
 	<mapper resource="mybatis/Item.xml"/>
 	<mapper resource="mybatis/Seller.xml"/>
+<<<<<<< HEAD
 	<mapper resource="mybatis/Purchase_Item.xml"/>
+=======
+	<mapper resource="mybatis/Purchase_Item.xml"/>
+>>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
 	<mapper resource="mybatis/AllOrders.xml"/>
 	<mapper resource="mybatis/EachOrder.xml"/>
 	
