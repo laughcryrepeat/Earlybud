@@ -72,7 +72,10 @@ public class AdminDaoImpl implements AdminDao {
 	@Override
 	public List<Message> listSentMessage(String email) {
 		System.out.println("listSentMsg sender: "+email );	
-		return sqlSession.selectList(ns1+".listSentMessage", email);
+		List<Message> list =sqlSession.selectList(ns1+".listSentMessage", email);
+		System.out.println("list size:"+list.size());
+		
+		return list;
 	}
 
 	@Override
@@ -85,6 +88,12 @@ public class AdminDaoImpl implements AdminDao {
 	public int updateRead(int message_code) {
 		System.out.println("admin update message dao, message_code: "+message_code);
 		return sqlSession.update(ns1+".updateRead", message_code);
+	}
+
+	@Override
+	public int countNewMessage(String email) {
+		System.out.println("countNewMessage dao email : "+email);
+		return sqlSession.selectOne(ns1+".countNewMessage", email);
 	}
 
 }

@@ -22,14 +22,14 @@
         <div class="col-md-3">
             <button type="button" class="mb-2 btn btn-primary btn-block" id="emailBtn1">관리자 메일쓰기</button>
           <div class="tile p-0">
-            <h4 class="tile-title folder-head">Folders</h4>
+            <h4 class="tile-title folder-head">받은메세지함</h4>
             <div class="tile-body">
               <ul class="nav nav-pills flex-column mail-nav">
                 <li class="nav-item active"><a class="nav-link" href="#"><i class="fa fa-inbox fa-fw"></i>
-                Inbox<span class="badge badge-pill badge-primary float-right">12</span></a>      
+                Inbox 새로온메세지<span class="badge badge-pill badge-primary float-right">${newMsg}</span></a>      
                 </li>
                   
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-envelope-o fa-fw"></i> Sent</a></li>
+                <li class="nav-item"><a class="nav-link" href='sent_mailbox?email=<sec:authentication property="principal.username"/>'><i class="fa fa-envelope-o fa-fw"></i> Sent 보낸메세지함</a></li>
                   
               </ul>
             </div>
@@ -50,14 +50,15 @@
               </div>
             </div>
             <div class="table-responsive mailbox-messages">
-              <table class="table table-hover">
+            
+              <table class="table table-hover sortable paginated" id="tbl">
                 <thead>
                   <tr>
-                    <th></th>
-                    <th>보낸사람</th>
-                    <th>내용</th>
-                    <th></th>
-                    <th>날짜</th>
+                    <td class='sort-basic'></td>
+                    <td class='sort-basic'>보낸사람</td>
+                    <td class='sort-basic'>내용</td>
+                    <td class='sort-basic'></td>
+                    <td class='sort-ranking'>날짜</td>
                   </tr>
                 </thead>  
                 <tbody>
@@ -71,7 +72,7 @@
                       </div>
                     </td>
                     <td class="user_email">${Msg.sender}</td>
-                    <td><a data-toggle="modal" data-backdrop="static" data-keyboard="false" href="#msg_modal" class="request"><b>${Msg.content}</b></a></td>
+                    <td class="hidetext"><a data-toggle="modal" data-backdrop="static" data-keyboard="false" href="#msg_modal" class="request"><b>${Msg.content}</b></a></td>
                     <td>
                     <c:choose>
                     	<c:when test = "${Msg.read_check eq 0}">
@@ -90,10 +91,10 @@
                   
               </table>
             </div>
-            <div class="text-right"><span class="text-muted mr-2">Showing 1-15 out of 60</span>
+            <div class="text-right"><span class="text-muted mr-2"></span><span class="text-muted">Total - ${listMsg.size()} 메세지   </span>
               <div class="btn-group">
-                <button class="btn btn-primary btn-sm" type="button"><i class="fa fa-chevron-left"></i></button>
-                <button class="btn btn-primary btn-sm" type="button"><i class="fa fa-chevron-right"></i></button>
+                <button class="btn btn-primary btn-sm" id="left" type="button"><i class="fa fa-chevron-left"></i></button>
+                <button class="btn btn-primary btn-sm" id="right" type="button"><i class="fa fa-chevron-right"></i></button>
               </div>
             </div>
           </div>
@@ -112,7 +113,7 @@
         </div>
         <div class="modal-body">
             <form name="email_modal" id="email_modal" method="post">
-                <input id="mailfrom" name="mailfrom" class="form-control" value="<sec:authentication property="principal.username"/>" type="hidden" >
+                <input id="mailfrom" name="mailfrom" class="form-control" value='<sec:authentication property="principal.username"/>' type="hidden" >
                 <div class="form-group">
                   <label class="control-label">제목</label>
                   <input id="mailsubject" name="mailsubject" class="form-control" type="text" >
@@ -184,6 +185,7 @@
     <script src="${pageContext.request.contextPath}/js/admin/popper.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/admin/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/admin/main.js"></script>
+    <script src="${pageContext.request.contextPath}/js/admin/paging.js"></script>
     <!-- The javascript plugin to display page loading on top-->
     <script src="${pageContext.request.contextPath}/js/admin/plugins/pace.min.js"></script>
     <!-- Page specific javascript-->
@@ -236,11 +238,15 @@
          });
       });
       
+      var new_msg = $('.badge-pill').text();
+      
       $(".request").click(function(){
     	  var tr = $(this).parent().parent();
     	  tr.find("td").eq(3).find("i").removeClass('fa-envelope-o');
     	  tr.find("td").eq(3).find("i").addClass('fa-envelope-open-o');
     	  var msg_code = tr.find("td").eq(3).find("input").val();
+    	  //var new_msg = $('.badge-pill').text();
+    	  console.log("new_msg: "+new_msg);
     	  console.log("msg_code: "+msg_code);
     	  $.ajax({
               method: 'post',
@@ -248,6 +254,8 @@
               data: "msg_code="+msg_code,
               success: function(){
                   console.log("update read check!!");
+                  new_msg -= 1;//메세지 읽으면 숫자1씩 줄어듬.
+                  $('.badge-pill').text(new_msg);
               }
     	  });
     	  

@@ -2,6 +2,8 @@ package com.earlybud.model;
 
 import java.sql.Date;
 
+import org.springframework.stereotype.Component;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,8 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data //롬복으로 getter,setter자동셋팅하기 위해서
+@Component
 public class Item {
-
   private long item_code;
   private long cat_code;
   private String title;

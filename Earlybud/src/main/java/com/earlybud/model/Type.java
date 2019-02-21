@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Type {
-	private Long type_code;
-	private Long item_code;
+	private long type_code;
+	private long item_code;
 	private String name;
 	private String info;
-	private Long price;
-	private Long pur_num;
+	private long price;
+	private long pur_num;
 }

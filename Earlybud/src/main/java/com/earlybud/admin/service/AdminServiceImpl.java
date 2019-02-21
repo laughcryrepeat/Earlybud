@@ -91,4 +91,10 @@ public class AdminServiceImpl implements AdminService {
 		return dao.updateRead(message_code);
 	}
 
+	@Override
+	public int countNewMessage(String email) {
+		// TODO Auto-generated method stub
+		return dao.countNewMessage(email);
+	}
+
 }

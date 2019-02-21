@@ -19,6 +19,9 @@
 	<typeAlias alias="Payment_Info" type="com.earlybud.model.Payment_Info"/>
 	<typeAlias alias="Item" type="com.earlybud.model.Item"/>
 	<typeAlias alias="Purchase_Item" type="com.earlybud.model.Purchase_Item"/>
+	<typeAlias alias="AllOrders" type="com.earlybud.vo.AllOrdersVO"/>
+	<typeAlias alias="EachOrder" type="com.earlybud.vo.EachOrderVO"/>
+	<typeAlias alias="Seller" type="com.earlybud.model.Seller"/>
 </typeAliases>
 
 <mappers>
@@ -34,6 +37,10 @@
 	<mapper resource="mybatis/Type.xml"/>
 	<mapper resource="mybatis/Payment_Info.xml"/>
 	<mapper resource="mybatis/Item.xml"/>
+	<mapper resource="mybatis/Seller.xml"/>
 	<mapper resource="mybatis/Purchase_Item.xml"/>
+	<mapper resource="mybatis/AllOrders.xml"/>
+	<mapper resource="mybatis/EachOrder.xml"/>
+	
 </mappers>
 </configuration>
