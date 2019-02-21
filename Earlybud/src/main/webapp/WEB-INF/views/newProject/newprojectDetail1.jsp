@@ -21,7 +21,7 @@
                     <p class="comment-form-author"><label for="email">진행자 활동 지역</label> 
                     	<input id="seller_loc" name="seller_loc" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
                     <p class="comment-form-url"><label for="url">계좌 등록하기<span class="required">*</span></label> 
-                    	<input id="seller_account" name="seller_account" type="number" value="" size="30" maxlength="200" /></p>
+                    	<input id="seller_account" name="seller_account" type="text" value="" size="30" maxlength="200" /></p>
                     <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="다음 페이지" /> <input type='hidden' name='comment_post_ID' value='1' id='comment_post_ID' />
                       <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
                     </p>

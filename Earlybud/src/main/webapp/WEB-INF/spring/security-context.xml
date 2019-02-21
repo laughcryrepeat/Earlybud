@@ -25,7 +25,6 @@
         	<!-- login-page="/customLogin"
         	authentication-success-handler-ref="customLoginSuccess" -->
     <security:form-login login-page="/login" authentication-success-handler-ref="customLoginSuccess"/>
-    <security:form-login login-page="/oauth" authentication-success-handler-ref="customLoginSuccess"/>
     
 	<security:access-denied-handler ref="customAccessDenied" />
 

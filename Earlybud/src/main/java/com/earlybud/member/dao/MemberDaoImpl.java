@@ -28,10 +28,10 @@ public class MemberDaoImpl implements MemberDAO {
 		int id = -1;
 		try {
 			id = sqlSession.insert(ns+".insertMember", member);
-			sqlSession.insert(ns+".insertAuth", member.getEmail());
+			sqlSession.insert(ns+".insertAuth", member);
 		} finally {
 		}
-		System.out.println("insert("+member+") : "+member.getEmail());
+		System.out.println("insert("+member+")");
 		return id; 
 	}
 	@Override
@@ -41,7 +41,7 @@ public class MemberDaoImpl implements MemberDAO {
 			id = sqlSession.update(ns+".memberUpdate", member);
 		} finally {
 		}
-		System.out.println("회원 update("+member+") : "+member.getEmail());
+		System.out.println("회원 update("+member+")");
 		return id;
 	}
 	@Override
@@ -51,7 +51,7 @@ public class MemberDaoImpl implements MemberDAO {
 			p = sqlSession.update(ns+".pwdUpdate", member);
 		} finally {
 		}
-		System.out.println("회원 update("+member+") : "+member.getEmail());
+		System.out.println("회원 update("+member+")");
 		return p;
 	}
 }

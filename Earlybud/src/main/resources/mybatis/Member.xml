@@ -26,7 +26,7 @@
   	<insert id="insertMember" parameterType="Member" keyProperty="email">
 		insert into member (email, pwd, nickname, joindate) values ( #{email}, #{pwd}, #{nickname}, sysdate)
   	</insert>
-  	<insert id="insertAuth">
+  	<insert id="insertAuth" parameterType="Member" keyProperty="email">
 		insert into Authorities (email, authority) values ( #{email}, 'ROLE_USER')
   	</insert>
   	<update id="memberUpdate" parameterType="Member" keyProperty="email">
