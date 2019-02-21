@@ -18,4 +18,5 @@ public interface AdminService {
 	int sendMessage(Email email);
 	int updateRead(int message_code);
 	int sendPassword(String email);
+	int countNewMessage(String email);
 }

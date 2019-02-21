@@ -100,6 +100,10 @@ public class AdminController {
 		log.info("admin message");
 		List<Message> listMsg = service.listMessage(email);	
 		model.addAttribute("listMsg",listMsg);
+		
+		int newMsg = service.countNewMessage(email);
+		model.addAttribute("newMsg",newMsg);
+		
 		return "admin/page_mailbox";
 	}
 	
@@ -108,7 +112,12 @@ public class AdminController {
 		log.info("admin sent message");
 		List<Message> listSentMsg = service.listSentMessage(email);
 		model.addAttribute("listSentMsg", listSentMsg);
+		System.out.println("listSentMsg size: "+ listSentMsg.size());
+		
+		int newMsg = service.countNewMessage(email);
+		model.addAttribute("newMsg",newMsg);
+		
 		return "admin/sent_mailbox";
-	}
+	}	
 	
 }

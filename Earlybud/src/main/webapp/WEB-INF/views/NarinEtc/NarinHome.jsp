@@ -23,10 +23,13 @@
 <br/><br/><br/><br/>
 <P>이 밑의 부분들이 실제 사용하는 페이지임</P>
 <a href="liked_things">좋아요한 상품/판매자리스트(개인정보수정, 주문조회로 넘어갈 수 있는 탭 만들어야 함)</a><br/>
-<a href="seller_items">한 판매자 상품리스트</a><br/>
-<a href="message">쪽지</a><br/>
-<a href="member_orderlist">회원별 주문확인창</a><br/>
-<a href="member_ordereach">주문별 주문서 확인창</a><br/>
+<!-- <a href="seller_items">한 판매자 상품리스트</a><br/> -->
+<!-- <a href="message/red@gmail.com/blue@gmail.com">쪽지테스트-red@gmail.com</a><br/> -->
+<a href="message/red@gmail.com/blue@gmail.com"	target="popup"	onclick="window.open('message/red@gmail.com/blue@gmail.com', 'popup',
+											'width=1000, height=750'); return false;">쪽지테스트-red@gmail.com</a><br/>
+<!-- <a href="message">쪽지</a><br/> -->
+<a href="member_orderlist/red@gmail.com">회원별 주문확인창-red@gmail.com</a><br/>
+<!-- <a href="member_ordereach">주문별 주문서 확인창</a><br/> -->
 
 </body>
 </html>

@@ -1514,7 +1514,7 @@ a:active, a:hover {
 select {
   padding: 0 45px 0 10px;
   background-color: #fff;
-  background-image: url(ico_down.png);
+  background-image: url("ico_down.png");
   background-repeat: no-repeat;
   background-position: 100% 50%; }
 

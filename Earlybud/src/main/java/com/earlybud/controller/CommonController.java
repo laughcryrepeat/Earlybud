@@ -124,5 +124,4 @@ public class CommonController {
       PrintWriter out = response.getWriter();
    }*/
 
-
 }

@@ -11,4 +11,3 @@ public interface MemberDAO {
  	public int update(Member member);
  	public int updatePwd(Member member);
 }
-

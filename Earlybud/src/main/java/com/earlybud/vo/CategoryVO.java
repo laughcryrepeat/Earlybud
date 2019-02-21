@@ -18,6 +18,7 @@ public class CategoryVO {
   private String NICKNAME;
   private String NOW_SUM;
   private String PERCENT;	//인기순 계산할때 필요
+  private String SUCCESS;
   private Date CLOSINGDATE;	//마감임박순, 최신순 계산할때 필요함
   private String TIME;	//몇일남았는지
 }

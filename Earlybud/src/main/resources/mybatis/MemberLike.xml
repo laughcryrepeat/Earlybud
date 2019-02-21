@@ -57,7 +57,7 @@
   	
 	 <select id="readOneSellerItem" resultType="com.earlybud.vo.MemberLikeVO"><!-- 좋아요한 아이템들 목록 불러오기 -->
   		SELECT
-  		ITEM.main_image, ITEM.title, MEMBER.nickname, ITEM.target_sum, ITEM.cur_sum, ITEM.summary, ITEM.closingdate, SELLER.image, SELLER.info,
+  		ITEM.email, ITEM.main_image, ITEM.title, MEMBER.nickname, ITEM.target_sum, ITEM.cur_sum, ITEM.summary, ITEM.closingdate, SELLER.image, SELLER.info,
   		TRUNC(SYSDATE-ITEM.CLOSINGDATE,0) as TIME, TO_CHAR(ITEM.CUR_SUM, '999,999,999,999') as NOW_SUM, TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT
 		FROM ITEM
 		LEFT OUTER JOIN MEMBER on ITEM.EMAIL=MEMBER.EMAIL

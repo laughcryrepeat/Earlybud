@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import= "java.util.*,com.earlybud.model.Message"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <%@include file="header.jsp"%>
       
@@ -9,26 +10,26 @@
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-envelope-o"></i> A Messagebox</h1>
-          <p>A Messagebox</p>
+          <h1><i class="fa fa-envelope-o"></i> Sent Messagebox</h1>
+          <p>Sent Messagebox</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item"><a href="#">A Messagebox</a></li>
+          <li class="breadcrumb-item"><a href="#">Sent Messagebox</a></li>
         </ul>
       </div>
       <div class="row">
         <div class="col-md-3">
-            <button type="button" class="mb-2 btn btn-primary btn-block" id="emailBtn1">전체공지 메일쓰기</button>
+            <button type="button" class="mb-2 btn btn-primary btn-block" id="emailBtn1">메일쓰기</button>
           <div class="tile p-0">
-            <h4 class="tile-title folder-head">Folders</h4>
+            <h4 class="tile-title folder-head">보낸메세지 함</h4>
             <div class="tile-body">
               <ul class="nav nav-pills flex-column mail-nav">
                 <li class="nav-item active"><a class="nav-link" href="#"><i class="fa fa-inbox fa-fw"></i>
-                Inbox<span class="badge badge-pill badge-primary float-right">12</span></a>      
+                Inbox 새로온메세지<span class="badge badge-pill badge-primary float-right">${newMsg}</span></a>      
                 </li>
                   
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-envelope-o fa-fw"></i> Sent</a></li>
+                <li class="nav-item"><a class="nav-link" href='page_mailbox?email=<sec:authentication property="principal.username"/>'><i class="fa fa-envelope-o fa-fw"></i> Receive 받은메세지함</a></li>
                   
               </ul>
             </div>
@@ -49,32 +50,51 @@
               </div>
             </div>
             <div class="table-responsive mailbox-messages">
-              <table class="table table-hover">
-                 
+            
+              <table class="table table-hover sortable paginated" id="tbl">
+              	<thead>
+                  <tr>
+                    <td class='sort-basic'></td>
+                    <td class='sort-basic'>받는사람</td>
+                    <td class='sort-basic'>내용</td>
+                    <td class='sort-basic'></td>
+                    <td class='sort-ranking'>날짜</td>
+                  </tr>
+                </thead>  
                 <tbody>
                   <c:forEach items="${listSentMsg}" var="Msg"> 
                   <tr>
                     <td>
                       <div class="animated-checkbox">
                         <label>
-                          <input class="msg_check" type="checkbox"><span class="label-text"> </span>
+                          <input class="msg_check" type="checkbox" name="chkbox" value="${Msg.receiver}"><span class="label-text">${Msg.message_code}</span>
                         </label>
                       </div>
                     </td>
-                    <td class="user_email">${Msg.reciever}</td>
-                      <td><a data-toggle="modal" data-backdrop="static" data-keyboard="false" href="#msg_modal" class="request"><b>${Msg.content}</b></a></td>
-                    <td><i class="fa fa-envelope-o"></i></td>
+                    <td class="user_email">${Msg.receiver}</td>
+                    <td class="hidetext"><a data-toggle="modal" data-backdrop="static" data-keyboard="false" href="#msg_modal" class="request"><b>${Msg.content}</b></a></td>
+                    <td>
+                    <c:choose>
+                    	<c:when test = "${Msg.read_check eq 0}">
+                    		<i  class="fa fa-envelope-o"></i>
+                    	</c:when>
+                    	<c:otherwise>
+                    		<i class="fa fa-envelope-open-o"></i>
+                    	</c:otherwise>
+                    </c:choose>
+                    <input type="hidden" name="msg_code" value="${Msg.message_code}">
+                    </td>
                     <td>${Msg.send_date}</td>
                   </tr>
                   </c:forEach>            
-                </tbody>
-                  
+                </tbody>             
               </table>
+              
             </div>
-            <div class="text-right"><span class="text-muted mr-2">Showing 1-15 out of 60</span>
+            <div class="text-right"><span class="text-muted mr-2"></span><span class="text-muted">Total - ${listSentMsg.size()} 메세지   </span>
               <div class="btn-group">
-                <button class="btn btn-primary btn-sm" type="button"><i class="fa fa-chevron-left"></i></button>
-                <button class="btn btn-primary btn-sm" type="button"><i class="fa fa-chevron-right"></i></button>
+                <button class="btn btn-primary btn-sm" id="left" type="button"><i class="fa fa-chevron-left"></i></button>
+                <button class="btn btn-primary btn-sm" id="right" type="button"><i class="fa fa-chevron-right"></i></button>
               </div>
             </div>
           </div>
@@ -94,7 +114,7 @@
         <div class="modal-body">
           <p>Send Email</p>
             <form name="email_modal" method="post" action="email/send">
-                <input id="mailfrom" name="mailfrom" class="form-control" value="admin.email" type="hidden" >
+                <input id="mailfrom" name="mailfrom" class="form-control" value='<sec:authentication property="principal.username"/>' type="hidden" >
                 <div class="form-group">
                   <label class="control-label">제목</label>
                   <input id="mailsubject" name="mailsubject" class="form-control" type="text" >
@@ -166,17 +186,42 @@
     <script src="${pageContext.request.contextPath}/js/admin/popper.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/admin/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/admin/main.js"></script>
+    <script src="${pageContext.request.contextPath}/js/admin/paging.js"></script>
     <!-- The javascript plugin to display page loading on top-->
     <script src="${pageContext.request.contextPath}/js/admin/plugins/pace.min.js"></script>
     <!-- Page specific javascript-->
-    <script type="text/javascript">
+    <script type="text/javascript">   
         var modal1 = $("#sendEmail");
         var modal2 = $("#msg_modal");
         var email = {};
+        jQuery.fn.serializeObject = function() {
+            var obj = null;
+            try {
+                if (this[0].tagName && this[0].tagName.toUpperCase() == "FORM") {
+                    var arr = this.serializeArray();
+                    if (arr) {
+                        obj = {};
+                        jQuery.each(arr, function() {
+                            obj[this.name] = this.value;
+                        });
+                    }//if ( arr ) {
+                }
+            } catch (e) {
+                alert(e.message);
+            } finally {
+            }
+         
+            return obj;
+        };
       $(document).ready(function(){
           $("#emailBtn1").click(function(){
+        	  var items=[];
+        	  $('input[name="chkbox"]:checkbox:checked').each(function(){items.push($(this).val());});
+        	  var select_val = items.join(','); 
+        	  
               modal1.find("input").val("");
               modal1.find("textarea").val("");
+              modal1.find("#mailto").val(select_val);
               $("#sendEmail").modal({backdrop: 'static', keyboard: false});
               
          }); 
@@ -187,26 +232,32 @@
          });
           
          $("#send").click(function(){
-              var serializeArray = modal1.serializeArray();
-              console.log("before send email");
-              $.ajax({
-                method: 'post',
-                url: '../admin/send_mail', 
-                data: serializeArray,
-                success: function(){
-                    console.log("success");
-                }
-            });
-            modal1.modal("hide");
-        });  
+        	 var form = $("#email_modal").serializeObject();
+             
+             console.log("before send email");
+             console.log("form: "+form);
+             console.log("JSON.stringify(form): "+JSON.stringify(form));
+             $.ajax({
+               method: 'post',
+               url: '../send_mail', 
+               data: JSON.stringify(form),
+               dataType: "json",
+               contentType: "application/json",
+               success: function(){
+                   alert("mail sent!!");
+               }
+           });
+           modal1.modal("hide");
+        });
+         
       });  
       $(".request").click(function(){
     	  var tr = $(this).parent().parent();
-  			var sender = tr.find("td").eq(1).text();
+  			var receiver = tr.find("td").eq(1).text();
   			var content = tr.find("td").eq(2).text();
   			var senddate = tr.find("td").eq(4).text();
-  			console.log("sender에 담긴 값 : "+sender);
-          $('#msg_from').val(sender);
+  			console.log("reciever에 담긴 값 : "+receiver);
+          $('#msg_from').val(receiver);
           $('#msg_date').val(senddate);
           $('#msg_content').val(content);
       });

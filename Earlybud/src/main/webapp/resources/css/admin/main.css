@@ -15234,3 +15234,10 @@ be a descendant of the grid when it is being dragged.
 .user .user-settings label {
   color: #666;
 }
+.hidetext { 
+	display: inline-block; 
+	width: 200px; 
+	white-space: nowrap; 
+	overflow: hidden; 
+	text-overflow: ellipsis; 
+	}
