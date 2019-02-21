@@ -23,7 +23,11 @@ public class Item {
   private long target_sum; //목표금액
   private long cur_sum;
   private Date opendate;
+<<<<<<< HEAD
   private Date closingdate;
+=======
+  private Date closingdate;
+>>>>>>> stash
   private int admincall;
   private int success;
   private long view_count; 
