@@ -1,3 +1,4 @@
+
 <div id="sidebar-footer" class="footer-widgets" role="complementary">
 			<div class="container">
 				<div class="row">
@@ -53,7 +54,7 @@
 		</footer><!-- #colophon -->
 	</div><!-- #page -->
 
-	/* <![CDATA[ */
+	 <![CDATA[ 
 		var wpcf7 = {
 			"apiSettings": {
 				"root": "https:\/\/demo.athemes.com\/airi-portfolio\/wp-json\/contact-form-7\/v1",
@@ -65,8 +66,7 @@
 				}
 			}
 		};
-		/* ]]> */
-	
+		 ]]> 	
 	<script type='text/javascript'>
 		/* <![CDATA[ */
 		var elementorFrontendConfig = {
@@ -97,7 +97,7 @@
 				"excerpt": ""
 			}
 		};
-		/* ]]> */
+
 	</script>
 </body>
 

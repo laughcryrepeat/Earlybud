@@ -16,9 +16,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.earlybud.category.service.CategoryService;
@@ -33,113 +35,184 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-//@RequestMapping(value = "category")
-//@RequestMapping("/category/*")	
 @AllArgsConstructor
 public class CategoryController {
 	
-	//private ItemService service;
 	private CategoryService service;
 	
 	 @RequestMapping(value = {"category", "category/{catcode}"})
-		//아래는 리스트를 한번만 가져오고 나머지 정렬은 ajax로 하는 방법..
 	public ModelAndView list(Model model, @PathVariable(value="catcode",required = false) String catcode) {	//리스트 가져오는 처리. 게시물 목록을 전달해야하므로 모델을 파라미터로 지정, 이를 통해 boardserviceimpl객체의 getList()결과를 담아 전달한다.(addAtrribute) 
 		 
 		PageVO paging = new PageVO();
 		List<CategoryVO> itemList = null;
-		paging.setCountPage(7);	//1+3개
-		//Map<String, Object> map2 = null;
-		//List<String> date2 = new ArrayList<String>();
-		//List<Map<String, Object>> my= new ArrayList<Map<String, Object>>();
+		paging.setCountPage(3);	//1+3개
 		List<Category> cateList = service.cateListService();	//카테고리 코드+이름 리스트
 		List<Long> categoryList = new ArrayList<Long>(); //카테고리번호만 담은 리스트. 조회범주.
 		
-		if(catcode == null) {	//카테고리코드가 0일때 ==전체조회	
+		if(catcode == null || catcode.equals("0")) {	//카테고리코드가 0일때 ==전체조회	
 			for(int i=0; i<cateList.size(); i++) {
 				categoryList.add(cateList.get(i).getCAT_CODE());
 			}
+			catcode="0";
 		}else {
 			categoryList.add(Long.parseLong(catcode));
 		}
-						
-		System.out.println("카테고리번호는 "+catcode);
-		System.out.println("카테고리조회조건은  "+categoryList);
-		System.out.println("카테고리리스트 내용은 "+categoryList);
+		
+		System.out.println("얼리버드-최초 catcode: "+catcode);
+		System.out.println("얼리버드-최초 list_category: "+cateList);
+		System.out.println("얼리버드-최초 first: "+(paging.getLast()+1));
+		System.out.println("얼리버드-최초 order 인기순인 "+"CUR_SUM/TARGET_SUM desc");
+		System.out.println("얼리버드-최초 end는 진행중 0");
 		
 //페이징
 		HashMap<String, Object> catInfo = new HashMap<String, Object>();
 		catInfo.put("categoryList", categoryList);	//게시물몇갠지 셀 범주
 		int count = service.countItemService(catInfo); //전체몇갠지
 		System.out.println("count: "+count);
-		//paging.setCountPage(3);	//1+3개
 		paging.cal(1, count);	//1~전체
+		//한번에 로딩되는 아이템 갯수를 조정하고싶으면 paging.setCountPage(총 로딩시킬 갯수-1); 
 		itemList = service.itemListService(paging);	
+		
 		
 //리스팅	
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("categoryList", categoryList);
 		map.put("first", paging.getFirst());
 		map.put("last", paging.getLast());
-		//map.put("standard", "CUR_SUM/TARGET_SUM desc");//인기순...이것도 ajax에서 퍼센트 큰거로 정렬시키면 될텐데.
-		map.put("standard", "OPENDATE desc");//최신순
+		map.put("standard", "CUR_SUM/TARGET_SUM desc");//페이지 최초 로딩시 진행중/인기순으로 정렬		
 		map.put("end_code", "0");	//success가 0 = 진행중	/ 1혹은2면 종료
-		//map.put("catcode", catcode);
 		
-		//List<CategoryVO> itemListHead = service.selectCategoryService(map);
-		//map.put("last", 4);		//한번 로드에 몇개까지 가져올껀지
-		System.out.println("map은 "+map);
+		//map.put("standard", "OPENDATE desc");//얘는 최신순 정렬
+
+
 		itemList = service.selectCategoryService(map); 
-		System.out.println("아이템리스트는 "+itemList);
-		//targetdate가 categoryVO에 있는지? 없다면 넣어야됨 아니면 itemvo쓰던가..
-/*		
-		for(int i=0; i<itemList.size(); i++) {
-			Date closingDate = itemList.get(i).getCLOSINGDATE();
-			Date date = new Date();
-			date.setTime((closingDate.getTime() - date.getTime())/1000/60/60);
-			date2.add(date.getTime()/24+"");
-		}
-		System.out.println("데잇투는 "+date2);
-		for(int i=0; i<itemList.size(); i++) {
-			map2 = new HashMap<String, Object>();
-			map2.put("list", itemList.get(i));
-			map2.put("date", date2.get(i));
-			my.add(map2);
-		}
-*/
-//		System.out.println("데이터2 내용은"+date2);
-//		System.out.println("my 내용은"+my);	//{남은날짜, 아이템내용} 이런식
-//		System.out.println("헤드 내용은"+itemListHead);	//아이템리스트랑 내용 똑같음
-		
-		
-				
-		
-		
+		System.out.println("얼리버드-최초 아이템리스트: "+itemList);
+
 		ModelAndView mv = new ModelAndView("category/category", "list", itemList);
-//		mv.addObject("map", my);	//date를 꼭 빼야하는지..?
-//		mv.addObject("productListHead", itemListHead);		
 		mv.addObject("list_category", cateList); //전체 카테고리코드+이름담긴 리스트	
+				
 		mv.addObject("catcode", catcode);
-		
-		//추가로 보내야될게 first, order, end(끝났는지여부)
 		mv.addObject("first", paging.getLast()+1);//row번호
-		mv.addObject("order", "CUR_SUM/TARGET_SUM desc");	
+		mv.addObject("order", "CUR_SUM/TARGET_SUM desc");
 		mv.addObject("end", "0");
-		
+
 		return mv;
 		}
 	
+	 
+	//  조건변경될때마다 실행되는것
+	@RequestMapping(value = "category/update", method = RequestMethod.POST)
+	@ResponseBody
+	//public List<Product> listadd(@RequestBody PagingVo paging) {
 		
-	/*
-	@RequestMapping(value = "category")
-	 public String list(Model model) {	//리스트 가져오는 처리. 게시물 목록을 전달해야하므로 모델을 파라미터로 지정, 이를 통해 boardserviceimpl객체의 getList()결과를 담아 전달한다.(addAtrribute) 
-		 
-	 log.info("list");
-	 model.addAttribute("list", service_Category.getList());
-	 model.addAttribute("list_category", service_Category.getList());
-	 System.out.println("categoryController : 카테고리 진입");
-	 	 
-	return "category/category";
-	 }
-		*/
+	public List<CategoryVO> listupdate(@RequestBody Map<String, Object> params) {
+			int first = (Integer) params.get("first");
+			String catcode = (String) params.get("catcode");
+			String order_code = (String) params.get("order_code");
+			String end_code = (String)params.get("end_code");
+			List<CategoryVO> itemList = null;
+			int count = 0;
+			
+			System.out.println("얼리버드-업뎃 first는: "+first);
+			System.out.println("얼리버드-업뎃  catcode는: "+catcode);
+			System.out.println("얼리버드-업뎃  order_code는: "+order_code);
+			System.out.println("얼리버드-업뎃  end_code는: "+end_code);
+			
+			List<Long> categoryList = new ArrayList<Long>();
+			List<Category> cateList = service.cateListService();
+			
+			
+			if(catcode==null || catcode.equals("0")){
+				System.out.println("까");
+				for(Category categoryOne:cateList) {//in 조건에 넣을 정보
+					categoryList.add(categoryOne.getCAT_CODE());
+				}
+				System.out.println("꿍");
+				catcode="0";
+			}else {
+				categoryList.add(Long.parseLong(catcode)); //in 조건에 넣을 정보
+			}
+							////////////////////
+			HashMap<String, Object> map3 = new HashMap<String, Object>();
+			map3.put("categoryList", categoryList);
+			count = service.countItemService(map3);
+			
+			PageVO paging = new PageVO();
+			paging.setFirst(first);
+			paging.setTotalPage(count);
+			paging.cal(1, count);
+			System.out.println("---first"+paging.getFirst());
+			System.out.println("---last"+paging.getLast());
+			
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("catcode", catcode);
+			map.put("first", paging.getFirst());
+			map.put("last", paging.getLast());
+			map.put("categoryList", categoryList);
+			map.put("standard", order_code);
+			map.put("end_code", end_code);
+			itemList = service.selectCategoryService(map); 
+			
+			System.out.println("얼리버드-업뎃 반환될 first"+paging.getFirst());
+			System.out.println("얼리버드-업뎃 반환될 last"+paging.getLast());			
+			System.out.println("얼리버드-업뎃 아이템리스트는"+itemList);
+			return itemList;	//기존코드의 date는 list.time임
+		}
+	 
+	
+//  ajax로 더보기 누를 때마다 목록 6개씩 추가하는 거
+	@RequestMapping(value = "category/add", method = RequestMethod.POST)
+	@ResponseBody
+	public List<CategoryVO> listadd(@RequestBody Map<String, Object> params) {
+		int first = (Integer) params.get("first");
+		String catcode = (String) params.get("catcode");
+		String order_code = (String)params.get("order_code");
+		String end_code = (String)params.get("end_code");
+		
+		System.out.println("얼리버드-애드 first는: "+first);
+		System.out.println("얼리버드-애드  catcode는: "+catcode);
+		System.out.println("얼리버드-애드  order_code는: "+order_code);
+		System.out.println("얼리버드-애드  end_code는: "+end_code);
+		
+			
+		List<CategoryVO> itemList = null;
+		List<Category> cateList = service.cateListService();
+		List<Long> categoryList = new ArrayList<Long>();
+		int count = 0;
+		
+		if(catcode==null || catcode.equals("0")) {
+			for(Category categoryOne:cateList) {//in 조건에 넣을 정보
+				categoryList.add(categoryOne.getCAT_CODE());
+			}
+			catcode="0";
+		}else {
+			categoryList.add(Long.parseLong(catcode)); //in 조건에 넣을 정보
+		}
+		
+		HashMap<String, Object> map2 = new HashMap<String, Object>();
+		map2.put("categoryList", categoryList);
+		count = service.countItemService(map2);
+		
+		PageVO paging = new PageVO();
+		paging.setFirst(first);
+		paging.setTotalPage(count);
+		paging.cal(paging.getFirst(), count);
+		System.out.println("얼리버드-에드 first: "+paging.getFirst());
+		System.out.println("얼리버드-에드 last: "+paging.getLast());
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("catcode", catcode);
+		map.put("first", paging.getFirst());
+		map.put("last", paging.getLast());
+		map.put("PagingVO", paging);
+		map.put("categoryList", categoryList);
+		map.put("standard", order_code);
+		map.put("end_code", end_code);
+		itemList = service.selectCategoryService(map);			
+		
+		System.out.println("얼리버드-에드 아이템리스트는"+itemList);
+		return itemList;
+	}
+	 
 	
 }

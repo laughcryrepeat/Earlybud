@@ -42,7 +42,7 @@
 	                <foreach collection="categoryList" item="item" index="index" separator="," open="(" close=")">
 	                    #{item}
 	                </foreach>			
-	           and SUCCESS=(${end_code}) and ADMINCALL=1
+	           and SUCCESS in (${end_code}) and ADMINCALL=1
       			ORDER BY ${standard}
       			) q) 
       		WHERE rn 
