@@ -17,6 +17,5 @@ public interface AdminService {
 	List<Message> listSentMessage(String email);
 	int sendMessage(Email email);
 	int updateRead(int message_code);
-	
 	int sendPassword(String email);
 }

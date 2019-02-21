@@ -108,7 +108,7 @@ public class CommonController {
       log.info("JOIN error: " + error);
       return member;
    }
-   
+
    /*@RequestMapping("/email_check")
    public void emailCheck(HttpServletRequest request, HttpServletResponse response, String error, Model model, Member member) 
       throws Exception{
