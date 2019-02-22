@@ -15,11 +15,13 @@
   		<result property="item_liked" column="ITEM_LIKED"/>
   		<collection property="authList" resultMap="authMap"></collection>
   	</resultMap>
-  	
   	<resultMap type="Authorities" id="authMap">
     	<result property="email" column="EMAIL"/>
     	<result property="authority" column="AUTHORITY"/>
  	</resultMap>
+  	<select id="joincheck" parameterType="Member" resultType="Integer">
+      SELECT NVL(COUNT(*), 0) from member where nickname = #{nickname}
+	</select>
 	<select id="sel_member" resultMap="memberMap">
 		select * from Member where email=#{email}
 	</select>

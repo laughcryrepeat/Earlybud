@@ -35,6 +35,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 		log.warn("queried by member mapper: "+member);
 		return member == null? null: new EarlybudUser(member);
 	}
+	public int login_check(Member member) {
+		System.out.println("로그인 서비스");
+		return dao.login_check(member);
+	}
 	public Member readM(String email) {
 		System.out.println("여기는 커스텀 유저");
 		return dao.readM(email);

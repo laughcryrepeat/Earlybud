@@ -121,6 +121,12 @@ input, textarea {
   color: #66676a;
   border-radius: 0;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  
+}
+.denied{
+	display: none;
+	color: red;
+	transform: translate(80px, 13px);
 }
 
 input:focus, textarea:focus {

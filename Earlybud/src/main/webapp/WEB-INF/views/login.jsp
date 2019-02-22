@@ -49,19 +49,21 @@
                 <label>
                   닉네임<span class="req">*</span>
                 </label>
-                <input type="text"required name="nickname" autocomplete="off" />
+                <input type="text"required class="join" id="nickname" name="nickname"  />
+                <!-- oninput="id_check()"  -->
+				<section class="denied">이미 등록된 닉네임입니다.</section>
               </div>
             <div class="field-wrap">
               <label>
                 이메일<span class="req">*</span>
               </label>
-              <input type="email"required name="email"/>
+              <input type="email"required class="join" id="email" name="email"/>
             </div>
             <div class="field-wrap">
               <label>
                 비밀번호<span class="req">*</span>
               </label>
-              <input type="password"required name="pwd" autocomplete="off"/>
+              <input type="password"required class="join" id="pwd" name="pwd" autocomplete="off"/>
             </div>
             <button id="join" type="submit" class="button button-block" onclick="if(!memberSubmit(this.form)){return false;}"/>회원가입</button>
             <a class="button1 button-block" href="https://kauth.kakao.com/oauth/authorize?client_id=e6572958e72ab54e8d05db03cfd4ac7e&redirect_uri=http://localhost:8080/earlybud/oauth&response_type=code&scope=account_email
@@ -119,13 +121,16 @@
 	  </script>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script  src="js/login/index.js"></script>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
   function id_check(str){
-	   var request = $.ajax({url:"join", method:"GET", data:{id:str}, dataType:"html"});
-	   request.done(function(data){
-		   $("#id_ok").html(data);
-	   });
+	  var inputed=$('.join').val();
+	  $.ajax({
+		  data:{
+			  join : inputed
+		  },
+		  url : "login_check"
+	  });
   }
-  </script> -->
+  </script>
 </body>
 </html>

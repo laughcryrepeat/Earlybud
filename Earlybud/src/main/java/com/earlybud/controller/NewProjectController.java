@@ -45,7 +45,10 @@ public class NewProjectController {
 	public String newProjectDetail1(Seller seller) throws IOException{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
-		if(projectS.select(email) != null) return "newProject/newprojectDetail2";
+		if(projectS.seller_select(email) != null) {
+			System.out.println("갑니다 숑숑: "+ projectS.seller_select(email));
+			return "newProject/newprojectDetail2";
+			}
 		System.out.println("1st page email: "+email);
 		return "newProject/newprojectDetail1";
 	}
@@ -130,11 +133,13 @@ public class NewProjectController {
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////// 프로젝트 수정
-	
+	Model model;
 	@RequestMapping("newprojectModify1")
-	public String newProjectModify1(Seller seller) throws IOException{
+	public String newProjectModify1() throws IOException{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
+		model.addAttribute("seller", projectS.seller_select(email));
+		System.out.println(projectS.seller_select(email));
 		return "newProject/newprojectDetail1";
 	}
 	@RequestMapping("newprojectModify2")
@@ -143,6 +148,8 @@ public class NewProjectController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
 		System.out.println("1st page email: "+email);
+		
+		
 		Seller seller = new Seller();
 		String fileName=image.getOriginalFilename();
 		long size = image.getSize();

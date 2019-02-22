@@ -13,7 +13,10 @@ public class MemberDaoImpl implements MemberDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	private String ns = "com.earlybud.model.Member";
-	
+	public int login_check(Member member) {
+		System.out.println("로그인 check");
+		return sqlSession.selectOne(ns+".joincheck", member);
+	}
 	@Override
 	public Member readM(String email) {
 		System.out.println("여기는 dao");

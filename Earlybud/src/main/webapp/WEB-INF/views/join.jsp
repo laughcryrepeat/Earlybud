@@ -3,6 +3,6 @@
 <!DOCTYPE html>
 <html>
 	<script type="text/javascript">
-	location.href="/earlybud/mypage";
+	location.href="/earlybud/";
 	</script>
 </html>
