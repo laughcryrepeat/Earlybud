@@ -62,7 +62,7 @@ public class newProjectController {
 		long size = image.getSize();
 		String contentType = image.getContentType();
 		byte[] fileContents = image.getBytes();
-		image.transferTo(new File("D:\\Download\\"+fileName));
+		image.transferTo(new File("C:\\Users\\student\\Desktop\\dwom"+fileName));	//파일받는경로
 		seller.setImage(fileName);
 		System.out.println("프로젝트 생성 p1: " + info + ", " + seller_loc + ", " + seller_account);
 		

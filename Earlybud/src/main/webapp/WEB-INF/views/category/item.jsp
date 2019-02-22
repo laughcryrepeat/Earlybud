@@ -441,10 +441,6 @@
             <!-- aside -->
             
             <!--  aside -->
-
-            
-            
-                
             
 
             <input type="hidden" id="projectSeq" value="6388">
@@ -632,44 +628,27 @@
                                     <h2 class="screen_out">프로젝트 상세 탭메뉴</h2>
                                     <div class="tab_box">
                                         <ul class="list_tab">
-                                            <li class="on"><a href="/reward/6388/intro?isPreview=Y&amp;mockFlag=N" id="Intro" class="link_tab">소개</a></li>
+                                           <li class="on"><a href="/reward/6388/news?mockFlag=N"  id="Intro" class="link_tab">소개</a></li>
 
-                                            <li>
+                                            <li class="">
                                                 <a href="/reward/6388/news?mockFlag=N" id="News" class="link_tab">공지</a>
                                             </li>
-                                            <li>
+                                            <li class="">
                                                 <a href="/reward/6388/qna?isPreview=Y&amp;mockFlag=N" id="Qna" class="link_tab">Q&amp;A</a>
                                             </li>
-                                            <li>
-                                                <a href="/reward/6388/cheer?mockFlag=N" id="Cheer" class="link_tab">환불 및 <span class="skip">교환</span></a>
-                                            </li>
                                             
-                                                
-                                            
+                                                                                        
                                         </ul>
-                                        
-                                            
-                                            
-                                                
-                                            
-                                        
-                                        <div class="btn_area stickable">
-                                            
-                                                
-                                                
-                                                    
-                                                        <a href="/reward/6388/join/select" class="link_join">참여하기</a>
-                                                    
-                                                    
-                                                
-                                            
-                                        </div>
+                                                                                
                                     </div>
                                 </nav>
-                                <!-- 탭이 눌려질 때 동적으로 페이지를 로드한다. -->
+                                
+                                
+                                <!-- 탭이 눌려질 때 동적으로 페이지를 로드한다. 상세설명/공지/큐엔에이페이지 로딩될것임-->
                                 <div id="reward_tab_content">
 									<!--[if IE 8 ]> <html lang="ko" class="ie8"> <![endif]-->
 									<!--[if IE 9 ]> <html lang="ko" class="ie9"> <![endif]-->
+									
 									
 									<h2 class="screen_out">소개</h2>
 									<div class="article_intro">

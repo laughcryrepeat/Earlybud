@@ -28,7 +28,7 @@ public class MemberDaoImpl implements MemberDAO {
 		int id = -1;
 		try {
 			id = sqlSession.insert(ns+".insertMember", member);
-			sqlSession.insert(ns+".insertAuth", member.getEmail());
+			sqlSession.insert(ns+".insertAuth", member);
 		} finally {
 		}
 		System.out.println("insert("+member+") : "+member.getEmail());
