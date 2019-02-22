@@ -90,11 +90,31 @@ public class AdminServiceImpl implements AdminService {
 		System.out.println("updateRead service, message_code: "+message_code);
 		return dao.updateRead(message_code);
 	}
-
+	@Override
+	public int sendPassword(String email) {
+		String mailto = email;
+		String sender = "laughcryrepeat@naver.com";
+		String mailsubject = "EarlyBud 요청하신 비밀번호 입니다";
+		String content = mailsubject+ "/" + "..";
+		String recievers[] = null;
+		int x = 0;
+		if(mailto.contains(",")) {
+			recievers = mailto.split("\\s*,\\s*");
+			for(int i=0; i<recievers.length; i++) {
+				Message msg = new Message(-1,-1,recievers[i],sender,content,null,-1);
+				dao.sendMessage(msg);
+				x++;
+			}
+		}else {
+			Message msg = new Message(-1,-1, mailto,sender,content,null,-1);
+			dao.sendMessage(msg);
+			x++;
+		}	
+		return x;
+	}
 	@Override
 	public int countNewMessage(String email) {
 		// TODO Auto-generated method stub
 		return dao.countNewMessage(email);
 	}
-
 }

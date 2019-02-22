@@ -12,7 +12,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="css/login/style.css">
 </head>
-
+<style type="text/css">
+	  .modal{
+	  	display: none;
+	  	position: fixed;
+	  	z-index: 1; /* Sit on top */
+	    left: 0;
+	    top: 0;
+	    width: 100%; /* Full width */
+	    height: 100%; /* Full height */
+	    overflow: auto; /* Enable scroll if needed */
+	    background-color: rgb(0,0,0); /* Fallback color */
+	    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	  }
+	  .modal-content{
+	  	background-color: #fefefe;
+            margin: 15% auto;
+            padding: 100px;
+            border: 1px solid #888;
+            width: 50%; /* Could be more or less, depending on screen size */
+	  }
+	  </style>
 <body>
   <script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>
   <c:out value="${error}"/><c:out value="${logout}"/>
@@ -29,19 +49,21 @@
                 <label>
                   닉네임<span class="req">*</span>
                 </label>
-                <input type="text"required name="nickname" autocomplete="off" />
+                <input type="text"required class="join" id="nickname" name="nickname"  />
+                <!-- oninput="id_check()"  -->
+				<section class="denied">이미 등록된 닉네임입니다.</section>
               </div>
             <div class="field-wrap">
               <label>
                 이메일<span class="req">*</span>
               </label>
-              <input type="email"required name="email"/>
+              <input type="email"required class="join" id="email" name="email"/>
             </div>
             <div class="field-wrap">
               <label>
                 비밀번호<span class="req">*</span>
               </label>
-              <input type="password"required name="pwd" autocomplete="off"/>
+              <input type="password"required class="join" id="pwd" name="pwd" autocomplete="off"/>
             </div>
             <button id="join" type="submit" class="button button-block" onclick="if(!memberSubmit(this.form)){return false;}"/>회원가입</button>
             <a class="button1 button-block" href="https://kauth.kakao.com/oauth/authorize?client_id=e6572958e72ab54e8d05db03cfd4ac7e&redirect_uri=http://localhost:8080/earlybud/oauth&response_type=code&scope=account_email
@@ -62,26 +84,53 @@
               </label>
               <input type="password" name="password"/>
             </div>
-            <p class="forgot"><a href="#">비밀번호를 잊으셨나요?</a></p>
+            <p class="forgot" id="forgot"><a href="#modal">비밀번호를 잊으셨나요?</a></p>
+            <button class="button button-block"/>Log In</button>
               <a class="button1 button-block" href="https://kauth.kakao.com/oauth/authorize?client_id=e6572958e72ab54e8d05db03cfd4ac7e&redirect_uri=http://localhost:8080/earlybud/oauth&response_type=code&scope=account_email
 "><img class="img" src="images/login/kakaotalk.png">카카오로 로그인</a>
-            <button class="button button-block"/>Log In</button>
             	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
             
 			</script>
             </form> 
-          </div>
+     <div id="myModal" class="modal">
+   		<div class="modal-content">
+   			<div>
+   			<form action="/earlybud/forgot" method="post">
+   				<center><p>가입시 등록했던 이메일을 입력해주세요</p>
+   				<input name="email" type="email" size="30" maxlength="100" />
+   				<p><button class="buF button button-block"/>비밀번호 전송</button></p></center>
+   			</form>
+   			</div>
+   		</div>
+   	</div>
+        </div>
       </div><!-- tab-content -->
 </div> <!-- /form -->
+<script type="text/javascript">
+	  var pick = document.getElementById('forgot');
+	  var mymodal = document.getElementById('myModal');
+	  pick.onclick = function(){
+		  mymodal.style.display = "block";
+	  }
+	  window.onclick = function(event) {
+          if (event.target == mymodal) {
+        	  myproject.option_type.value = "가격: "+ type_code.value + " 옵션이름: " + type_name.value + " 옵션설명: " + info.value; 
+              mymodal.style.display = "none";
+          }
+      }
+	  </script>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script  src="js/login/index.js"></script>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
   function id_check(str){
-	   var request = $.ajax({url:"join", method:"GET", data:{id:str}, dataType:"html"});
-	   request.done(function(data){
-		   $("#id_ok").html(data);
-	   });
+	  var inputed=$('.join').val();
+	  $.ajax({
+		  data:{
+			  join : inputed
+		  },
+		  url : "login_check"
+	  });
   }
-  </script> -->
+  </script>
 </body>
 </html>

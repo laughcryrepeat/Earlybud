@@ -5,7 +5,8 @@ import com.earlybud.model.Seller;
 import com.earlybud.model.Type;
 
 public interface NewProjectDao {
-	public String select(String email);
+	public Seller seller_select(String email);
+	public Item item_select(long item_code);
 	public int save(Item item);
 	public int save2(Type type);
 	public int update(Item item);

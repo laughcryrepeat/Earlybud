@@ -1,7 +1,5 @@
 package com.earlybud.controller;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -27,7 +25,7 @@ import com.earlybud.security.CustomUserDetailsService;
 
 @Controller
 @RequestMapping("/newproject/*")
-public class newProjectController {
+public class NewProjectController {
 	
 	@Autowired
 	CustomUserDetailsService service;
@@ -47,7 +45,10 @@ public class newProjectController {
 	public String newProjectDetail1(Seller seller) throws IOException{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
-		if(projectS.select(email) != null) return "newProject/newprojectDetail2";
+		if(projectS.seller_select(email) != null) {
+			System.out.println("갑니다 숑숑: "+ projectS.seller_select(email));
+			return "newProject/newprojectDetail2";
+			}
 		System.out.println("1st page email: "+email);
 		return "newProject/newprojectDetail1";
 	}
@@ -62,7 +63,7 @@ public class newProjectController {
 		long size = image.getSize();
 		String contentType = image.getContentType();
 		byte[] fileContents = image.getBytes();
-		image.transferTo(new File("C:\\Users\\student\\Desktop\\dwom"+fileName));	//파일받는경로
+		image.transferTo(new File("D:\\Download\\"+fileName));
 		seller.setImage(fileName);
 		System.out.println("프로젝트 생성 p1: " + info + ", " + seller_loc + ", " + seller_account);
 		
@@ -105,7 +106,99 @@ public class newProjectController {
 		return "newProject/newprojectDetail3";
 	}
 	@RequestMapping("newprojectCheck")
-	public void newProjectCheck(@RequestParam long target_sum, @RequestParam String summary,
+	public void newProjectCheck(@RequestParam("target_sum") long target_sum, @RequestParam String summary,
+			@RequestParam String option_type, @RequestParam String content){
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String email = authentication.getName();
+		String typeprice = option_type.substring(option_type.indexOf("가격: ")+4, option_type.indexOf(" 옵션이름: "));
+		long price = Long.parseLong(typeprice);
+		String name = option_type.substring(option_type.indexOf(" 옵션이름: ")+7, option_type.lastIndexOf(" 옵션설명: "));
+		String info = option_type.substring(option_type.indexOf(" 옵션설명: ")+7);
+		System.out.println("프로젝트 생성 p3: "+target_sum+", " +summary+","+price+","+name + ","+info);
+		Item item = new Item();
+		item.setEmail(email);
+		item.setTarget_sum(target_sum);
+		item.setSummary(summary);
+		item.setContent(content);
+		projectS.update(item);
+		System.out.println("아이템코드? " + item.getItem_code());
+		long item_code = (long) item.getItem_code();
+		Type type = new Type();
+		type.setItem_code(item_code);
+		type.setPrice(price);
+		type.setName(name);
+		type.setInfo(info);
+		projectS.save2(type);
+		System.out.println("저장완료");
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////// 프로젝트 수정
+	Model model;
+	@RequestMapping("newprojectModify1")
+	public String newProjectModify1() throws IOException{
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String email = authentication.getName();
+		model.addAttribute("seller", projectS.seller_select(email));
+		System.out.println(projectS.seller_select(email));
+		return "newProject/newprojectDetail1";
+	}
+	@RequestMapping("newprojectModify2")
+	public String newprojectModify2(@RequestParam("image") MultipartFile image, @RequestParam("info") String info,
+			@RequestParam("seller_loc") String seller_loc, @RequestParam("seller_account") String seller_account) throws IOException{
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String email = authentication.getName();
+		System.out.println("1st page email: "+email);
+		
+		
+		Seller seller = new Seller();
+		String fileName=image.getOriginalFilename();
+		long size = image.getSize();
+		String contentType = image.getContentType();
+		byte[] fileContents = image.getBytes();
+		image.transferTo(new File("D:\\Download\\"+fileName));
+		seller.setImage(fileName);
+		System.out.println("프로젝트 생성 p1: " + info + ", " + seller_loc + ", " + seller_account);
+		
+		seller.setEmail(email);
+		seller.setInfo(info);
+		seller.setSeller_loc(seller_loc);
+		seller.setSeller_account(seller_account);
+		projectS.update2(seller);
+		
+		return "newProject/newprojectDetail2";
+	}
+	@RequestMapping("newprojectModify3")
+	public String newProjectModify3(@RequestParam("cat_code") long cat_code, @RequestParam("opendate") String opendate, 
+			@RequestParam("closingdate") String closingdate, @RequestParam("title") String title, 
+			@RequestParam("main_image") MultipartFile main_image) throws ParseException, IOException{
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String email = authentication.getName();
+		System.out.println("3rd page email: "+email);
+		String fileName=main_image.getOriginalFilename();
+		long size = main_image.getSize();
+		String contentType = main_image.getContentType();
+		byte[] fileContents = main_image.getBytes();
+		main_image.transferTo(new File("D:\\Download\\"+fileName));
+		
+		Date startDate = new  SimpleDateFormat("yyyy-MM-dd").parse(opendate);
+		Date endDate = new  SimpleDateFormat("yyyy-MM-dd").parse(closingdate);
+		java.sql.Date openDate = new java.sql.Date(startDate.getTime());
+		java.sql.Date closingDate = new java.sql.Date(endDate.getTime() + TimeUnit.DAYS.toMillis( 1 ));
+		
+		Item item = new Item();
+		item.setEmail(email);
+		item.setCat_code(cat_code);
+		item.setTitle(title);
+		item.setMain_image(fileName);
+		item.setOpendate(openDate);
+		item.setClosingdate(closingDate);
+		System.out.println("프로젝트 생성 p2: "+item);
+		projectS.save(item);
+		
+		return "newProject/newprojectDetail3";
+	}
+	@RequestMapping("newprojectModifyCheck")
+	public void newProjectModifyCheck(@RequestParam long target_sum, @RequestParam String summary,
 			@RequestParam String option_type, @RequestParam String content){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();

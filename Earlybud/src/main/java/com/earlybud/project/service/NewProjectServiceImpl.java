@@ -16,8 +16,11 @@ public class NewProjectServiceImpl implements NewProjectService {
 	
 	@Setter(onMethod_ = { @Autowired })
 	private NewProjectDao dao;
-	public String select(String email) {
-		return dao.select(email);
+	public Seller seller_select(String email) {
+		return dao.seller_select(email);
+	}
+	public Item item_select(long item_code) {
+		return dao.item_select(item_code);
 	}
 	public int save(Item item) {
 		System.out.println("아이템 save 서비스 들어왔어용");

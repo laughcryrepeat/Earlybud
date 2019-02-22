@@ -29,28 +29,22 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
 			String redirectUrl = (String) session.getAttribute("prevPage");
 			 if (redirectUrl != null) {
 				 log.warn("Login Success");
-					
-					List<String> roleNames = new ArrayList<>();
-					String userId = request.getParameter("username");
-					
-					auth.getAuthorities().forEach(authority -> {
-
-						roleNames.add(authority.getAuthority());
-
-					});
-
-					log.warn("ROLE NAMES: " + roleNames);
-					log.warn("USER NAME: " + userId);
-					session.removeAttribute("prevPage");
-	                if (roleNames.contains("ROLE_ADMIN")) {
-	        			response.sendRedirect("admin/admin_home");
-	        			return;
-	        		}
-	        		if (roleNames.contains("ROLE_USER")) {
-	        			getRedirectStrategy().sendRedirect(request, response, redirectUrl);
-	        			return;
-	        		}
-	        		
+				List<String> roleNames = new ArrayList<>();
+				String userId = request.getParameter("username");
+				auth.getAuthorities().forEach(authority -> {
+				roleNames.add(authority.getAuthority());
+				});
+				log.warn("ROLE NAMES: " + roleNames);
+				log.warn("USER NAME: " + userId);
+				session.removeAttribute("prevPage");
+                if (roleNames.contains("ROLE_ADMIN")) {
+        			response.sendRedirect("admin/admin_home");
+        			return;
+        		}
+        		if (roleNames.contains("ROLE_USER")) {
+        			getRedirectStrategy().sendRedirect(request, response, redirectUrl);
+        			return;
+        		}
 	        		response.sendRedirect("/");
 	            } else {
 	                super.onAuthenticationSuccess(request, response, auth);

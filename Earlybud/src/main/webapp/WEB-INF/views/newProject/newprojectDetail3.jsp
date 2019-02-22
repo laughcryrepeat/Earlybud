@@ -141,13 +141,13 @@
   <link rel='stylesheet' id='kirki-styles-airi-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/kirki/assets/css/kirki-styles.css?ver=3.0.33' type='text/css' media='all' />
   <style id='kirki-styles-airi-inline-css' type='text/css'>
     .option_code{
-		width: 100px !important;
+		width: 15% !important;
 	}
 	.option_name{
-		width: 130px !important;
+		width: 30% !important;
 	}
 	.option_info{
-		width: 300px !important;
+		width: 45% !important;
 	}
     h1,
     h2,
@@ -442,8 +442,9 @@
                 <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a href="main">Home</a></li>
 				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">소개</a></li>
 				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">카테고리</a></li>
-				<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
-              </ul>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
+				<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/earlybud/customLogout">로그아웃</a></li>
+				</ul>
             </div>
             <ul class="header-search-cart">
               <li class="header-search">
@@ -489,13 +490,13 @@
                 <div id="respond" class="comment-respond">
                   <form action="newprojectCheck" method="post" enctype="multipart/form-data" id="myproject" class="comment-form" novalidate>
                     <p class="comment-form-url"><label for="url">목표 금액<span class="required">*</span></label> 
-                    	<input id="target_sum" name="target_sum" type="number" value="" size="30" maxlength="200" /></p>
+                    	<input id="target_sum" name="target_sum" type="text" value="" size="30" maxlength="200" /></p>
                     <p class="comment-form-author"><label for="author">프로젝트 요약<span class="required">*</span></label> 
                     	<input id="summary" name="summary" type="text" value="" size="30" maxlength="600" /></p>
                     <p class="comment-form-email"><label for="email">선물 구성(옵션)</label> 
                     	<input id="option_type" name="option_type" type="text" value="" size="30" maxlength="100" required='required' /></p>
-                    	<div id="myModal" class="modal">
-                    		<div class="modal-content">
+                    	<div id="myModal" class="optionmodal">
+                    		<div class="optionmodal-content">
                     			<div>
                     				<label for="type_code">가격&emsp;&emsp;&emsp;&emsp;&emsp;옵션 이름&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;옵션 설명&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
                     				<input class="option_code" id="type_code" name="type_code" type="text" size="10" maxlength="20" />
@@ -661,10 +662,10 @@
       </script>
       <script async="async" type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/akismet/_inc/form.js?ver=4.0.8'></script>
 	  <style type="text/css">
-	  .modal{
+	  .optionmodal{
 	  	display: none;
 	  	position: fixed;
-	  	z-index: 1; /* Sit on top */
+	  	z-index: 1;
 	    left: 0;
 	    top: 0;
 	    width: 100%; /* Full width */
@@ -673,12 +674,12 @@
 	    background-color: rgb(0,0,0); /* Fallback color */
 	    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 	  }
-	  .modal-content{
+	  .optionmodal-content{
 	  	background-color: #fefefe;
-            margin: 15% auto;
-            padding: 100px;
-            border: 1px solid #888;
-            width: 50%; /* Could be more or less, depending on screen size */
+        margin: 15% auto;
+        padding: 100px;
+        border: 1px solid #888;
+        width: 50%; /* Could be more or less, depending on screen size */
 	  }
 	  </style>
 	  <script type="text/javascript">
