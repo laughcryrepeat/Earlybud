@@ -18,5 +18,6 @@ public class Notice {
 	private Date WRITEDATE;/*작성날짜*/
 	private Date COL; /*수정날짜*/
 	private String EMAIL; /*판매자이메일*/
+	//////////////////////////////////////////////
 	
 }
