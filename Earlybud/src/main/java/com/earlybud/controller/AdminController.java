@@ -49,7 +49,7 @@ public class AdminController {
 	}
 	
 	@PostMapping("approveItem")
-	public @ResponseBody String updateApproveItem(int item_code) {
+	public @ResponseBody String updateApproveItem(long item_code) {
 		log.info("update approveItem");
 		System.out.println("approve call item_code: "+item_code);
 		int i =service.updateApproveItem(item_code);
@@ -62,7 +62,7 @@ public class AdminController {
 	}
 	
 	@PostMapping("rejectItem")
-	public @ResponseBody String updateRejectItem(int item_code) {
+	public @ResponseBody String updateRejectItem(long item_code) {
 		log.info("update approveItem");
 		System.out.println("reject call item_code: "+item_code);
 		int i = service.updateRejectItem(item_code);
@@ -76,8 +76,20 @@ public class AdminController {
 	@GetMapping("encore_data")
 	public void listEncore(Model model) {
 		log.info("admin encore list");
-		List<Item> listItem = service.listItem();
-		model.addAttribute("listItem",listItem);	
+		List<Item> EncoreItems = service.listEncoreItem();
+		model.addAttribute("EncoreItems",EncoreItems);
+	}
+	
+	@PostMapping("suggestAncore")
+	public @ResponseBody String suggestAncore(long item_code) {
+		log.info("admin suggestAncore");
+		System.out.println("suggest call item_code: "+item_code);
+		int i = service.suggestAncoreItem(item_code);
+		if(i>0) {
+			System.out.println("suggested");
+			return "suggested";
+		}
+		return null;
 	}
 	
 	@GetMapping("member_data")

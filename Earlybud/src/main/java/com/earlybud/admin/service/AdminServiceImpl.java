@@ -29,15 +29,25 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
-	public int updateApproveItem(int item_code) {
+	public List<Item> listEncoreItem() {
+		return dao.listEncoreItem();
+	}
+	
+	@Override
+	public int updateApproveItem(long item_code) {
 		log.info("updateAdmincall service");
 		return dao.updateApproveItem(item_code);
 	}
 	
 	@Override
-	public int updateRejectItem(int item_code) {
+	public int updateRejectItem(long item_code) {
 		log.info("updateAdmincall service");
 		return dao.updateRejectItem(item_code);
+	}
+	
+	@Override
+	public int suggestAncoreItem(long item_code) {
+		return dao.suggestAncoreItem(item_code);
 	}
 	
 	@Override
@@ -96,5 +106,6 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		return dao.countNewMessage(email);
 	}
+
 
 }

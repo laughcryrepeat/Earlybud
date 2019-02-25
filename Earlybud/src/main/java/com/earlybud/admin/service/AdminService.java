@@ -9,8 +9,10 @@ import com.earlybud.model.Message;
 
 public interface AdminService {
 	List<Item> listItem();
-	int updateApproveItem(int item_code);
-	int updateRejectItem(int item_code);
+	List<Item> listEncoreItem();
+	int updateApproveItem(long item_code);
+	int updateRejectItem(long item_code);
+	int suggestAncoreItem(long item_code);
 	List<Member> listMember();
 	void dropMember(String email);
 	List<Message> listMessage(String email);

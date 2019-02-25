@@ -23,7 +23,11 @@
   	
    	<update id="updatePurnum" parameterType="Long"> 
    	update TYPE set pur_num = (pur_num+1) where type_code =#{type_code}
-   	</update>  
+   	</update>
+   	
+   	<update id="updateCanclePurnum" parameterType="Long">
+   	update TYPE set pur_num = (pur_num-1) where type_code =#{type_code}
+   	</update>
    	
   	<insert id="insertOption" parameterType="Type">
   		<selectKey keyProperty="type_code" resultType="Type" order="AFTER">

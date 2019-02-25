@@ -50,11 +50,11 @@
 	<update id="UpdateSuccessN">
 		<![CDATA[
 			update ITEM set SUCCESS=2 
-			where TRUNC(CLOSINGDATE-SYSDATE,0)=-1 and ADMIN_CALL=1 and SUCCESS=0 
+			where TRUNC(CLOSINGDATE-SYSDATE,0)=-1 and ADMINCALL=1 and SUCCESS=0 
 		]]>
 	</update>
 	<update id="UpdateSuccessY" parameterType="long">
-		update ITEM set SUCCESS=1 where ITEM_CODE=#{ITEM_CODE} and ADMIN_CALL=1 and SUCCESS=0
+		update ITEM set SUCCESS=1 where ITEM_CODE=#{ITEM_CODE} and ADMINCALL=1 and SUCCESS=0
 	</update>
 
 </mapper>

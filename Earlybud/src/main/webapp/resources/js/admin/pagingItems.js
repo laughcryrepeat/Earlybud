@@ -65,6 +65,23 @@
  });
 
 
+     $("#statu").on('change',function(){
+         var category = $("#statu option:selected").val(); // 클릭된 대상의 값을 category 변수에 반환합니다.
+         console.log("category value: "+category);
+         $("#tbl tr").hide(); // 우선 row 들을 모두 숨깁
+         if(category == "all"){
+        	 console.log("category all");
+        	 $("#tbl tr").show();
+        	 }
+         else{
+        	 console.log("category change: "+ category);
+        	 var selectC = $("#tbl button[class*="+category+"]").parent().parent();
+        	 console.log(selectC);
+        	 selectC.show();
+        	 $table.trigger('repaginate');
+        	 } // 분류에 해당하는 list를 나타냅 하단참조
+     });
+
 
  $(document).ready(function() {
   $('table.paginated').each(function() {
@@ -97,16 +114,22 @@
     var nextSection;
     var curSection=0;
     var beforeSection;
+    var endPage;
     var sectionNum=5;
-    var $pager = $('<div class="pager"></div>');
+    var $pager = $('<span class="pager"></span>');
     
     if((numSections-1) == curSection){
 		endPage = numPages;
 		console.log("endPage="+endPage);
+		$('#next').attr('disabled', true);
+		}else{
+			endPage = sectionNum;
 		}
-    for (var page = 0; page < sectionNum; page++) {
-      $('<button class="page-number btn btn-primary btn-sm"></button>').text(page + 1)
-        .bind('click', {newPage: page}, function(event) {//클로저때문에 반복문에서 page 변수값을 못씀. newPage로 대체
+    $('#previous').attr('disabled', true);
+    
+    for (var page = 0; page < endPage; page++) {
+      $('<button class="page-number page-link"></button>').text(page + 1)
+        .bind('click', {newPage: page}, function(event) {//클로저때문에 반복문에서 page 변수값을 못씀. newPage로
           currentPage = event.data['newPage'];
           $table.trigger('repaginate');
           console.log($(this));
@@ -115,26 +138,26 @@
           $('.mr-2').text("Showing "+ event.data['newPage'] +"1-"+ (event.data['newPage']+1) +"0 out of");
         }).appendTo($pager).addClass('clickable');
     }
-    
-    $pager.insertAfter($table)
+
+    $pager.insertAfter('#previous')
       .find('button.page-number:first').addClass('active');
     
-    $('#right').bind('click',function(event){
-    	console.log("right click");
+    $('#next').bind('click',function(event){
+    	console.log("next click");
     	console.log("numSections="+numSections);
     	curSection += 1;
     	console.log("curSection="+curSection);
     	console.log("numPages="+numPages);
-    	$('#left').attr('disabled', false);
-    	var endPage = sectionNum*(curSection+1);
+    	$('#previous').attr('disabled', false);
+    	endPage = sectionNum*(curSection+1);
     	if((numSections-1) == curSection){
     		endPage = numPages;
     		console.log("endPage="+endPage);
-    		$('#right').attr('disabled', true);
+    		$('#next').attr('disabled', true);
     		}
     	$('.page-number').remove();
     	for (var page =(curSection*sectionNum); page < endPage; page++) {
-    	      $('<button class="page-number btn btn-primary btn-sm"></button>').text(page + 1)
+    	      $('<button class="page-number page-link"></button>').text(page + 1)
     	        .bind('click', {newPage: page}, function(event) {
     	          currentPage = event.data['newPage'];
     	          $table.trigger('repaginate');
@@ -144,29 +167,29 @@
     	          $('.mr-2').text("Showing "+ event.data['newPage'] +"1-"+ (event.data['newPage']+1) +"0 out of");
     	        }).appendTo($pager).addClass('clickable');
     	    }
-    	$pager.insertAfter($table)
+    	$pager.insertAfter('#previous')
         .find('button.page-number:first').addClass('active');
     	$(".page-number:first").trigger("click");
     });
     
-    $('#left').bind('click',function(event){
-    	console.log("left click");
+    $('#previous').bind('click',function(event){
+    	console.log("previous click");
     	console.log("numSections="+numSections);
     	curSection -= 1;
     	console.log("curSection="+curSection);
     	console.log("numPages="+numPages);
-    	$('#right').attr('disabled',false);
-    	var endPage = sectionNum*(curSection+1);
+    	$('#next').attr('disabled',false);
+    	endPage = sectionNum*(curSection+1);
     	if((numSections-1) == curSection){
     		endPage = numPages;
     		console.log("endPage="+endPage);
     		}
     	if(curSection == 0){
-    		$('#left').attr('disabled', true);
+    		$('#previous').attr('disabled', true);
     		}
     	$('.page-number').remove();
     	for (var page =(curSection*sectionNum); page < endPage; page++) {
-    	      $('<button class="page-number btn btn-primary btn-sm"></button>').text(page + 1)
+    	      $('<button class="page-number page-link"></button>').text(page + 1)
     	        .bind('click', {newPage: page}, function(event) {
     	          currentPage = event.data['newPage'];
     	          $table.trigger('repaginate');
@@ -176,7 +199,7 @@
     	          $('.mr-2').text("Showing "+ event.data['newPage'] +"1-"+ (event.data['newPage']+1) +"0 out of");
     	        }).appendTo($pager).addClass('clickable');
     	    }
-    	$pager.insertAfter($table)
+    	$pager.insertAfter('#previous')
         .find('button.page-number:first').addClass('active');
     	$(".page-number:first").trigger("click");
     });
