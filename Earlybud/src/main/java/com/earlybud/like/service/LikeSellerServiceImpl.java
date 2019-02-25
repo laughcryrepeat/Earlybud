@@ -21,5 +21,10 @@ public class LikeSellerServiceImpl implements LikeSellerService {
 		log.info("get...List...");
 		return dao.getList();
 	}
+	@Override
+	public List<SellerLikeVO> getListS(String email) {
+		log.info("get...List...");
+		return dao.getList(email);
+	}
 
 }

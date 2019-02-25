@@ -1,5 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <!doctype html> 
 <html class="no-js">
 
@@ -36,7 +38,18 @@
 <meta name="naver-site-verification" content="bee718c14a77c283448ac836bb76286cb6fee07d">
 <meta name="google-site-verification" content="QjRhzKeCwF3iLHm520JGwnPJQ3oD4nPF1QYZW4cLJ9U" />
 <!-- 추가끝 -->
+<style>
+.menu-menu-container ul li ul {
+	display:none;
+	height:auto;
+}
 
+.menu-menu-container ul li:hover ul {
+	display:block;
+	
+}
+
+</style>
 	<style id="kirki-css-vars">:root{}</style>
 	<title>EarlyBud</title>
 	<link rel='dns-prefetch' href='//s.w.org' />
@@ -425,27 +438,30 @@
 									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">소개</a></li>
 									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">카테고리</a></li>									
 									<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="login">로그인/회원가입</a></li>
+									<sec:authorize access="isAnonymous()">
+									<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="login">마이페이지</a></li>
+									</sec:authorize>
+									<sec:authorize access="isAuthenticated()">
+									<li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79">마이페이지
+										<ul>
+											<li><a href="mypage">개인정보 수정</a></li>
+											<li><a href="mypage/<sec:authentication property="principal.member.email"/>">좋아요한 프로젝트/판매자</a></li>
+											<li><a href="member_orderlist/<sec:authentication property="principal.member.email"/>">주문조회</a></li>
+											<li><a href="message/<sec:authentication property="principal.member.email"/>" targe="popup"
+											onclick="window.open('message/<sec:authentication property="principal.member.email"/>',
+											'popup', 'width=1000, height=750'); return false;">판매자 문의</a></li>
+										</ul>
+									</li>
+									</sec:authorize>
+
 								</ul>
 							</div>
-							<ul class="header-search-cart">
-								<li class="header-search">
-									<div class="header-search-toggle"><a><i class="fa fa-search"></i></a></div>
-								</li>
-								<li class="header-cart-link"></li>
-							</ul>
+							
 						</nav><!-- #site-navigation -->
 
 				</div>
 			</div>
-			<div class="header-search-form">
-				<form role="search" method="get" class="search-form" action="https://demo.athemes.com/airi-portfolio/">
-					<label>
-						<span class="screen-reader-text">Search for:</span>
-						<input type="search" class="search-field" placeholder="Search …" value="" name="s">
-					</label>
-					<input type="submit" class="search-submit" value="Search">
-				</form>	
-			</div>	
+
 
 	</header>
 	</div>

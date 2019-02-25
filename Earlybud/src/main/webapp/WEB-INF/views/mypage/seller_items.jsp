@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@include file="seller_items_header.jsp" %>
 <!doctype html> 
 <html class="no-js">
@@ -8,52 +9,7 @@
 
 
 <body>
-		<header id="masthead" class="site-header">
-
-			<div class="container">
-				<div class="row">
-					<div class="site-branding col-md-4 col-sm-6 col-9">
-						<a href="https://demo.athemes.com/airi-portfolio/" class="custom-logo-link" rel="home" itemprop="url"><img width="100" height="60" src="\\203.236.209.193\1_웹기획\1팀_오현화\earlybud.png" class="custom-logo"
-							  alt="Atu" itemprop="logo" /></a> </div><!-- .site-branding -->
-
-					<div class="header-mobile-menu col-md-8 col-sm-6 col-3">
-						<button class="mobile-menu-toggle" aria-controls="primary-menu">
-							<span class="mobile-menu-toggle_lines"></span>
-							<span class="sr-only">Toggle mobile menu</span>
-						</button>
-					</div>
-
-					<nav id="site-navigation" class="main-navigation col-md-8">
-						<div class="menu-menu-container">
-							<ul id="primary-menu" class="menu">
-								<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-4 current_page_item menu-item-43"><a href="https://demo.athemes.com/airi-portfolio/">Home</a></li>
-								<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="https://demo.athemes.com/airi-portfolio/blog/">Blog</a></li>
-								<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="https://demo.athemes.com/airi-portfolio/about-us/">About us</a></li>
-							</ul>
-						</div>
-						<ul class="header-search-cart">
-							<li class="header-search">
-								<div class="header-search-toggle"><a><i class="fa fa-search"></i></a></div>
-							</li>
-							<li class="header-cart-link">
-							</li>
-						</ul>
-					</nav><!-- #site-navigation -->
-
-				</div>
-			</div>
-			<div class="header-search-form">
-				<form role="search" method="get" class="search-form" action="https://demo.athemes.com/airi-portfolio/">
-					<label>
-						<span class="screen-reader-text">Search for:</span>
-						<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
-					</label>
-					<input type="submit" class="search-submit" value="Search" />
-				</form>
-			</div>
-
-		</header><!-- #masthead -->
-
+		
 
 
  <nav class="b-nav-global">
@@ -67,10 +23,6 @@
     
 <div style="left:0px" class="b-valign text-align_center fitin ">
   <div class="b-valign__inner">
-
-    <!--[if IE 7]>
-    <div class="b-valign__ie7_helper">
-      <![endif]-->
 
 
 <c:forEach items="${OneList}" var="OneList" end="0">
@@ -95,7 +47,7 @@
             </span>
             </li > 
         </ul>
-       <a href="../message/red@gmail.com/${OneList.EMAIL}"	target="popup"	onclick="window.open('../message/red@gmail.com/${OneList.EMAIL}', 'popup',
+       <a href="../message/<sec:authentication property="principal.member.email"/>/${OneList.EMAIL}"	target="popup"	onclick="window.open('../message/<sec:authentication property="principal.member.email"/>/${OneList.EMAIL}', 'popup',
 											'width=1000, height=750'); return false;">
 				<img style="width: 45px; height: 33px; border: 1px grey;" src="${pageContext.request.contextPath}/images/like/envelope.JPG"/>
 		</a><br/>
@@ -104,8 +56,6 @@
       </div>
       </c:forEach>
 
-        <!--b-media__body-->
-        <!--b-media-->
       </div>
   </div>
 </div>
@@ -187,94 +137,6 @@
   </div>
 </div>
 </c:forEach>
- <div class="b-project-card">
-  <figure class="b-project-card__head">
-    <a class="b-project-card__head__link" href="/toolbook">
-      <div class="b-project-card__head__link__inner">
-        <div class="b-project-card__head__filter"></div>
-        <img src="https://tumblbug-pci.imgix.net/59e4705fa23235cff63a8ffd4eced13035809d9a/68d8d33f97f152e385ec230f1ca6da7e9972884d/7ff9524a7b5fd157e11612514a14d999ae825945/824d171f-bd6a-451a-b62d-5b4c6ce4db5a.jpg?ixlib=rb-1.1.0&amp;w=620&amp;h=465&amp;auto=format%2Ccompress&amp;lossless=true&amp;fit=crop&amp;s=069fc8d0d11fd0ee88e44fb211412e27" alt="" class="b-project-card__head__pic" />
-      </div>
-    </a>
-  </figure>
-
-  <div class="b-project-card__body"> 
-    <h3 class="b-project-card__title">
-      <a href="/toolbook" class="[ yoke yoke--theme_light ]">“우리 쿠키는” 까불까불귀염둥2</a>
-    </h3>
-    <p class="b-project-card__creator">
-     같이 여행갈래요
-    </p>
-    <p class="b-project-card__blurb">
-      캐리어 포함 7키로라는데..다이어트 시급하다..
-    </p>
-  </div> 
-  <div class="b-project-card__gauge [ b-gauge ]">
-    <div class="b-gauge__liquid" style="width: 100%"></div>
-  </div> 
-  <div class="b-project-card__figures">
-
-    <div class="[ b-project-card__figure b-project-card__figure_for_amount ]">
-      <span class="b-project-card__figure-title">모인 금액</span>
-      <span class="b-project-card__figure-item">
-       3,000,000원
-        <span class="b-project-card__percentage">
-          89 %
-        </span>
-      </span>
-    </div>
-    <div class="[ b-project-card__figure b-project-card__figure_for_day ]">
-        <span class="b-project-card__figure-title">남은 시간</span>
-        <span class="b-project-card__figure-item">
-          275일
-        </span>
-    </div>
-    
-  </div>
-</div>
- <div class="b-project-card">
-  <figure class="b-project-card__head">
-    <a class="b-project-card__head__link" href="/toolbook">
-      <div class="b-project-card__head__link__inner">
-        <div class="b-project-card__head__filter"></div>
-        <img src="https://tumblbug-pci.imgix.net/59e4705fa23235cff63a8ffd4eced13035809d9a/68d8d33f97f152e385ec230f1ca6da7e9972884d/7ff9524a7b5fd157e11612514a14d999ae825945/824d171f-bd6a-451a-b62d-5b4c6ce4db5a.jpg?ixlib=rb-1.1.0&amp;w=620&amp;h=465&amp;auto=format%2Ccompress&amp;lossless=true&amp;fit=crop&amp;s=069fc8d0d11fd0ee88e44fb211412e27" alt="" class="b-project-card__head__pic" />
-      </div>
-    </a>
-  </figure>
-
-  <div class="b-project-card__body"> 
-    <h3 class="b-project-card__title">
-      <a href="/toolbook" class="[ yoke yoke--theme_light ]">“독립적인 여성들을 위한” 비주얼 공구 가이드북</a>
-    </h3>
-    <p class="b-project-card__creator">
-      문예춘추사의 프로젝트
-    </p>
-    <p class="b-project-card__blurb">
-      혼자 사는 데 든든하다. 누군가의 도움 없이 나 혼자 고친다. 참 쉬운 비주얼 공구 사용법
-    </p>
-  </div> 
-  <div class="b-project-card__gauge [ b-gauge ]">
-    <div class="b-gauge__liquid" style="width: 100%"></div>
-  </div> 
-  <div class="b-project-card__figures">
-
-    <div class="[ b-project-card__figure b-project-card__figure_for_amount ]">
-      <span class="b-project-card__figure-title">모인 금액</span>
-      <span class="b-project-card__figure-item">
-        6,735,400원
-        <span class="b-project-card__percentage">
-          336 %
-        </span>
-      </span>
-    </div>
-    <div class="[ b-project-card__figure b-project-card__figure_for_day ]">
-        <span class="b-project-card__figure-title">남은 시간</span>
-        <span class="b-project-card__figure-item">
-          27일
-        </span>
-    </div>
-    
-  </div>
-</div>
 
     </div>
 

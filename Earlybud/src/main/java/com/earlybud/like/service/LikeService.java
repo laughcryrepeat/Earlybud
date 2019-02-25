@@ -6,5 +6,6 @@ import com.earlybud.vo.MemberLikeVO;
 
 public interface LikeService {
    public List<MemberLikeVO> getList();
+   public List<MemberLikeVO> getList(String email);
    public List<MemberLikeVO> getOneSellerList(String email);
 }

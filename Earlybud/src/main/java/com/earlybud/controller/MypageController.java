@@ -31,14 +31,24 @@ public class MypageController {
 	
 	private LikeService service;
 	private LikeSellerService services;
-	@RequestMapping(value = "liked_things")
-	public String list(Model model) {
+//	@RequestMapping(value = "liked_things")
+//	public String list(Model model) {
+//		log.info("list");
+//		model.addAttribute("list", service.getList());
+//		model.addAttribute("listS", services.getListS());
+//		System.out.println("컨트롤러에서 리스트 줌");
+//
+//		return "mypage/liked_things";
+//	}
+	
+	@RequestMapping(value = "mypage/{email:.+}", method = RequestMethod.GET)
+	public String list(@PathVariable("email") String email, Model model) {
 		log.info("list");
-		model.addAttribute("list", service.getList());
-		model.addAttribute("listS", services.getListS());
+		model.addAttribute("list", service.getList(email));
+		model.addAttribute("listS", services.getListS(email));
 		System.out.println("컨트롤러에서 리스트 줌");
 
-		return "mypage/liked_things";
+		return "mypage/mypage";
 	}
 
 	
