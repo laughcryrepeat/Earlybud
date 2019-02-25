@@ -43,6 +43,13 @@
   	<update id="rejectItem" parameterType="Integer">
   	update ITEM set ADMINCALL=NULL where ITEM_CODE = #{item_code}
   	</update>
+  	<select id="sellerItem" parameterType="ITEM" resultType="Item">
+  	select title, main_image, item_code from item where email=#{email}
+  	</select>
+  	
+  	<select id="modifyItem1" parameterType="ITEM" resultType="Item">
+  	select item_code, email, cat_code, title, main_image, opendate, closingdate from item where item_code=#{item_code}
+  	</select>
   	
   	<insert id="insertItem" parameterType="Item">
   		<selectKey keyProperty="item_code" resultType="Item" order="AFTER">
@@ -52,9 +59,8 @@
   	values 
   	(#{email}, #{cat_code}, #{title}, #{main_image}, #{opendate}, #{closingdate}, ITEM_CODE_SEQ.nextval)
   	</insert>
-  	<select id="modifyItem1" parameterType="long" resultType="Item">
-  	select email, cat_code, title, main_image, opendate, closingdate-1 from ITEM where item_code = #{item_code}
-  	</select>
+  	
+  	
   	<update id="insertItem2" parameterType="Item" keyProperty="email">
   		<selectKey keyProperty="item_code" resultType="Item" order="AFTER">
   		select ITEM_CODE_SEQ.currval as item_code from DUAL

@@ -1,5 +1,7 @@
 package com.earlybud.project.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,11 +20,18 @@ public class NewProjectDaoImpl implements NewProjectDao {
 	private String ns = "com.earlybud.model.Item";
 	private String ns1 = "com.earlybud.model.Seller";
 	private String ns2 = "com.earlybud.model.Type";
+	
+	public List<Item> sellerItem(String email){
+		System.out.println("dao");
+		return sqlSession.selectList(ns+".sellerItem", email);
+	}
 	public Seller seller_select(String email) {
 		return sqlSession.selectOne(ns1+".sel_select", email);
 	}
 	public Item item_select(long item_code) {
-		return sqlSession.selectOne(ns1+".modifyItem1", item_code);
+		System.out.println("아이템 select dao 들어왔어용"+item_code);
+
+		return sqlSession.selectOne(ns+".modifyItem1", item_code);
 	}
 	public int save(Item item) {
 		int p = -1;

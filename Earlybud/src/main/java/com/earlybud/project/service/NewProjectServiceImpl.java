@@ -1,5 +1,7 @@
 package com.earlybud.project.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +18,17 @@ public class NewProjectServiceImpl implements NewProjectService {
 	
 	@Setter(onMethod_ = { @Autowired })
 	private NewProjectDao dao;
+	
+	public List<Item> sellerItem(String email){
+		System.out.println("service");
+		return dao.sellerItem(email);
+	}
 	public Seller seller_select(String email) {
 		return dao.seller_select(email);
 	}
 	public Item item_select(long item_code) {
+		System.out.println("아이템 select 서비스 들어왔어용");
+
 		return dao.item_select(item_code);
 	}
 	public int save(Item item) {
