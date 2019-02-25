@@ -6,53 +6,7 @@
 <!doctype html>
 <html lang="en-US">
 
-
-<body>
-		<header id="masthead" class="site-header">
-
-			<div class="container">
-				<div class="row">
-					<div class="site-branding col-md-4 col-sm-6 col-9">
-						<a href="https://demo.athemes.com/airi-portfolio/" class="custom-logo-link" rel="home" itemprop="url"><img width="100" height="60" src="\\203.236.209.193\1_웹기획\1팀_오현화\earlybud.png" class="custom-logo"
-							  alt="Atu" itemprop="logo" /></a> </div><!-- .site-branding -->
-
-					<div class="header-mobile-menu col-md-8 col-sm-6 col-3">
-						<button class="mobile-menu-toggle" aria-controls="primary-menu">
-							<span class="mobile-menu-toggle_lines"></span>
-							<span class="sr-only">Toggle mobile menu</span>
-						</button>
-					</div>
-
-					<nav id="site-navigation" class="main-navigation col-md-8">
-						<div class="menu-menu-container">
-							<ul id="primary-menu" class="menu">
-								<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-4 current_page_item menu-item-43"><a href="https://demo.athemes.com/airi-portfolio/">Home</a></li>
-								<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="https://demo.athemes.com/airi-portfolio/blog/">Blog</a></li>
-								<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="https://demo.athemes.com/airi-portfolio/about-us/">About us</a></li>
-							</ul>
-						</div>
-						<ul class="header-search-cart">
-							<li class="header-search">
-								<div class="header-search-toggle"><a><i class="fa fa-search"></i></a></div>
-							</li>
-							<li class="header-cart-link">
-							</li>
-						</ul>
-					</nav><!-- #site-navigation -->
-
-				</div>
-			</div>
-			<div class="header-search-form">
-				<form role="search" method="get" class="search-form" action="https://demo.athemes.com/airi-portfolio/">
-					<label>
-						<span class="screen-reader-text">Search for:</span>
-						<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
-					</label>
-					<input type="submit" class="search-submit" value="Search" />
-				</form>
-			</div>
-
-		</header><!-- #masthead -->
+<%@include file="header.jsp" %>
 
 
 

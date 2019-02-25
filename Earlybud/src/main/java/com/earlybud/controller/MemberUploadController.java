@@ -2,38 +2,36 @@ package com.earlybud.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.servlet.ModelAndView;
 
+import com.earlybud.model.Item;
 import com.earlybud.model.Member;
+import com.earlybud.project.service.NewProjectService;
 import com.earlybud.security.CustomUserDetailsService;
 import com.earlybud.vo.AddrVo;
 
 import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
+@RequestMapping("/mypage/*")
 public class MemberUploadController {
 	@Autowired
 	CustomUserDetailsService service;
-	@RequestMapping("mypage")
+	@Autowired
+	NewProjectService projectS;
+	@RequestMapping("")
 	public String mypage(Model model){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
 		System.out.println("컨트롤러 접속자: "+service.userDetail(email));
-		model.addAttribute("user", service.userDetail(email));
+		model.addAttribute("seller", projectS.seller_select(email));
 		return "/mypage/myPageDetail";
 	}
 	@RequestMapping(value="juso")
@@ -53,5 +51,14 @@ public class MemberUploadController {
 		service.update(member);
 		log.info("회원정보가 수정되었습니다. 회원명: "+member);
 		return member;
+	}
+	@RequestMapping("sellerPage")
+	public String sellerpage(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String email = authentication.getName();
+		List<Item> item = projectS.sellerItem(email);
+		System.out.println(item);
+		model.addAttribute("item", item);
+		return "/mypage/sellerPage";
 	}
 }

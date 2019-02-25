@@ -15,24 +15,29 @@
   		<result property="item_liked" column="ITEM_LIKED"/>
   		<collection property="authList" resultMap="authMap"></collection>
   	</resultMap>
-  	
   	<resultMap type="Authorities" id="authMap">
     	<result property="email" column="EMAIL"/>
     	<result property="authority" column="AUTHORITY"/>
  	</resultMap>
+  	<select id="joincheck" parameterType="Member" resultType="Integer">
+      SELECT NVL(COUNT(*), 0) from member where nickname = #{nickname}
+	</select>
 	<select id="sel_member" resultMap="memberMap">
 		select * from Member where email=#{email}
 	</select>
   	<insert id="insertMember" parameterType="Member" keyProperty="email">
 		insert into member (email, pwd, nickname, joindate) values ( #{email}, #{pwd}, #{nickname}, sysdate)
   	</insert>
-  	<insert id="insertAuth">
+  	<insert id="insertAuth" parameterType="Member" keyProperty="email">
 		insert into Authorities (email, authority) values ( #{email}, 'ROLE_USER')
   	</insert>
   	<update id="memberUpdate" parameterType="Member" keyProperty="email">
   		update Member set pwd = #{pwd}, addr=#{addr}, detail_addr = #{detail_addr}, phone=#{phone} where email=#{email}
   	</update>
-
+	<update id="pwdUpdate" parameterType="Member" keyProperty="email">
+  		update Member set pwd = #{pwd} where email=#{email}
+  	</update>
+  	
   	<select id="read" resultMap="memberMap">
   	SELECT 
   	mem.email, pwd, nickname, phone, addr, detail_addr, joindate, dropdate, item_liked, authority 
@@ -55,5 +60,4 @@
   	<select id="pwdCheck" parameterType="String" resultType="String" >
   	select pwd from member where nickname = #{nickname}
   	</select>
-
   </mapper>

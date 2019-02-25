@@ -14,14 +14,14 @@
                 <div id="respond" class="comment-respond">
                   <form action="newprojectDetail2" method="post" id="commentform" enctype="multipart/form-data" class="comment-form" novalidate>
                     <p class="comment-form-email"><label for="image">진행자 프로필이미지<span class="required">*</span></label>
-                    	<input id="image" type="text" class="upload-name" value="" size="30" maxlength="245" required='required' onclick="check()" readonly/>
+                    	<input id="image" type="text" class="upload-name" value="${seller.image}" size="30" maxlength="245" required='required' onclick="check()" readonly/>
                     	<input id="image_file" name="image" type="file" id="submit" class="file-hidden" value="file" required="required"></p>
                     <p class="comment-form-comment"><label for="author">진행자 소개<span class="required">*</span></label> 
-                    	<input id="info" name="info" type="text" value="" size="30" maxlength="245" required='required' /></p>
+                    	<input id="info" name="info" type="text" value="${seller.info }" size="30" maxlength="245" required='required' /></p>
                     <p class="comment-form-author"><label for="email">진행자 활동 지역</label> 
-                    	<input id="seller_loc" name="seller_loc" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+                    	<input id="seller_loc" name="seller_loc" type="text" value="${seller.seller_loc }" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
                     <p class="comment-form-url"><label for="url">계좌 등록하기<span class="required">*</span></label> 
-                    	<input id="seller_account" name="seller_account" type="text" value="" size="30" maxlength="200" /></p>
+                    	<input id="seller_account" name="seller_account" type="text" value="${seller.seller_account }" size="30" maxlength="200" /></p>
                     <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="다음 페이지" /> <input type='hidden' name='comment_post_ID' value='1' id='comment_post_ID' />
                       <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
                     </p>

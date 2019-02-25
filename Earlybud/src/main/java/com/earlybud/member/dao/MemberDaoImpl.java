@@ -13,7 +13,10 @@ public class MemberDaoImpl implements MemberDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	private String ns = "com.earlybud.model.Member";
-	
+	public int login_check(Member member) {
+		System.out.println("로그인 check");
+		return sqlSession.selectOne(ns+".joincheck", member);
+	}
 	@Override
 	public Member readM(String email) {
 		System.out.println("여기는 dao");
@@ -28,10 +31,10 @@ public class MemberDaoImpl implements MemberDAO {
 		int id = -1;
 		try {
 			id = sqlSession.insert(ns+".insertMember", member);
-			sqlSession.insert(ns+".insertAuth", member.getEmail());
+			sqlSession.insert(ns+".insertAuth", member);
 		} finally {
 		}
-		System.out.println("insert("+member+") : "+member.getEmail());
+		System.out.println("insert("+member+")");
 		return id; 
 	}
 	@Override
@@ -41,7 +44,17 @@ public class MemberDaoImpl implements MemberDAO {
 			id = sqlSession.update(ns+".memberUpdate", member);
 		} finally {
 		}
-		System.out.println("회원 update("+member+") : "+member.getEmail());
+		System.out.println("회원 update("+member+")");
 		return id;
+	}
+	@Override
+	public int updatePwd(Member member) {
+		int p = -1;
+		try {
+			p = sqlSession.update(ns+".pwdUpdate", member);
+		} finally {
+		}
+		System.out.println("회원 update("+member+")");
+		return p;
 	}
 }

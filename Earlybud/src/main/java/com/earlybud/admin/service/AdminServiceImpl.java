@@ -128,5 +128,4 @@ public class AdminServiceImpl implements AdminService {
 		return dao.countNewMessage(email);
 	}
 
-
 }

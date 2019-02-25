@@ -11,6 +11,7 @@ import org.apache.http.HttpResponse;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -96,7 +97,7 @@ public class CommonController {
       return member;
    }
    @RequestMapping("/join")
-   public Member join_input(@RequestParam("email") String email, @RequestParam("pwd") String pwd, @RequestParam("nickname") String nickname, String error, Model model)
+   public String join_input(@RequestParam("email") String email, @RequestParam("pwd") String pwd, @RequestParam("nickname") String nickname, String error, Model model)
       throws Exception{
       Member member = new Member();
       member.setEmail(email);
@@ -105,28 +106,18 @@ public class CommonController {
       System.out.println("[JOIN] NEW MEMBER :  " + member);
       service.save(member);
       log.info("JOIN error: " + error);
-      return member;
+      return "join";
    }
-   
-   /*@RequestMapping("/email_check")
-   public void emailCheck(HttpServletRequest request, HttpServletResponse response, String error, Model model, Member member) 
-      throws Exception{
-      String emailSearch = request.getParameter("email");
-      System.out.println("emailSearch: "+emailSearch);
-      response.setContentType("text/html; charset=utf-8");
-      PrintWriter out = response.getWriter();
-   }*/
-   
-   @GetMapping("/customLogout")
-   public void logoutGET() {
-
-      log.info("custom logout");
+   @RequestMapping("/customLogout")
+   public String logoutPost() {
+	   Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	   String email = authentication.getName();
+      log.info("로그아웃: "+email);
+      return "customLogout";
    }
-
-   @PostMapping("/customLogout")
-   public void logoutPost() {
-
-      log.info("post custom logout");
+   @RequestMapping(value="/login_check", method= {RequestMethod.GET, RequestMethod.POST})
+   public @ResponseBody int emailCheck(Member member, Model model){
+      return service.login_check(member);
    }
 
 }

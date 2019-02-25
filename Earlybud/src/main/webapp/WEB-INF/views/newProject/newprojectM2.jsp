@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="header.jsp" %>
     <div id="content" class="site-content">
+
       <div class="container">
         <div class="row">
           <div id="primary" class="content-area layout-default col-lg-8">
@@ -12,26 +13,55 @@
                   <h1 class="entry-title">프로젝트 올리기</h1>
                 </header><!-- .entry-header -->
                 <div id="respond" class="comment-respond">
-                  <form action="newprojectDetail2" method="post" id="commentform" enctype="multipart/form-data" class="comment-form" novalidate>
-                    <p class="comment-form-email"><label for="image">진행자 프로필이미지<span class="required">*</span></label>
-                    	<input id="image" type="text" class="upload-name" value="" size="30" maxlength="245" required='required' onclick="check()" readonly/>
-                    	<input id="image_file" name="image" type="file" id="submit" class="file-hidden" value="file" required="required"></p>
-                    <p class="comment-form-comment"><label for="author">진행자 소개<span class="required">*</span></label> 
-                    	<input id="info" name="info" type="text" value="" size="30" maxlength="245" required='required' /></p>
-                    <p class="comment-form-author"><label for="email">진행자 활동 지역</label> 
-                    	<input id="seller_loc" name="seller_loc" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
-                    <p class="comment-form-url"><label for="url">계좌 등록하기<span class="required">*</span></label> 
-                    	<input id="seller_account" name="seller_account" type="text" value="" size="30" maxlength="200" /></p>
-                    <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="다음 페이지" /> <input type='hidden' name='comment_post_ID' value='1' id='comment_post_ID' />
-                      <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                  <form action="newprojectDetail3" method="post" enctype="multipart/form-data" id="myproject" class="comment-form" novalidate>
+                    <p class="comment-form-comment"><label for="cat_code">프로젝트 카테고리<span class="required">*</span></label>
+                    		<select id="cat_code" name="cat_code">
+							    <option value="">    카테고리 선택하기       </option>
+							    <option value="1">테크</option>
+							    <option value="2">홈리빙</option>
+							    <option value="3">푸드</option>
+							    <option value="4">패션</option>
+							    <option value="5">디자인</option>
+							    <option value="6">출판</option>
+							    <option value="7">취미</option>
+							    <option value="8">공연/컬처</option>
+							    <option value="9">캠페인</option>
+							</select>
                     </p>
+                    <p class="comment-form-author"><label for="author">프로젝트 제목<span class="required">*</span></label> 
+                    	<input id="title" name="title" type="text" value="${seller.title}" size="30" maxlength="245" required='required' /></p>
+                    <p class="comment-form-email"><label for="main_image">프로젝트 대표이미지<span class="required">*</span></label>
+                    	<input id="main_image" type="text" class="upload-name" value="${seller.main_image}" size="30" maxlength="245" required='required' onclick="check()" readonly/>
+                    	<input id="image_file" name="main_image" type="file" id="submit" class="file-hidden" value="file" required="required"></p>
+                    <p class="comment-form-url">
+                	    <span>
+                        <label for="startDate1">시작일<span class="required">*</span></label>
+                          <input class = "dateC" type="text" id="startDate1" name="opendate" value="${seller.opendate}" required='required'/>
+                      </span>
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      <span>
+                        <label for="endDate1">마감일<span class="required">*</span></label>
+                          <input class = "dateC" id="endDate1" type="text" name="closingdate" value="${seller.closingdate}" required='required'/>
+                      </span>
+                     </p>
+                    <section id="categories-2" class="widget widget_categories">
+                      <ul>
+                        <input name="submit" type="submit" class="submit" value="다음페이지" />
+                      </ul>
+                    </section>
                     <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="b0c1d8b81d" /></p>
                     <p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="63" /></p>
                   </form>
+
                 </div><!-- #respond -->
+
           </div><!-- #comments -->
+
           </main><!-- #main -->
         </div><!-- #primary -->
+
+
+
         <div id="sidebar-footer" class="footer-widgets" role="complementary">
           <div class="container">
             <div class="row">
@@ -44,7 +74,6 @@
                   </div>
                 </section>
               </div>
-
 
               <div class="sidebar-column col-md-3">
                 <section id="text-3" class="widget widget_text">
@@ -175,7 +204,8 @@
         });
       </script>
       <script async="async" type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/akismet/_inc/form.js?ver=4.0.8'></script>
-	<script type="text/javascript">
+    <script type="text/javascript">
+    	$("#cat_code").val("${seller.cat_code}");
 	  function eventOccur(evEle, evType){
 	   if (evEle.fireEvent) {
 	   evEle.fireEvent('on' + evType);
@@ -193,17 +223,16 @@
 	  <script type="text/javascript">
 	  $(document).ready(function(){ 
 		  var fileTarget = $('.comment-form-email .file-hidden'); 
-		  fileTarget.on('change', function(){ // 값이 변경되면 
-			  if(window.FileReader){ // modern browser 
+		  fileTarget.on('change', function(){  
+			  if(window.FileReader){
 				  var filename = $(this)[0].files[0].name; 
-			  } else { // old IE 
+			  } else { 
 				  var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
 			} 
-		  // 추출한 파일명 삽입 
 		  $(this).siblings('.upload-name').val(filename); 
 		  }); 
 	 }); 
 	  </script>
-</body>
+	</body>
 
 </html>
