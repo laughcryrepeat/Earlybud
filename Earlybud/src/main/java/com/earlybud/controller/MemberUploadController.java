@@ -50,9 +50,7 @@ public class MemberUploadController {
 			@RequestParam("pwd") String pwd, @RequestParam("addr") String addr, @RequestParam("detail_addr") String detail_addr,
 			@RequestParam("phone") String phone,String error, Model model)
 		throws Exception{
-		System.out.println("ddddddddddddd: "+member.getPwd());
-		System.out.println("dddddddddddddddddddd: "+pwd);
-		if(!passwordencoder.matches(pwd, member.getPwd())) {
+		if(!passwordencoder.matches(pwd, passwordencoder.encode(member.getPwd()))) {
 			System.out.println("비밀번호가 다르다");
 			member.setPwd(pwd);
 		}else {System.out.println("비밀번호 같다");}
