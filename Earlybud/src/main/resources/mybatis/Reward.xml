@@ -9,7 +9,7 @@
   		<result property="CAT_NAME" column="CAT_NAME"/>
   		<result property="TITLE" column="TITLE"/>
   		<result property="MAIN_IMAGE" column="MAIN_IMAGE"/>
-  		<result property="IMAGE_ITEM" column="IMAGE_ITEM"/>
+  		
   		<result property="NOW_SUM" column="NOW_SUM"/>
   		<result property="PERCENT" column="PERCENT"/>
   		<result property="TARGET" column="TARGET"/>
@@ -34,7 +34,7 @@
 	<select id="readItem" resultMap="RewardMap" parameterType="LONG">
 		select 
 		TO_CHAR((select sum(PUR_NUM) from TYPE where ITEM_CODE= #{item_code}), '99,999')as TOTAL_PUR,
-		CAT_CODE, CAT_NAME, TITLE, MAIN_IMAGE, IMAGE_ITEM, 
+		CAT_CODE, CAT_NAME, TITLE, MAIN_IMAGE, 
 		TO_CHAR(CUR_SUM, '999,999,999,999') as NOW_SUM, 
 		TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, 
 		TO_CHAR(TARGET_SUM, '999,999,999') as TARGET, 

@@ -49,7 +49,7 @@
 	                                            <tr>
 	                                                <td>${Item.item_code}</td>
 	                                                <td><img src="${pageContext.request.contextPath}/uploads/reward/${Item.main_image}" alt="" /></td>
-	                                                <td>${Item.title}</td>
+	                                                <td><a href="../reward?item_code=${Item.item_code}">${Item.title}</a></td>
 	                                                <td>
 	                                                    <button class="ds-setting encore-apply">앵콜가능</button>
 	                                                </td>
