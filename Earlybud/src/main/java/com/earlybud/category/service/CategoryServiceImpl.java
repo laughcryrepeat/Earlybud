@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.earlybud.category.dao.CategoryDAO;
+import com.earlybud.vo.MainVO;
 import com.earlybud.model.Category;
 import com.earlybud.vo.CategoryVO;
 import com.earlybud.vo.PageVO;
@@ -27,9 +28,9 @@ public class CategoryServiceImpl implements CategoryService {
 	}	
 	 
 	 @Override
-	 public List<CategoryVO> getList() {
+	 public List<MainVO> getMainList(HashMap map) {
 		 log.info("getList..........");	
-		 return dao.getMainList();	 
+		 return dao.getMainList(map);	 
 	}	 
 
 	 @Override

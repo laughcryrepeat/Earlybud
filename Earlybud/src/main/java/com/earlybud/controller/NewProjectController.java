@@ -65,7 +65,7 @@ public class NewProjectController {
 		long size = image.getSize();
 		String contentType = image.getContentType();
 		byte[] fileContents = image.getBytes();
-		image.transferTo(new File("D:\\Download\\"+fileName));
+		image.transferTo(new File("C:\\Users\\student\\git\\Earlybud\\Earlybud\\src\\main\\webapp\\resources\\uploads\\member\\profile\\"+fileName));
 		seller.setImage(fileName);
 		System.out.println("프로젝트 생성 p1: " + info + ", " + seller_loc + ", " + seller_account);
 		
@@ -88,7 +88,7 @@ public class NewProjectController {
 		long size = main_image.getSize();
 		String contentType = main_image.getContentType();
 		byte[] fileContents = main_image.getBytes();
-		main_image.transferTo(new File("D:\\Download\\"+fileName));
+		main_image.transferTo(new File("C:\\Users\\student\\git\\Earlybud\\Earlybud\\src\\main\\webapp\\resources\\uploads\\reward\\"+fileName));	//자기 컴터 경로에 맞게 고쳐야됨
 		
 		Date startDate = new  SimpleDateFormat("yyyy-MM-dd").parse(opendate);
 		Date endDate = new  SimpleDateFormat("yyyy-MM-dd").parse(closingdate);

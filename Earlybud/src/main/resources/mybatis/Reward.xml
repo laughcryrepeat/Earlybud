@@ -19,6 +19,7 @@
   		<result property="EMAIL" column="EMAIL"/>
   		<result property="NICKNAME" column="NICKNAME"/>
   		<result property="TIME" column="TIME"/>
+  		<result property="OPENDATE" column="OPENDATE"/>
   		<collection property="OptionList" resultMap="optionMap"></collection>
   	</resultMap>  	
 	<resultMap type="ItemOption" id="optionMap">
@@ -39,7 +40,7 @@
 		TO_CHAR(TARGET_SUM, '999,999,999') as TARGET, 
 		TO_CHAR(CLOSINGDATE, 'YYYY"년"MM"월"DD"일"' ) AS DEADLINE, 
 		CONTENT, IMAGE, EMAIL, NICKNAME, 
-		TRUNC(CLOSINGDATE-SYSDATE,0) as TIME, 
+		TRUNC(CLOSINGDATE-SYSDATE,0) as TIME, OPENDATE,
 		T.TYPE_CODE, T.NAME, T.INFO, 
 		TO_CHAR(T.PRICE, '999,999,999') as OP_PRICE, 
 		TO_CHAR(T.PUR_NUM, '99,999')as PURNUM from ITEM I natural join MEMBER natural join CATEGORY natural join SELLER 
@@ -56,5 +57,13 @@
 	<update id="UpdateSuccessY" parameterType="long">
 		update ITEM set SUCCESS=1 where ITEM_CODE=#{ITEM_CODE} and ADMINCALL=1 and SUCCESS=0
 	</update>
+	
+	<select id="encoreCK" resultType="String" parameterType="String">
+		select * from mem_encore where email=#{email} and item_code=#{item_code}
+	</select>
+	
+	<select id="encoreInsert" parameterType="String">
+		insert into mem_encore values(#{email}, #{item_code})
+	</select>
 
 </mapper>

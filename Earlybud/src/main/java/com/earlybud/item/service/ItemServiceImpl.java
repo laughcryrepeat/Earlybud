@@ -1,5 +1,6 @@
 package com.earlybud.item.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,5 +37,13 @@ public class ItemServiceImpl implements ItemService {
 	public void updateSuccessYService(long item_code) {
 		dao.updateSuccessY(item_code);		
 	}
- 
+	
+	@Override
+	public String encoreCheckService(HashMap map) {
+		return dao.encoreCheck(map);
+	}
+	@Override
+	public boolean encoreInsertService(HashMap map) {
+		return dao.encoreInsert(map);
+	}
 }
