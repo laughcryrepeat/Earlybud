@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -65,7 +66,7 @@ public class NewProjectController {
 		long size = image.getSize();
 		String contentType = image.getContentType();
 		byte[] fileContents = image.getBytes();
-		image.transferTo(new File("C:\\Users\\student\\git\\Earlybud\\Earlybud\\src\\main\\webapp\\resources\\uploads\\member\\profile\\"+fileName));
+		image.transferTo(new File("D:\\Download\\"+fileName));
 		seller.setImage(fileName);
 		System.out.println("프로젝트 생성 p1: " + info + ", " + seller_loc + ", " + seller_account);
 		
@@ -88,7 +89,7 @@ public class NewProjectController {
 		long size = main_image.getSize();
 		String contentType = main_image.getContentType();
 		byte[] fileContents = main_image.getBytes();
-		main_image.transferTo(new File("C:\\Users\\student\\git\\Earlybud\\Earlybud\\src\\main\\webapp\\resources\\uploads\\reward\\"+fileName));	//자기 컴터 경로에 맞게 고쳐야됨
+		main_image.transferTo(new File("D:\\Download\\"+fileName));
 		
 		Date startDate = new  SimpleDateFormat("yyyy-MM-dd").parse(opendate);
 		Date endDate = new  SimpleDateFormat("yyyy-MM-dd").parse(closingdate);
@@ -109,14 +110,9 @@ public class NewProjectController {
 	}
 	@RequestMapping("newprojectCheck")
 	public void newProjectCheck(@RequestParam("target_sum") long target_sum, @RequestParam String summary,
-			@RequestParam String option_type, @RequestParam String content){
+			@RequestParam String[] type_code, @RequestParam String[] name, @RequestParam String[] info,@RequestParam String content){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
-		String typeprice = option_type.substring(option_type.indexOf("가격: ")+4, option_type.indexOf(" 옵션이름: "));
-		long price = Long.parseLong(typeprice);
-		String name = option_type.substring(option_type.indexOf(" 옵션이름: ")+7, option_type.lastIndexOf(" 옵션설명: "));
-		String info = option_type.substring(option_type.indexOf(" 옵션설명: ")+7);
-		System.out.println("프로젝트 생성 p3: "+target_sum+", " +summary+","+price+","+name + ","+info);
 		Item item = new Item();
 		item.setEmail(email);
 		item.setTarget_sum(target_sum);
@@ -127,11 +123,15 @@ public class NewProjectController {
 		long item_code = (long) item.getItem_code();
 		Type type = new Type();
 		type.setItem_code(item_code);
+		for(int i=0; i<type_code.length; i++) {
+			System.out.println(type_code[i]+", " +name[i]+", "+info[i]);
+		}
+		/*
 		type.setPrice(price);
 		type.setName(name);
 		type.setInfo(info);
 		projectS.save2(type);
-		System.out.println("저장완료");
+		System.out.println("저장완료");*/
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////// 프로젝트 수정

@@ -31,7 +31,7 @@ public class MemberUploadController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
 		System.out.println("컨트롤러 접속자: "+service.userDetail(email));
-		model.addAttribute("seller", projectS.seller_select(email));
+		model.addAttribute("user", service.userDetail(email));
 		return "/mypage/myPageDetail";
 	}
 	@RequestMapping(value="juso")
