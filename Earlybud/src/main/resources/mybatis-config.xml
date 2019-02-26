@@ -45,5 +45,6 @@
 	<mapper resource="mybatis/EachOrder.xml"/>
 	<mapper resource="mybatis/MainList.xml"/>
 	<mapper resource="mybatis/Encore.xml"/>
+
 </mappers>
 </configuration>
