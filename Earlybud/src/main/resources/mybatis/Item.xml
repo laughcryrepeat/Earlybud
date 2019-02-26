@@ -40,7 +40,7 @@
   	
   	<select id="listEncoreItem" resultType="Item">
   	select ITEM_CODE, TITLE, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
-  	ENCORE_NUM, ENCORE, EMAIL from ITEM where ENCORE_NUM <![CDATA[ > ]]> 10 and SUCCESS = 2 
+  	ENCORE_NUM, ENCORE, EMAIL from ITEM where ENCORE_NUM <![CDATA[ > ]]> 10 and SUCCESS >0 
   	 and ITEM_CODE not in (select ITEM_CODE from ENCORE)
   	 order by ITEM_CODE desc
   	</select>
@@ -52,8 +52,20 @@
   	<update id="rejectItem" parameterType="Long">
   	update ITEM set ADMINCALL=2 where ITEM_CODE = #{item_code}
   	</update>
+  	
   	<select id="sellerItem" parameterType="ITEM" resultType="Item">
-  	select title, main_image, item_code from item where email=#{email}
+  	select ITEM_CODE, TITLE, SUMMARY, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
+  	ENCORE_NUM, ENCORE, EMAIL from ITEM where email=#{email} and SUCCESS = 0
+  	</select>
+  	
+  	<select id="sellerEndItem" parameterType="ITEM" resultType="Item">
+  select ITEM_CODE, TITLE, SUMMARY, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
+  	ENCORE_NUM, ENCORE, EMAIL from ITEM where email=#{email} and SUCCESS>0 and ITEM_CODE not in (select ITEM_CODE from ENCORE)
+  	</select>
+  	
+  	<select id="sellerEncoreItem" parameterType="ITEM" resultType="Item">
+  	select ITEM_CODE, TITLE, SUMMARY, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
+  	ENCORE_NUM, ENCORE, EMAIL from ITEM natural join ENCORE where email=#{email} and SUCCESS = 2 and ENCORE_MASTER = 1
   	</select>
   	
   	<select id="modifyItem1" parameterType="ITEM" resultType="Item">

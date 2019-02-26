@@ -14,4 +14,6 @@ public interface NewProjectDao {
 	public int save2(Type type);
 	public int update(Item item);
 	public int update2(Seller seller);
+	public List<Item> sellerEndItem(String email);
+	public List<Item> sellerEncoreItem(String email);
 }

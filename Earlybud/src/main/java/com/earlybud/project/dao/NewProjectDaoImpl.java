@@ -72,4 +72,14 @@ public class NewProjectDaoImpl implements NewProjectDao {
 		System.out.println("1page insert("+seller+")");
 		return p;
 	}
+	@Override
+	public List<Item> sellerEndItem(String email) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(ns+".sellerEndItem", email);
+	}
+	@Override
+	public List<Item> sellerEncoreItem(String email) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(ns+".sellerEncoreItem", email);
+	}
 }
