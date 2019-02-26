@@ -57,15 +57,5 @@ public class CategoryDAOImpl implements CategoryDAO {
 		return itemMap;
 	}
 	*/
-	/*
-	@Override
-	public HashMap<String, Object> selectMain(long type_code) {
-		HashMap<String,Object> itemMap = sqlSession.selectOne(ns4+".selectTypeInfo", type_code);
-		System.out.println("selectTypeInfo after sql");
-		System.out.println("itemMap: "+itemMap);
-		System.out.println("itemMap.get('TITLE'):"+itemMap.get("TITLE"));
-		return itemMap;
-	}
-	*/
 	
 }
