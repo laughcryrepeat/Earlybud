@@ -7,9 +7,14 @@
 <!doctype html>
 <html lang="en-US">
 
+<<<<<<< HEAD
 
 <body>
 		
+=======
+<%@include file="header.jsp" %>
+
+>>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
 
 
  <nav class="b-nav-global">

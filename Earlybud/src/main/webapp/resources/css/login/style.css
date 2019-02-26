@@ -121,6 +121,17 @@ input, textarea {
   color: #66676a;
   border-radius: 0;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  
+}
+.denied{
+	display: none;
+	color: red;
+	transform: translate(80px, 13px);
+}
+.deniedE{
+	display: none;
+	color: red;
+	transform: translate(80px, 13px);
 }
 
 input:focus, textarea:focus {
@@ -153,7 +164,10 @@ textarea {
 .top-row > div:last-child {
   margin: 0;
 }
-
+.buF{
+	width: 40% !important;
+	font-size: 1rem !important;
+}
 .button {
   margin: 5px;
   border: 0;

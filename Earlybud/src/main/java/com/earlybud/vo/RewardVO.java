@@ -1,5 +1,6 @@
 package com.earlybud.vo;
 
+import java.util.Date;
 import java.util.List;
 import lombok.Data;
 import com.earlybud.model.ItemOption;
@@ -12,7 +13,6 @@ public class RewardVO {
   private String CAT_NAME;
   private String TITLE;
   private String MAIN_IMAGE;
-  private String IMAGE_ITEM;
   private String NOW_SUM;
   private String PERCENT;
   private String TARGET;
@@ -22,6 +22,7 @@ public class RewardVO {
   private String EMAIL;	//판매자 이메일
   private String NICKNAME; //판매자 닉네임
   private String TIME; //남은시간 몇일인지//숫자로 받아서 0일경우(펀딩마감 당일일 경우) "오늘 자정까지" 라고 문구 띄우기, 마이너스면 끝난 펀딩이라고 띄우기 - 뷰단에서 처리
+  private Date OPENDATE;
   private List<ItemOption> OptionList; 
   //select TYPE_CODE, ITEM_CODE, NAME, INFO, TO_CHAR(PRICE, '999,999,999'), PUR_NUM from TYPE where ITEM_CODE=4;
 

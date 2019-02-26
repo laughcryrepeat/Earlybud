@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,8 +29,7 @@
 <meta name="format-detection" content="telephone=no">
 <meta name="naver-site-verification" content="bee718c14a77c283448ac836bb76286cb6fee07d">
 <meta name="google-site-verification" content="QjRhzKeCwF3iLHm520JGwnPJQ3oD4nPF1QYZW4cLJ9U" />
-<title>
-EarlyBud 즐겨찾는 상품 & 판매자</title>
+<title>EarlyBud 즐겨찾는 상품 & 판매자</title>
 <link rel="dns-prefetch" href="https://cdn.wadiz.kr">
 <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 <link rel="icon" href="https://cdn.wadiz.kr/resources/static/icon/favicon-16.png" sizes="16x16" type="image/png">
@@ -515,7 +516,8 @@ window.wadiz = window.wadiz || {};window.wadiz.sessionUser="571408206";</script>
                 <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a href="main">Home</a></li>
 				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">소개</a></li>
 				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">카테고리</a></li>
-				<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
+				<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/earlybud/customLogout">로그아웃</a></li>
 			</ul>
             </div>
             <ul class="header-search-cart">

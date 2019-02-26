@@ -135,6 +135,7 @@ public class ItemController {
 		
 		return map2;
 	}
+<<<<<<< HEAD
 	
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("email", email);
@@ -165,5 +166,7 @@ public class ItemController {
 		
 		return map2;
 	}
+=======
+>>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
 
 }

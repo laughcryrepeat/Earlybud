@@ -110,7 +110,6 @@
 	      		 							if(percent>=100){
 	      		 								percent2 = 100;
 	      		 							}
-	      		 							
 	      		 							str+="<li class=\"project_card reward_project_card\" data-project-seq=\""+this.item_CODE+"\" data-page-number=\"1\">"	
 			      		 						 +"<div class=\"project_card_inner\">"
 			      							  	 +"<a href=\"/../earlybud/reward?item_code="+this.item_CODE+"\" class=\"project_detail_link\" data-project-seq=\""
@@ -302,16 +301,16 @@
       		 							if(percent>=100){
       		 								percent2 = 100;
       		 							}
-      		 							
+      		 							      		 							
       		 							str+="<li class=\"project_card reward_project_card\" data-project-seq=\""+this.item_CODE+"\" data-page-number=\"1\">"	
 	      		 						 +"<div class=\"project_card_inner\">"
-	      							  	 +"<a href=\"/../earlybud/reward?item_code=\""+this.item_CODE+"\" class=\"project_detail_link\" data-project-seq=\""
+	      							  	 +"<a href=\"/../earlybud/reward?item_code="+this.item_CODE+"\" class=\"project_detail_link\" data-project-seq=\""
 	      							  	 +this.item_CODE+"\" data-page-number=\"1\">"
 	      								 +"<span class=\"project_thumbnail\" style=\"background-image:url('${pageContext.request.contextPath}/uploads/reward/"
 	      							  	 +this.main_IMAGE
 	      							  	 +"\"></span></a><div class=\"project_card_info\">"
 	      							     +"<span class=\"screen_out\">프로젝트 제목</span><h3 class=\"project_name\">"
-	      							     +"<a href=\"/../earlybud/reward?item_code=\""
+	      							     +"<a href=\"/../earlybud/reward?item_code="
 	      							     +this.item_CODE
 	      							     +"\" class=\"project_detail_link\" data-project-seq=\""
 	      							     +this.item_CODE

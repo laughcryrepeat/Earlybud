@@ -25,7 +25,7 @@
             <h4 class="tile-title folder-head">보낸메세지 함</h4>
             <div class="tile-body">
               <ul class="nav nav-pills flex-column mail-nav">
-                <li class="nav-item active"><a class="nav-link" href="#"><i class="fa fa-inbox fa-fw"></i>
+                <li class="nav-item active"><a class="nav-link" ><i class="fa fa-inbox fa-fw"></i>
                 Inbox 새로온메세지<span class="badge badge-pill badge-primary float-right">${newMsg}</span></a>      
                 </li>
                   
@@ -159,7 +159,7 @@
           <p>Reply Message</p>
             <form name="msg_form" method="post" action="email/send">
                 <div class="form-group">
-                  <label class="control-label">From</label>
+                  <label class="control-label">To</label>
                   <input id="msg_from" name="msg_from" class="form-control" readonly >
                 </div>
                 <div class="form-group">

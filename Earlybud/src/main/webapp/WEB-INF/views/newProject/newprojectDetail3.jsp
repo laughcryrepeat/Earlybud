@@ -140,14 +140,23 @@
   <link rel='stylesheet' id='airi-font-awesome-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/css/font-awesome/css/font-awesome.min.css?ver=4.9.9' type='text/css' media='all' />
   <link rel='stylesheet' id='kirki-styles-airi-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/kirki/assets/css/kirki-styles.css?ver=3.0.33' type='text/css' media='all' />
   <style id='kirki-styles-airi-inline-css' type='text/css'>
+	.ocode{
+		width: 20% !important;
+	}
+	.oname{
+		width: 30% !important;
+	}
+	.oinfo{
+		width: 47% !important;
+	}
     .option_code{
-		width: 100px !important;
+		width: 13% !important;
 	}
 	.option_name{
-		width: 130px !important;
+		width: 30% !important;
 	}
 	.option_info{
-		width: 300px !important;
+		width: 42% !important;
 	}
     h1,
     h2,
@@ -442,8 +451,9 @@
                 <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a href="main">Home</a></li>
 				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">소개</a></li>
 				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">카테고리</a></li>
-				<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
-              </ul>
+				<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
+				<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/earlybud/customLogout">로그아웃</a></li>
+				</ul>
             </div>
             <ul class="header-search-cart">
               <li class="header-search">
@@ -489,18 +499,28 @@
                 <div id="respond" class="comment-respond">
                   <form action="newprojectCheck" method="post" enctype="multipart/form-data" id="myproject" class="comment-form" novalidate>
                     <p class="comment-form-url"><label for="url">목표 금액<span class="required">*</span></label> 
-                    	<input id="target_sum" name="target_sum" type="number" value="" size="30" maxlength="200" /></p>
+                    	<input id="target_sum" name="target_sum" type="text" value="" size="30" maxlength="200" /></p>
                     <p class="comment-form-author"><label for="author">프로젝트 요약<span class="required">*</span></label> 
                     	<input id="summary" name="summary" type="text" value="" size="30" maxlength="600" /></p>
                     <p class="comment-form-email"><label for="email">선물 구성(옵션)</label> 
-                    	<input id="option_type" name="option_type" type="text" value="" size="30" maxlength="100" required='required' /></p>
-                    	<div id="myModal" class="modal">
-                    		<div class="modal-content">
+                    <label for="type_code">가격&emsp;&emsp;&emsp;&emsp;&emsp;옵션 이름&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;옵션 설명&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                    	<input class="ocode" id="ocode" name="ocode" type="text" size="20" maxlength="20" />
+                    	<input class="oname" id="oname" name="oname" type="text" size="20" maxlength="60" />
+                    	<input class="oinfo" id="oinfo" name="oinfo" type="text" size="30" maxlength="100" /></p>
+                    	<div class="hiddenO">
+              	    	  	<input class="ocodeh" id="ocode" name="type_code" type="hidden" size="20" maxlength="20" />
+                	    	<input class="onameh" id="oname" name="name" type="hidden" size="20" maxlength="60" />
+                    		<input class="oinfoh" id="oinfo" name="info" type="hidden" size="30" maxlength="100" /></div>
+                    	<div id="myModal" class="optionmodal">
+                    		<div class="optionmodal-content">
                     			<div>
+                    				<p><a href="#" class="add_field_button">add</a></p>
                     				<label for="type_code">가격&emsp;&emsp;&emsp;&emsp;&emsp;옵션 이름&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;옵션 설명&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
-                    				<input class="option_code" id="type_code" name="type_code" type="text" size="10" maxlength="20" />
-                    				<input class="option_name" id="type_name" name="name" type="text" size="20" maxlength="60" />
-                    				<input class="option_info" id="info" name="info" type="text" size="30" maxlength="100" />
+                    				<div class="real_content">
+                    				<input class="option_code" id="otype_code" name="otype_code" type="text" size="20" maxlength="20" />
+                    				<input class="option_name" id="otype_name" name="oname" type="text" size="20" maxlength="60" />
+                    				<input class="option_info" id="oinfo" name="oinfo" type="text" size="30" maxlength="100" />
+                    				</div>
                     			</div>
                     		</div>
                     	</div>
@@ -661,10 +681,10 @@
       </script>
       <script async="async" type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/akismet/_inc/form.js?ver=4.0.8'></script>
 	  <style type="text/css">
-	  .modal{
+	  .optionmodal{
 	  	display: none;
 	  	position: fixed;
-	  	z-index: 1; /* Sit on top */
+	  	z-index: 1;
 	    left: 0;
 	    top: 0;
 	    width: 100%; /* Full width */
@@ -673,26 +693,59 @@
 	    background-color: rgb(0,0,0); /* Fallback color */
 	    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 	  }
-	  .modal-content{
+	  .optionmodal-content{
 	  	background-color: #fefefe;
-            margin: 15% auto;
-            padding: 100px;
-            border: 1px solid #888;
-            width: 50%; /* Could be more or less, depending on screen size */
+        margin: 10% auto;
+        padding: 100px;
+        border: 1px solid #888;
+        width: 50%; /* Could be more or less, depending on screen size */
 	  }
 	  </style>
 	  <script type="text/javascript">
-	  var pick = document.getElementById('option_type');
+	  var pick = document.getElementById('ocode');
 	  var mymodal = document.getElementById('myModal');
 	  pick.onclick = function(){
 		  mymodal.style.display = "block";
 	  }
+	  var max_fields = 10;
+	  var hidden = $(".hiddenO");
+	  var wrapper = $(".real_content");
+	  var add_button = $(".add_field_button");
+	  var x=1;
+	  $(add_button).click(function(e){
+		  e.preventDefault();
+		  if(x < max_fields){
+			  x++;
+			  $(wrapper).append('<div><input class="option_code" id="otype_code" name="otype_code" type="text" size="10" maxlength="20" /><input class="option_name" id="otype_name" name="oname" type="text" size="20" maxlength="60" /><input class="option_info" id="dinfo" name="dinfo" type="text" size="30" maxlength="100" /><a href="#" class="remove_field">remove</a></div>\n');
+			  $(hidden).append('<div><input class="ocodeh" id="type_code" name="type_code" type="hidden" size="10" maxlength="20" /><input class="onameh" id="type_name" name="name" type="hidden" size="20" maxlength="60" /><input class="oinfoh" id="info" name="info" type="hidden" size="30" maxlength="100" />');
+		  }
+	  $(wrapper).on("click",".remove_field", function(e){
+		  e.preventDefault(); $(this).parent('div').remove(); x--;
+		})
+	  });
 	  window.onclick = function(event) {
           if (event.target == mymodal) {
-        	  myproject.option_type.value = "가격: "+ type_code.value + " 옵션이름: " + type_name.value + " 옵션설명: " + info.value; 
+        	  var oc =$('.option_code').get();
+        	  var on =$('.option_name').get();
+        	  var oi =$('.option_info').get();
+        	  var hc =$('.ocodeh').get();
+        	  var hn =$('.onameh').get();
+        	  var hi =$('.oinfoh').get();
+        	  for(var i=0; i<oc.length; i++){
+        		  hc[i].value = oc[i].value;
+        		  hn[i].value = on[i].value;
+        		  hi[i].value = oi[i].value;
+        		  console.log(oc[i].value);
+        		  console.log(on[i].value);
+        		  console.log(oi[i].value);
+        		  
+        	  }
+        	  console.log(oc.length);
+    		  
+        	  <!-- myproject.option_type.value = "가격: "+ type_code.value + " 옵션이름: " + type_name.value + " 옵션설명: " + info.value;--> 
               mymodal.style.display = "none";
           }
-      }
+      };
 	  </script>
 	
 </body>

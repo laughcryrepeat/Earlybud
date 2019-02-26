@@ -1,5 +1,6 @@
 package com.earlybud.item.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +26,14 @@ public class ItemDAOImpl implements ItemDAO {
 		return selectItem;
 	}
 	@Override
+	public long countLike(Long item_code) {
+		 return sqlSession.selectOne(ns+".countLikes", item_code);
+	}
+	@Override
+	public Long likeCheck(HashMap map) {
+		return sqlSession.selectOne(ns+".likeCK", map);			
+	}
+	@Override
 	public List<Map<String, Object>> midnightPlan(){
 		return sqlSession.selectList(ns+".midnight");
 	}
@@ -37,5 +46,23 @@ public class ItemDAOImpl implements ItemDAO {
 		System.out.println("성공~~");
 		sqlSession.update(ns+".UpdateSuccessY", item_code);		
 	}
-
+	@Override
+	public String encoreCheck(HashMap map) {
+		return sqlSession.selectOne(ns+".encoreCK", map);			
+	}
+	@Override
+	public boolean encoreInsert(HashMap map) {
+		sqlSession.selectOne(ns+".encoreInsert", map);
+		return true;
+	}
+	@Override
+	public boolean likeAdd(HashMap map) {
+		sqlSession.selectOne(ns+".likeAdd", map);
+		return true;
+	}
+	@Override
+	public boolean likeDel(HashMap map) {
+		sqlSession.selectOne(ns+".likeDel", map);
+		return true;
+	}
 }

@@ -70,7 +70,7 @@ h4,
 h5,
 h6 {
 	clear: both;
-	font-family: 'Work Sans', sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 	color: #191919;
 	font-weight: 500;
 }
@@ -2779,7 +2779,7 @@ ul.social-media-list li {
 }
 
 .athemes-project-wrap .project-item .project-info h3 {
-	font-size: 36px;
+	font-size: 28px;
 	color: #191919;
 }
 

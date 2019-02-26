@@ -1,5 +1,6 @@
 package com.earlybud.item.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,8 +23,11 @@ public class ItemServiceImpl implements ItemService {
 	public RewardVO get(Long item_code) {
 		log.info("get......" + item_code);
 		return dao.read(item_code);
+	} 
+	@Override
+	public long countLikeService(Long item_code){
+		return dao.countLike(item_code);
 	}
- 
 	@Override
 	public List<Map<String, Object>> midnightService(){
 		return dao.midnightPlan();
@@ -36,5 +40,25 @@ public class ItemServiceImpl implements ItemService {
 	public void updateSuccessYService(long item_code) {
 		dao.updateSuccessY(item_code);		
 	}
- 
+	
+	@Override
+	public String encoreCheckService(HashMap map) {
+		return dao.encoreCheck(map);
+	}
+	@Override
+	public boolean encoreInsertService(HashMap map) {
+		return dao.encoreInsert(map);
+	}
+	@Override
+	public Long likeCheckService(HashMap map) {
+		return dao.likeCheck(map);
+	}
+	@Override
+	public boolean likeAddService(HashMap map) {
+		return dao.likeAdd(map);
+	}
+	@Override
+	public boolean likeDelService(HashMap map) {
+		return dao.likeDel(map);
+	}
 }

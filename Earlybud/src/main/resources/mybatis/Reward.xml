@@ -9,7 +9,6 @@
   		<result property="CAT_NAME" column="CAT_NAME"/>
   		<result property="TITLE" column="TITLE"/>
   		<result property="MAIN_IMAGE" column="MAIN_IMAGE"/>
-  		<result property="IMAGE_ITEM" column="IMAGE_ITEM"/>
   		<result property="NOW_SUM" column="NOW_SUM"/>
   		<result property="PERCENT" column="PERCENT"/>
   		<result property="TARGET" column="TARGET"/>
@@ -19,6 +18,7 @@
   		<result property="EMAIL" column="EMAIL"/>
   		<result property="NICKNAME" column="NICKNAME"/>
   		<result property="TIME" column="TIME"/>
+  		<result property="OPENDATE" column="OPENDATE"/>
   		<collection property="OptionList" resultMap="optionMap"></collection>
   	</resultMap>  	
 	<resultMap type="ItemOption" id="optionMap">
@@ -33,28 +33,52 @@
 	<select id="readItem" resultMap="RewardMap" parameterType="LONG">
 		select 
 		TO_CHAR((select sum(PUR_NUM) from TYPE where ITEM_CODE= #{item_code}), '99,999')as TOTAL_PUR,
-		CAT_CODE, CAT_NAME, TITLE, MAIN_IMAGE, IMAGE_ITEM, 
+		CAT_CODE, CAT_NAME, TITLE, MAIN_IMAGE,
 		TO_CHAR(CUR_SUM, '999,999,999,999') as NOW_SUM, 
 		TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, 
 		TO_CHAR(TARGET_SUM, '999,999,999') as TARGET, 
 		TO_CHAR(CLOSINGDATE, 'YYYY"년"MM"월"DD"일"' ) AS DEADLINE, 
 		CONTENT, IMAGE, EMAIL, NICKNAME, 
-		TRUNC(CLOSINGDATE-SYSDATE,0) as TIME, 
+		TRUNC(CLOSINGDATE-SYSDATE,0) as TIME, OPENDATE,
 		T.TYPE_CODE, T.NAME, T.INFO, 
 		TO_CHAR(T.PRICE, '999,999,999') as OP_PRICE, 
 		TO_CHAR(T.PUR_NUM, '99,999')as PURNUM from ITEM I natural join MEMBER natural join CATEGORY natural join SELLER 
 		left outer join TYPE T on I.ITEM_CODE=T.ITEM_CODE 
 		where I.ITEM_CODE =#{item_code}
 	</select>	
+	
+	<select id="countLikes" resultType="Long" parameterType="Long">
+		select count(*) from likes where item_code =#{item_code}
+	</select>	
 		
 	<update id="UpdateSuccessN">
 		<![CDATA[
 			update ITEM set SUCCESS=2 
-			where TRUNC(CLOSINGDATE-SYSDATE,0)=-1 and ADMIN_CALL=1 and SUCCESS=0 
+			where TRUNC(CLOSINGDATE-SYSDATE,0)=-1 and ADMINCALL=1 and SUCCESS=0 
 		]]>
 	</update>
 	<update id="UpdateSuccessY" parameterType="long">
-		update ITEM set SUCCESS=1 where ITEM_CODE=#{ITEM_CODE} and ADMIN_CALL=1 and SUCCESS=0
+		update ITEM set SUCCESS=1 where ITEM_CODE=#{ITEM_CODE} and ADMINCALL=1 and SUCCESS=0
 	</update>
+	
+	<select id="encoreCK" resultType="String" parameterType="String">
+		select * from mem_encore where email=#{email} and item_code=#{item_code}
+	</select>
+	
+	<select id="encoreInsert" parameterType="String">
+		insert into mem_encore values(#{email}, #{item_code})
+	</select>
+	
+	<select id="likeCK" resultType="Long" parameterType="String">
+		select count(*) from likes where email=#{email} and item_code=#{item_code}
+	</select>	
+	
+	<select id="likeAdd" parameterType="String">
+		insert into likes(email, item_code) values(#{email}, #{item_code})
+	</select>
+	
+	<select id="likeDel" parameterType="String">
+		delete from likes where email=#{email} and item_code= #{item_code}
+	</select>
 
 </mapper>
