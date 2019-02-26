@@ -137,7 +137,7 @@ public class NewProjectController {
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////// 프로젝트 수정
 	Model model;
 	@RequestMapping("newprojectModify1")
-	public String newProjectModify1() throws IOException{
+	public String newProjectModify1(Model model	) throws IOException{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
 		model.addAttribute("seller", projectS.seller_select(email));

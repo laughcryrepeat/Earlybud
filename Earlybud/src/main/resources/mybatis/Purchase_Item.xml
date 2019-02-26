@@ -21,6 +21,17 @@
 		
 	</select>
 	
+	<select id="listClosingItem" resultType="map">
+	select MERCHANT_UID, CUSTOMER_UID, ITEM_CODE, TYPE_CODE, PRICE, TARGET_SUM, CUR_SUM 
+		from ITEM natural join PURCHASE_ITEM
+ 	where SUCCESS=0 and TRUNC(CLOSINGDATE-SYSDATE,0)=-1;
+	</select>
+	
+	<update id="canclePurchaseItem" parameterType="String">
+	update PURCHASE_ITEM set 
+	cancel = 'y' where MERCHANT_UID = #{merchant_uid}
+	</update>
+	
 	<insert id="insertPurItem" parameterType="Purchase_Item">
 	insert into PURCHASE_ITEM (merchant_uid,customer_uid,email,item_code,type_code,price,pur_date,cancel,invoice,pur_state,imp_uid)  
    	values(#{merchant_uid},#{customer_uid},#{email},#{item_code},#{type_code},#{price},sysdate,'n',null,null,null) 

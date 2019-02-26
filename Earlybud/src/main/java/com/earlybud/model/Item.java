@@ -19,7 +19,7 @@ public class Item {
   private String summary;
   private String content;
   private String main_image;
-  private String image_item;
+  //private String image_item;
   private long target_sum; //목표금액
   private long cur_sum;
   private Date opendate;
@@ -29,7 +29,7 @@ public class Item {
   private long view_count; 
   private long encore_num;
   private long encore;
-  private long encore_time;
+  //private long encore_time;
   private String email;
   private String cat_name;
 }

@@ -10,7 +10,7 @@
   		<result property="summary" column="SUMMARY"/>
   		<result property="content" column="CONTENT"/>
   		<result property="main_image" column="MAIN_IMAGE"/>
-  		<result property="image_item" column="IMAGE_ITEM"/>
+  		
   		<result property="target_sum" column="TARGET_SUM"/>
   		<result property="cur_sum" column="CUR_SUM"/>
   		<result property="opendate" column="OPENDATE"/>
@@ -20,29 +20,50 @@
   		<result property="view_count" column="VIEW_COUNT"/>
   		<result property="encore_num" column="ENCORE_NUM"/>
   		<result property="encore" column="ENCORE"/>
-  		<result property="encore_time" column="ENCORE_TIME"/>
+  		
   		<result property="email" column="EMAIL"/>
   		<result property="cat_name" column="CAT_NAME"/>
   	</resultMap>
-	<!--
-	<resultMap id="payItemMap" type="java.util.HashMap">
-		<result column="title" property="title"/>
-        <result column="name" property="name"/>
-        <result column="price" property="price" javaType="int"/>
-        <result column="closingdate" property="closingdate"/>
+	
+	<resultMap type="Encore" id="encoreMap">
+		<result property="encore_code" column="ENCORE_CODE" />
+        <result property="item_code" column="ITEM_CODE" />
+        <result property="encore_master" column="ENCORE_MASTER" />
+        <result property="encore_seller" column="ENCORE_SELLER" />
+        <result property="newitem_code" column="NEWITEM_CODE" />
 	</resultMap>
-	-->
+	
   	<select id="listItem" resultType="Item">
-  	select * from ITEM natural join CATEGORY order by ITEM_CODE desc
+  	select ITEM_CODE, TITLE, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
+  	ENCORE_NUM, ENCORE, EMAIL from ITEM order by ITEM_CODE desc
   	</select>
   	
-  	<update id="approveItem" parameterType="Integer">
+  	<select id="listEncoreItem" resultType="Item">
+  	select ITEM_CODE, TITLE, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
+  	ENCORE_NUM, ENCORE, EMAIL from ITEM where ENCORE_NUM <![CDATA[ > ]]> 10 and SUCCESS = 2 
+  	 and ITEM_CODE not in (select ITEM_CODE from ENCORE)
+  	 order by ITEM_CODE desc
+  	</select>
+  	
+  	<update id="approveItem" parameterType="Long">
   	update ITEM set ADMINCALL=1 where ITEM_CODE = #{item_code}
   	</update>
   	
-  	<update id="rejectItem" parameterType="Integer">
-  	update ITEM set ADMINCALL=NULL where ITEM_CODE = #{item_code}
+  	<update id="rejectItem" parameterType="Long">
+  	update ITEM set ADMINCALL=2 where ITEM_CODE = #{item_code}
   	</update>
+  	<select id="sellerItem" parameterType="ITEM" resultType="Item">
+  	select title, main_image, item_code from item where email=#{email}
+  	</select>
+  	
+  	<select id="modifyItem1" parameterType="ITEM" resultType="Item">
+  	select item_code, email, cat_code, title, main_image, opendate, closingdate from item where item_code=#{item_code}
+  	</select>
+  	
+  	<insert id="insertEncore" parameterType="Long">
+  	insert into ENCORE(ENCORE_CODE,ITEM_CODE,ENCORE_MASTER,ENCORE_SELLER,NEWITEM_CODE)
+  	 values(ENCORE_CODE_SEQ.nextval,#{item_code},1,0,0)
+  	</insert>
   	
   	<insert id="insertItem" parameterType="Item">
   		<selectKey keyProperty="item_code" resultType="Item" order="AFTER">
@@ -52,9 +73,8 @@
   	values 
   	(#{email}, #{cat_code}, #{title}, #{main_image}, #{opendate}, #{closingdate}, ITEM_CODE_SEQ.nextval)
   	</insert>
-  	<select id="modifyItem1" parameterType="long" resultType="Item">
-  	select email, cat_code, title, main_image, opendate, closingdate-1 from ITEM where item_code = #{item_code}
-  	</select>
+  	
+  	
   	<update id="insertItem2" parameterType="Item" keyProperty="email">
   		<selectKey keyProperty="item_code" resultType="Item" order="AFTER">
   		select ITEM_CODE_SEQ.currval as item_code from DUAL
@@ -78,6 +98,11 @@
 	
 	<update id="updateSum" parameterType="hashMap">
 	update ITEM set CUR_SUM = ( CUR_SUM + #{price} ) 
+	where ITEM_CODE = ( select ITEM_CODE from TYPE where TYPE_CODE = #{type_code})
+	</update>
+	
+	<update id="updateCancelSum" parameterType="hashMap">
+	update ITEM set CUR_SUM = ( CUR_SUM - #{price} ) 
 	where ITEM_CODE = ( select ITEM_CODE from TYPE where TYPE_CODE = #{type_code})
 	</update>
 

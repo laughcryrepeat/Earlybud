@@ -125,10 +125,12 @@
     	curSection += 1;
     	console.log("curSection="+curSection);
     	console.log("numPages="+numPages);
+    	$('#left').attr('disabled', false);
     	var endPage = sectionNum*(curSection+1);
     	if((numSections-1) == curSection){
     		endPage = numPages;
     		console.log("endPage="+endPage);
+    		$('#right').attr('disabled', true);
     		}
     	$('.page-number').remove();
     	for (var page =(curSection*sectionNum); page < endPage; page++) {
@@ -153,10 +155,14 @@
     	curSection -= 1;
     	console.log("curSection="+curSection);
     	console.log("numPages="+numPages);
+    	$('#right').attr('disabled',false);
     	var endPage = sectionNum*(curSection+1);
     	if((numSections-1) == curSection){
     		endPage = numPages;
     		console.log("endPage="+endPage);
+    		}
+    	if(curSection == 0){
+    		$('#left').attr('disabled', true);
     		}
     	$('.page-number').remove();
     	for (var page =(curSection*sectionNum); page < endPage; page++) {

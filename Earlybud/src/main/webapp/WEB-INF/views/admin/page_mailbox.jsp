@@ -25,7 +25,7 @@
             <h4 class="tile-title folder-head">받은메세지함</h4>
             <div class="tile-body">
               <ul class="nav nav-pills flex-column mail-nav">
-                <li class="nav-item active"><a class="nav-link" href="#"><i class="fa fa-inbox fa-fw"></i>
+                <li class="nav-item active"><a class="nav-link" ><i class="fa fa-inbox fa-fw"></i>
                 Inbox 새로온메세지<span class="badge badge-pill badge-primary float-right">${newMsg}</span></a>      
                 </li>
                   
@@ -54,11 +54,11 @@
               <table class="table table-hover sortable paginated" id="tbl">
                 <thead>
                   <tr>
-                    <td class='sort-basic'></td>
-                    <td class='sort-basic'>보낸사람</td>
-                    <td class='sort-basic'>내용</td>
-                    <td class='sort-basic'></td>
-                    <td class='sort-ranking'>날짜</td>
+                    <th class='sort-basic'></th>
+                    <th class='sort-basic'>보낸사람</th>
+                    <th class='sort-basic'>내용</th>
+                    <th class='sort-basic'></th>
+                    <th class='sort-ranking'>날짜</th>
                   </tr>
                 </thead>  
                 <tbody>

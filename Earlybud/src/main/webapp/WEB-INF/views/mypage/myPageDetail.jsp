@@ -8,16 +8,11 @@
         <div class="row">
           <div id="primary" class="content-area layout-default col-lg-8">
             <main id="main" class="site-main">
-
-
               <article id="post-1" class="post-1 post type-post status-publish format-standard hentry category-uncategorized">
-
-
                 <header class="entry-header">
                   <span class="posted-on">My Page detail</span>
                   <h1 class="entry-title">회원정보수정</h1>
                 </header><!-- .entry-header -->
-
                 <div id="respond" class="comment-respond">
                   <form id="mypage" action="memberUpload" method="post" id="commentform" class="comment-form" novalidate>
                   <p class="comment-form-comment"><label for="comment">이메일<span class="required">*</span></label> 
@@ -36,11 +31,8 @@
                     <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="b0c1d8b81d" /></p>
                     <p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="63" /></p>
                   </form>
-
                 </div><!-- #respond -->
-
           </div><!-- #comments -->
-
           </main><!-- #main -->
           <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
           <script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>

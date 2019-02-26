@@ -1,10 +1,13 @@
 package com.earlybud.project.dao;
 
+import java.util.List;
+
 import com.earlybud.model.Item;
 import com.earlybud.model.Seller;
 import com.earlybud.model.Type;
 
 public interface NewProjectDao {
+	public List<Item> sellerItem(String email);
 	public Seller seller_select(String email);
 	public Item item_select(long item_code);
 	public int save(Item item);

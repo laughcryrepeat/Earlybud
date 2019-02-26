@@ -1,6 +1,8 @@
 package com.earlybud.payment.service;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.earlybud.model.Item;
 import com.earlybud.model.Payment_Info;
@@ -16,4 +18,7 @@ public interface PaymentService {
 	void insertPaymentInfo(Payment_Info payInfo);
 	void updateType(long type_code);
 	void updateSum(long price, long type_code);
+	void canclePayment(Map<String, Object> map);
+	void cancleMultiPayment(Map<String, Object> map);
+	List<Map<String, Object>> listClosingItem();
 }

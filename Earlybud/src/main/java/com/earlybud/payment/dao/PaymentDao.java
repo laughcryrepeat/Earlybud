@@ -1,6 +1,8 @@
 package com.earlybud.payment.dao;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.earlybud.model.Item;
 import com.earlybud.model.Payment_Info;
@@ -16,4 +18,8 @@ public interface PaymentDao {
 	void insertPaymentInfo(Payment_Info payInfo);
 	void updateType(long type_code);
 	void updateSum(long price, long type_code);
+	List<Map<String, Object>> listClosingItem();
+	void updateCancel(String merchant_uid);
+	void updateCancelSum(long type_code, long price);
+	void updateCancelType(long type_code);
 }
