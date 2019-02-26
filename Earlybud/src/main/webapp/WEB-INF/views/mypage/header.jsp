@@ -90,7 +90,7 @@ window.wadiz = window.wadiz || {};window.wadiz.sessionUser="";</script>
 	$(function(){
 		$('.project-filter').mouseenter(function(){
 			$('.project-filter').css("background-color", #db79f5)
-		});
+		})
 	});
 </script>
 	<script type="text/javascript">
@@ -548,4 +548,3 @@ window.wadiz = window.wadiz || {};window.wadiz.sessionUser="571408206";</script>
       </div>
 	
     </header><!-- #masthead -->
-
