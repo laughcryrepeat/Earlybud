@@ -49,15 +49,15 @@
                 <label>
                   닉네임<span class="req">*</span>
                 </label>
-                <input type="text"required class="join" id="nickname" name="nickname"  />
+                <input type="text"required class="joinNick" id="nickname" name="nickname"  />
                 <!-- oninput="id_check()"  -->
-				<section class="denied">이미 등록된 닉네임입니다.</section>
               </div>
             <div class="field-wrap">
               <label>
                 이메일<span class="req">*</span>
               </label>
-              <input type="email"required class="join" id="email" name="email"/>
+              <input type="email"required class="joinEmail" id="email" name="email"/>
+				<section class="deniedE">이미 등록된 이메일입니다.</section>
             </div>
             <div class="field-wrap">
               <label>
@@ -122,15 +122,47 @@
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script  src="js/login/index.js"></script>
 <script type="text/javascript">
-  function id_check(str){
-	  var inputed=$('.join').val();
-	  $.ajax({
-		  data:{
-			  join : inputed
-		  },
-		  url : "login_check"
+
+  $(document).ready(function(){
+	  $(".joinNick").blur(function(){
+		  var inputed=$('.joinNick').val();
+		  $.ajax({
+			  url : "login_check",
+			  dataType: 'json',
+			  data:{
+				  nickname : inputed
+			  },
+			  success:function(data){
+				  console.log(data);
+					if(data == 0){
+						$('.denied').css('display', 'none');
+					}
+					else
+						$('.denied').css('display', 'block');
+				}
+		  });
+	});
+	  $(".joinEmail").click(function(){
+	  $(".joinEmail").blur(function(){
+		  var inputed=$('.joinEmail').val();
+		  $.ajax({
+			  url : "login_check",
+			  dataType: 'json',
+			  data:{
+				  email : inputed
+			  },
+			  success:function(data){
+				  console.log(data);
+					if(data == 0){
+						$('.deniedE').css('display', 'none');
+					}
+					else
+						$('.deniedE').css('display', 'block');
+				}
+		  });
 	  });
-  }
+	});
+  });
   </script>
 </body>
 </html>

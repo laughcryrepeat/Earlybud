@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -109,14 +110,9 @@ public class NewProjectController {
 	}
 	@RequestMapping("newprojectCheck")
 	public void newProjectCheck(@RequestParam("target_sum") long target_sum, @RequestParam String summary,
-			@RequestParam String option_type, @RequestParam String content){
+			@RequestParam String[] type_code, @RequestParam String[] name, @RequestParam String[] info,@RequestParam String content){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
-		String typeprice = option_type.substring(option_type.indexOf("가격: ")+4, option_type.indexOf(" 옵션이름: "));
-		long price = Long.parseLong(typeprice);
-		String name = option_type.substring(option_type.indexOf(" 옵션이름: ")+7, option_type.lastIndexOf(" 옵션설명: "));
-		String info = option_type.substring(option_type.indexOf(" 옵션설명: ")+7);
-		System.out.println("프로젝트 생성 p3: "+target_sum+", " +summary+","+price+","+name + ","+info);
 		Item item = new Item();
 		item.setEmail(email);
 		item.setTarget_sum(target_sum);
@@ -127,11 +123,15 @@ public class NewProjectController {
 		long item_code = (long) item.getItem_code();
 		Type type = new Type();
 		type.setItem_code(item_code);
+		for(int i=0; i<type_code.length; i++) {
+			System.out.println(type_code[i]+", " +name[i]+", "+info[i]);
+		}
+		/*
 		type.setPrice(price);
 		type.setName(name);
 		type.setInfo(info);
 		projectS.save2(type);
-		System.out.println("저장완료");
+		System.out.println("저장완료");*/
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////// 프로젝트 수정
