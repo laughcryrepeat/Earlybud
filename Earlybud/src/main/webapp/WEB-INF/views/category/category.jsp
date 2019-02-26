@@ -110,6 +110,13 @@
 	      		 							if(percent>=100){
 	      		 								percent2 = 100;
 	      		 							}
+	      		 							var title = "";
+	      		 							if(this.encore > '0'){
+	      		 								title= "["+this.encore+"차 앵콜]"+this.title
+	      		 							}else{
+	      		 								title= this.title
+	      		 							}
+	      		 							
 	      		 							
 	      		 							str+="<li class=\"project_card reward_project_card\" data-project-seq=\""+this.item_CODE+"\" data-page-number=\"1\">"	
 			      		 						 +"<div class=\"project_card_inner\">"
@@ -124,7 +131,7 @@
 			      							     +"\" class=\"project_detail_link\" data-project-seq=\""
 			      							     +this.item_CODE
 			      							     +"\" data-page-number=\"1\">"
-			      							     +this.title
+			      							     +title
 			      							     +"</a></h3><p class=\"project_simple_text\"><span class=\"screen_out\">프로젝트 설명</span>"
 			      							     +this.summary
 			      							     +"</p>"
@@ -175,7 +182,14 @@
 					            <span class="screen_out">프로젝트 제목</span>
 					            <h3 class="project_name">
 					                <a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>" class="project_detail_link" data-project-seq="<c:out value="${list.ITEM_CODE}"/>" data-page-number="1">
-					               		   <c:out value="${list.TITLE}"/>
+					               		   <c:choose >
+					               		   		<c:when test="${list.ENCORE > 0}">
+						               		  		[<c:out value="${list.ENCORE}"/>차 앵콜]<c:out value="${list.TITLE}"/>
+						               		   	</c:when>
+						               		   	<c:otherwise>
+						               		   		<c:out value="${list.TITLE}"/>
+						               		   	</c:otherwise>
+					               		   </c:choose>
 					                </a>
 					            </h3>
 					            <p class="project_simple_text">
@@ -302,21 +316,27 @@
       		 							if(percent>=100){
       		 								percent2 = 100;
       		 							}
+      		 							var title = "";
+      		 							if(this.encore > '0'){
+      		 								title= "["+this.encore+"차 앵콜]"+this.title
+      		 							}else{
+      		 								title= this.title
+      		 							}
       		 							
       		 							str+="<li class=\"project_card reward_project_card\" data-project-seq=\""+this.item_CODE+"\" data-page-number=\"1\">"	
 	      		 						 +"<div class=\"project_card_inner\">"
-	      							  	 +"<a href=\"/../earlybud/reward?item_code=\""+this.item_CODE+"\" class=\"project_detail_link\" data-project-seq=\""
+	      							  	 +"<a href=\"/../earlybud/reward?item_code="+this.item_CODE+"\" class=\"project_detail_link\" data-project-seq=\""
 	      							  	 +this.item_CODE+"\" data-page-number=\"1\">"
 	      								 +"<span class=\"project_thumbnail\" style=\"background-image:url('${pageContext.request.contextPath}/uploads/reward/"
 	      							  	 +this.main_IMAGE
 	      							  	 +"\"></span></a><div class=\"project_card_info\">"
 	      							     +"<span class=\"screen_out\">프로젝트 제목</span><h3 class=\"project_name\">"
-	      							     +"<a href=\"/../earlybud/reward?item_code=\""
+	      							     +"<a href=\"/../earlybud/reward?item_code="
 	      							     +this.item_CODE
 	      							     +"\" class=\"project_detail_link\" data-project-seq=\""
 	      							     +this.item_CODE
 	      							     +"\" data-page-number=\"1\">"
-	      							     +this.title
+	      							     +title
 	      							     +"</a></h3><p class=\"project_simple_text\"><span class=\"screen_out\">프로젝트 설명</span>"
 	      							     +this.summary
 	      							     +"</p>"

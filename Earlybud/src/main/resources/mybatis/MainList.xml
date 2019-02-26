@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.earlybud.vo.MainVO">
+
+
+	<select id="getMainList" resultType="com.earlybud.vo.MainVO" parameterType="hashmap"> 
+		SELECT * 
+      FROM (SELECT  q.*, rownum rn 
+      		FROM(select ITEM_CODE, TITLE, MAIN_IMAGE, ENCORE
+      		from ITEM WHERE SUCCESS in (${end_code}) and ${date_info} and ADMINCALL=1 ORDER BY ${standard}) q) 
+      		WHERE rn BETWEEN 1 AND 10
+	</select>
+	
+	
+</mapper>

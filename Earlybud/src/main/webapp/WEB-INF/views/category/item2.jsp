@@ -1,7 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import= "java.util.*"%>
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="com.earlybud.model.Member"%>
 <%@include file="itemheader.jsp" %>
+
+
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
 
 <style>
 .undercontent {
@@ -9,6 +16,10 @@
 }
 </style>
 
+	<sec:authorize access="isAuthenticated()">
+		<sec:authentication property="principal.username" var="loginEM"/>
+		<sec:authentication property="principal.member.nickname" var="loginN"/>
+	</sec:authorize>
 
 <!-- 여기 -->
 	<main id="omcContainer" class="cont_support">
@@ -22,7 +33,7 @@
                             <div class="project_sorting">
                                 <div class="tag_rel">
                                         <span class="screen_out">관련 태그</span>
-                                        <a href="/../earlybud/category/${item.CAT_CODE}" class="link_tag">  #${item.CAT_NAME}  </a>
+                                        <a href="/../earlybud/category/${item.CAT_CODE}" class="link_tag"> #${item.CAT_NAME}  </a>
                                 </div>
                             </div>
                         </header>
@@ -73,10 +84,19 @@
                                                     </span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>                                 
+                                    
+                                    
                                     <div class="mms_profile">                                        
-                                        <a href="#none" class="link_mms" id="link_profile">프로필보기</a>
-                                        <a href="#none" class="link_profile" id="link_message">개설자문의</a>
+                                        <a href="/../earlybud/seller_items/${item.EMAIL}" class="link_mms" id="link_profile">프로필보기</a>
+                                       
+                                       
+                                       <sec:authorize access="isAnonymous()">
+										 	<a href="/../earlybud/login" class="link_profile" id="link_message">개설자문의</a>
+										</sec:authorize>
+										<sec:authorize access="isAuthenticated()">
+											 <a href="/../earlybud/message/${loginEM}/${item.EMAIL}" class="link_profile" id="link_message">개설자문의</a>
+										</sec:authorize>                                       
                                     </div>
                                 </div>
                             </div>
@@ -105,18 +125,35 @@
                                     <div class="item_state">
                                         <p><span class="txt_statetitle">참여인원</span></p>
                                         <span class="screen_out">참여자 수</span>
-                                        <span class="num_value">
                                         
-                                        <c:out value="${item.TOTAL_PUR}"/>                                
                                         
-                                        </span> 
-                                        <span class="txt_value">명 참여</span>
+                                     <c:choose>
+										<c:when test="${item.TOTAL_PUR eq null}">
+									    		<span class="num_value">
+	                                        	0
+	                                        </span> 
+	                                        <span class="txt_value">명 참여</span>
+										</c:when>
+										<c:otherwise>
+											<span class="num_value">
+	                                        	<c:out value="${item.TOTAL_PUR}"/> 
+	                                        </span> 
+	                                        <span class="txt_value">명 참여</span>
+                                        </c:otherwise>
+									</c:choose>
                                     </div>
 
                                     <div class="item_state">
                                         <p><span class="txt_statetitle">남은기간</span></p>
                                         
                                         <c:choose>
+                                        	<c:when test="${item.TIME == 999}">
+                                        		<span class="num_value">
+                                        		 <fmt:formatDate value="${item.OPENDATE}" var="OPEN" pattern="yyyy년 MM월 dd일"/>
+		                                        	${OPEN} 자정에 오픈		                                        	
+		                                        </span>
+                                        		<span class="link_join">오픈 예정</span>
+                                        	</c:when>
 											<c:when test="${item.TIME > 0}">
 										    	<span class="num_value">
 		                                        	D-<span class="screen_out">Day</span><c:out value="${item.TIME}"/>
@@ -126,7 +163,14 @@
 											</c:when>											
 											<c:when test="${item.TIME < 0}">
 													<span class="num_value">종료</span>
-													<span class="link_join">앵콜 요청하기</span>													
+													
+													<sec:authorize access="isAnonymous()">
+													 	<span class="link_join"><a href="/../earlybud/login" class="link_join fixed">앵콜 요청하기</a></span>		
+													 </sec:authorize>
+													<sec:authorize access="isAuthenticated()">
+														<span class="link_join"><a href="javascript:void(0);" onclick="encore()" class="link_join fixed">앵콜 요청하기</a></span>		
+													</sec:authorize>	
+																																					
 											</c:when>
 											<c:otherwise>
 											   	<span class="num_value">오늘 자정까지</span>
@@ -134,6 +178,44 @@
 											</c:otherwise>
 										</c:choose>										
                                     </div>
+                                    								
+								
+								<script type="text/javascript">
+									var em = "";
+									var itemcode = ${item_code};	
+									console.log("로그인한 사람은 "+em);
+									console.log("템코드는 "+itemcode);
+									
+								function encore(){
+									  var data = {}
+									  data["em"] = "${loginEM}";									  
+									  data["itemcode"] ="${item_code}";									  
+									  
+									  $.ajax({
+										type: 'post',
+									    url: '/../earlybud/reward/encore',
+									    headers : {
+												"Content-Type" : "application/json",
+												"X-HTTP-Method-Override" : "POST"
+										},
+									    dataType: 'json',
+									    data : JSON.stringify(data),
+									    success: function(data) {	
+									    	console.log("data는 "+data);
+									      if(data == 1){
+									    	  console.log("성공");
+									    	  alert("앵콜 요청되었습니다.");
+									      } else {      
+									    	  console.log("실패");
+									    	  alert("이미 앵콜 요청한 프로젝트입니다.");
+									      }
+									    }
+									  });
+									}
+																							
+								</script>
+                       
+                                    
                                         <div class="txt_notice ">
                                             
                                                         <span class="sign_notice">성공해야<br>리워드</span>
@@ -209,7 +291,7 @@
 									<div id="intro" class="undercontent" <c:if test="${reply eq null}">style="display: block"</c:if> >
 										<h2 class="screen_out">소개</h2>
 										<div class="article_intro">
-											<p>까꿍<c:out value="${item.CONTENT}"/></p>
+											<p>${item.CONTENT}</p>
 										</div>
 										<div id="accordionCont" class="accordion_g">
 											<h2 class="screen_out">프로젝트 주요안내</h2>
@@ -374,9 +456,9 @@
 																<span class="ico_comm">댓글의 답글</span>
 																<span class="user_profile">
 																    <span class="img_profile clear_empty_picture">
-																    	<img src="/uploads/member/profile/MEMBER_20180820090550208.jpg" style="background: rgb(255, 255, 255);">
+																    	<img src="${pageContext.request.contextPath}/uploads/member/profile/<c:out value="${item.IMAGE}"/>" style="background: rgb(255, 255, 255);">
 																    </span>
-																    <span class="txt_name">오마이컴퍼니</span>
+																    <span class="txt_name"><c:out value="${item.NICKNAME}"/></span>
 																</span>
 																<span class="txt_time">2017-03-28 10:48</span>
 																<p class="cont_cmt">황정희님 안녕하세요. 이번주 수요일부터 9차캠페인을 시작할 예정입니다. 감사합니다. </p>
@@ -639,13 +721,13 @@
 		
 
 
-		<div id="sidebar-footer" class="footer-widgets" role="complementary">
+<div id="sidebar-footer" class="footer-widgets" role="complementary">
 			<div class="container">
 				<div class="row">
 					<div class="sidebar-column col-md-4">
 						<section id="text-2" class="widget widget_text">
 							<div class="textwidget">
-								<p><strong>+999.222.333</strong></p>
+								<p><strong>02-111-1111</strong></p>
 							</div>
 						</section>
 					</div>
@@ -667,7 +749,7 @@
 					<div class="sidebar-column col-md-4">
 						<section id="text-3" class="widget widget_text">
 							<div class="textwidget">
-								<p><strong>office@example.org</strong></p>
+								<p><strong>earlybud@gmail.com</strong></p>
 							</div>
 						</section>
 					</div>
@@ -681,9 +763,9 @@
 
 					<div class="site-info col-md-12">
 
-						<a href="https://wordpress.org/">Proudly powered by WordPress</a>
-						<span class="sep"> | </span>
-						Theme: <a href="https://athemes.com/theme/airi">Airi</a> by aThemes. </div><!-- .site-info -->
+						<a href="">얼리버드(주) | 대표 얼리버드 010-1111-1111 | 서울시 중구 비트캠프 7층 | 통신판매업 2019-서울중구-1919 | 대표전화 02-0000-0000</a>
+						
+						</div><!-- .site-info -->
 
 				</div>
 			</div>

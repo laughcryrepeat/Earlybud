@@ -30,7 +30,14 @@ public class AdminDaoImpl implements AdminDao {
 	}
 	
 	@Override
-	public int updateApproveItem(int item_code) {
+	public List<Item> listEncoreItem() {
+		log.info("listEncoreItem dao");
+		List<Item> EncoreItems = sqlSession.selectList(ns3+".listEncoreItem");
+		return EncoreItems;
+	}
+	
+	@Override
+	public int updateApproveItem(long item_code) {
 		log.info("update approve Admincall dao");
 		System.out.println("approve dao:"+item_code);
 		
@@ -40,9 +47,18 @@ public class AdminDaoImpl implements AdminDao {
 	}
 	
 	@Override
-	public int updateRejectItem(int item_code) {
+	public int updateRejectItem(long item_code) {
 		log.info("update reject Admincall dao");
 		return sqlSession.update(ns3+".rejectItem", item_code);
+	}
+	
+	@Override
+	public int suggestAncoreItem(long item_code) {
+		log.info("update suggest AncoreItem dao");
+		// TODO insert ancore table, update item table to ancore_num
+		int i = sqlSession.insert(ns3+".insertEncore", item_code);
+		if(i>0) return i;
+		else return 0;
 	}
 	
 	@Override

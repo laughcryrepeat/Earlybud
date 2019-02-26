@@ -28,23 +28,35 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="product-status-wrap">
                                     <h4>Item List</h4>
-                                    <div class="add-product">
-                                        <a href="#">Add Library</a>
+                                    <div>
+                                       <!--  <a href="#">카테고리정렬</a>  class="add-product"-->
+                                        <label>상태정렬</label>
+					                    <select id="statu">
+					                        <option value="all" >전체</option>
+					                        <option value="active" >진행중</option>
+					                        <option value="finished" >완료</option>
+					                        <option value="due" >오픈예정</option>
+					                        <option value="wait" >승인대기</option>
+					                        <option value="reject" >거정됨</option>
+					                    </select>
                                     </div>
                                     <div class="asset-inner">
-                                        <table>
-                                            <tr>
-                                                <th>No</th>
+                                        <table class="table table-hover sortable paginated" id="tbl">
+                                        <thead>
+                                        	<tr>
+                                                <th>상품코드</th>
                                                 <th>Image</th>
-                                                <th>상품명</th>
+                                                <th>타이틀</th>
                                                 <th>상태</th>
-                                                <th>카테고리</th>
+                                                <th>판매자</th>
                                                 <th>달성률(%)</th>
                                                 <th>현재금액</th>
                                                 <th>목표금액</th>
                                                 <th>관리자승인</th>
                                             </tr>
+                                        </thead>
                         <!-------------------------------------------------->
+                        			<tbody>
                         				<c:forEach items="${listItem}" var="Item">
                                             <tr><td>${Item.item_code}</td>
                                                 <td><img src="${pageContext.request.contextPath}/uploads/reward/${Item.main_image}" alt="" /></td>
@@ -59,29 +71,32 @@
 <fmt:parseNumber value="${nowDateformat.time / (1000*60*60*24)}" integerOnly="true" var="nowDate"></fmt:parseNumber>
 <c:choose>
 	<c:when test = "${endDate - nowDate < 0}">
-		<button class="dp-setting">Finished</button>
+		<button class="dp-setting finished">완료</button>
 	</c:when>
 	<c:otherwise>
 		<c:choose>
 			<c:when test = "${strDate - nowDate >= 0}">
 				<c:choose>
 					<c:when test = "${Item.admincall eq 0}">
-						<button class="ds-setting">Await Approval</button>
+						<button class="ds-setting wait">승인대기</button>
+					</c:when>
+					<c:when test = "${Item.admincall eq 2}">
+						<button class="ds-setting reject">거절됨</button>
 					</c:when>
 					<c:otherwise>
-						<button class="ps-setting">Due</button>
+						<button class="ps-setting due">오픈예정</button>
 					</c:otherwise>
 				</c:choose>
 			</c:when>
 			<c:otherwise>
-				<button class="pd-setting">Active</button>
+				<button class="pd-setting active">진행중</button>
 			</c:otherwise>
 		</c:choose>
 	</c:otherwise>
 </c:choose>
 <!-- ${nowDate}/${endDate}/${strDate}  -->                                                                                       
                                                 </td>
-                                                <td>${Item.cat_name}</td>
+                                                <td>${Item.email}</td>
                                                 <td><fmt:formatNumber value="${Item.cur_sum/Item.target_sum * 100 }" pattern=".00" />%</td>
                                                 <td><fmt:formatNumber value="${Item.cur_sum}" type="number"/></td>
                                                 <td><fmt:formatNumber value="${Item.target_sum}" type="number"/></td>
@@ -112,81 +127,16 @@
                                                     <button data-toggle="tooltip" title="Reject" class="pd-setting-ed"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td><img src="${pageContext.request.contextPath}/images/admin/book-3.jpg" alt="" /></td>
-                                                <td>Box of pendrive</td>
-                                                <td>
-                                                    <button class="ds-setting">Await Approval</button>
-                                                </td>
-                                                <td>디자인상품</td>
-                                                <td>0%</td>
-                                                <td>0만원</td>
-                                                <td>1500만원</td>
-                                                <td>
-                                                    <button data-toggle="tooltip" title="Approve" class="pd-setting-ed"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                                    <button data-toggle="tooltip" title="Reject" class="pd-setting-ed"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td><img src="${pageContext.request.contextPath}/images/admin/book-4.jpg" alt="" /></td>
-                                                <td>Quality Bol pen</td>
-                                                <td>
-                                                    <button class="dp-setting">Finished</button>
-                                                </td>
-                                                <td>디자인상품</td>
-                                                <td>20%</td>
-                                                <td>240만원</td>
-                                                <td>1200만원</td>
-                                                <td>
-                                                    <button data-toggle="tooltip" title="Approve" class="pd-setting-ed"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                                    <button data-toggle="tooltip" title="Reject" class="pd-setting-ed"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td><img src="${pageContext.request.contextPath}/images/admin/book-1.jpg" alt="" /></td>
-                                                <td>Web Development Book</td>
-                                                <td>
-                                                    <button class="pd-setting">Active</button>
-                                                </td>
-                                                <td>출판</td>
-                                                <td>10%</td>
-                                                <td>180만원</td>
-                                                <td>1800만원</td>
-                                                <td>
-                                                    <button data-toggle="tooltip" title="Approve" class="pd-setting-ed"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                                    <button data-toggle="tooltip" title="Reject" class="pd-setting-ed"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td><img src="${pageContext.request.contextPath}/images/admin/book-2.jpg" alt="" /></td>
-                                                <td>Quality Bol pen</td>
-                                                <td>
-                                                    <button class="ps-setting">Due</button>
-                                                </td>
-                                                <td>디자인상품</td>
-                                                <td>0%</td>
-                                                <td>0만원</td>
-                                                <td>1000만원</td>
-                                                <td>
-                                                    <button data-toggle="tooltip" title="Approve" class="pd-setting-ed"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                                    <button data-toggle="tooltip" title="Reject" class="pd-setting-ed"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
+                                            
+                                            </tbody>
                                         </table>
                                     </div>
-                                    <div class="custom-pagination">
-                                        <ul class="pagination">
-                                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                        </ul>
+                                    <div class="custom-pagination">                       
+                                            <button class="page-link" id="previous">Previous</button>
+                                            <button class="page-link" id="next">Next</button>
+                                            <span class="text-right"><span class="text-muted mr-2"></span><span class="text-muted">Total - ${listItem.size()} 아이템   </span></span>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -205,6 +155,7 @@
     <script src="${pageContext.request.contextPath}/js/admin/popper.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/admin/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/admin/main.js"></script>
+    <script src="${pageContext.request.contextPath}/js/admin/pagingItems.js"></script>
     <!-- The javascript plugin to display page loading on top-->
     <script src="${pageContext.request.contextPath}/js/admin/plugins/pace.min.js"></script>
     <!-- Page specific javascripts-->
@@ -213,6 +164,8 @@
     $('.approve_btn').on('click',function(){
     	var row = $(this).parent().parent().find("td");
     	var code = row.eq(0).text();
+    	var seller = row.eq(4).text();
+		var item = row.eq(2).text();
     	console.log("this itemCode: "+code);
     	$.ajax({
             method: 'post',
@@ -220,13 +173,34 @@
             data: "item_code="+code,
             success: function(){
                 console.log("update admincall!!");
+                row.eq(3).find("button").text("오픈예정");
+                row.eq(3).find("button").removeClass("ds-setting wait");
+                row.eq(3).find("button").addClass("ps-setting due");
                 row.eq(8).hide();
+              //console.log("판매자 이메일: "+seller);
+                $.ajax({
+            		type:'post',
+                    url: '/earlybud/send_mail',
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                    	"mailto": seller,
+                    	"mailsubject": "얼리버드 상품 관리자 승인 되었습니다.",
+                    	"mailcontent": "상품 "+ item +" 오픈예정됩니다.  마이페이지에서 확인가능합니다."
+                    	}),
+                    success: function(){
+                        console.log("확인 메일&메세지 보냄");
+                    }
+                });
             }
   	  });
     });
     
 	$('.reject_btn').on('click',function(){
-		var code = $(this).parent().parent().find("td").eq(0).text();
+		var row = $(this).parent().parent().find("td");
+		var code = row.eq(0).text();
+		var seller = row.eq(4).text();
+		var item = row.eq(2).text();
     	console.log("this itemCode: "+code);
     	$.ajax({
             method: 'post',
@@ -234,18 +208,29 @@
             data: "item_code="+code,
             success: function(){
                 console.log("update reject admincall!!");
+                row.eq(3).find("button").text("거절됨");
+                row.eq(3).find("button").removeClass("ds-setting wait");
+                row.eq(3).find("button").addClass("ds-setting reject");
+                row.eq(8).hide();
+                //console.log("판매자 이메일: "+seller);
+                $.ajax({
+            		type:'post',
+                    url: '/earlybud/send_mail',
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                    	"mailto": seller,
+                    	"mailsubject": "얼리버드 상품 승인이 거절되었습니다.",
+                    	"mailcontent": " 상품 "+ item +" 을 다시 수정해주세요. 궁금하신점은 관리자에게 메세지를 보내주세요."
+                    	}),
+                    success: function(){
+                        console.log("확인 메일&메세지 보냄");       
+                    }
+                });
             }
   	  });
     });
     
-      if(document.location.hostname == 'pratikborsadiya.in') {
-      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      	ga('create', 'UA-72504830-1', 'auto');
-      	ga('send', 'pageview');
-      }
     </script>
   </body>
 </html>

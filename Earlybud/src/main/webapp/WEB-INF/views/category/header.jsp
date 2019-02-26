@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
+ <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!doctype html> 
 <html class="no-js">
@@ -98,11 +98,13 @@
 	<link rel='stylesheet' id='elementor-post-4-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/uploads/sites/92/elementor/css/post-4.css?ver=1540206708' type='text/css' media='all' />
 	<link rel='stylesheet' id='kirki-styles-airi-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/kirki/assets/css/kirki-styles.css?ver=3.0.33' type='text/css' media='all' />
 	
-
+<link rel="icon" href="${pageContext.request.contextPath}/images/item/logo.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="${pageContext.request.contextPath}/images/item/logo.png" sizes="32x32" type="image/png">
 	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
 <meta name="naver-site-verification" content="9cf6afa832a16b3ba913b7d07418de0d0c349d38"/>
 <link href="${pageContext.request.contextPath}/css/category/styles.87dc07fb.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/category/uikit.css">
+
 	
 	<style id='kirki-styles-airi-inline-css' type='text/css'>
 		h1,
@@ -349,7 +351,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="site-branding col-md-4 col-sm-6 col-9">
-						<a href="main.do" class="custom-logo-link" rel="home" itemprop="url">
+						<a href="/../earlybud/main" class="custom-logo-link" rel="home" itemprop="url">
 							<img width="80" height="50" src="${pageContext.request.contextPath}/images/category/earlybud.png" class="custom-logo"	alt="Atu" itemprop="logo" />
 						</a> </div><!-- .site-branding -->
 
@@ -363,10 +365,16 @@
 					<nav id="site-navigation" class="main-navigation col-md-8">
 						<div class="menu-menu-container">
 							<ul id="primary-menu" class="menu">
-								<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a href="main">Home</a></li>
-								<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">소개</a></li>
+								<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a href="/../earlybud/main">Home</a></li>
+								<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">소개</a></li>
 								<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44 current-menu-item page_item page-item-4 current_page_item menu-item-43"><a href="/../earlybud/category">카테고리</a></li>
-								<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="login">로그인/회원가입</a></li>
+								<sec:authorize access="isAnonymous()">
+								 	<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">로그인/회원가입</a></li>
+								</sec:authorize>
+								<sec:authorize access="isAuthenticated()">
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/> 님 환영합니다</li>
+									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/customLogout">로그아웃</a></li>
+								</sec:authorize>
 							</ul>
 						</div>
 						<ul class="header-search-cart">

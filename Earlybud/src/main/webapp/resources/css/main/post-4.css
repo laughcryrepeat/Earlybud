@@ -35,15 +35,19 @@
 	color: #191919;
 }
 
+
+
 .elementor-4 .elementor-element.elementor-element-4ca7c2d7 .elementor-heading-title
 	{
-	font-size: 48px;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-size: 38px;
 	line-height: 54px;
 }
 
 .elementor-4 .elementor-element.elementor-element-79b091a9 a.elementor-button,
 	.elementor-4 .elementor-element.elementor-element-79b091a9 .elementor-button
 	{
+	font-family: 'Nanum Gothic', sans-serif;
 	font-size: 13px;
 	font-weight: 600;
 	text-transform: uppercase;

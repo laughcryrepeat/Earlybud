@@ -1,6 +1,8 @@
 package com.earlybud.payment.dao;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,6 +85,37 @@ public class PaymentDaoImpl implements PaymentDao {
 		map.put("type_code", type_code);
 		int i = sqlSession.update(ns4+".updateSum", map);
 		System.out.println("item price sum update: "+i);
+	}
+
+	@Override
+	public List<Map<String, Object>> listClosingItem() {
+		log.info("listClosingItem dao");
+		List<Map<String, Object>> closingList = sqlSession.selectList(ns1+".listClosingItem");
+		System.out.println("closingList size: "+closingList.size());
+		return closingList;
+	}
+
+	@Override
+	public void updateCancel(String merchant_uid) {//Purchase_Item cancle
+		log.info("updateCancel dao");
+		sqlSession.update(ns1+".canclePurchaseItem", merchant_uid);
+	}
+
+	@Override
+	public void updateCancelSum(long type_code, long price) {//Item price cancle
+		log.info("updateCancelSum dao");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("price",price);
+		map.put("type_code", type_code);
+		int i = sqlSession.update(ns4+".updateCancleSum", map);
+		System.out.println("item price cancle sum update: "+i);
+	}
+
+	@Override
+	public void updateCancelType(long type_code) {//Type num cancle
+		System.out.println("type cancle update dao");
+		int i=sqlSession.update(ns3+".updateCanclePurnum", type_code);
+		System.out.println("type cancle update: "+i);
 	}	
 
 }

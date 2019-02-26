@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 
+import com.earlybud.vo.MainVO;
 import com.earlybud.model.Category;
 import com.earlybud.vo.CategoryVO;
 import com.earlybud.vo.PageVO;
@@ -13,7 +14,7 @@ import com.earlybud.vo.PageVO;
 public interface CategoryDAO {
 	
 	public List<Category> getList();
-	public List<CategoryVO> getMainList();
+	public List<MainVO> getMainList(HashMap map);
 	int countItem(HashMap map);
 	List<CategoryVO> itemList(PageVO vo);
 	public List<CategoryVO> selectCategory(HashMap map);
