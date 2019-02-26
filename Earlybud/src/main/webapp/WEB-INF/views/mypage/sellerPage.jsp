@@ -54,7 +54,7 @@
 				<c:forEach items="${item}" var="item">
 				 <div class="b-project-card">
 				  <figure class="b-project-card__head">
-				    <a class="b-project-card__head__link" href="/toolbook">
+				    <a class="b-project-card__head__link" href="../reward?item_code=${item.item_code}">
 				      <div class="b-project-card__head__link__inner">
 				        <div class="b-project-card__head__filter"></div>
 				        <img src='${pageContext.request.contextPath}/images/like/<c:out value="${item.main_image}"/>' alt="" class="b-project-card__head__pic" />
