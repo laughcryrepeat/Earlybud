@@ -2,6 +2,7 @@ package com.earlybud.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,9 +51,9 @@ public class CommonController {
    }
 
    @RequestMapping("/login")
-   public void loginInput(HttpServletRequest request, String error, String logout, Model model, 
-		   HttpSession session) {
-	   
+   public String loginInput(HttpServletRequest request, String error, String logout, Model model, 
+		   HttpSession session, Principal principal) {
+	   if(principal != null) return "redirect:/";
 	  log.info("LOGIN error: " + error);
       log.info("logout: " + logout);
       String referer = request.getHeader("Referer");
@@ -63,6 +65,7 @@ public class CommonController {
       if (logout != null) {
          model.addAttribute("logout", "Logout!!");
       }
+      return "login";
    }
    @RequestMapping(value="/oauth", produces="application/json; charset=utf-8", method= {RequestMethod.GET, RequestMethod.POST})
    public Member kakaoLogin(@RequestParam("code") String code, HttpServletRequest request, String error, String logout,
@@ -115,9 +118,12 @@ public class CommonController {
       log.info("로그아웃: "+email);
       return "customLogout";
    }
-   @RequestMapping(value="/login_check", method= {RequestMethod.GET, RequestMethod.POST})
+   @RequestMapping(value="/login_check", method=RequestMethod.GET)
    public @ResponseBody int emailCheck(Member member, Model model){
-      return service.login_check(member);
+      int i = service.login_check(member);
+      String n="존재";
+      System.out.println("나와라 좀"+i);
+      return i;
    }
 
 }

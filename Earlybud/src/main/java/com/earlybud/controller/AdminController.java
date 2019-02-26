@@ -56,7 +56,7 @@ public class AdminController {
 		System.out.println("update row: "+i);
 		if(i>0) {
 			System.out.println("update");
-			return "update";
+
 		}
 		return null;
 	}

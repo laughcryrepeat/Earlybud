@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.earlybud.model.Item;
 import com.earlybud.model.Member;
+import com.earlybud.model.Seller;
 import com.earlybud.project.service.NewProjectService;
 import com.earlybud.security.CustomUserDetailsService;
 import com.earlybud.vo.AddrVo;
@@ -31,7 +32,7 @@ public class MemberUploadController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
 		System.out.println("컨트롤러 접속자: "+service.userDetail(email));
-		model.addAttribute("seller", projectS.seller_select(email));
+		model.addAttribute("user", service.userDetail(email));
 		return "/mypage/myPageDetail";
 	}
 	@RequestMapping(value="juso")
@@ -57,8 +58,14 @@ public class MemberUploadController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
 		List<Item> item = projectS.sellerItem(email);
-		System.out.println(item);
+		List<Item> itemEnd = projectS.sellerEndItem(email);
+		List<Item> itemEncore = projectS.sellerEncoreItem(email);
+		Seller seller = projectS.seller_select(email);
+		System.out.println(seller);
 		model.addAttribute("item", item);
+		model.addAttribute("itemEnd",itemEnd);
+		model.addAttribute("itemEncore", itemEncore);
+		model.addAttribute("seller",seller);
 		return "/mypage/sellerPage";
 	}
 }

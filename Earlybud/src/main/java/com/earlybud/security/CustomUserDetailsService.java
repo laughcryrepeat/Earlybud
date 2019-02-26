@@ -36,7 +36,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		return member == null? null: new EarlybudUser(member);
 	}
 	public int login_check(Member member) {
-		System.out.println("로그인 서비스");
+		System.out.println("로그인 서비스"+member);
 		return dao.login_check(member);
 	}
 	public Member readM(String email) {
