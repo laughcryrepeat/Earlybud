@@ -13,7 +13,6 @@ public class RewardVO {
   private String CAT_NAME;
   private String TITLE;
   private String MAIN_IMAGE;
-  private String IMAGE_ITEM;
   private String NOW_SUM;
   private String PERCENT;
   private String TARGET;

@@ -6,6 +6,7 @@
 <%@include file="itemheader.jsp" %>
 
 
+
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
@@ -233,17 +234,59 @@
                                 </span></a>
                                     <input type="hidden" id="like_count" value="5">
                                     <input type="hidden" id="interest_seq" value="">
-                                    <button type="button" class="btn_like" id="btn_like">관심<img src="${pageContext.request.contextPath}/images/item/good.jpg">
-                                        <span id="icon_like"></span>
-                                        <span class="num_count" id="like_num_count">
                                     
-                                        
-                                        
-                                            1994
-                                        
                                     
-                                </span></button>
+                                    				<sec:authorize access="isAnonymous()">
+													 	<a href="/../earlybud/login" class="btn_like" id="btn_like">관심                                    	
+					                                        <span id="icon_like"><img src="${pageContext.request.contextPath}/images/item/good.jpg"></span>
+					                                        <span class="num_count" id="like_num_count"><c:out value="${likes}"/></span>                                    
+					                                    </a>		
+													 </sec:authorize>
+													<sec:authorize access="isAuthenticated()">
+														<a href="javascript:void(0);" class="btn_like" id="btn_like" onclick="likes()">관심                                    	
+					                                        <span id="icon_like"><img src="${pageContext.request.contextPath}/images/item/good.jpg" id='like_img'></span>
+					                                        <span class="num_count" id="like_num_count"><c:out value="${likes}"/></span>                                    
+					                                    </a>		
+													</sec:authorize>	
                                 </div>
+                                
+                                <script type="text/javascript">
+									var em = "";
+									var itemcode = ${item_code};	
+									console.log("로그인한 사람은 "+em);
+									console.log("템코드는 "+itemcode);
+									
+								function likes(){
+									  var data = {}
+									  data["em"] = "${loginEM}";									  
+									  data["itemcode"] ="${item_code}";									  
+									  
+									  $.ajax({
+										type: 'post',
+									    url: '/../earlybud/reward/like',
+									    headers : {
+												"Content-Type" : "application/json",
+												"X-HTTP-Method-Override" : "POST"
+										},
+									    dataType: 'json',
+									    data : JSON.stringify(data),
+									    success: function(data) {	
+									    	console.log("data는 "+data);
+									      if(data.likecheck == 1){
+									    	  console.log("관심등록");									    	  
+									    	  $('#like_num_count').html(data.count);
+									    	  alert("관심 프로젝트로 등록되었습니다.");
+									      } else {      
+									    	  console.log("관심취소");									    	  
+									    	  $('#like_num_count').html(data.count);
+									    	  alert("관심 프로젝트에서 제외되었습니다.");
+									      }
+									    }
+									  });
+									}
+																							
+								</script>
+                                
                             </div>
                         </div>
                         

@@ -9,7 +9,6 @@
   		<result property="CAT_NAME" column="CAT_NAME"/>
   		<result property="TITLE" column="TITLE"/>
   		<result property="MAIN_IMAGE" column="MAIN_IMAGE"/>
-  		<result property="IMAGE_ITEM" column="IMAGE_ITEM"/>
   		<result property="NOW_SUM" column="NOW_SUM"/>
   		<result property="PERCENT" column="PERCENT"/>
   		<result property="TARGET" column="TARGET"/>
@@ -34,7 +33,7 @@
 	<select id="readItem" resultMap="RewardMap" parameterType="LONG">
 		select 
 		TO_CHAR((select sum(PUR_NUM) from TYPE where ITEM_CODE= #{item_code}), '99,999')as TOTAL_PUR,
-		CAT_CODE, CAT_NAME, TITLE, MAIN_IMAGE, IMAGE_ITEM, 
+		CAT_CODE, CAT_NAME, TITLE, MAIN_IMAGE,
 		TO_CHAR(CUR_SUM, '999,999,999,999') as NOW_SUM, 
 		TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, 
 		TO_CHAR(TARGET_SUM, '999,999,999') as TARGET, 
@@ -46,6 +45,10 @@
 		TO_CHAR(T.PUR_NUM, '99,999')as PURNUM from ITEM I natural join MEMBER natural join CATEGORY natural join SELLER 
 		left outer join TYPE T on I.ITEM_CODE=T.ITEM_CODE 
 		where I.ITEM_CODE =#{item_code}
+	</select>	
+	
+	<select id="countLikes" resultType="Long" parameterType="Long">
+		select count(*) from likes where item_code =#{item_code}
 	</select>	
 		
 	<update id="UpdateSuccessN">
@@ -64,6 +67,18 @@
 	
 	<select id="encoreInsert" parameterType="String">
 		insert into mem_encore values(#{email}, #{item_code})
+	</select>
+	
+	<select id="likeCK" resultType="Long" parameterType="String">
+		select count(*) from likes where email=#{email} and item_code=#{item_code}
+	</select>	
+	
+	<select id="likeAdd" parameterType="String">
+		insert into likes(email, item_code) values(#{email}, #{item_code})
+	</select>
+	
+	<select id="likeDel" parameterType="String">
+		delete from likes where email=#{email} and item_code= #{item_code}
 	</select>
 
 </mapper>

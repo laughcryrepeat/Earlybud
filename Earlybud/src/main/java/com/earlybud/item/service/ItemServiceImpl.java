@@ -23,8 +23,11 @@ public class ItemServiceImpl implements ItemService {
 	public RewardVO get(Long item_code) {
 		log.info("get......" + item_code);
 		return dao.read(item_code);
+	} 
+	@Override
+	public long countLikeService(Long item_code){
+		return dao.countLike(item_code);
 	}
- 
 	@Override
 	public List<Map<String, Object>> midnightService(){
 		return dao.midnightPlan();
@@ -45,5 +48,17 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public boolean encoreInsertService(HashMap map) {
 		return dao.encoreInsert(map);
+	}
+	@Override
+	public Long likeCheckService(HashMap map) {
+		return dao.likeCheck(map);
+	}
+	@Override
+	public boolean likeAddService(HashMap map) {
+		return dao.likeAdd(map);
+	}
+	@Override
+	public boolean likeDelService(HashMap map) {
+		return dao.likeDel(map);
 	}
 }
