@@ -18,13 +18,13 @@
                   <p class="comment-form-comment"><label for="comment">이메일<span class="required">*</span></label> 
                   	<input id="email" name="email" type="text" size="30" value="${user.email}" maxlength="245" readonly></p>
                   <p class="comment-form-author"><label for="author">비밀번호 <span class="required">*</span></label> 
-                  	<input id="pwd" name="pwd" type="password" value="<sec:authentication property="principal.password"/>" size="30" maxlength="245" required='required' /></p>
+                  	<input class="pwd" id="pwd" name="pwd" type="password" value="<sec:authentication property="principal.password"/>" size="30" maxlength="245" required='required' /></p>
                   <p class="comment-form-address"><label for="email">주소 <span class="required">*</span></label>
-                    <input id="addr" name="addr" type="text" required='required' onclick="goPopup();" value="${user.addr}" readonly/></p>
-	                	<input class="addrD" id="detail_addr" name="detail_addr" type="text" value="${user.detail_addr}" />
-	                    <input class="addrD" id="zipNo" name="zipNo" type="text" value="" required='required' readonly/></p>
+                    <input id="addr" name="addr" type="text" required onclick="goPopup();" value="${user.addr}" readonly/></p>
+	                	<input class="addrD" id="detail_addr" name="detail_addr" type="text" required value="${user.detail_addr}" />&emsp;
+	                    <input class="addrD" id="zipNo" name="zipNo" type="text" value="" required readonly/>
 	              <p class="comment-form-url"><label for="phone">핸드폰 번호</label> 
-	              	<input id="phone" name="phone" type="text" value="${user.phone}" size="30" maxlength="200" /></p>
+	              	<input id="phone" name="phone" type="text" value="${user.phone}" required size="30" maxlength="200" /></p>
                   <p class="form-submit">
                     <input name="submit" type="submit" id="submit" class="submit" value="수정하기" /> 
                     </p>

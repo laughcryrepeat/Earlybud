@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html>
 
@@ -31,6 +32,8 @@
         height: 300,
         tabsize: 2
       });
+      var oc =$('.option_code').get();
+      document.getElementById("optionfield").value = oc.length+"개의 옵션을 입력하셨습니다";
     });
   </script>
 
@@ -140,14 +143,23 @@
   <link rel='stylesheet' id='airi-font-awesome-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/css/font-awesome/css/font-awesome.min.css?ver=4.9.9' type='text/css' media='all' />
   <link rel='stylesheet' id='kirki-styles-airi-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/kirki/assets/css/kirki-styles.css?ver=3.0.33' type='text/css' media='all' />
   <style id='kirki-styles-airi-inline-css' type='text/css'>
+	.ocode{
+		width: 20% !important;
+	}
+	.oname{
+		width: 30% !important;
+	}
+	.oinfo{
+		width: 47% !important;
+	}
     .option_code{
-		width: 15% !important;
+		width: 13% !important;
 	}
 	.option_name{
 		width: 30% !important;
 	}
 	.option_info{
-		width: 45% !important;
+		width: 42% !important;
 	}
     h1,
     h2,
@@ -484,29 +496,38 @@
 
                 <header class="entry-header">
                   <span class="posted-on">EarlyBud</span>
-                  <h1 class="entry-title">프로젝트 올리기</h1>
+                  <h1 class="entry-title">프로젝트 수정</h1>
                 </header><!-- .entry-header -->
 
                 <div id="respond" class="comment-respond">
-                  <form action="newprojectCheck" method="post" enctype="multipart/form-data" id="myproject" class="comment-form" novalidate>
+                  <form action="newprojectModifyCheck" method="post" enctype="multipart/form-data" id="myproject" class="comment-form" novalidate>
                     <p class="comment-form-url"><label for="url">목표 금액<span class="required">*</span></label> 
-                    	<input id="target_sum" name="target_sum" type="text" value="" size="30" maxlength="200" /></p>
+                    	<input id="target_sum" name="target_sum" type="text" value="${seller.target_sum}" size="30" maxlength="200" /></p>
                     <p class="comment-form-author"><label for="author">프로젝트 요약<span class="required">*</span></label> 
-                    	<input id="summary" name="summary" type="text" value="" size="30" maxlength="600" /></p>
+                    	<input id="summary" name="summary" type="text" value="${seller.summary}" size="30" maxlength="600" /></p>
                     <p class="comment-form-email"><label for="email">선물 구성(옵션)</label> 
-                    	<input id="option_type" name="option_type" type="text" value="" size="30" maxlength="100" required='required' /></p>
+                    	<input class="comment-form-email" id="optionfield" name="optionfield" type="text" size="20" maxlength="20" />
+                    		<div class="hiddenO">
+              	    	  	<input class="ocodeh" id="ocode" name="type_code" type="hidden" size="20" maxlength="20" />
+                	    	<input class="onameh" id="oname" name="name" type="hidden" size="20" maxlength="60" />
+                    		<input class="oinfoh" id="oinfo" name="info" type="hidden" size="30" maxlength="100" /></div>
                     	<div id="myModal" class="optionmodal">
                     		<div class="optionmodal-content">
                     			<div>
+                    				<p><a href="#" class="add_field_button">add</a></p>
                     				<label for="type_code">가격&emsp;&emsp;&emsp;&emsp;&emsp;옵션 이름&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;옵션 설명&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
-                    				<input class="option_code" id="type_code" name="type_code" type="text" size="10" maxlength="20" />
-                    				<input class="option_name" id="type_name" name="name" type="text" size="20" maxlength="60" />
-                    				<input class="option_info" id="info" name="info" type="text" size="30" maxlength="100" />
+                    				<div class="real_content">
+                    				<c:forEach items="${type}" var="t">
+                    					<td><input class="option_code" id="otype_code" name="otype_code" value="${t.price}" type="text" size="20" maxlength="20" /></td>
+                    					<td><input class="option_name" id="otype_name" name="oname" type="text" value="${t.name}"size="20" maxlength="60" /></td>
+                    					<td><input class="option_info" id="oinfo" name="oinfo" type="text" value="${t.info}" size="30" maxlength="100" /></td>
+                    				</c:forEach>
+                    				</div>
                     			</div>
                     		</div>
                     	</div>
                     <p class="comment-form-comment"><label for="comment">프로젝트 스토리</label><span class="required">*</span>
-                    	<textarea id="content" class="summernote" name="content" cols="45" rows="8" maxlength="65525" required="required"></textarea></p>
+                    	<textarea id="content" class="summernote" name="content" cols="45" rows="8" maxlength="65525" required="required">${seller.content}</textarea></p>
                     <section id="categories-2" class="widget widget_catego ries">
                       <ul>
                         <input name="submit" type="submit" class="submit" value="다음페이지" />
@@ -676,24 +697,40 @@
 	  }
 	  .optionmodal-content{
 	  	background-color: #fefefe;
-        margin: 15% auto;
+        margin: 10% auto;
         padding: 100px;
         border: 1px solid #888;
         width: 50%; /* Could be more or less, depending on screen size */
 	  }
 	  </style>
 	  <script type="text/javascript">
-	  var pick = document.getElementById('option_type');
+	  var pick = document.getElementById('optionfield');
 	  var mymodal = document.getElementById('myModal');
 	  pick.onclick = function(){
 		  mymodal.style.display = "block";
 	  }
+	  var max_fields = 10;
+	  var hidden = $(".hiddenO");
+	  var wrapper = $(".real_content");
+	  var add_button = $(".add_field_button");
+	  var x=1;
+	  $(add_button).click(function(e){
+		  e.preventDefault();
+		  if(x < max_fields){
+			  x++;
+			  $(wrapper).append('<div><input class="option_code" id="otype_code" name="otype_code" type="text" size="10" maxlength="20" /><input class="option_name" id="otype_name" name="oname" type="text" size="20" maxlength="60" /><input class="option_info" id="dinfo" name="dinfo" type="text" size="30" maxlength="100" /><a href="#" class="remove_field">remove</a></div>\n');
+			  $(hidden).append('<div><input class="ocodeh" id="type_code" name="type_code" type="hidden" size="10" maxlength="20" /><input class="onameh" id="type_name" name="name" type="hidden" size="20" maxlength="60" /><input class="oinfoh" id="info" name="info" type="hidden" size="30" maxlength="100" />');
+		  }
+	  $(wrapper).on("click",".remove_field", function(e){
+		  e.preventDefault(); $(this).parent('div').remove(); x--;
+		})
+	  });
 	  window.onclick = function(event) {
           if (event.target == mymodal) {
-        	  myproject.option_type.value = "가격: "+ type_code.value + " 옵션이름: " + type_name.value + " 옵션설명: " + info.value; 
+        	 
               mymodal.style.display = "none";
           }
-      }
+      };
 	  </script>
 	
 </body>

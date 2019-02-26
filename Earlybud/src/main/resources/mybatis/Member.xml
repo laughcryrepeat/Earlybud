@@ -20,7 +20,7 @@
     	<result property="authority" column="AUTHORITY"/>
  	</resultMap>
   	<select id="joincheck" parameterType="Member" resultType="Integer">
-      SELECT NVL(COUNT(*), 0) from member where nickname = #{nickname}
+      select NVL(COUNT(*),0) from member <where> <if test="nickname != null">nickname=#{nickname}</if><if test="email != null">email=#{email}</if></where>
 	</select>
 	<select id="sel_member" resultMap="memberMap">
 		select * from Member where email=#{email}
@@ -32,7 +32,7 @@
 		insert into Authorities (email, authority) values ( #{email}, 'ROLE_USER')
   	</insert>
   	<update id="memberUpdate" parameterType="Member" keyProperty="email">
-  		update Member set pwd = #{pwd}, addr=#{addr}, detail_addr = #{detail_addr}, phone=#{phone} where email=#{email}
+  		update Member set <if test="pwd != null">pwd = #{pwd},</if> addr=#{addr}, detail_addr = #{detail_addr}, phone=#{phone} where email=#{email}
   	</update>
 	<update id="pwdUpdate" parameterType="Member" keyProperty="email">
   		update Member set pwd = #{pwd} where email=#{email}

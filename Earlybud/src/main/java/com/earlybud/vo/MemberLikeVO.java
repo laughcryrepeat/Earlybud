@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class MemberLikeVO {
 	private String MAIN_IMAGE;
+	private String ITEM_CODE;
 	private String EMAIL;
 	private String TITLE;
 	private String NICKNAME;

@@ -1,10 +1,14 @@
 package com.earlybud.controller;
 
+import static org.junit.Assert.assertThat;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,7 +31,9 @@ public class MemberUploadController {
 	CustomUserDetailsService service;
 	@Autowired
 	NewProjectService projectS;
-	@RequestMapping("")
+	@Autowired
+	BCryptPasswordEncoder passwordencoder;
+	@RequestMapping("modify")
 	public String mypage(Model model){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
@@ -44,8 +50,11 @@ public class MemberUploadController {
 			@RequestParam("pwd") String pwd, @RequestParam("addr") String addr, @RequestParam("detail_addr") String detail_addr,
 			@RequestParam("phone") String phone,String error, Model model)
 		throws Exception{
+		if(!passwordencoder.matches(pwd, passwordencoder.encode(member.getPwd()))) {
+			System.out.println("비밀번호가 다르다");
+			member.setPwd(pwd);
+		}else {System.out.println("비밀번호 같다");}
 		member.setEmail(member.getEmail());
-		member.setPwd(pwd);
 		member.setAddr(addr);
 		member.setDetail_addr(detail_addr);
 		member.setPhone(phone);

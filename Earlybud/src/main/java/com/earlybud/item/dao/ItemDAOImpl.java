@@ -26,6 +26,14 @@ public class ItemDAOImpl implements ItemDAO {
 		return selectItem;
 	}
 	@Override
+	public long countLike(Long item_code) {
+		 return sqlSession.selectOne(ns+".countLikes", item_code);
+	}
+	@Override
+	public Long likeCheck(HashMap map) {
+		return sqlSession.selectOne(ns+".likeCK", map);			
+	}
+	@Override
 	public List<Map<String, Object>> midnightPlan(){
 		return sqlSession.selectList(ns+".midnight");
 	}
@@ -47,5 +55,14 @@ public class ItemDAOImpl implements ItemDAO {
 		sqlSession.selectOne(ns+".encoreInsert", map);
 		return true;
 	}
-
+	@Override
+	public boolean likeAdd(HashMap map) {
+		sqlSession.selectOne(ns+".likeAdd", map);
+		return true;
+	}
+	@Override
+	public boolean likeDel(HashMap map) {
+		sqlSession.selectOne(ns+".likeDel", map);
+		return true;
+	}
 }
