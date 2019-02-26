@@ -57,10 +57,10 @@
 	<ul>
 		<c:forEach items="${list}" var="list">
 			<li class="reward">
-					<a href="/web/campaign/detail/24829">
+					<a href="../reward?item_code=${list.ITEM_CODE}">
 					<div class="project-card">
 						<div class="card-img-section">
-							<em class="project-img" style="background-image:url('${pageContext.request.contextPath}/images/like/<c:out value="${list.MAIN_IMAGE}')"/>"></em>
+							<em class="project-img" style="background-image:url('${pageContext.request.contextPath}/uploads/reward/<c:out value="${list.MAIN_IMAGE}')"/>"></em>
 						
 							<em class="project-type reward">리워드</em>
 							                                    
@@ -132,14 +132,16 @@
     <div class="maker-all-container">
    
 
-      <div class="funding-box">
-     <strong>  &nbsp;  </strong> 
-        <ul class="list-maker-all">
+      <div class="funding-box2">
+     <strong>  &nbsp;<br/>&nbsp;  </strong> 
+        <ul class="list-maker-all2">
         <c:forEach items="${listS}" var="listS">
           <li>
+ 			&nbsp; &nbsp;
  			<img style="width: 67px; height: 67px; border: 1px grey; border-radius: 90px; -moz-border-radius: 90px;
- 				-khtml-border-radius: 90px; -webkit-border-radius: 90px;" src="${pageContext.request.contextPath}/images/like/<c:out value="${listS.IMAGE}"/>"/>&nbsp; &nbsp;
- 			<span style="font-size:1.5em;"><a href='../seller_items/<c:out value="${listS.EMAIL}"/>'><c:out value="${listS.NICKNAME}"/></a></span><br><br>			
+ 				-khtml-border-radius: 90px; -webkit-border-radius: 90px;" src="${pageContext.request.contextPath}/uploads/member/profile/<c:out value="${listS.IMAGE}"/>"/>
+ 				&nbsp; &nbsp;
+ 				<span style="font-size:1.5em;"><a href='../seller_items/<c:out value="${listS.EMAIL}"/>'><c:out value="${listS.NICKNAME}"/></a></span><br><br>			
           </li>
           </c:forEach>
         </ul>

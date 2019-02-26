@@ -31,7 +31,7 @@
         <div class="b-avatar has-pad-bottom-dot5 is_vaporable" style="width: 96px">
   <div class="b-avatar__frame b-avatar__frame--bordered" style="width:96px; height:96px">
     <img alt="6e65e28f-55c7-435a-a6c7-9b70c09f2233.jpg?ixlib=rb-1.1.0&amp;w=200&amp;h=250&amp;auto=format%2ccompress&amp;fit=facearea&amp;facepad=2" class="b-avatar__pic"
-    src='${pageContext.request.contextPath}/images/like/${OneList.IMAGE}' />
+    src='${pageContext.request.contextPath}/uploads/member/profile/${OneList.IMAGE}' />
 </div>   
 </div>
 
@@ -50,7 +50,14 @@
        <a href="../message/<sec:authentication property="principal.member.email"/>/${OneList.EMAIL}"	target="popup"	onclick="window.open('../message/<sec:authentication property="principal.member.email"/>/${OneList.EMAIL}', 'popup',
 											'width=1000, height=750'); return false;">
 				<img style="width: 45px; height: 33px; border: 1px grey;" src="${pageContext.request.contextPath}/images/like/envelope.JPG"/>
-		</a><br/>
+		</a>&nbsp;
+		<sec:authorize access="isAnonymous()">
+				<a href="login"><img style="width: 45px; height: 42px; border: 1px grey;" src="${pageContext.request.contextPath}/images/like/follow.png"/></a>
+		</sec:authorize>
+		<sec:authorize access="isAuthenticated()">
+				<a href='javascript: like_func();'><img style="width: 45px; height: 42px; border: 1px grey;" src="${pageContext.request.contextPath}/images/like/follow.png"/></a>
+		</sec:authorize>
+		<br/>
  			<br><br>
 
       </div>
@@ -74,10 +81,10 @@
 <c:forEach items="${OneList}" var="OneList">
       <div class="b-project-card">
   <figure class="b-project-card__head">
-    <a class="b-project-card__head__link" href="/toolbook">
+    <a class="b-project-card__head__link" href="../reward?item_code=${OneList.ITEM_CODE}">
       <div class="b-project-card__head__link__inner">
         <div class="b-project-card__head__filter"></div>
-        <img src='${pageContext.request.contextPath}/images/like/<c:out value="${OneList.MAIN_IMAGE}"/>' alt="" class="b-project-card__head__pic" />
+        <img src='${pageContext.request.contextPath}/uploads/reward/<c:out value="${OneList.MAIN_IMAGE}"/>' alt="" class="b-project-card__head__pic" />
         
       
 
@@ -87,10 +94,10 @@
 
   <div class="b-project-card__body"> 
     <h3 class="b-project-card__title">
-      <a href="/toolbook" class="[ yoke yoke--theme_light ]"><c:out value="${OneList.TITLE}"/></a>
+      <a href="../reward?item_code=${OneList.ITEM_CODE}" class="[ yoke yoke--theme_light ]"><c:out value="${OneList.TITLE}"/></a>
     </h3>
     <p class="b-project-card__creator">
-     <c:out value="${OneList.NICKNAME}"/>의 프로젝트
+     <c:out value="${OneList.NICKNAME}"/>의 프로젝트 "${OneList.ITEM_CODE}"
     </p>
     <p class="b-project-card__blurb">
     <c:out value="${OneList.SUMMARY}"/>
