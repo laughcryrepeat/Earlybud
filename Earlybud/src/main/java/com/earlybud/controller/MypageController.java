@@ -31,24 +31,16 @@ public class MypageController {
 	
 	private LikeService service;
 	private LikeSellerService services;
-	@RequestMapping(value = "liked_things")
-	public String list(Model model) {
+
+	@RequestMapping(value = "mypage/{email:.+}", method = RequestMethod.GET)
+	public String list(@PathVariable("email") String email, Model model) {
 		log.info("list");
-		model.addAttribute("list", service.getList());
-		model.addAttribute("listS", services.getListS());
+		model.addAttribute("list", service.getList(email));
+		model.addAttribute("listS", services.getListS(email));
 		System.out.println("컨트롤러에서 리스트 줌");
 
-		return "mypage/liked_things";
+		return "mypage/mypage";
 	}
-
-	
-//	@GetMapping(value = "/seller_items")
-//	   public void seller_items(@RequestParam("email") String email, Model model) {
-//		log.info("/seller_items");
-//		model.addAttribute("OneList", service.getOneSellerList(email));
-//		System.out.println("한 판매자의 아이템 목록을 컨트롤러가 넘겨줌");
-//	   }
-	
 
 	@RequestMapping(value = "seller_items/{email:.+}", method = RequestMethod.GET)
 	   public String seller_items(@PathVariable("email") String email, Model model) {

@@ -33,18 +33,8 @@
 											<div class="project-item item isotope-item top10">
 												<div class="project-inner">																			
 													<div class="project-info">
-														<h2 class="project-title">
-															<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>">
-															
-														<c:choose >
-								               		   		<c:when test="${list.ENCORE > 0}">
-									               		  		<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>">[<c:out value="${list.ENCORE}"/>차 앵콜]<c:out value="${list.TITLE}"/></a>
-									               		   	</c:when>
-									               		   	<c:otherwise>
-									               		   		<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>"><c:out value="${list.TITLE}"/></a>
-									               		   	</c:otherwise>
-								               		   </c:choose>
-															
+														<h2 class="project-title">														
+															<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>"><c:out value="${list.TITLE}"/></a>
 														</h2>
 													</div>
 													<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>"><img src="${pageContext.request.contextPath}/uploads/reward/<c:out value="${list.MAIN_IMAGE}"/>"></a>
@@ -55,18 +45,8 @@
 											<div class="project-item item isotope-item new">
 												<div class="project-inner">																			
 													<div class="project-info">
-														<h2 class="project-title">
-															<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>">
-															
-														<c:choose >
-								               		   		<c:when test="${list.ENCORE > 0}">
-									               		  		<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>">[<c:out value="${list.ENCORE}"/>차 앵콜]<c:out value="${list.TITLE}"/></a>
-									               		   	</c:when>
-									               		   	<c:otherwise>
-									               		   		<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>"><c:out value="${list.TITLE}"/></a>
-									               		   	</c:otherwise>
-								               		   </c:choose>
-															
+														<h2 class="project-title">														
+															<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>"><c:out value="${list.TITLE}"/></a>
 														</h2>
 													</div>
 													<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>"><img src="${pageContext.request.contextPath}/uploads/reward/<c:out value="${list.MAIN_IMAGE}"/>"></a>
@@ -77,18 +57,8 @@
 											<div class="project-item item isotope-item deadline">
 												<div class="project-inner">																			
 													<div class="project-info">
-														<h2 class="project-title">
-															<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>">
-															
-														<c:choose >
-								               		   		<c:when test="${list.ENCORE > 0}">
-									               		  		<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>">[<c:out value="${list.ENCORE}"/>차 앵콜]<c:out value="${list.TITLE}"/></a>
-									               		   	</c:when>
-									               		   	<c:otherwise>
-									               		   		<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>"><c:out value="${list.TITLE}"/></a>
-									               		   	</c:otherwise>
-								               		   </c:choose>
-															
+														<h2 class="project-title">														
+															<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>"><c:out value="${list.TITLE}"/></a>
 														</h2>
 													</div>
 													<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>"><img src="${pageContext.request.contextPath}/uploads/reward/<c:out value="${list.MAIN_IMAGE}"/>"></a>
@@ -99,18 +69,8 @@
 											<div class="project-item item isotope-item beopen">
 												<div class="project-inner">																			
 													<div class="project-info">
-														<h2 class="project-title">
-															<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>">
-															
-														<c:choose >
-								               		   		<c:when test="${list.ENCORE > 0}">
-									               		  		<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>">[<c:out value="${list.ENCORE}"/>차 앵콜]<c:out value="${list.TITLE}"/></a>
-									               		   	</c:when>
-									               		   	<c:otherwise>
-									               		   		<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>"><c:out value="${list.TITLE}"/></a>
-									               		   	</c:otherwise>
-								               		   </c:choose>
-															
+														<h2 class="project-title">														
+															<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>"><c:out value="${list.TITLE}"/></a>
 														</h2>
 													</div>
 													<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>"><img src="${pageContext.request.contextPath}/uploads/reward/<c:out value="${list.MAIN_IMAGE}"/>"></a>
@@ -121,18 +81,8 @@
 											<div class="project-item item isotope-item end">
 												<div class="project-inner">																			
 													<div class="project-info">
-														<h2 class="project-title">
-															<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>">
-															
-														<c:choose >
-								               		   		<c:when test="${list.ENCORE > 0}">
-									               		  		<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>">[<c:out value="${list.ENCORE}"/>차 앵콜]<c:out value="${list.TITLE}"/></a>
-									               		   	</c:when>
-									               		   	<c:otherwise>
-									               		   		<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>"><c:out value="${list.TITLE}"/></a>
-									               		   	</c:otherwise>
-								               		   </c:choose>
-															
+														<h2 class="project-title">														
+															<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>"><c:out value="${list.TITLE}"/></a>
 														</h2>
 													</div>
 													<a href="/../earlybud/reward?item_code=<c:out value="${list.ITEM_CODE}"/>"><img src="${pageContext.request.contextPath}/uploads/reward/<c:out value="${list.MAIN_IMAGE}"/>"></a>

@@ -65,4 +65,12 @@ public class NewProjectServiceImpl implements NewProjectService {
 		System.out.println("셀러 인서트 서비스 들어왔어용");
 		return dao.update2(seller);
 	}
+	@Override
+	public List<Item> sellerEndItem(String email) {
+		return dao.sellerEndItem(email);
+	}
+	@Override
+	public List<Item> sellerEncoreItem(String email) {
+		return dao.sellerEncoreItem(email);
+	}
 }

@@ -6,6 +6,7 @@ import com.earlybud.vo.MemberLikeVO;
 
 public interface LikeDAO {
 	public List<MemberLikeVO> getList();
+	public List<MemberLikeVO> getList(String email);
 	public List<MemberLikeVO> getSellerItemList(String email);
 
 }
