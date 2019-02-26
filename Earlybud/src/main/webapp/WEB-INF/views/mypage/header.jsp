@@ -147,6 +147,9 @@ window.wadiz = window.wadiz || {};window.wadiz.sessionUser="";</script>
 		}(window, document, window._wpemojiSettings);
 	</script>
 	<style type="text/css">
+		.addrD{
+			width: 330px !important;
+		}
 		img.wp-smiley,
 		img.emoji {
 			display: inline !important;

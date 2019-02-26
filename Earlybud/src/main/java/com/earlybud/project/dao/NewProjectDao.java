@@ -10,8 +10,13 @@ public interface NewProjectDao {
 	public List<Item> sellerItem(String email);
 	public Seller seller_select(String email);
 	public Item item_select(long item_code);
+	public Item item_select2(long item_code);
+	public List<Type> selectType(long item_code);
 	public int save(Item item);
 	public int save2(Type type);
+	public int modifyType(Type type);
 	public int update(Item item);
 	public int update2(Seller seller);
+	public int modifyItem(Item item);
+	public int modifySeller(Seller seller);
 }

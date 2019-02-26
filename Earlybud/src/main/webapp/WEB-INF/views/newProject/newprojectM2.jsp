@@ -10,10 +10,10 @@
               <article id="post-1" class="post-1 post type-post status-publish format-standard hentry category-uncategorized">
                 <header class="entry-header">
                   <span class="posted-on">EarlyBud</span>
-                  <h1 class="entry-title">프로젝트 올리기</h1>
+                  <h1 class="entry-title">프로젝트 수정</h1>
                 </header><!-- .entry-header -->
                 <div id="respond" class="comment-respond">
-                  <form action="newprojectDetail3" method="post" enctype="multipart/form-data" id="myproject" class="comment-form" novalidate>
+                  <form action="../newprojectModify3" method="post" enctype="multipart/form-data" id="myproject" class="comment-form" novalidate>
                     <p class="comment-form-comment"><label for="cat_code">프로젝트 카테고리<span class="required">*</span></label>
                     		<select id="cat_code" name="cat_code">
 							    <option value="">    카테고리 선택하기       </option>
@@ -46,6 +46,7 @@
                      </p>
                     <section id="categories-2" class="widget widget_categories">
                       <ul>
+						<input name="item_code" type="hidden" value="${seller.item_code}"/>
                         <input name="submit" type="submit" class="submit" value="다음페이지" />
                       </ul>
                     </section>
