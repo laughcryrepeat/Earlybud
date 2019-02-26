@@ -23,6 +23,7 @@
 	<typeAlias alias="EachOrder" type="com.earlybud.vo.EachOrderVO"/>
 	<typeAlias alias="Seller" type="com.earlybud.model.Seller"/>
 	<typeAlias alias="MainList" type="com.earlybud.vo.MainVO"/>
+	<typeAlias alias="Encore" type="com.earlybud.model.Encore"/>
 </typeAliases>
 
 <mappers>
