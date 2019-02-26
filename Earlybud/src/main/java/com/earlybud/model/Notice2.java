@@ -16,7 +16,7 @@ public class Notice2 {
 	private String TITLE;/*공지제목*/
 	private String CONTENT; /*공지내용*/
 	private Date WRITEDATE;/*작성날짜*/
-	private Date COL; /*수정날짜*/
+	private Date NEWDATE; /*수정날짜*/
 	private String EMAIL; /*판매자이메일*/
 	//////////////////////////////////////////////
 	

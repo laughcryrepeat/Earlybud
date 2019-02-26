@@ -34,7 +34,7 @@
       FROM (SELECT  q.*, rownum rn 
       		FROM(select ITEM_CODE, CAT_CODE, CAT_NAME, TITLE, SUMMARY, MAIN_IMAGE, IMAGE, 
       		NICKNAME, TO_CHAR(CUR_SUM, '999,999,999,999') as NOW_SUM, 
-      		TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, SUCCESS, 
+      		TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, SUCCESS, ENCORE,
       		CLOSINGDATE, TRUNC(CLOSINGDATE-SYSDATE,0) as TIME from ITEM natural join MEMBER 
       		natural join CATEGORY natural join SELLER
       			WHERE       			
@@ -47,6 +47,7 @@
       			) q) 
       		WHERE rn 
       		BETWEEN #{first} AND #{last}
-  </select>
+  </select>  
+  	
 	
 </mapper>

@@ -1,5 +1,6 @@
 package com.earlybud.item.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,5 +12,6 @@ public interface ItemService {
 	public List<Map<String, Object>> midnightService();
 	void updateSuccessYService(long item_code);
 	void updateSuccessNService();
-	
+	public String encoreCheckService(HashMap map);
+	public boolean encoreInsertService(HashMap map);
 }

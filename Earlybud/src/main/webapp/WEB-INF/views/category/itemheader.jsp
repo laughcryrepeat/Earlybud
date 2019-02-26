@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
- 
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <!doctype html> 
 <html class="no-js">
 <head>
@@ -24,7 +25,6 @@
 <script src="${pageContext.request.contextPath}/js/item/isMobile.min.js"></script>
 <script src='${pageContext.request.contextPath}/js/item/jquery.form.js'></script>
 <script src='${pageContext.request.contextPath}/js/item/jquery.scrollLock.min.js'></script>
-<script src='${pageContext.request.contextPath}/js/item/uikit.min.js'></script>
 
 <!-- 공통 유틸 js -->
 <script src="${pageContext.request.contextPath}/js/item/commonUtil.js"></script>
@@ -143,7 +143,7 @@
 	<script type="text/javascript">
 	window.wadizWebManifest={"0":"equity-feedback.js?543e2719c82224c0cf5b","1":"equity-update-news.js?44d4674ab5c1bffc9817","2":"equity-w9-membership.js?bb0afd0a3bd010cf80e1","3":"reward-comment-app.js?5b061d94cde928f3a043","4":"reward-supporter-list-app.js?e6d34aa1f120bbe08ff9","5":"5.js?52d90970ce07d33e422d","6":"6.js?38cd1d78a22a27c536f4","7":"7.js?09e8428ae03b4c8fa199","8":"8.js?1d2c9bd6ce5af63c4cc5","9":"9.js?96f38514a3834dc2b384","10":"equity.js?ba4a59078f4ac7697352","11":"reward.js?e337ab95a32d72c7aa25","12":"landing.js?58480fea0ae45fe4547e","13":"coming.js?7f4059d8898d4924b31a","14":"equity-payment.js?9ddefa864fc858d4c761","15":"common.js?3441e2f6ee1fcac27a0e","16":"personal-message.js?3e57f726d36016907517","17":"account.js?0aded497b4b375998049","18":"studio.js?3c5f622faed521c5f3a8","19":"support-signature.js?a27535229cf39a168c04","20":"static/equity-join.js?93caf5bc1beed61afc2e","21":"equity-pre-quiz.js?c87fa3d0998b713c1b80","22":"static/openfunding.js?6e2c3b91b13273e46047","23":"static/wadiz2017.js?a4fb2ee339442ec6152b","24":"static/reward-open.js?3dabf8f27601e2c8aa2f","25":"static/equity-open.js?d47dd54b51347b9b1be1","26":"social.js?7f3ffdb4f9228d482664"};
 	window.wadiz = window.wadiz || {};window.wadiz.sessionUser="";</script>
-	<link rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/vendor.css?966a1957dbe0ea1e47a26794a40b2772"><link rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/common.css?c067a4b077f78dd0d8ac2a36ba9e8c08"><script type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/vendor.js?33b07d8ab3089c7ecb0c"></script><script type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441e2f6ee1fcac27a0e"></script>
+	<link rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/vendor.css?966a1957dbe0ea1e47a26794a40b2772"><link rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/common.css?c067a4b077f78dd0d8ac2a36ba9e8c08">
 	<!-- 추가끝 -->
 	
 	
@@ -382,6 +382,7 @@
 	</style>
 </head>
 
+
 <body class="home page-template page-template-page-templates page-template-template_page-builder page-template-page-templatestemplate_page-builder-php page page-id-4 wp-custom-logo menuStyle2 menuContained sticky-header elementor-default elementor-page elementor-page-4">
 	<div id="page" class="site">
 		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
@@ -392,7 +393,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="site-branding col-md-4 col-sm-6 col-9">
-						<a href="main" class="custom-logo-link" rel="home" itemprop="url">
+						<a href="/../earlybud/main" class="custom-logo-link" rel="home" itemprop="url">
 							<img width="80" height="50" src="${pageContext.request.contextPath}/images/item/earlybud.png" class="custom-logo"	alt="Atu" itemprop="logo" />
 						</a> </div><!-- .site-branding -->
 
@@ -406,10 +407,17 @@
 					<nav id="site-navigation" class="main-navigation col-md-8">
 						<div class="menu-menu-container">
 							<ul id="primary-menu" class="menu">
-								<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a href="main">Home</a></li>
-								<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">소개</a></li>
-								<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44 current-menu-item page_item page-item-4 current_page_item menu-item-43"><a href="category/0">카테고리</a></li>
-								<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="https://demo.athemes.com/airi-portfolio/about-us/">로그인/회원가입</a></li>
+								<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a href="/../earlybud/main">Home</a></li>
+								<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">소개</a></li>
+								<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44 current-menu-item page_item page-item-4 current_page_item menu-item-43"><a href="/../earlybud/category">카테고리</a></li>
+												
+								<sec:authorize access="isAnonymous()">
+								 	<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">로그인/회원가입</a></li>
+								</sec:authorize>
+								<sec:authorize access="isAuthenticated()">
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/> 님 환영합니다</li>
+									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/customLogout">로그아웃</a></li>
+								</sec:authorize>						
 							</ul>
 						</div>
 						<ul class="header-search-cart">

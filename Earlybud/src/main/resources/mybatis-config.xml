@@ -22,6 +22,7 @@
 	<typeAlias alias="AllOrders" type="com.earlybud.vo.AllOrdersVO"/>
 	<typeAlias alias="EachOrder" type="com.earlybud.vo.EachOrderVO"/>
 	<typeAlias alias="Seller" type="com.earlybud.model.Seller"/>
+	<typeAlias alias="MainList" type="com.earlybud.vo.MainVO"/>
 </typeAliases>
 
 <mappers>
@@ -41,6 +42,7 @@
 	<mapper resource="mybatis/Purchase_Item.xml"/>
 	<mapper resource="mybatis/AllOrders.xml"/>
 	<mapper resource="mybatis/EachOrder.xml"/>
+	<mapper resource="mybatis/MainList.xml"/>
 	
 </mappers>
 </configuration>

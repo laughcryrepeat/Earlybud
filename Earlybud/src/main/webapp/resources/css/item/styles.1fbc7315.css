@@ -3700,8 +3700,7 @@ select {
   .article_intro h1, .article_intro_wider h1, .entry_content h1 {
     font-size: 36px;
     line-height: 1.25em;
-    margin-top: 0;
-    border: 1px solid red; }
+    margin-top: 0; }
   .article_intro h2, .article_intro_wider h2, .entry_content h2 {
     font-size: 28px;
     line-height: 1.25;

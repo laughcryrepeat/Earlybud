@@ -1,5 +1,6 @@
 package com.earlybud.item.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +37,15 @@ public class ItemDAOImpl implements ItemDAO {
 	public void updateSuccessY(long item_code) {
 		System.out.println("성공~~");
 		sqlSession.update(ns+".UpdateSuccessY", item_code);		
+	}
+	@Override
+	public String encoreCheck(HashMap map) {
+		return sqlSession.selectOne(ns+".encoreCK", map);			
+	}
+	@Override
+	public boolean encoreInsert(HashMap map) {
+		sqlSession.selectOne(ns+".encoreInsert", map);
+		return true;
 	}
 
 }
