@@ -809,7 +809,6 @@
 						<a href="">얼리버드(주) | 대표 얼리버드 010-1111-1111 | 서울시 중구 비트캠프 7층 | 통신판매업 2019-서울중구-1919 | 대표전화 02-0000-0000</a>
 						
 						</div><!-- .site-info -->
->>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
 
 				</div>
 			</div>
