@@ -10,5 +10,5 @@ public class MainVO {
   private Long ITEM_CODE;
   private String TITLE;
   private String MAIN_IMAGE;
-  
+  private String SUMMARY;  
 }
