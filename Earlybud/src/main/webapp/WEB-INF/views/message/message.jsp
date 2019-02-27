@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!doctype html> 
 <html lang="ko">
@@ -49,13 +50,14 @@
           </div>
           
           <div class="inbox_chat">
+          <sec:authentication property="principal.member.email" var="myEmail"/>
           <c:forEach items="${listM}" var="listM">
 
 			            <div class="chat_list active_chat">
 			              <div class="chat_people">
 			                <div class="chat_img"> <img src="${pageContext.request.contextPath}/images/like/<c:out value="${listM.IMAGE}"/>" alt="sunil"> </div>
 			                <div class="chat_ib">
-			                  <h5><a href="../red@gmail.com/${listM.EMAIL}">${listM.NICKNAME}</a></h5>
+			                  <h5><a href="../${myEmail}/${listM.EMAIL}">${listM.NICKNAME}</a></h5>
 			                  <plow>${listM.INFO}</plow>
 			                </div>
 			              </div>
@@ -71,7 +73,7 @@
           <div class="msg_history">
         <c:forEach items="${listS}" var="listS">
         <c:choose>
-        	<c:when test="${listS.RECEIVER eq 'red@gmail.com'}">
+        	<c:when test="${listS.RECEIVER eq myEmail}">
         	<div class="incoming_msg">
               <div class="received_msg">
                 <div class="received_withd_msg">

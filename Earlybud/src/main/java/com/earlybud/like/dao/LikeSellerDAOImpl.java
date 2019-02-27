@@ -27,4 +27,13 @@ public class LikeSellerDAOImpl implements LikeSellerDAO {
 		return listM;
 	}
 
+	@Override
+	public List<SellerLikeVO> getList(String email) {
+		log.info("SellerLikeDAO");
+		System.out.println("SellerLikedao");
+		List<SellerLikeVO> listM = sqlSession.selectList(ns + ".readSellerLikedX", email);
+		System.out.println("Item list size : "+listM.size());
+		return listM;
+	}
+
 }

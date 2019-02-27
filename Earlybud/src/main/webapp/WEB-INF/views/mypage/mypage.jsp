@@ -20,51 +20,7 @@
 		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 
 
-		<header id="masthead" class="site-header">
-
-			<div class="container">
-				<div class="row">
-					<div class="site-branding col-md-4 col-sm-6 col-9">
-						<a href="https://demo.athemes.com/airi-portfolio/" class="custom-logo-link" rel="home" itemprop="url"><img width="100" height="60" src="\\203.236.209.193\1_웹기획\1팀_오현화\earlybud.png" class="custom-logo"
-							  alt="Atu" itemprop="logo" /></a> </div><!-- .site-branding -->
-
-					<div class="header-mobile-menu col-md-8 col-sm-6 col-3">
-						<button class="mobile-menu-toggle" aria-controls="primary-menu">
-							<span class="mobile-menu-toggle_lines"></span>
-							<span class="sr-only">Toggle mobile menu</span>
-						</button>
-					</div>
-
-					<nav id="site-navigation" class="main-navigation col-md-8">
-						<div class="menu-menu-container">
-							<ul id="primary-menu" class="menu">
-								<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-4 current_page_item menu-item-43"><a href="https://demo.athemes.com/airi-portfolio/">Home</a></li>
-								<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="https://demo.athemes.com/airi-portfolio/blog/">Blog</a></li>
-								<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="https://demo.athemes.com/airi-portfolio/about-us/">About us</a></li>
-							</ul>
-						</div>
-						<ul class="header-search-cart">
-							<li class="header-search">
-								<div class="header-search-toggle"><a><i class="fa fa-search"></i></a></div>
-							</li>
-							<li class="header-cart-link">
-							</li>
-						</ul>
-					</nav><!-- #site-navigation -->
-
-				</div>
-			</div>
-			<div class="header-search-form">
-				<form role="search" method="get" class="search-form" action="https://demo.athemes.com/airi-portfolio/">
-					<label>
-						<span class="screen-reader-text">Search for:</span>
-						<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
-					</label>
-					<input type="submit" class="search-submit" value="Search" />
-				</form>
-			</div>
-
-		</header><!-- #masthead -->
+		
 		<div id="content" class="site-content">
 
 
@@ -82,8 +38,9 @@
 													<div class="elementor-widget-wrap">
 														<div data-id="6f6ccfa" class="elementor-element elementor-element-6f6ccfa elementor-widget elementor-widget-athemes-portfolio" data-element_type="athemes-portfolio.default">
 															<div class="elementor-widget-container">
-																<div class="athemes-project-wrap portfolio-section style1">
-																	
+													<div class="athemes-project-wrap portfolio-section style1">
+	
+																			
 <div id="mypageWrap">
 	<div class="myfunding-wrap">
 		<h2 class="mypage-top-title">좋아한 프로젝트</h2>
@@ -96,16 +53,14 @@
 				<div id="projectCardList" class="card-list">
 
 
-					<p class="top-notice"><i>최근 2개월 내에</i> <i>좋아하는 프로젝트로 설정한 프로젝트가 보여집니다.</i></p>
+					<p class="top-notice"><i>좋아하는 프로젝트로 설정한 프로젝트가 보여집니다.</i></p>
 	<ul>
 		<c:forEach items="${list}" var="list">
-		
-
 			<li class="reward">
-					<a href="/web/campaign/detail/24829">
+					<a href="../reward?item_code=${list.ITEM_CODE}">
 					<div class="project-card">
 						<div class="card-img-section">
-							<em class="project-img" style="background-image:url('${pageContext.request.contextPath}/images/like/<c:out value="${list.MAIN_IMAGE}')"/>"></em>
+							<em class="project-img" style="background-image:url('${pageContext.request.contextPath}/uploads/reward/<c:out value="${list.MAIN_IMAGE}')"/>"></em>
 						
 							<em class="project-type reward">리워드</em>
 							                                    
@@ -115,15 +70,10 @@
 									<span style="width:<c:out value="${list.PERCENT}"/>%">
 									</span>
 								</dt><dd>
-<!--  									<span class="percent">0%</span> 밑에줄 사실 공구상자에서는 font_percent임.. -->
 										<span class="percent">
-<%-- 										<fmt:parseNumber var="test" value="${list.CUR_SUM*100/list.TARGET_SUM}" integerOnly="true"/>${test} % --%>
 										<c:out value="${list.PERCENT}"/>%
 										</span><br> 
-									&nbsp; &nbsp;&nbsp;<span class="amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<c:out value="${list.NOW_SUM}"/>원 달성</span>
-										
-<!-- 										<script type="text/javascript">	document.write(calDaysLeft())</script> -->
-							
+									&nbsp; &nbsp;&nbsp;<span class="amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<c:out value="${list.NOW_SUM}"/>원 달성</span>
 									</dd>
 								</dl>
 							</div>
@@ -133,7 +83,6 @@
 							<h4><c:out value="${list.SUMMARY}"/></h4>
 							<h5><c:out value="${list.NICKNAME}"/></h5>
 							<div class="card-category">
-								
 										<span class="category1"><c:out value="${list.CAT_NAME}"/></span>
 										<span class="category2">
 								<c:choose>
@@ -148,7 +97,6 @@
                                  </c:otherwise>
                               </c:choose>
 										</span>
-									
 							</div>
 							
 						</div>
@@ -156,13 +104,7 @@
 				</a>
 			</li>	
 			</c:forEach>
-		
-
-			</ul>
-					
-						<p id="emptyProjectText" >좋아하는 프로젝트가 없습니다.<br/>프로젝트를 좋아해보실래요?<br/><br/>
-						<span class="dp-ib pb10"><a href="/web/winvest/main"><strong>투자 프로젝트 바로가기 <i class="wadizicon wa-chevron-right"></i></strong></a></span><br/>
-						<span><a href="/web/wreward/main"><strong class="green">리워드 프로젝트 바로가기 <i class="wadizicon wa-chevron-right"></i></strong></a></span></p>
+			</ul>	
 				</div><!--  // .card-list -->
 			</div>
 		</div>
@@ -190,16 +132,16 @@
     <div class="maker-all-container">
    
 
-      <div class="funding-box">
-     <strong>  &nbsp;  </strong> 
-        <ul class="list-maker-all">
+      <div class="funding-box2">
+     <strong>  &nbsp;<br/>&nbsp;  </strong> 
+        <ul class="list-maker-all2">
         <c:forEach items="${listS}" var="listS">
           <li>
-<!--             <span class="thumb-01"> 하하하 </span> -->
- 			<span style="font-size:1.5em;"><img style="width: 67px; height: 67px; border: 1px grey; border-radius: 90px; -moz-border-radius: 90px;
- 				-khtml-border-radius: 90px; -webkit-border-radius: 90px;" src="${pageContext.request.contextPath}/images/like/<c:out value="${listS.IMAGE}"/>"/>&nbsp; &nbsp;
- 			<a href='seller_items/<c:out value="${listS.EMAIL}"/>'><c:out value="${listS.NICKNAME}"/></a></span><br><br>
-			
+ 			&nbsp; &nbsp;
+ 			<img style="width: 67px; height: 67px; border: 1px grey; border-radius: 90px; -moz-border-radius: 90px;
+ 				-khtml-border-radius: 90px; -webkit-border-radius: 90px;" src="${pageContext.request.contextPath}/uploads/member/profile/<c:out value="${listS.IMAGE}"/>"/>
+ 				&nbsp; &nbsp;
+ 				<span style="font-size:1.5em;"><a href='../seller_items/<c:out value="${listS.EMAIL}"/>'><c:out value="${listS.NICKNAME}"/></a></span><br><br>			
           </li>
           </c:forEach>
         </ul>
@@ -250,36 +192,7 @@
       console.error(countProject.error);
     }
 
-    // 슬릭 슬라이드
-    if(landingAwards.width() < 1094) {
-      $('ul', $tabWrap).slick({
-        mobileFirst: true,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        swipeToSlide: true,
-        variableWidth: true,
-        infinite: false,
-        arrows: false,
-      });
-    }
-
-    // 스크롤 값에 따른 상단 네비게이션 고정
-    $window.on('scroll', () => {
-      const docOffset = $(document).scrollTop();
-      if(landingAwards.width() < 1094) {
-        if (docOffset > 1233) {
-          landingAwards.addClass('fixed');
-        } else if (docOffset <= 1233) {
-          landingAwards.removeClass('fixed');
-        }
-      } else {
-        if (docOffset > 1647) {
-          landingAwards.addClass('fixed');
-        } else if (docOffset <= 1647) {
-          landingAwards.removeClass('fixed');
-        }
-      }
-    });
+   
 
     // 탭 클릭 체인지 이벤트
     $panels.each(function() {

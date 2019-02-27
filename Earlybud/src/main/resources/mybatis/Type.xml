@@ -13,14 +13,16 @@
    	</resultMap> 
   	
    	<select id="selectType" resultType="Type" parameterType="Long">
-   	select * from TYPE where TYPE_CODE = #{type_code} 
+   	select * from TYPE where item_code = #{item_code} 
    	</select> 
 	
    	<insert id="insertType" parameterType="Type"> 
    	insert into TYPE(type_code,item_code,name,info,price,pur_num)  
    	values(TYPE_CODE_SEQ.nextval,#{item_code},#{name},#{info},#{price},#{pur_num})  
    	</insert> 
-  	
+  	<update id="updateType" parameterType="Type">
+  	update TYPE set name=#{name} , info=#{info} , price=#{price} where type_code=#{type_code}
+  	</update>
    	<update id="updatePurnum" parameterType="Long"> 
    	update TYPE set pur_num = (pur_num+1) where type_code =#{type_code}
    	</update>
@@ -30,9 +32,6 @@
    	</update>
    	
   	<insert id="insertOption" parameterType="Type">
-  		<selectKey keyProperty="type_code" resultType="Type" order="AFTER">
-  		select type_code from TYPE where item_code=#{item_code}
-  		</selectKey>
   	insert into TYPE(item_code, type_code, info, name, price) 
   	values(#{item_code}, TYPE_CODE_SEQ.nextval, #{info}, #{name}, #{price})
   	</insert>

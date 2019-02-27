@@ -60,7 +60,7 @@
                         				<c:forEach items="${listItem}" var="Item">
                                             <tr><td>${Item.item_code}</td>
                                                 <td><img src="${pageContext.request.contextPath}/uploads/reward/${Item.main_image}" alt="" /></td>
-                                                <td>${Item.title}</td>
+                                                <td><a href="../reward?item_code=${Item.item_code}">${Item.title}</a></td>
                                                 <td>
  <!-- 날짜계산 -->                                                   
 <fmt:parseDate value="${Item.opendate}" var="strPlanDate" pattern="yyyy-MM-dd"/>

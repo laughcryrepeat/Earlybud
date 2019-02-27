@@ -7,16 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% session.invalidate();   
-response.sendRedirect("login");%>
-<!-- 
-<form action="/earlybud/logout" method='post' id="form">
-
-<input type="hidden"name="username"value="${email}"/>
-<input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
-</form>
-<script type="text/javascript">
-		document.getElementById("form").submit();
-	</script> -->
+<% 
+session.invalidate();   
+response.sendRedirect(request.getHeader("Referer"));
+%>
 </body>
 </html>

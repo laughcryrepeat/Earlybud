@@ -33,6 +33,22 @@ public class NewProjectDaoImpl implements NewProjectDao {
 
 		return sqlSession.selectOne(ns+".modifyItem1", item_code);
 	}
+	public Item item_select2(long item_code) {
+		System.out.println("아이템 select dao 들어왔어용"+item_code);
+
+		return sqlSession.selectOne(ns+".modifyItem2", item_code);
+	}
+	public List<Type> selectType(long item_code) {
+		return sqlSession.selectList(ns2+".selectType", item_code);
+	}
+	public int modifyItem(Item item) {
+		int i=-1;
+		try {
+			i = sqlSession.update(ns+".modifyItem11", item);
+		} finally {
+		}
+		return i;
+	}
 	public int save(Item item) {
 		int p = -1;
 		System.out.println("dao 들어왔어용"+item.getEmail());
@@ -52,6 +68,25 @@ public class NewProjectDaoImpl implements NewProjectDao {
 		}
 		System.out.println("lastPage insert("+type+")");
 		return p;
+	}
+	public int modifyType(Type type) {
+		int p = -1;
+		System.out.println("dao 들어왔어용"+type.getItem_code());
+		try {
+			p = sqlSession.update(ns2+".updateType", type);
+		} finally {
+		}
+		System.out.println("lastPage insert("+type+")");
+		return p;
+	}
+	
+	public int modifySeller(Seller seller) {
+		int i = -1;
+		try {
+			i = sqlSession.update(ns1+".updateSeller", seller);
+		} finally {
+		}
+		return i;
 	}
 	public int update(Item item) {
 		int p = -1;

@@ -32,7 +32,7 @@
 
 	<select id="readItem" resultMap="RewardMap" parameterType="LONG">
 		select 
-		TO_CHAR((select sum(PUR_NUM) from TYPE where ITEM_CODE= #{item_code}), '99,999')as TOTAL_PUR,
+		TO_CHAR((select sum(PUR_NUM) from TYPE where ITEM_CODE= #{item_code}), '99,999')as TOTAL_PUR, 
 		CAT_CODE, CAT_NAME, TITLE, MAIN_IMAGE,
 		TO_CHAR(CUR_SUM, '999,999,999,999') as NOW_SUM, 
 		TRUNC((CUR_SUM/TARGET_SUM)*100, 0) as PERCENT, 

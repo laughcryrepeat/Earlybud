@@ -147,6 +147,9 @@ window.wadiz = window.wadiz || {};window.wadiz.sessionUser="";</script>
 		}(window, document, window._wpemojiSettings);
 	</script>
 	<style type="text/css">
+		.addrD{
+			width: 330px !important;
+		}
 		img.wp-smiley,
 		img.emoji {
 			display: inline !important;
@@ -457,7 +460,7 @@ window.wadiz = window.wadiz || {};window.wadiz.sessionUser="571408206";</script>
 <link href="css/like_list/wlayout.css?v=201803151400" rel="stylesheet">
 <!-- E : core style area -->
 <!-- S : page style area -->
-<link rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/static/bestmaker2018.css?b6bb58f68a8b4d7826ffe21846a2abd2">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/circle">
 
 <!-- E : page style area -->
 <!-- S : core script area -->
@@ -545,4 +548,3 @@ window.wadiz = window.wadiz || {};window.wadiz.sessionUser="571408206";</script>
       </div>
 	
     </header><!-- #masthead -->
-

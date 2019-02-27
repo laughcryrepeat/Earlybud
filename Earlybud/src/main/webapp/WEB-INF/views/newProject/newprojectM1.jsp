@@ -9,10 +9,10 @@
               <article id="post-1" class="post-1 post type-post status-publish format-standard hentry category-uncategorized">
                 <header class="entry-header">
                   <span class="posted-on">EarlyBud</span>
-                  <h1 class="entry-title">프로젝트 올리기</h1>
+                  <h1 class="entry-title">판매자 정보 수정</h1>
                 </header><!-- .entry-header -->
                 <div id="respond" class="comment-respond">
-                  <form action="newprojectDetail2" method="post" id="commentform" enctype="multipart/form-data" class="comment-form" novalidate>
+                  <form action="sellerModify" method="post" id="commentform" enctype="multipart/form-data" class="comment-form" novalidate>
                     <p class="comment-form-email"><label for="image">진행자 프로필이미지<span class="required">*</span></label>
                     	<input id="image" type="text" class="upload-name" value="${seller.image}" size="30" maxlength="245" required='required' onclick="check()" readonly/>
                     	<input id="image_file" name="image" type="file" id="submit" class="file-hidden" value="file" required="required"></p>
@@ -22,7 +22,7 @@
                     	<input id="seller_loc" name="seller_loc" type="text" value="${seller.seller_loc }" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
                     <p class="comment-form-url"><label for="url">계좌 등록하기<span class="required">*</span></label> 
                     	<input id="seller_account" name="seller_account" type="text" value="${seller.seller_account }" size="30" maxlength="200" /></p>
-                    <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="다음 페이지" /> <input type='hidden' name='comment_post_ID' value='1' id='comment_post_ID' />
+                    <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="정보 수정" /> <input type='hidden' name='comment_post_ID' value='1' id='comment_post_ID' />
                       <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
                     </p>
                     <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="b0c1d8b81d" /></p>
