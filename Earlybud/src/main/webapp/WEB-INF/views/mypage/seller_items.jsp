@@ -7,6 +7,8 @@
 <!doctype html>
 <html lang="en-US">
 
+<body>
+		
 <%@include file="header.jsp" %>
 
  <nav class="b-nav-global">
