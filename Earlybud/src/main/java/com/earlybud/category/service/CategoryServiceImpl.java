@@ -21,18 +21,34 @@ public class CategoryServiceImpl implements CategoryService {
 
 	private CategoryDAO dao;
 
+	/*메인용*/
 	 @Override
-	 public List<Category> cateListService() {
-		 log.info("getList..........");	
-		 return dao.getList();	 
-	}	
-	 
+	 public List<MainVO> getRandomList() {
+		 return dao.getRandomList();	 
+	}	 
 	 @Override
 	 public List<MainVO> getMainList(HashMap map) {
-		 log.info("getList..........");	
 		 return dao.getMainList(map);	 
-	}	 
-
+	}
+	 @Override
+	 public List<MainVO> getOpenRankNumService() {
+		 return dao.getOpenRankNum();	 
+	} 
+	 @Override
+	 public List<MainVO> getRewardRankNumService() {
+		 return dao.getRewardRankNum();	 
+	}
+	 @Override
+	 public List<MainVO> getRankListService(HashMap map) {
+		 return dao.getRankList(map);	 
+	} 
+	 
+	 
+	 /*카테고리용*/
+	 @Override
+	 public List<Category> cateListService() {
+		 return dao.getList();	 
+	}		 
 	 @Override
 	public int countItemService(HashMap map) {
 		return dao.countItem(map);
