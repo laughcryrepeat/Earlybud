@@ -66,7 +66,7 @@ public class NewProjectController {
 		long size = image.getSize();
 		String contentType = image.getContentType();
 		byte[] fileContents = image.getBytes();
-		image.transferTo(new File("C:\\Users\\student\\git\\Earlybud\\Earlybud\\src\\main\\webapp\\resources\\uploads\\member\\profile\\"+fileName));
+		image.transferTo(new File("D:\\"+fileName));
 		seller.setImage(fileName);
 		System.out.println("프로젝트 생성 p1: " + info + ", " + seller_loc + ", " + seller_account);
 		
@@ -79,7 +79,7 @@ public class NewProjectController {
 		return "newProject/newprojectDetail2";
 	}
 	@RequestMapping("newprojectDetail3")
-	public String newProjectDetail3(@RequestParam("cat_code") long cat_code, @RequestParam("opendate") String opendate, 
+	public String newProjectDetail3(Model model, @RequestParam("cat_code") long cat_code, @RequestParam("opendate") String opendate, 
 			@RequestParam("closingdate") String closingdate, @RequestParam("title") String title, 
 			@RequestParam("main_image") MultipartFile main_image) throws ParseException, IOException{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -89,13 +89,12 @@ public class NewProjectController {
 		long size = main_image.getSize();
 		String contentType = main_image.getContentType();
 		byte[] fileContents = main_image.getBytes();
-		main_image.transferTo(new File("C:\\Users\\student\\git\\Earlybud\\Earlybud\\src\\main\\webapp\\resources\\uploads\\reward\\"+fileName));	//자기 컴터 경로에 맞게 고쳐야됨
+		main_image.transferTo(new File("D:\\"+fileName));	//자기 컴터 경로에 맞게 고쳐야됨
 		
 		Date startDate = new  SimpleDateFormat("yyyy-MM-dd").parse(opendate);
 		Date endDate = new  SimpleDateFormat("yyyy-MM-dd").parse(closingdate);
 		java.sql.Date openDate = new java.sql.Date(startDate.getTime());
 		java.sql.Date closingDate = new java.sql.Date(endDate.getTime() + TimeUnit.DAYS.toMillis( 1 ));
-		
 		Item item = new Item();
 		item.setEmail(email);
 		item.setCat_code(cat_code);
@@ -105,11 +104,13 @@ public class NewProjectController {
 		item.setClosingdate(closingDate);
 		System.out.println("프로젝트 생성 p2: "+item);
 		projectS.save(item);
+		long item_code = item.getItem_code();
+		model.addAttribute("seller", projectS.item_select2(item_code));
 		
 		return "newProject/newprojectDetail3";
 	}
 	@RequestMapping("newprojectCheck")
-	public void newProjectCheck(@RequestParam("target_sum") long target_sum, @RequestParam String summary,
+	public void newProjectCheck(@RequestParam long item_code, @RequestParam("target_sum") long target_sum, @RequestParam String summary,
 			@RequestParam long[] type_code, @RequestParam String[] name, @RequestParam String[] info,@RequestParam String content){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
@@ -119,8 +120,6 @@ public class NewProjectController {
 		item.setSummary(summary);
 		item.setContent(content);
 		projectS.update(item);
-		System.out.println("아이템코드? " + item.getItem_code());
-		long item_code = (long) item.getItem_code();
 		Type type = new Type();
 		type.setItem_code(item_code);
 		for(int i=0; i<type_code.length; i++) {
@@ -207,16 +206,28 @@ public class NewProjectController {
 		return "newProject/newprojectM3";
 	}
 	@RequestMapping("newprojectModifyCheck")
-	public void newProjectModifyCheck(@RequestParam long target_sum, @RequestParam String summary,
-			@RequestParam String content){
+	public void newProjectModifyCheck(@RequestParam long item_code, @RequestParam long target_sum, @RequestParam String summary,
+			@RequestParam long[] type_code, @RequestParam String[] name, @RequestParam String[] info, @RequestParam String content){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
 		Item item = new Item();
+		item.setItem_code(item_code);
 		item.setEmail(email);
 		item.setTarget_sum(target_sum);
 		item.setSummary(summary);
 		item.setContent(content);
 		projectS.update(item);
+		Type type = new Type();
+		projectS.modifyType(item_code);
+		System.out.println(type_code.length);
+		type.setItem_code(item_code);
+		for(int i=0; i<=type_code.length; i++) {
+			System.out.println(type_code[i]+name[i]+info[i]);
+			type.setPrice(type_code[i]);
+			type.setName(name[i]);
+			type.setInfo(info[i]);
+			projectS.save2(type);
+		}
 		System.out.println("아이템코드? " + item.getItem_code());
 		System.out.println("저장완료");
 	}

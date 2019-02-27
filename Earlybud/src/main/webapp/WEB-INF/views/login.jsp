@@ -50,6 +50,7 @@
                   닉네임<span class="req">*</span>
                 </label>
                 <input type="text"required class="joinNick" id="nickname" name="nickname"  />
+                <section class="denied">이미 등록된 닉네임입니다.</section>
                 <!-- oninput="id_check()"  -->
               </div>
             <div class="field-wrap">

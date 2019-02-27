@@ -526,6 +526,7 @@
                     <section id="categories-2" class="widget widget_catego ries">
                       <ul>
                         <input name="submit" type="submit" class="submit" value="다음페이지" />
+                        <input name="item_code" type="hidden" value="${seller.item_code}"/>
                       </ul>
                     </section>
                  </form>

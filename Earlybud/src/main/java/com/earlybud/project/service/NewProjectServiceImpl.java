@@ -39,7 +39,6 @@ public class NewProjectServiceImpl implements NewProjectService {
 		return dao.item_select2(item_code);
 	}
 	public int modifyItem(Item item) {
-		System.out.println("수정 dao");
 		return dao.modifyItem(item);
 	}
 	public int save(Item item) {
@@ -50,9 +49,9 @@ public class NewProjectServiceImpl implements NewProjectService {
 		System.out.println("타입 save 서비스 들어왔어용");
 		return dao.save2(type);
 	}
-	public int modifyType(Type type) {
+	public int modifyType(long item_code) {
 		System.out.println("타입 update 서비스 들어왔어용");
-		return dao.modifyType(type);
+		return dao.modifyType(item_code);
 	}
 	public int modifySeller(Seller seller) {
 		return dao.modifySeller(seller);
