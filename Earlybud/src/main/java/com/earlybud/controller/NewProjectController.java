@@ -142,27 +142,49 @@ public class NewProjectController {
 		System.out.println(projectS.seller_select(email));
 		return "newProject/newprojectM1";
 	}
+	
+	String profilePath = "C:\\Users\\hb6009\\git\\Earlybud\\Earlybud\\src\\main\\webapp\\resources\\uploads\\member\\profile";
+	
 	@RequestMapping("sellerModify")
 	public String sellerModify(Model model, @RequestParam("image") MultipartFile image, @RequestParam("info") String info,
-			@RequestParam("seller_loc") String seller_loc, @RequestParam("seller_account") String seller_account) throws IOException{
+			@RequestParam("seller_loc") String seller_loc, @RequestParam("seller_account") String seller_account, @RequestParam("image_name") String image_name) throws IOException{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
 		Seller seller = new Seller();
-		String fileName=image.getOriginalFilename()+System.currentTimeMillis();
-		long size = image.getSize();
-		String contentType = image.getContentType();
-		byte[] fileContents = image.getBytes();
-		image.transferTo(new File("D:\\Download\\"+fileName));
-		seller.setImage(fileName);
-		System.out.println("프로젝트 생성 p1: " + info + ", " + seller_loc + ", " + seller_account);
-		
+		String originFullName= image.getOriginalFilename();
+		String saveName = originFullName;
+		if(originFullName != "") {
+			originFullName = originFullName.trim();
+			if(originFullName.length() != 0) {
+				if(new File(profilePath,originFullName).exists()) {
+					int idx = originFullName.lastIndexOf(".");
+					String fName = originFullName.substring(0,idx);
+					String fExt = originFullName.substring(idx+1);
+					
+					saveName = fName+"_"+System.currentTimeMillis()+"."+fExt;
+				}
+			}
+			System.out.println("save file name:"+saveName);
+			try {
+				image.transferTo(new File(profilePath,saveName));
+			}catch(Exception e) {
+			}
+			seller.setImage(saveName);
+		}else {
+			seller.setImage(image_name);
+		}
+		//long size = image.getSize();
+		//String contentType = image.getContentType();
+		//byte[] fileContents = image.getBytes();		
 		seller.setEmail(email);
 		seller.setInfo(info);
 		seller.setSeller_loc(seller_loc);
 		seller.setSeller_account(seller_account);
+		System.out.println("셀러 info: " +seller.getInfo());
+		System.out.println("셀러 수정: " +seller);
 		projectS.modifySeller(seller);
-		model.addAttribute("seller", projectS.seller_select(email));
-		return "newProject/newprojectM1";
+		//model.addAttribute("seller", projectS.seller_select(email));
+		return "redirect:../mypage/sellerPage";
 	}
 	@RequestMapping(value="newprojectModify2/{item_code}")
 	public String newprojectModify2(@PathVariable long item_code, Model model) throws IOException{
@@ -182,7 +204,7 @@ public class NewProjectController {
 		long size = main_image.getSize();
 		String contentType = main_image.getContentType();
 		byte[] fileContents = main_image.getBytes();
-		main_image.transferTo(new File("D:\\Download\\"+fileName));
+		main_image.transferTo(new File("C:\\Users\\hb6009\\git\\Earlybud\\Earlybud\\src\\main\\webapp\\resources\\uploads"+fileName));
 		
 		Date startDate = new  SimpleDateFormat("yyyy-MM-dd").parse(opendate);
 		Date endDate = new  SimpleDateFormat("yyyy-MM-dd").parse(closingdate);

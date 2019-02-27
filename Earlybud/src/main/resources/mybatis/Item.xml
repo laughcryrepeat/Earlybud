@@ -46,7 +46,7 @@
   	</select>
   	
   	<update id="approveItem" parameterType="Long">
-  	update ITEM set ADMINCALL=1 where ITEM_CODE = #{item_code}
+  	update ITEM set ADMINCALL=1, SUCCESS=0 where ITEM_CODE = #{item_code}
   	</update>
   	
   	<update id="rejectItem" parameterType="Long">

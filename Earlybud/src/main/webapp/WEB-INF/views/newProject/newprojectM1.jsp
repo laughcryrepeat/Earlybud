@@ -14,7 +14,7 @@
                 <div id="respond" class="comment-respond">
                   <form action="sellerModify" method="post" id="commentform" enctype="multipart/form-data" class="comment-form" novalidate>
                     <p class="comment-form-email"><label for="image">진행자 프로필이미지<span class="required">*</span></label>
-                    	<input id="image" type="text" class="upload-name" value="${seller.image}" size="30" maxlength="245" required='required' onclick="check()" readonly/>
+                    	<input id="image_name" name="image_name" type="text" class="upload-name" value="${seller.image}" size="30" maxlength="245" required='required' onclick="check()" readonly/>
                     	<input id="image_file" name="image" type="file" id="submit" class="file-hidden" value="file" required="required"></p>
                     <p class="comment-form-comment"><label for="author">진행자 소개<span class="required">*</span></label> 
                     	<input id="info" name="info" type="text" value="${seller.info }" size="30" maxlength="245" required='required' /></p>
@@ -32,60 +32,7 @@
           </div><!-- #comments -->
           </main><!-- #main -->
         </div><!-- #primary -->
-        <div id="sidebar-footer" class="footer-widgets" role="complementary">
-          <div class="container">
-            <div class="row">
-              <div class="sidebar-column col-md-3">
-                <section id="text-2" class="widget widget_text">
-                  <div class="textwidget">
-                    <p><img class="alignnone size-full wp-image-350" src="//demo.athemes.com/atu-shop/wp-content/uploads/sites/93/2018/09/airishop..png" alt="" width="66" height="24" /></p>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia dese mollit anim id est laborum.</p>
-                    <p><span style="color: #bfbfbf;">@2018 atu. All rights reserved.</span></p>
-                  </div>
-                </section>
-              </div>
-
-
-              <div class="sidebar-column col-md-3">
-                <section id="text-3" class="widget widget_text">
-                  <h3 class="widget-title">Contact us</h3>
-                  <div class="textwidget">
-                    <p><span style="color: #bfbfbf;">Email:</span> office@example.org</p>
-                    <p><span style="color: #bfbfbf;">Phone:</span> (+88) 999.888</p>
-                    <p><span style="color: #bfbfbf;">Address:</span> 25 Canal St., New York</p>
-                  </div>
-                </section>
-              </div>
-
-              <div class="sidebar-column col-md-3">
-                <section id="nav_menu-2" class="widget widget_nav_menu">
-                  <h3 class="widget-title">Quick links</h3>
-                  <div class="menu-quick-links-container">
-                    <ul id="menu-quick-links" class="menu">
-                      <li id="menu-item-119" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-119"><a href="#">About us</a></li>
-                      <li id="menu-item-120" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-120"><a href="#">Terms of service</a></li>
-                      <li id="menu-item-121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-121"><a href="#">Privacy policy</a></li>
-                    </ul>
-                  </div>
-                </section>
-              </div>
-              <div class="sidebar-column col-md-3">
-                <section id="athemes_social_widget-2" class="widget widget_athemes_social_widget">
-                  <h3 class="widget-title">Follow us</h3>
-                  <div class="menu-social-container">
-                    <ul id="menu-social" class="menu social-media-list clearfix">
-                      <li id="menu-item-122" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-122"><a href="https://facebook.com"><span class="screen-reader-text">Facebook</span></a></li>
-                      <li id="menu-item-123" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-123"><a href="https://twitter.com"><span class="screen-reader-text">Twitter</span></a></li>
-                      <li id="menu-item-124" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-124"><a href="https://instagram.com"><span class="screen-reader-text">Instagram</span></a></li>
-                      <li id="menu-item-125" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-125"><a href="https://linkedin.com"><span class="screen-reader-text">Linkedin</span></a></li>
-                    </ul>
-                  </div>
-                </section>
-              </div>
-
-            </div>
-          </div>
-        </div>
+        
         <footer id="colophon" class="site-footer">
           <div class="container">
             <div class="row">
