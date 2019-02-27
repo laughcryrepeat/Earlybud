@@ -28,7 +28,7 @@ public class MainController {
 	
 	private CategoryService service;
 		
-	@RequestMapping(value = "main")
+	@RequestMapping(value = {"main", "/"})
 	 public ModelAndView MainList(Model model) {	//리스트 가져오는 처리. 게시물 목록을 전달해야하므로 모델을 파라미터로 지정, 이를 통해 boardserviceimpl객체의 getList()결과를 담아 전달한다.(addAtrribute) 
 		 
 	/*탑텐*/	
