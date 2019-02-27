@@ -322,7 +322,7 @@
 	        var data = this.value;
 	        console.log(data);
 			if(confirm("아이템을 정말 재업로드하시겠습니까?") == true){
-				location.href='../newproject/newprojectModify2/'+data ;
+                   location.href='../newproject/newprojectModify2/'+data ;
 	        }else{
 	            return false;
 	        }
