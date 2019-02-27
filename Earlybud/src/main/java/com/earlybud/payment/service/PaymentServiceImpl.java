@@ -71,20 +71,20 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 	
 	@Override
-	public void canclePayment(Map<String, Object> map) {//클로징전 사용자 캔슬
-		UnscheduleData unschedule_data = new UnscheduleData(map.get("CUSTOMER_UID").toString());
-		unschedule_data.addMerchantUid(map.get("MERCHANT_UID").toString());
+	public void canclePayment(Purchase_Item pItem) {//클로징전 사용자 캔슬
+		UnscheduleData unschedule_data = new UnscheduleData(pItem.getCustomer_uid());
+		unschedule_data.addMerchantUid(pItem.getMerchant_uid());
 		
 		IamportResponse<List<Schedule>> unschedule_response = client.unsubscribeSchedule(unschedule_data);
 		List<Schedule> cancelled_schedule = unschedule_response.getResponse();
 		System.out.println("cancelled_schedule: "+cancelled_schedule);
 		
 		//스케줄된 purchase_item 테이블 cancel 칼럼 업데이트!!
-		dao.updateCancel(map.get("MERCHANT_UID").toString());
+		dao.updateCancel(pItem.getMerchant_uid());
 		//아이템 테이블 팔린 금액 빼기.
-		dao.updateCancelSum(((BigDecimal)map.get("TYPE_CODE")).longValue(),((BigDecimal)map.get("PRICE")).longValue());
+		dao.updateCancelSum(pItem.getType_code(),pItem.getPrice());
 		//타입 purnum 한개빼는것 update
-		dao.updateCancelType(((BigDecimal)map.get("TYPE_CODE")).longValue());
+		dao.updateCancelType(pItem.getType_code());
 		//취소 이메일 메세지
 	}
 
@@ -106,6 +106,18 @@ public class PaymentServiceImpl implements PaymentService {
 	public List<Map<String, Object>> listClosingItem() {//지금 클로징한 아이템리스트 가져오기
 		log.info("listClosingItem service");
 		return dao.listClosingItem();
+	}
+
+	@Override
+	public Purchase_Item selectPurchaseItem(String merchant_uid) {
+		log.info("selectPurchaseItem service");
+		return dao.selectPurchaseItem(merchant_uid);
+	}
+
+	@Override
+	public void updatePayItem(Map<String, Object> paymap) {
+		log.info("updatePayItem service");
+		dao.updatePayItem(paymap);
 	}
 
 }

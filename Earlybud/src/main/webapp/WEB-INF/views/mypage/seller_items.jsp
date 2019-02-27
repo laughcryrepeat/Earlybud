@@ -7,16 +7,18 @@
 <!doctype html>
 <html lang="en-US">
 
-<<<<<<< HEAD
-
 <body>
+<<<<<<< HEAD
 		
 =======
+		
+>>>>>>> stash
 <%@include file="header.jsp" %>
+<<<<<<< HEAD
 
->>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
+=======
 
-
+>>>>>>> stash
  <nav class="b-nav-global">
   <ul class="b-nav-global__items">
    

@@ -18,7 +18,7 @@
 							<div class="elementor-widget-container">
 								<div class="athemes-project-wrap portfolio-section style1">
 									<ul class="project-filter clearfix" id="filters">
-										<li><a href="#" class="active" data-filter='.top10'>Top10</a></li>
+										<li><a href="#" data-filter='.top10'>Top10</a></li>
 										<li><a href='#' data-filter='.new'>신규</a></li>
 										<li><a href='#' data-filter='.deadline'>마감임박</a></li>
 										<li><a href='#' data-filter='.beopen'>오픈예정</a></li>

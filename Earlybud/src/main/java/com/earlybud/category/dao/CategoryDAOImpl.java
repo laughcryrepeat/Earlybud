@@ -23,17 +23,40 @@ public class CategoryDAOImpl implements CategoryDAO {
 	private String ns2 = "com.earlybud.model.Category";	//카테고리 코드+이름만 담긴 오델
 	private String ns3 = "com.earlybud.vo.MainVO";
 	
-	@Override
-	public List<Category> getList(){
-		List<Category> listI = sqlSession.selectList(ns2+".getCateList");
-		System.out.println("Item list size: "+listI.size());
-		return listI;
-	}	
+	/*메인용*/
 	@Override
 	public List<MainVO> getMainList(HashMap map){
 		List<MainVO> itemMap = sqlSession.selectList(ns3+".getMainList", map);
 		return itemMap;
 	}
+	@Override
+	public List<MainVO> getRandomList(){
+		List<MainVO> itemMap = sqlSession.selectList(ns3+".getRandomList");
+		return itemMap;
+	}
+	@Override
+	public List<MainVO> getOpenRankNum(){
+		List<MainVO> itemMap = sqlSession.selectList(ns3+".getOpenRankNum");
+		return itemMap;
+	}
+	@Override
+	public List<MainVO> getRewardRankNum(){
+		List<MainVO> itemMap = sqlSession.selectList(ns3+".getRewardRankNum");
+		return itemMap;
+	}
+	@Override
+	public List<MainVO> getRankList(HashMap map){
+		List<MainVO> itemMap = sqlSession.selectList(ns3+".getRankList", map);
+		return itemMap;
+	}
+	
+	/*카테고리용*/
+	@Override
+	public List<Category> getList(){
+		List<Category> listI = sqlSession.selectList(ns2+".getCateList");
+		System.out.println("Item list size: "+listI.size());
+		return listI;
+	}		
 	@Override
 	public int countItem(HashMap map) {
 		return sqlSession.selectOne(ns+".countItem", map);
@@ -47,15 +70,5 @@ public class CategoryDAOImpl implements CategoryDAO {
 		List<CategoryVO> list = sqlSession.selectList(ns+".SelectCategory", map);
 		return list;
 	}
-	/*
-	@Override
-	public HashMap<String, Object> selectMain(long type_code) {
-		HashMap<String,Object> itemMap = sqlSession.selectOne(ns4+".selectTypeInfo", type_code);
-		System.out.println("selectTypeInfo after sql");
-		System.out.println("itemMap: "+itemMap);
-		System.out.println("itemMap.get('TITLE'):"+itemMap.get("TITLE"));
-		return itemMap;
-	}
-	*/
 	
 }

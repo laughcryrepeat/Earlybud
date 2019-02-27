@@ -18,7 +18,9 @@ public interface PaymentService {
 	void insertPaymentInfo(Payment_Info payInfo);
 	void updateType(long type_code);
 	void updateSum(long price, long type_code);
-	void canclePayment(Map<String, Object> map);
+	void canclePayment(Purchase_Item pItem);
 	void cancleMultiPayment(Map<String, Object> map);
 	List<Map<String, Object>> listClosingItem();
+	Purchase_Item selectPurchaseItem(String merchant_uid);
+	void updatePayItem(Map<String, Object> paymap);
 }
