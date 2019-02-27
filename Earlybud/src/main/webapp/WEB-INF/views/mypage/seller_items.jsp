@@ -8,9 +8,17 @@
 <html lang="en-US">
 
 <body>
+<<<<<<< HEAD
 		
+=======
+		
+>>>>>>> stash
 <%@include file="header.jsp" %>
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> stash
  <nav class="b-nav-global">
   <ul class="b-nav-global__items">
    
