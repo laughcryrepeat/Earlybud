@@ -5,12 +5,12 @@
   <mapper namespace="com.earlybud.vo.MessageListVO">
 	<insert id="sendMessage">
 		insert into MESSAGE values
-		(MESSAGE_CODE_SEQ.nextval, 1, 'skyblue@gmail.com', 'red@gmail.com', '새로운 메세지~~', to_date(SYSDATE, 'yyyy-mm-dd hh24:mi:ss'), 1)
+		(MESSAGE_CODE_SEQ.nextval, null, 'skyblue@gmail.com', 'red@gmail.com', '새로운 메세지~~', to_date(SYSDATE, 'yyyy-mm-dd hh24:mi:ss'), 1)
 	</insert>
 	
 	<insert id="sendMessageX">		
 		insert into MESSAGE values
-		(MESSAGE_CODE_SEQ.nextval, 1, #{receiver}, #{email}, #{content}, SYSDATE, 1)
+		(MESSAGE_CODE_SEQ.nextval, null, #{receiver}, #{email}, #{content}, SYSDATE, 1)
 	</insert>
 	
 	<update id="changeRead">

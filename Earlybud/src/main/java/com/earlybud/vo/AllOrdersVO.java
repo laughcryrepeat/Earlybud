@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AllOrdersVO {
+	private String item_code;
 	private String title;
 	private String success;
 	private String nickname;

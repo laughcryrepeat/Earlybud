@@ -27,7 +27,7 @@
   	
    	<insert id="sendMessage" parameterType="Message"> 
    	insert into message(message_code,item_code,receiver,sender,content,send_date,read_check)  
-   	values(MESSAGE_CODE_SEQ.nextval,#{item_code},#{receiver},#{sender},#{content},sysdate,0)  
+   	values(MESSAGE_CODE_SEQlikeSeller.nextval,#{item_code},#{receiver},#{sender},#{content},sysdate,0)  
    	</insert> 
   	
    	<update id="updateRead" parameterType="Integer"> 

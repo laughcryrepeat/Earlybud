@@ -27,7 +27,7 @@ public class MemberUploadController {
 	CustomUserDetailsService service;
 	@Autowired
 	NewProjectService projectS;
-	@RequestMapping("")
+	@RequestMapping("mypage/modify")
 	public String mypage(Model model){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();

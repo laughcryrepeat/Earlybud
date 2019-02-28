@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.earlybud.orders.service.AllOrdersService;
 import com.earlybud.orders.service.EachOrderService;
+import com.earlybud.payment.service.PaymentService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -17,6 +18,7 @@ import lombok.extern.log4j.Log4j;
 public class OrdersController {
 	private AllOrdersService service;
 	private EachOrderService serviceO;
+	private PaymentService payService;
 	
 	@RequestMapping(value = "member_orderlist/{email:.+}")
 	public String AllOrders(@PathVariable("email") String email, Model model) {

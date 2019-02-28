@@ -1,8 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="member_orderlist_header.jsp" %>
-<%@include file="header.jsp" %>
 <!doctype html> 
 <html class="no-js">
 
@@ -36,7 +35,13 @@
 
                            
                              <tbody style="background:#ffffff;">
+                             
                               <c:forEach items="${list}" var="list">
+<%--                               <c:when test="${empty list}"> --%>
+<!--                               <td class="text-center" style="vertical-align:middle; text-align:center;"> -->
+<!--                               	<span class="label label-default">주문 내역이 없습니다.</span> -->
+<!--                               	 </td> -->
+<%--                               </c:when> --%>
                                 <tr>
                                     <td style="vertical-align:middle">
                                         <div style="display:  inline-block; vertical-align:middle;">
@@ -74,18 +79,18 @@
                                     </td>
                                     <td style="vertical-align:middle; text-align:center;"><c:out value="${list.pur_date}"/></td>
                                     <td style="vertical-align:middle; text-align:center;">
-										    <a href="airi_like" class="table-link" >
+										    <a href="../reward?item_code=<c:out value="${list.item_code}"/>" class="table-link" >
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x" style="color:royalblue"></i>
                                                 <i class="fa fa-search-plus fa-stack-1x fa-inverse" ></i>
                                             </span>
 	                                        </a>
-	                                        <a href="#" class="table-link">
-	                                            <span class="fa-stack">
-	                                                <i class="fa fa-square fa-stack-2x" style="color:royalblue"></i>
-	                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-	                                            </span>
-	                                        </a>		
+<!-- 	                                        <a href="#" class="table-link"> -->
+<!-- 	                                            <span class="fa-stack"> -->
+<!-- 	                                                <i class="fa fa-square fa-stack-2x" style="color:royalblue"></i> -->
+<!-- 	                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i> -->
+<!-- 	                                            </span> -->
+<!-- 	                                        </a>		 -->
                                     </td>
                               
                                 </tr>

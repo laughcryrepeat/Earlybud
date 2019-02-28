@@ -71,6 +71,7 @@
         
         <div class="mesgs">
           <div class="msg_history">
+
         <c:forEach items="${listS}" var="listS">
         <c:choose>
         	<c:when test="${listS.RECEIVER eq myEmail}">

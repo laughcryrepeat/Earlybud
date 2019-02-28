@@ -49,9 +49,35 @@
 <link rel="mask-icon" href="/resources/static/svg/wadiz-simple.svg" color="#00CCA3">
 <link rel="shortcut icon" href="https://cdn.wadiz.kr/resources/static/icon/favicon.ico">
 <script type="text/javascript">
-window.wadizWebManifest={"0":"equity-feedback.js?543e2719c82224c0cf5b","1":"equity-update-news.js?44d4674ab5c1bffc9817","2":"equity-w9-membership.js?bb0afd0a3bd010cf80e1","3":"reward-comment-app.js?5b061d94cde928f3a043","4":"reward-supporter-list-app.js?e6d34aa1f120bbe08ff9","5":"5.js?52d90970ce07d33e422d","6":"6.js?38cd1d78a22a27c536f4","7":"7.js?09e8428ae03b4c8fa199","8":"8.js?1d2c9bd6ce5af63c4cc5","9":"9.js?96f38514a3834dc2b384","10":"equity.js?ba4a59078f4ac7697352","11":"reward.js?eb68b6d311a8cbcbcce6","12":"landing.js?58480fea0ae45fe4547e","13":"coming.js?d03abaee54c977115800","14":"equity-payment.js?9ddefa864fc858d4c761","15":"common.js?3441e2f6ee1fcac27a0e","16":"personal-message.js?3e57f726d36016907517","17":"account.js?0aded497b4b375998049","18":"studio.js?3c5f622faed521c5f3a8","19":"support-signature.js?a27535229cf39a168c04","20":"static/equity-join.js?93caf5bc1beed61afc2e","21":"equity-pre-quiz.js?c87fa3d0998b713c1b80","22":"static/openfunding.js?6e2c3b91b13273e46047","23":"static/wadiz2017.js?a4fb2ee339442ec6152b","24":"static/reward-open.js?3dabf8f27601e2c8aa2f","25":"static/equity-open.js?d47dd54b51347b9b1be1","26":"social.js?7f3ffdb4f9228d482664"};
+window.wadizWebManifest={"0":"equity-feedback.js?543e2719c82224c0cf5b","1":"equity-update-news.js?
+
+44d4674ab5c1bffc9817","2":"equity-w9-membership.js?bb0afd0a3bd010cf80e1","3":"reward-comment-app.js?
+
+5b061d94cde928f3a043","4":"reward-supporter-list-app.js?e6d34aa1f120bbe08ff9","5":"5.js?52d90970ce07d33e422d","6":"6.js?
+
+38cd1d78a22a27c536f4","7":"7.js?09e8428ae03b4c8fa199","8":"8.js?1d2c9bd6ce5af63c4cc5","9":"9.js?
+
+96f38514a3834dc2b384","10":"equity.js?ba4a59078f4ac7697352","11":"reward.js?eb68b6d311a8cbcbcce6","12":"landing.js?
+
+58480fea0ae45fe4547e","13":"coming.js?d03abaee54c977115800","14":"equity-payment.js?9ddefa864fc858d4c761","15":"common.js?
+
+3441e2f6ee1fcac27a0e","16":"personal-message.js?3e57f726d36016907517","17":"account.js?0aded497b4b375998049","18":"studio.js?
+
+3c5f622faed521c5f3a8","19":"support-signature.js?a27535229cf39a168c04","20":"static/equity-join.js?
+
+93caf5bc1beed61afc2e","21":"equity-pre-quiz.js?c87fa3d0998b713c1b80","22":"static/openfunding.js?
+
+6e2c3b91b13273e46047","23":"static/wadiz2017.js?a4fb2ee339442ec6152b","24":"static/reward-open.js?
+
+3dabf8f27601e2c8aa2f","25":"static/equity-open.js?d47dd54b51347b9b1be1","26":"social.js?7f3ffdb4f9228d482664"};
 window.wadiz = window.wadiz || {};window.wadiz.sessionUser="";</script>
-<link rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/vendor.css?966a1957dbe0ea1e47a26794a40b2772"><link rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/common.css?c067a4b077f78dd0d8ac2a36ba9e8c08"><script type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/vendor.js?33b07d8ab3089c7ecb0c"></script><script type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441e2f6ee1fcac27a0e"></script>
+<link rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/vendor.css?966a1957dbe0ea1e47a26794a40b2772"><link 
+
+rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/common.css?c067a4b077f78dd0d8ac2a36ba9e8c08"><script 
+
+type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/vendor.js?33b07d8ab3089c7ecb0c"></script><script 
+
+type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441e2f6ee1fcac27a0e"></script>
 <!-- S : page_head area -->
 
 <!-- E : page_head area -->
@@ -84,15 +110,13 @@ window.wadiz = window.wadiz || {};window.wadiz.sessionUser="";</script>
 	<style id="kirki-css-vars">:root{}</style>
 	<title>EarlyBud</title>
 	<link rel='dns-prefetch' href='//s.w.org' />
-	<link rel="alternate" type="application/rss+xml" title="Atu &raquo; Feed" href="https://demo.athemes.com/airi-portfolio/feed/" />
-	<link rel="alternate" type="application/rss+xml" title="Atu &raquo; Comments Feed" href="https://demo.athemes.com/airi-portfolio/comments/feed/" />
-<script type="text/javascript">
-	$(function(){
-		$('.project-filter').mouseenter(function(){
-			$('.project-filter').css("background-color", #db79f5)
-		});
-	});
-</script>
+	<link rel="alternate" type="application/rss+xml" title="Atu &raquo; Feed" href="https://demo.athemes.com/airi-
+
+portfolio/feed/" />
+	<link rel="alternate" type="application/rss+xml" title="Atu &raquo; Comments Feed" href="https://demo.athemes.com/airi-
+
+portfolio/comments/feed/" />
+
 	<script type="text/javascript">
 		window._wpemojiSettings = {
 			"baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/",
@@ -100,7 +124,9 @@ window.wadiz = window.wadiz || {};window.wadiz.sessionUser="";</script>
 			"svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/",
 			"svgExt": ".svg",
 			"source": {
-				"concatemoji": "https:\/\/demo.athemes.com\/airi-portfolio\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.9"
+				"concatemoji": "https:\/\/demo.athemes.com\/airi-portfolio\/wp-includes\/js\/wp-emoji-
+
+release.min.js?ver=4.9.9"
 			}
 		};
 		! function(a, b, c) {
@@ -118,8 +144,14 @@ window.wadiz = window.wadiz || {};window.wadiz.sessionUser="";</script>
 				if (!l || !l.fillText) return !1;
 				switch (l.textBaseline = "top", l.font = "600 32px Arial", a) {
 					case "flag":
-						return !(b = d([55356, 56826, 55356, 56819], [55356, 56826, 8203, 55356, 56819])) && (b = d([55356, 57332, 56128, 56423, 56128, 56418, 56128, 56421, 56128, 56430, 56128, 56423, 56128, 56447], [55356, 57332, 8203, 56128, 56423, 8203, 56128,
-							56418, 8203, 56128, 56421, 8203, 56128, 56430, 8203, 56128, 56423, 8203, 56128, 56447
+						return !(b = d([55356, 56826, 55356, 56819], [55356, 56826, 8203, 55356, 56819])) 
+
+&& (b = d([55356, 57332, 56128, 56423, 56128, 56418, 56128, 56421, 56128, 56430, 56128, 56423, 56128, 56447], [55356, 57332, 8203, 
+
+56128, 56423, 8203, 56128,
+							56418, 8203, 56128, 56421, 8203, 56128, 56430, 8203, 56128, 56423, 8203, 
+
+56128, 56447
 						]), !b);
 					case "emoji":
 						return b = d([55358, 56760, 9792, 65039], [55358, 56760, 8203, 9792, 65039]), !b
@@ -136,14 +168,24 @@ window.wadiz = window.wadiz || {};window.wadiz.sessionUser="";</script>
 			for (j = Array("flag", "emoji"), c.supports = {
 					everything: !0,
 					everythingExceptFlag: !0
-				}, i = 0; i < j.length; i++) c.supports[j[i]] = e(j[i]), c.supports.everything = c.supports.everything && c.supports[j[i]], "flag" !== j[i] && (c.supports.everythingExceptFlag = c.supports.everythingExceptFlag && c.supports[j[i]]);
-			c.supports.everythingExceptFlag = c.supports.everythingExceptFlag && !c.supports.flag, c.DOMReady = !1, c.readyCallback = function() {
+				}, i = 0; i < j.length; i++) c.supports[j[i]] = e(j[i]), c.supports.everything = 
+
+c.supports.everything && c.supports[j[i]], "flag" !== j[i] && (c.supports.everythingExceptFlag = c.supports.everythingExceptFlag 
+
+&& c.supports[j[i]]);
+			c.supports.everythingExceptFlag = c.supports.everythingExceptFlag && !c.supports.flag, c.DOMReady = !1, 
+
+c.readyCallback = function() {
 				c.DOMReady = !0
 			}, c.supports.everything || (h = function() {
 				c.readyCallback()
-			}, b.addEventListener ? (b.addEventListener("DOMContentLoaded", h, !1), a.addEventListener("load", h, !1)) : (a.attachEvent("onload", h), b.attachEvent("onreadystatechange", function() {
+			}, b.addEventListener ? (b.addEventListener("DOMContentLoaded", h, !1), a.addEventListener("load", h, !1)) 
+
+: (a.attachEvent("onload", h), b.attachEvent("onreadystatechange", function() {
 				"complete" === b.readyState && c.readyCallback()
-			})), g = c.source || {}, g.concatemoji ? f(g.concatemoji) : g.wpemoji && g.twemoji && (f(g.twemoji), f(g.wpemoji)))
+			})), g = c.source || {}, g.concatemoji ? f(g.concatemoji) : g.wpemoji && g.twemoji && (f(g.twemoji), f
+
+(g.wpemoji)))
 		}(window, document, window._wpemojiSettings);
 	</script>
 	<style type="text/css">
@@ -167,15 +209,33 @@ window.wadiz = window.wadiz || {};window.wadiz.sessionUser="";</script>
 			border: none !important;
 		}
 	</style>
-	<link rel='stylesheet' id='airi-bootstrap-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/css/bootstrap/bootstrap.min.css?ver=1' type='text/css' media='all' />
-	<link rel='stylesheet' id='contact-form-7-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.0.2' type='text/css' media='all' />
-	<link rel='stylesheet' id='airi-style-css' href='${pageContext.request.contextPath}/css/mypage/ewwww.css' type='text/css' media='all' />
-	<link rel='stylesheet' id='airi-font-awesome-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/css/font-awesome/css/font-awesome.min.css?ver=4.9.9' type='text/css' media='all' />
-	<link rel='stylesheet' id='elementor-icons-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=3.8.0' type='text/css' media='all' />
-	<link rel='stylesheet' id='elementor-animations-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=2.2.6' type='text/css' media='all' />
-	<link rel='stylesheet' id='elementor-frontend-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=2.2.6' type='text/css' media='all' />
-	<link rel='stylesheet' id='elementor-post-4-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/uploads/sites/92/elementor/css/post-4.css?ver=1540206708' type='text/css' media='all' />
-	<link rel='stylesheet' id='kirki-styles-airi-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/kirki/assets/css/kirki-styles.css?ver=3.0.33' type='text/css' media='all' />
+	<link rel='stylesheet' id='airi-bootstrap-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-
+
+content/themes/airi/css/bootstrap/bootstrap.min.css?ver=1' type='text/css' media='all' />
+	<link rel='stylesheet' id='contact-form-7-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-
+
+content/plugins/contact-form-7/includes/css/styles.css?ver=5.0.2' type='text/css' media='all' />
+	<link rel='stylesheet' id='airi-style-css' href='${pageContext.request.contextPath}/css/mypage/ewwww.css' type='text/css' 
+
+media='all' />
+	<link rel='stylesheet' id='airi-font-awesome-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-
+
+content/themes/airi/css/font-awesome/css/font-awesome.min.css?ver=4.9.9' type='text/css' media='all' />
+	<link rel='stylesheet' id='elementor-icons-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-
+
+content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=3.8.0' type='text/css' media='all' />
+	<link rel='stylesheet' id='elementor-animations-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-
+
+content/plugins/elementor/assets/lib/animations/animations.min.css?ver=2.2.6' type='text/css' media='all' />
+	<link rel='stylesheet' id='elementor-frontend-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-
+
+content/plugins/elementor/assets/css/frontend.min.css?ver=2.2.6' type='text/css' media='all' />
+	<link rel='stylesheet' id='elementor-post-4-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-
+
+content/uploads/sites/92/elementor/css/post-4.css?ver=1540206708' type='text/css' media='all' />
+	<link rel='stylesheet' id='kirki-styles-airi-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-
+
+content/plugins/kirki/assets/css/kirki-styles.css?ver=3.0.33' type='text/css' media='all' />
 	<style id='kirki-styles-airi-inline-css' type='text/css'>
 		h1,
 		h2,
@@ -347,16 +407,28 @@ window.wadiz = window.wadiz || {};window.wadiz.sessionUser="";</script>
 			color: #595959;
 		}
 	</style>
-	<script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
-	<script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+	<script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/jquery/jquery.js?
+
+ver=1.12.4'></script>
+	<script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/jquery/jquery-
+
+migrate.min.js?ver=1.4.1'></script>
 	<link rel='https://api.w.org/' href='https://demo.athemes.com/airi-portfolio/wp-json/' />
-	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://demo.athemes.com/airi-portfolio/xmlrpc.php?rsd" />
-	<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://demo.athemes.com/airi-portfolio/wp-includes/wlwmanifest.xml" />
+	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://demo.athemes.com/airi-portfolio/xmlrpc.php?rsd" 
+
+/>
+	<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://demo.athemes.com/airi-portfolio/wp-
+
+includes/wlwmanifest.xml" />
 	<meta name="generator" content="WordPress 4.9.9" />
 	<link rel="canonical" href="https://demo.athemes.com/airi-portfolio/" />
 	<link rel='shortlink' href='https://demo.athemes.com/airi-portfolio/' />
-	<link rel="alternate" type="application/json+oembed" href="https://demo.athemes.com/airi-portfolio/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdemo.athemes.com%2Fairi-portfolio%2F" />
-	<link rel="alternate" type="text/xml+oembed" href="https://demo.athemes.com/airi-portfolio/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdemo.athemes.com%2Fairi-portfolio%2F&#038;format=xml" />
+	<link rel="alternate" type="application/json+oembed" href="https://demo.athemes.com/airi-portfolio/wp-
+
+json/oembed/1.0/embed?url=https%3A%2F%2Fdemo.athemes.com%2Fairi-portfolio%2F" />
+	<link rel="alternate" type="text/xml+oembed" href="https://demo.athemes.com/airi-portfolio/wp-json/oembed/1.0/embed?
+
+url=https%3A%2F%2Fdemo.athemes.com%2Fairi-portfolio%2F&#038;format=xml" />
 
 	<!-- Google Webmaster Tools plugin for WordPress -->
 
@@ -443,9 +515,35 @@ window.wadiz = window.wadiz || {};window.wadiz.sessionUser="";</script>
 <link rel="mask-icon" href="/resources/static/svg/wadiz-simple.svg" color="#00CCA3">
 <link rel="shortcut icon" href="https://cdn.wadiz.kr/resources/static/icon/favicon.ico">
 <script type="text/javascript">
-window.wadizWebManifest={"0":"equity-feedback.js?543e2719c82224c0cf5b","1":"equity-update-news.js?44d4674ab5c1bffc9817","2":"equity-w9-membership.js?bb0afd0a3bd010cf80e1","3":"reward-comment-app.js?5b061d94cde928f3a043","4":"reward-supporter-list-app.js?e6d34aa1f120bbe08ff9","5":"5.js?52d90970ce07d33e422d","6":"6.js?38cd1d78a22a27c536f4","7":"7.js?09e8428ae03b4c8fa199","8":"8.js?1d2c9bd6ce5af63c4cc5","9":"9.js?96f38514a3834dc2b384","10":"equity.js?ba4a59078f4ac7697352","11":"reward.js?e337ab95a32d72c7aa25","12":"landing.js?58480fea0ae45fe4547e","13":"coming.js?7f4059d8898d4924b31a","14":"equity-payment.js?9ddefa864fc858d4c761","15":"common.js?3441e2f6ee1fcac27a0e","16":"personal-message.js?3e57f726d36016907517","17":"account.js?0aded497b4b375998049","18":"studio.js?3c5f622faed521c5f3a8","19":"support-signature.js?a27535229cf39a168c04","20":"static/equity-join.js?93caf5bc1beed61afc2e","21":"equity-pre-quiz.js?c87fa3d0998b713c1b80","22":"static/openfunding.js?6e2c3b91b13273e46047","23":"static/wadiz2017.js?a4fb2ee339442ec6152b","24":"static/reward-open.js?3dabf8f27601e2c8aa2f","25":"static/equity-open.js?d47dd54b51347b9b1be1","26":"social.js?7f3ffdb4f9228d482664"};
+window.wadizWebManifest={"0":"equity-feedback.js?543e2719c82224c0cf5b","1":"equity-update-news.js?
+
+44d4674ab5c1bffc9817","2":"equity-w9-membership.js?bb0afd0a3bd010cf80e1","3":"reward-comment-app.js?
+
+5b061d94cde928f3a043","4":"reward-supporter-list-app.js?e6d34aa1f120bbe08ff9","5":"5.js?52d90970ce07d33e422d","6":"6.js?
+
+38cd1d78a22a27c536f4","7":"7.js?09e8428ae03b4c8fa199","8":"8.js?1d2c9bd6ce5af63c4cc5","9":"9.js?
+
+96f38514a3834dc2b384","10":"equity.js?ba4a59078f4ac7697352","11":"reward.js?e337ab95a32d72c7aa25","12":"landing.js?
+
+58480fea0ae45fe4547e","13":"coming.js?7f4059d8898d4924b31a","14":"equity-payment.js?9ddefa864fc858d4c761","15":"common.js?
+
+3441e2f6ee1fcac27a0e","16":"personal-message.js?3e57f726d36016907517","17":"account.js?0aded497b4b375998049","18":"studio.js?
+
+3c5f622faed521c5f3a8","19":"support-signature.js?a27535229cf39a168c04","20":"static/equity-join.js?
+
+93caf5bc1beed61afc2e","21":"equity-pre-quiz.js?c87fa3d0998b713c1b80","22":"static/openfunding.js?
+
+6e2c3b91b13273e46047","23":"static/wadiz2017.js?a4fb2ee339442ec6152b","24":"static/reward-open.js?
+
+3dabf8f27601e2c8aa2f","25":"static/equity-open.js?d47dd54b51347b9b1be1","26":"social.js?7f3ffdb4f9228d482664"};
 window.wadiz = window.wadiz || {};window.wadiz.sessionUser="571408206";</script>
-<link rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/vendor.css?966a1957dbe0ea1e47a26794a40b2772"><link rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/common.css?c067a4b077f78dd0d8ac2a36ba9e8c08"><script type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/vendor.js?33b07d8ab3089c7ecb0c"></script><script type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441e2f6ee1fcac27a0e"></script>
+<link rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/vendor.css?966a1957dbe0ea1e47a26794a40b2772"><link 
+
+rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/common.css?c067a4b077f78dd0d8ac2a36ba9e8c08"><script 
+
+type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/vendor.js?33b07d8ab3089c7ecb0c"></script><script 
+
+type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441e2f6ee1fcac27a0e"></script>
 <!-- S : page_head area -->
 
 <script src="/resources/static/js/myfollow.js?v=20180416"></script>
@@ -491,58 +589,58 @@ window.wadiz = window.wadiz || {};window.wadiz.sessionUser="571408206";</script>
 
 <!-- 여기부터 와디즈 판매자 리스트 내용 -->
 
-<body class="post-template-default single single-post postid-1 single-format-standard wp-custom-logo woocommerce-no-js menuStyle2 menuNotContained sticky-header woocommerce-active elementor-default">
-  <div id="page" class="site">
-    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
-
-
-    <header id="masthead" class="site-header">
-
-      <div class="container-fluid">
-        <div class="row">
-          <div class="site-branding col-md-4 col-sm-6 col-9">
-            <a href="https://demo.athemes.com/airi-shop/" class="custom-logo-link" rel="home" itemprop="url"><img width="100" height="60" src="${pageContext.request.contextPath}/images/earlybud.png" class="custom-logo" alt="Atu" itemprop="logo" /></a> </div><!-- .site-branding -->
-
-          <div class="header-mobile-menu col-md-8 col-sm-6 col-3">
-            <button class="mobile-menu-toggle" aria-controls="primary-menu">
-              <span class="mobile-menu-toggle_lines"></span>
-              <span class="sr-only">Toggle mobile menu</span>
-            </button>
-          </div>
-
-          <nav id="site-navigation" class="main-navigation col-md-8">
-            <div class="menu-menu-container">
-              <ul id="primary-menu" class="menu">
-                <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a href="main">Home</a></li>
-				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">소개</a></li>
-				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">카테고리</a></li>
-				<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
-				<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/earlybud/customLogout">로그아웃</a></li>
-			</ul>
-            </div>
-            <ul class="header-search-cart">
-              <li class="header-search">
-                <div class="header-search-toggle"><a><i class="fa fa-search"></i></a></div>
-              </li>
-              <li class="header-cart-link">
-                <a class="cart-contents" href="https://demo.athemes.com/airi-shop" title="View your shopping cart">
-                  <i class="fa fa-shopping-bag"></i><span class="count">0</span>
-                </a>
-              </li>
-            </ul>
-          </nav><!-- #site-navigation -->
-
-        </div>
-      </div>
-      <div class="header-search-form">
-        <form role="search" method="get" class="search-form" action="https://demo.athemes.com/airi-shop/">
-          <label>
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
-          </label>
-          <input type="submit" class="search-submit" value="Search" />
-        </form>
-      </div>
+<body class="home page-template page-template-page-templates page-template-template_page-builder page-template-page-templatestemplate_page-builder-php page page-id-4 wp-custom-logo menuStyle2 menuContained sticky-header elementor-default elementor-page elementor-page-4">
+	<div id="page" class="site">
+		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+		<div id="masthead-sticky-wrapper" class="sticky-wrapper" style="height: 87px; min-height: 87px;">
+			<header id="masthead" class="site-header">
 	
-    </header><!-- #masthead -->
+				<div class="container">
+					<div class="row">
+						<div class="site-branding col-md-4 col-sm-6 col-9">
+							<a href="/../earlybud/main" class="custom-logo-link" rel="home" itemprop="url">
+								<img width="80" height="50" src="images/main/earlybud.png" class="custom-logo" alt="Atu" itemprop="logo">
+							</a>			
+						</div><!-- .site-branding -->
+			
+						<div class="header-mobile-menu col-md-8 col-sm-6 col-3">
+							<button class="mobile-menu-toggle" aria-controls="primary-menu">
+								<span class="mobile-menu-toggle_lines"></span>
+								<span class="sr-only">Toggle mobile menu</span>
+							</button>
+						</div>
+
+						<nav id="site-navigation" class="main-navigation col-md-8">
+							<div class="menu-menu-container">
+								<ul id="primary-menu" class="menu">
+									<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-4 current_page_item menu-item-43"><a href="/../earlybud/main">Home</a></li>
+									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">소개</a></li>
+									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">카테고리</a></li>									
+									
+									 <sec:authorize access="isAnonymous()">
+									 	<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">로그인/회원가입</a></li>
+									 	<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">마이페이지</a></li>
+									</sec:authorize>
+									<sec:authorize access="isAuthenticated()">
+										<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
+										<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/customLogout">로그아웃</a></li>
+										<li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79">마이페이지
+										<ul>
+										<li><a href="/../earlybud/mypage/modify">개인정보 수정</a></li>										
+										<li><a href="/../earlybud/mypage/<sec:authentication property="principal.member.email"/>">좋아요한 프로젝트/판매자</a></li>
+										<li><a href="/../earlybud/member_orderlist/<sec:authentication property="principal.member.email"/>">주문조회</a></li>
+										<li><a href="/../earlybud/message/<sec:authentication property="principal.member.email"/>" targe="popup"
+										onclick="window.open('/../earlybud/message/<sec:authentication property="principal.member.email"/>',	'popup', 'width=1000, height=750'); return false;">판매자 문의</a></li>
+										</ul>
+									</li>
+									</sec:authorize>
+									
+									
+									</ul>
+									</div>
+									</nav><!-- #site-navigation -->
+
+				</div>
+			</div>
+	</header>
 
