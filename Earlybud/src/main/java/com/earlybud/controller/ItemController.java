@@ -112,28 +112,29 @@ public class ItemController {
       
       String like_check = Long.toString(service.likeCheckService(map));
 
-      System.out.println("like체크는 "+like_check);
-      if (like_check.equals("0")) {         
-         System.out.println("like체크는 0임. 관심추가");         
-         if(service.likeAddService(map)){
-            System.out.println("관심추가완료");
-            like_check = "1";   
-         }
-      }else {         
-         System.out.println("like체크는 1임. 관심취소");
-         if(service.likeDelService(map)){
-            System.out.println("관심제외완료");
-            like_check = "0";
-         }         
-      }
-      Long count = service.countLikeService(Long.parseLong(item_code));
-      
-      HashMap<String, Object> map2 = new HashMap<String, Object>();
-      map2.put("likecheck", like_check);
-      map2.put("count", count);
-      
-      
-      return map2;
-   }
+		System.out.println("like체크는 "+like_check);
+		if (like_check.equals("0")) {			
+			System.out.println("like체크는 0임. 관심추가");			
+			if(service.likeAddService(map)){
+				System.out.println("관심추가완료");
+				like_check = "1";	
+			}
+		}else {			
+			System.out.println("like체크는 1임. 관심취소");
+			if(service.likeDelService(map)){
+				System.out.println("관심제외완료");
+				like_check = "0";
+			}			
+		}
+		Long count = service.countLikeService(Long.parseLong(item_code));
+		
+		HashMap<String, Object> map2 = new HashMap<String, Object>();
+		map2.put("likecheck", like_check);
+		map2.put("count", count);
+		
+		
+		return map2;
+	}
 
 }
+

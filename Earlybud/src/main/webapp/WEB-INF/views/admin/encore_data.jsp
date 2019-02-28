@@ -149,5 +149,9 @@
   	  });
     });
     </script>
+<<<<<<< HEAD
   </body>
+=======
+  </body>
+>>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
 </html>
