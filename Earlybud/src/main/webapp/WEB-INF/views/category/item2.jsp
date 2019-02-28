@@ -96,7 +96,9 @@
                                   <a href="/../earlybud/login" class="link_profile" id="link_message">개설자문의</a>
                               </sec:authorize>
                               <sec:authorize access="isAuthenticated()">
-                                  <a href="/../earlybud/message/${loginEM}/${item.EMAIL}" class="link_profile" id="link_message">개설자문의</a>
+                              
+                                  
+                                  <a href="/../earlybud/message/${loginEM}/${item.EMAIL}" target="popup" onclick="window.open('/../earlybud/message/${loginEM}/${item.EMAIL}', 'popup', 'width=1000, height=750'); return false;" class="link_profile" id="link_message">개설자문의</a>
                               </sec:authorize>                                       
                                     </div>
                                 </div>
