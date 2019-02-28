@@ -96,7 +96,7 @@ public class MainController {
 		rewardRankingList = service.getRankListService(rankInfo2);
 		System.out.println("rewardRankingList은 " + rewardRankingList);
 	}
-	
+	////
 		
 	ModelAndView mv = new ModelAndView("earlybud", "topList", topList);
 	mv.addObject("newList", newList); //전체 카테고리코드+이름담긴 리스트	
