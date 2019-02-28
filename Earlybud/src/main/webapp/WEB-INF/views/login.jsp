@@ -67,7 +67,7 @@
               <input type="password"required class="join" id="pwd" name="pwd" autocomplete="off"/>
             </div>
             <button id="join" type="submit" class="button button-block" onclick="if(!memberSubmit(this.form)){return false;}"/>회원가입</button>
-            <a class="button1 button-block" href="https://kauth.kakao.com/oauth/authorize?client_id=e6572958e72ab54e8d05db03cfd4ac7e&redirect_uri=http://localhost:8080/earlybud/oauth&response_type=code&scope=account_email
+            <a class="button1 button-block" href="https://kauth.kakao.com/oauth/authorize?client_id=e6572958e72ab54e8d05db03cfd4ac7e&redirect_uri=http://203.236.209.202:8080/earlybud/oauth&response_type=code&scope=account_email
 "><img class="img" src="images/login/kakaotalk.png">카카오로 회원가입</a>
             </form>
           </div>
@@ -87,7 +87,7 @@
             </div>
             <p class="forgot" id="forgot"><a href="#modal">비밀번호를 잊으셨나요?</a></p>
             <button class="button button-block"/>Log In</button>
-              <a class="button1 button-block" href="https://kauth.kakao.com/oauth/authorize?client_id=e6572958e72ab54e8d05db03cfd4ac7e&redirect_uri=http://localhost:8080/earlybud/oauth&response_type=code&scope=account_email
+              <a class="button1 button-block" href="https://kauth.kakao.com/oauth/authorize?client_id=e6572958e72ab54e8d05db03cfd4ac7e&redirect_uri=http://203.236.209.202:8080/earlybud/oauth&response_type=code&scope=account_email
 "><img class="img" src="images/login/kakaotalk.png">카카오로 로그인</a>
             	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
             
