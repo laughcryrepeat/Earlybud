@@ -35,6 +35,8 @@ public class NewProjectController {
 	@Autowired
 	NewProjectService projectS;
 	
+	String projectPath="C:\\Users\\hb6009\\git\\Earlybud\\Earlybud\\src\\main\\webapp\\resources\\uploads\\reward";
+	
 	DateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
 	@RequestMapping("newproject")
 	public String newProject(Model model) {
@@ -107,7 +109,7 @@ public class NewProjectController {
 		if(originFullName != "") {
 			originFullName = originFullName.trim();
 			if(originFullName.length() != 0) {
-				if(new File(profilePath,originFullName).exists()) {
+				if(new File(projectPath,originFullName).exists()) {
 					int idx = originFullName.lastIndexOf(".");
 					String fName = originFullName.substring(0,idx);
 					String fExt = originFullName.substring(idx+1);
@@ -117,7 +119,7 @@ public class NewProjectController {
 			}
 			System.out.println("save file name:"+saveName);
 			try {
-				main_image.transferTo(new File(profilePath,saveName));
+				main_image.transferTo(new File(projectPath,saveName));
 			}catch(Exception e) {
 			}
 			item.setMain_image(saveName);
@@ -140,7 +142,7 @@ public class NewProjectController {
 		return "newProject/newprojectDetail3";
 	}
 	@RequestMapping("newprojectCheck")
-	public void newProjectCheck(@RequestParam long item_code, @RequestParam("target_sum") long target_sum, @RequestParam String summary,
+	public String newProjectCheck(@RequestParam long item_code, @RequestParam("target_sum") long target_sum, @RequestParam String summary,
 			@RequestParam long[] type_code, @RequestParam String[] name, @RequestParam String[] info,@RequestParam String content){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
@@ -160,6 +162,7 @@ public class NewProjectController {
 			projectS.save2(type);
 		}
 		System.out.println("저장완료");
+		return "redirect:../mypage/sellerPage";
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////// 프로젝트 수정
@@ -237,7 +240,7 @@ public class NewProjectController {
 		if(originFullName != "") {
 			originFullName = originFullName.trim();
 			if(originFullName.length() != 0) {
-				if(new File(profilePath,originFullName).exists()) {
+				if(new File(projectPath,originFullName).exists()) {
 					int idx = originFullName.lastIndexOf(".");
 					String fName = originFullName.substring(0,idx);
 					String fExt = originFullName.substring(idx+1);
@@ -247,7 +250,7 @@ public class NewProjectController {
 			}
 			System.out.println("save file name:"+saveName);
 			try {
-				main_image.transferTo(new File(profilePath,saveName));
+				main_image.transferTo(new File(projectPath,saveName));
 			}catch(Exception e) {
 			}
 			item.setMain_image(saveName);

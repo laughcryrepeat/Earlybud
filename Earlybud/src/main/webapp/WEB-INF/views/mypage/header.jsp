@@ -467,6 +467,12 @@ url=https%3A%2F%2Fdemo.athemes.com%2Fairi-portfolio%2F&#038;format=xml" />
 		.site-header {
 			box-shadow: 0 2px 24px 0 rgba(51, 71, 86, 0.15);
 		}
+		.front_all {
+			  position:absolute;
+			  top50px;
+			  z-index:100;
+			}
+		
 	</style>
 	
 	
@@ -629,9 +635,10 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 										<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
 										<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/customLogout">로그아웃</a></li>
 										<li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79">마이페이지
-										<ul>
+										<ul class="front_all">
 										<li><a href="/../earlybud/mypage/modify">개인정보 수정</a></li>										
 										<li><a href="/../earlybud/mypage/<sec:authentication property="principal.member.email"/>">좋아요한 프로젝트/판매자</a></li>
+										<li><a href="/../earlybud/mypage/sellerPage">내가만든 프로젝트</a></li>
 										<li><a href="/../earlybud/member_orderlist/<sec:authentication property="principal.member.email"/>">주문조회</a></li>
 										<li><a href="/../earlybud/message/<sec:authentication property="principal.member.email"/>" targe="popup"
 										onclick="window.open('/../earlybud/message/<sec:authentication property="principal.member.email"/>',	'popup', 'width=1000, height=750'); return false;">판매자 문의</a></li>

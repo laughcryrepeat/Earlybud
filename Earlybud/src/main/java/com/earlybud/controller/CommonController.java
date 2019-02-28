@@ -88,7 +88,8 @@ public class CommonController {
     	  model.addAttribute("email", email);
     	  model.addAttribute("pw", id);
     	  return service.readM(email);
-      }
+      }else {
+    	  
       Member member = new Member();
       member.setEmail(email);
       member.setNickname(name);
@@ -98,6 +99,7 @@ public class CommonController {
       model.addAttribute("email", email);
 	  model.addAttribute("pw", id);
       return member;
+      }
    }
    @RequestMapping("/join")
    public String join_input(@RequestParam("email") String email, @RequestParam("pwd") String pwd, @RequestParam("nickname") String nickname, String error, Model model)
