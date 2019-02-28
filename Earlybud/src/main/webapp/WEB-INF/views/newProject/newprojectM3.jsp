@@ -438,7 +438,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="site-branding col-md-4 col-sm-6 col-9">
-            <a href="https://demo.athemes.com/airi-shop/" class="custom-logo-link" rel="home" itemprop="url"><img width="100" height="60" src="${pageContext.request.contextPath}/images/earlybud.png" class="custom-logo" alt="Atu" itemprop="logo" /></a> </div><!-- .site-branding -->
+            <a href="/../earlybud/main" class="custom-logo-link" rel="home" itemprop="url"><img width="100" height="60" src="${pageContext.request.contextPath}/images/earlybud.png" class="custom-logo" alt="Atu" itemprop="logo" /></a> </div><!-- .site-branding -->
 
           <div class="header-mobile-menu col-md-8 col-sm-6 col-3">
             <button class="mobile-menu-toggle" aria-controls="primary-menu">
@@ -450,23 +450,31 @@
           <nav id="site-navigation" class="main-navigation col-md-8">
             <div class="menu-menu-container">
               <ul id="primary-menu" class="menu">
-                <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a href="main">Home</a></li>
-				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">소개</a></li>
-				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">카테고리</a></li>
-				<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
-				<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/earlybud/customLogout">로그아웃</a></li>
+               <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-43"><a href="/../earlybud/main">Home</a></li>
+									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">소개</a></li>
+									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">카테고리</a></li>									
+									
+									 <sec:authorize access="isAnonymous()">
+									 	<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">로그인/회원가입</a></li>
+									 	<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">마이페이지</a></li>
+									</sec:authorize>
+									<sec:authorize access="isAuthenticated()">
+										<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
+										<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/customLogout">로그아웃</a></li>
+										<li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79">마이페이지
+										<ul>
+										<li><a href="/../earlybud/mypage/modify">개인정보 수정</a></li>										
+										<li><a href="/../earlybud/mypage/<sec:authentication property="principal.member.email"/>">좋아요한 프로젝트/판매자</a></li>
+										<li><a href="/../earlybud/member_orderlist/<sec:authentication property="principal.member.email"/>">주문조회</a></li>
+										<li><a href="/../earlybud/message/<sec:authentication property="principal.member.email"/>" targe="popup"
+										onclick="window.open('/../earlybud/message/<sec:authentication property="principal.member.email"/>',	'popup', 'width=1000, height=750'); return false;">판매자 문의</a></li>
+										</ul>
+									</li>
+									</sec:authorize>
+									
+									
 				</ul>
-            </div>
-            <ul class="header-search-cart">
-              <li class="header-search">
-                <div class="header-search-toggle"><a><i class="fa fa-search"></i></a></div>
-              </li>
-              <li class="header-cart-link">
-                <a class="cart-contents" href="https://demo.athemes.com/airi-shop" title="View your shopping cart">
-                  <i class="fa fa-shopping-bag"></i><span class="count">0</span>
-                </a>
-              </li>
-            </ul>
+           
           </nav><!-- #site-navigation -->
 
         </div>
@@ -532,74 +540,6 @@
           </div><!-- #comments -->
           </main><!-- #main -->
         </div><!-- #primary -->
-
-        <div id="sidebar-footer" class="footer-widgets" role="complementary">
-          <div class="container">
-            <div class="row">
-              <div class="sidebar-column col-md-3">
-                <section id="text-2" class="widget widget_text">
-                  <div class="textwidget">
-                    <p><img class="alignnone size-full wp-image-350" src="//demo.athemes.com/atu-shop/wp-content/uploads/sites/93/2018/09/airishop..png" alt="" width="66" height="24" /></p>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia dese mollit anim id est laborum.</p>
-                    <p><span style="color: #bfbfbf;">@2018 atu. All rights reserved.</span></p>
-                  </div>
-                </section>
-              </div>
-
-
-              <div class="sidebar-column col-md-3">
-                <section id="text-3" class="widget widget_text">
-                  <h3 class="widget-title">Contact us</h3>
-                  <div class="textwidget">
-                    <p><span style="color: #bfbfbf;">Email:</span> office@example.org</p>
-                    <p><span style="color: #bfbfbf;">Phone:</span> (+88) 999.888</p>
-                    <p><span style="color: #bfbfbf;">Address:</span> 25 Canal St., New York</p>
-                  </div>
-                </section>
-              </div>
-
-              <div class="sidebar-column col-md-3">
-                <section id="nav_menu-2" class="widget widget_nav_menu">
-                  <h3 class="widget-title">Quick links</h3>
-                  <div class="menu-quick-links-container">
-                    <ul id="menu-quick-links" class="menu">
-                      <li id="menu-item-119" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-119"><a href="#">About us</a></li>
-                      <li id="menu-item-120" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-120"><a href="#">Terms of service</a></li>
-                      <li id="menu-item-121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-121"><a href="#">Privacy policy</a></li>
-                    </ul>
-                  </div>
-                </section>
-              </div>
-              <div class="sidebar-column col-md-3">
-                <section id="athemes_social_widget-2" class="widget widget_athemes_social_widget">
-                  <h3 class="widget-title">Follow us</h3>
-                  <div class="menu-social-container">
-                    <ul id="menu-social" class="menu social-media-list clearfix">
-                      <li id="menu-item-122" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-122"><a href="https://facebook.com"><span class="screen-reader-text">Facebook</span></a></li>
-                      <li id="menu-item-123" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-123"><a href="https://twitter.com"><span class="screen-reader-text">Twitter</span></a></li>
-                      <li id="menu-item-124" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-124"><a href="https://instagram.com"><span class="screen-reader-text">Instagram</span></a></li>
-                      <li id="menu-item-125" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-125"><a href="https://linkedin.com"><span class="screen-reader-text">Linkedin</span></a></li>
-                    </ul>
-                  </div>
-                </section>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <footer id="colophon" class="site-footer">
-          <div class="container">
-            <div class="row">
-
-              <div class="site-info col-md-12">
-
-                <a href="https://wordpress.org/">Proudly powered by WordPress</a>
-                <span class="sep"> | </span>
-                Theme: <a href="https://athemes.com/theme/airi">Airi</a> by aThemes. </div><!-- .site-info -->
-
-            </div>
-          </div>
-        </footer><!-- #colophon -->
       </div><!-- #page -->
 
       <script type="text/javascript">

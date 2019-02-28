@@ -441,6 +441,7 @@
 										<ul>
 										<li><a href="mypage/modify">개인정보 수정</a></li>										
 										<li><a href="mypage/<sec:authentication property="principal.member.email"/>">좋아요한 프로젝트/판매자</a></li>
+										<li><a href="/../earlybud/mypage/sellerPage">내가만든 프로젝트</a></li>
 										<li><a href="member_orderlist/<sec:authentication property="principal.member.email"/>">주문조회</a></li>
 										<li><a href="message/<sec:authentication property="principal.member.email"/>" targe="popup"
 										onclick="window.open('message/<sec:authentication property="principal.member.email"/>',	'popup', 'width=1000, height=750'); return false;">판매자 문의</a></li>
@@ -515,27 +516,25 @@
                 </ul>
               </div>
               
-              <div id="rankContent1 rankContent3" class="ranking-content">
+              <div id="rankContent1" class="ranking-content">
                 <div class="helpinfo">
-                  <button class="btn-helpinfo"><i class="wadizicon wa-help" aria-hidden="true"></i></button>
+                  <button class="btn-helpinfo"><i class="wadizicon wa-help" aria-hidden="true"></i><img src="${pageContext.request.contextPath}/images/main/help2.png"></button>
                   <div class="rank-helpinfo">펀딩 횟수가 가장 많은 프로젝트 순으로 정렬됩니다.</div>
                 </div>                
                     <a href="/../earlybud/reward?item_code=<c:out value="${rewardRankingList[0].ITEM_CODE}"/>" title="<c:out value="${rewardRankingList[0].TITLE}"/>">
                          <em class="ranking-img" style="background-image:url(${pageContext.request.contextPath}/uploads/reward/<c:out value="${rewardRankingList[0].MAIN_IMAGE}"/>)"></em>
                             </a>
                     <div class="ranking-list">
-                      <ol>                      	       
-                    <c:set var="num" value="0"/> 
+                      <ol>                      	   
                       	       
-                      <c:forEach items="${rewardRankingList}" var="ranking">	 
-                      		<c:set var="sum" value="${num+1}"/>               	
+                      <c:forEach items="${rewardRankingList}" var="ranking" varStatus="status">	                       	             	
                         <li>
                           <div>
                             <p class="real">
-                            <em>${sum}</em>
+                            <em>${status.count}</em>
                             <a href="/../earlybud/reward?item_code=<c:out value="${ranking.ITEM_CODE}"/>"><c:out value="${ranking.TITLE}"/></a>
                           </p>
-                            <p><em>${sum}</em><a href="/../earlybud/reward?item_code=<c:out value="${ranking.ITEM_CODE}"/>"><c:out value="${ranking.TITLE}"/></a></p>
+                            <p><em>${status.count}</em><a href="/../earlybud/reward?item_code=<c:out value="${ranking.ITEM_CODE}"/>"><c:out value="${ranking.TITLE}"/></a></p>
                           </div>
                         </li>
                         
@@ -555,17 +554,15 @@
                             </a>
                 <div class="ranking-list">
                   <ol>
-               <c:set var="num" value="0"/>              		
 			
-                   <c:forEach items="${openRankingList}" var="ranking">	
-                   		<c:set var="sum" value="${num+1}"/> 
+                   <c:forEach items="${openRankingList}" var="ranking" varStatus="status">	
                     <li>
                        <div>
                          <p class="real">
-                         <em>${sum}</em>
+                         <em>${status.count}</em>
                          <a href="/../earlybud/reward?item_code=<c:out value="${ranking.ITEM_CODE}"/>"><c:out value="${ranking.TITLE}"/></a>
                        </p>
-                         <p><em>${sum}</em><a href="/../earlybud/reward?item_code=<c:out value="${ranking.ITEM_CODE}"/>"><c:out value="${ranking.TITLE}"/></a></p>
+                         <p><em>${status.count}</em><a href="/../earlybud/reward?item_code=<c:out value="${ranking.ITEM_CODE}"/>"><c:out value="${ranking.TITLE}"/></a></p>
                        </div>
                     </li>
                     

@@ -3,12 +3,18 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
-<%@include file="header.jsp" %>
 <%@include file="seller_items_header.jsp" %>
+<%@include file="header.jsp" %>
 
 <!doctype html> 
 <html class="no-js">
-
+<!doctype html>
+<html lang="en-US">
+<style>
+.b-flag {
+z-index: 1 !important;
+}
+</style>
 <body>
 
 	<nav class="b-nav-global">
@@ -21,11 +27,11 @@
   <div class="b-valign__inner">
       <div class="changable-content">
         <div class="b-avatar has-pad-bottom-dot5 is_vaporable" style="width: 96px">
-  <div class="b-avatar__frame b-avatar__frame--bordered" style="width:96px; height:96px">
-    <img alt="6e65e28f-55c7-435a-a6c7-9b70c09f2233.jpg?ixlib=rb-1.1.0&amp;w=200&amp;h=250&amp;auto=format%2ccompress&amp;fit=facearea&amp;facepad=2" class="b-avatar__pic"
-    src='${pageContext.request.contextPath}/uploads/member/profile/${seller.image}' />
-</div>
-</div>
+		  <div class="b-avatar__frame b-avatar__frame--bordered" style="width:96px; height:96px">
+		    <img alt="6e65e28f-55c7-435a-a6c7-9b70c09f2233.jpg?ixlib=rb-1.1.0&amp;w=200&amp;h=250&amp;auto=format%2ccompress&amp;fit=facearea&amp;facepad=2" class="b-avatar__pic"
+		    src='${pageContext.request.contextPath}/uploads/member/profile/${seller.image}' />
+			</div>
+			</div>
         <h1 class="headline text-size_3xl is_vaporable">
           <sec:authentication property="principal.member.nickname"/>
         </h1>
@@ -37,6 +43,13 @@
             </a>
             </li > 
         </ul>
+        <div class="elementor-button-wrapper">
+			<a href="../newproject/newproject" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+				<span class="elementor-button-content-wrapper">
+					<span class="elementor-button-text">지금 프로젝트 만들기</span>
+				</span>
+			</a>
+		</div>
           <br/>
       </div>
       </div>
@@ -260,55 +273,8 @@
          <!-- #primary -->
       </div><!-- #content -->
       
-      <div id="sidebar-footer" class="footer-widgets" role="complementary">
-         <div class="container">
-            <div class="row">
-               <div class="sidebar-column col-md-4">
-                  <section id="text-2" class="widget widget_text">
-                     <div class="textwidget">
-                        <p><strong>+999.222.333</strong></p>
-                     </div>
-                  </section>
-               </div>
-
-               <div class="sidebar-column col-md-4">
-                  <section id="athemes_social_widget-2" class="widget widget_athemes_social_widget">
-                     <div class="menu-social-container">
-                        <ul id="menu-social" class="menu social-media-list clearfix">
-                           <li id="menu-item-47" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-47"><a href="https://facebook.com"><span class="screen-reader-text">Facebook</span></a></li>
-                           <li id="menu-item-48" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-48"><a href="https://twitter.com"><span class="screen-reader-text">Twitter</span></a></li>
-                           <li id="menu-item-49" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-49"><a href="https://instagram.com"><span class="screen-reader-text">Instagram</span></a></li>
-                           <li id="menu-item-50" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-50"><a href="https://youtube.com"><span class="screen-reader-text">Youtube</span></a></li>
-                           <li id="menu-item-51" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51"><a href="https://linkedin.com"><span class="screen-reader-text">Linkedin</span></a></li>
-                        </ul>
-                     </div>
-                  </section>
-               </div>
-
-               <div class="sidebar-column col-md-4">
-                  <section id="text-3" class="widget widget_text">
-                     <div class="textwidget">
-                        <p><strong>office@example.org</strong></p>
-                     </div>
-                  </section>
-               </div>
-
-            </div>
-         </div>
-      </div>
-      <footer id="colophon" class="site-footer">
-         <div class="container">
-            <div class="row">
-
-               <div class="site-info col-md-12">
-
-                  <a href="https://wordpress.org/">Proudly powered by WordPress</a>
-                  <span class="sep"> | </span>
-                  Theme: <a href="https://athemes.com/theme/airi">Airi</a> by aThemes. </div><!-- .site-info -->
-
-            </div>
-         </div>
-      </footer><!-- #colophon -->
+    
+      
    </div><!-- #page -->
    
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
