@@ -41,7 +41,7 @@
   	<select id="listEncoreItem" resultType="Item">
   	select ITEM_CODE, TITLE, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
   	ENCORE_NUM, ENCORE, EMAIL from ITEM where ENCORE_NUM <![CDATA[ > ]]> 10 and SUCCESS >0 
-  	 and ITEM_CODE not in (select ITEM_CODE from ENCORE)
+  	 and ADMINCALL=0 and ITEM_CODE not in (select ITEM_CODE from ENCORE)
   	 order by ITEM_CODE desc
   	</select>
   	
@@ -56,6 +56,11 @@
   	<select id="sellerItem" parameterType="ITEM" resultType="Item">
   	select ITEM_CODE, TITLE, SUMMARY, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
   	ENCORE_NUM, ENCORE, EMAIL from ITEM where email=#{email} and SUCCESS = 0
+  	</select>
+  	
+  	<select id="sellerEditItem" parameterType="ITEM" resultType="Item">
+  	select ITEM_CODE, TITLE, SUMMARY, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
+  	ENCORE_NUM, ENCORE, EMAIL from ITEM where email=#{email} and ADMINCALL is null or ADMINCALL = 2
   	</select>
   	
   	<select id="sellerEndItem" parameterType="ITEM" resultType="Item">
@@ -119,5 +124,9 @@
 	update ITEM set CUR_SUM = ( CUR_SUM - #{price} ) 
 	where ITEM_CODE = ( select ITEM_CODE from TYPE where TYPE_CODE = #{type_code})
 	</update>
+
+	<update id="applyItem" parameterType="Long">
+  	update ITEM set ADMINCALL=0 where ITEM_CODE = #{item_code}
+  	</update>
 
   </mapper>
