@@ -433,7 +433,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="site-branding col-md-4 col-sm-6 col-9">
-            <a href="https://demo.athemes.com/airi-shop/" class="custom-logo-link" rel="home" itemprop="url"><img width="100" height="60" src="${pageContext.request.contextPath}/images/earlybud.png" class="custom-logo" alt="Atu" itemprop="logo" /></a> </div><!-- .site-branding -->
+            <a href="/../earlybud/main" class="custom-logo-link" rel="home" itemprop="url"><img width="100" height="60" src="${pageContext.request.contextPath}/images/earlybud.png" class="custom-logo" alt="Atu" itemprop="logo" /></a> </div><!-- .site-branding -->
 
           <div class="header-mobile-menu col-md-8 col-sm-6 col-3">
             <button class="mobile-menu-toggle" aria-controls="primary-menu">
@@ -445,23 +445,31 @@
           <nav id="site-navigation" class="main-navigation col-md-8">
             <div class="menu-menu-container">
               <ul id="primary-menu" class="menu">
-                <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a href="main">Home</a></li>
-				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">소개</a></li>
-				<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="category">카테고리</a></li>
-				<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
-				<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/earlybud/customLogout">로그아웃</a></li>
+               <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-43"><a href="/../earlybud/main">Home</a></li>
+									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">소개</a></li>
+									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">카테고리</a></li>									
+									
+									 <sec:authorize access="isAnonymous()">
+									 	<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">로그인/회원가입</a></li>
+									 	<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">마이페이지</a></li>
+									</sec:authorize>
+									<sec:authorize access="isAuthenticated()">
+										<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
+										<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/customLogout">로그아웃</a></li>
+										<li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79">마이페이지
+										<ul>
+										<li><a href="/../earlybud/mypage/modify">개인정보 수정</a></li>										
+										<li><a href="/../earlybud/mypage/<sec:authentication property="principal.member.email"/>">좋아요한 프로젝트/판매자</a></li>
+										<li><a href="/../earlybud/member_orderlist/<sec:authentication property="principal.member.email"/>">주문조회</a></li>
+										<li><a href="/../earlybud/message/<sec:authentication property="principal.member.email"/>" targe="popup"
+										onclick="window.open('/../earlybud/message/<sec:authentication property="principal.member.email"/>',	'popup', 'width=1000, height=750'); return false;">판매자 문의</a></li>
+										</ul>
+									</li>
+									</sec:authorize>
+									
+									
 				</ul>
-            </div>
-            <ul class="header-search-cart">
-              <li class="header-search">
-                <div class="header-search-toggle"><a><i class="fa fa-search"></i></a></div>
-              </li>
-              <li class="header-cart-link">
-                <a class="cart-contents" href="https://demo.athemes.com/airi-shop" title="View your shopping cart">
-                  <i class="fa fa-shopping-bag"></i><span class="count">0</span>
-                </a>
-              </li>
-            </ul>
+           
           </nav><!-- #site-navigation -->
 
         </div>
