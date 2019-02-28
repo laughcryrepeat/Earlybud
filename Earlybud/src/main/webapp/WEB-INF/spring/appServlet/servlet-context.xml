@@ -22,7 +22,7 @@
 	<resources mapping="/css/**" location="/resources/css/" />
 	<resources mapping="/images/**" location="/resources/images/" />
 	<resources mapping="/summernote/**" location="/resources/summernote/" />
-	<resources mapping="/uploads/**" location="file:///C:\Users\hb6009\git\Earlybud\Earlybud\src\main\webapp\resources\uploads\" />
+	<resources mapping="/uploads/**" location="file:///C:/Users/Naar/git/Earlybud/Earlybud/src/main/webapp/resources/uploads/" />
 
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->

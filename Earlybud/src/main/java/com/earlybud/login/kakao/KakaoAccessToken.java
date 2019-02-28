@@ -24,7 +24,7 @@ public class KakaoAccessToken {
         
         postParams.add(new BasicNameValuePair("grant_type", "authorization_code"));
         postParams.add(new BasicNameValuePair("client_id", "e6572958e72ab54e8d05db03cfd4ac7e"));
-        postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost:8080/earlybud/oauth"));
+        postParams.add(new BasicNameValuePair("redirect_uri", "http://203.236.209.202:8080/earlybud/oauth"));
         postParams.add(new BasicNameValuePair("code", code));
         
         final HttpClient client = HttpClientBuilder.create().build();

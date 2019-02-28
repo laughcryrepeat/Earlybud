@@ -226,7 +226,7 @@ public class NewProjectController {
 		return "newProject/newprojectM2";
 	}
 	@RequestMapping("newprojectModify3")
-	public String newProjectModify3(@RequestParam long item_code, Model model, @RequestParam long cat_code, @RequestParam String title, @RequestParam MultipartFile main_image,
+	public String newProjectModify3(@RequestParam long item_code, Model model, @RequestParam String image_name, @RequestParam long cat_code, @RequestParam String title, @RequestParam MultipartFile main_image,
 			@RequestParam String opendate, @RequestParam String closingdate, Type type) throws ParseException, IOException{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
@@ -252,6 +252,7 @@ public class NewProjectController {
 			}
 			item.setMain_image(saveName);
 		}else {
+			item.setMain_image(image_name);
 		}
 		Date startDate = new  SimpleDateFormat("yyyy-MM-dd").parse(opendate);
 		Date endDate = new  SimpleDateFormat("yyyy-MM-dd").parse(closingdate);
@@ -289,7 +290,7 @@ public class NewProjectController {
 		projectS.modifyType(item_code);
 		System.out.println(type_code.length);
 		type.setItem_code(item_code);
-		for(int i=0; i<=type_code.length; i++) {
+		for(int i=0; i<type_code.length; i++) {
 			System.out.println(type_code[i]+name[i]+info[i]);
 			type.setPrice(type_code[i]);
 			type.setName(name[i]);

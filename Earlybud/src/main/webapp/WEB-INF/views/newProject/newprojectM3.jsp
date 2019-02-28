@@ -29,6 +29,8 @@
     $(document).ready(function() {
     	var add_button = $(".add_field_button");
       $('.hiddenO').trigger('click');
+      $('.add_field_button').trigger('click');
+      $('.remove_field').trigger('click');
       $('.summernote').summernote({
         height: 300,
         tabsize: 2
@@ -530,74 +532,6 @@
           </div><!-- #comments -->
           </main><!-- #main -->
         </div><!-- #primary -->
-
-        <div id="sidebar-footer" class="footer-widgets" role="complementary">
-          <div class="container">
-            <div class="row">
-              <div class="sidebar-column col-md-3">
-                <section id="text-2" class="widget widget_text">
-                  <div class="textwidget">
-                    <p><img class="alignnone size-full wp-image-350" src="//demo.athemes.com/atu-shop/wp-content/uploads/sites/93/2018/09/airishop..png" alt="" width="66" height="24" /></p>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia dese mollit anim id est laborum.</p>
-                    <p><span style="color: #bfbfbf;">@2018 atu. All rights reserved.</span></p>
-                  </div>
-                </section>
-              </div>
-
-
-              <div class="sidebar-column col-md-3">
-                <section id="text-3" class="widget widget_text">
-                  <h3 class="widget-title">Contact us</h3>
-                  <div class="textwidget">
-                    <p><span style="color: #bfbfbf;">Email:</span> office@example.org</p>
-                    <p><span style="color: #bfbfbf;">Phone:</span> (+88) 999.888</p>
-                    <p><span style="color: #bfbfbf;">Address:</span> 25 Canal St., New York</p>
-                  </div>
-                </section>
-              </div>
-
-              <div class="sidebar-column col-md-3">
-                <section id="nav_menu-2" class="widget widget_nav_menu">
-                  <h3 class="widget-title">Quick links</h3>
-                  <div class="menu-quick-links-container">
-                    <ul id="menu-quick-links" class="menu">
-                      <li id="menu-item-119" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-119"><a href="#">About us</a></li>
-                      <li id="menu-item-120" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-120"><a href="#">Terms of service</a></li>
-                      <li id="menu-item-121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-121"><a href="#">Privacy policy</a></li>
-                    </ul>
-                  </div>
-                </section>
-              </div>
-              <div class="sidebar-column col-md-3">
-                <section id="athemes_social_widget-2" class="widget widget_athemes_social_widget">
-                  <h3 class="widget-title">Follow us</h3>
-                  <div class="menu-social-container">
-                    <ul id="menu-social" class="menu social-media-list clearfix">
-                      <li id="menu-item-122" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-122"><a href="https://facebook.com"><span class="screen-reader-text">Facebook</span></a></li>
-                      <li id="menu-item-123" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-123"><a href="https://twitter.com"><span class="screen-reader-text">Twitter</span></a></li>
-                      <li id="menu-item-124" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-124"><a href="https://instagram.com"><span class="screen-reader-text">Instagram</span></a></li>
-                      <li id="menu-item-125" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-125"><a href="https://linkedin.com"><span class="screen-reader-text">Linkedin</span></a></li>
-                    </ul>
-                  </div>
-                </section>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <footer id="colophon" class="site-footer">
-          <div class="container">
-            <div class="row">
-
-              <div class="site-info col-md-12">
-
-                <a href="https://wordpress.org/">Proudly powered by WordPress</a>
-                <span class="sep"> | </span>
-                Theme: <a href="https://athemes.com/theme/airi">Airi</a> by aThemes. </div><!-- .site-info -->
-
-            </div>
-          </div>
-        </footer><!-- #colophon -->
       </div><!-- #page -->
 
       <script type="text/javascript">
@@ -711,20 +645,23 @@
 		  e.preventDefault();
 		  if(x < max_fields){
 			  x++;
-			  $(wrapper).append('<c:forEach items="${type}" var="t"><div><td><input class="option_code" id="otype_code" name="otype_code" type="text" value="${t.price}" size="10" maxlength="20" /></td><td><input class="option_name" id="otype_name" name="oname" type="text" value="${t.name}" size="20" maxlength="60" /></td><td><input class="option_info" id="dinfo" name="dinfo" value="${t.info}" type="text" size="30" maxlength="100" /></td><a href="#" class="remove_field">remove</a></div>\n</c:forEach>');
+			  $(wrapper).append('<c:forEach items="${type}" var="t"><div><td><input class="option_code" id="otype_code" name="otype_code" type="text" value="${t.price}" size="10" maxlength="20" /></td><td><input class="option_name" id="otype_name" name="oname" type="text" value="${t.name}" size="20" maxlength="60" /></td><td><input class="option_info" id="dinfo" name="dinfo" value="${t.info}" type="text" size="30" maxlength="100" /></td><a href="#" class="remov_field">remove</a></div>\n</c:forEach>');
+			  $(hidden).append('<div><input class="ocodeh" id="type_code" name="type_code" type="hidden" size="10" maxlength="20" /><input class="onameh" id="type_name" name="name" type="hidden" size="20" maxlength="60" /><input class="oinfoh" id="info" name="info" type="hidden" size="30" maxlength="100" />');
+	  	  }
+	  });
+	  $(add_button).click(function(e){
+		  e.preventDefault();
+		  if(x < max_fields){
+			  x++;
+			  $(wrapper).append('<div><input class="option_code" id="otype_code" name="otype_code" type="text" size="10" maxlength="20" /><input class="option_name" id="otype_name" name="oname" type="text" size="20" maxlength="60" /><input class="option_info" id="dinfo" name="dinfo" type="text" size="30" maxlength="100" /><a href="#" class="remove_field">remove</a></div>\n');
 			  $(hidden).append('<div><input class="ocodeh" id="type_code" name="type_code" type="hidden" size="10" maxlength="20" /><input class="onameh" id="type_name" name="name" type="hidden" size="20" maxlength="60" /><input class="oinfoh" id="info" name="info" type="hidden" size="30" maxlength="100" />');
 		  }
-		  $(add_button).click(function(e){
-			  e.preventDefault();
-			  if(x < max_fields){
-				  x++;
-				  $(wrapper).append('<div><input class="option_code" id="otype_code" name="otype_code" type="text" size="10" maxlength="20" /><input class="option_name" id="otype_name" name="oname" type="text" size="20" maxlength="60" /><input class="option_info" id="dinfo" name="dinfo" type="text" size="30" maxlength="100" /><a href="#" class="remove_field">remove</a></div>\n');
-				  $(hidden).append('<div><input class="ocodeh" id="type_code" name="type_code" type="hidden" size="10" maxlength="20" /><input class="onameh" id="type_name" name="name" type="hidden" size="20" maxlength="60" /><input class="oinfoh" id="info" name="info" type="hidden" size="30" maxlength="100" />');
-			  }
-		  })
+	  })
 	  		$(wrapper).on("click",".remove_field", function(e){
 		 		 e.preventDefault(); $(this).parent('div').remove(); x--;
 			})
+	  		$(wrapper).on("click",".remov_field", function(e){
+		 		 e.preventDefault(); $(this).parent('div').remove(); x--;
 			});
 	  window.onclick = function(event) {
           if (event.target == mymodal) {
@@ -738,7 +675,7 @@
         		  hc[i].value = oc[i].value;
         		  hn[i].value = on[i].value;
         		  hi[i].value = oi[i].value;
-        		  console.log("타입코드"+hc[i].value);
+        		  console.log("타입코드"+ hc[i].value);
         		  console.log(hn[i].value);
         		  console.log(hi[i].value);
         		  
