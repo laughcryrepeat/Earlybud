@@ -17,8 +17,8 @@
    		<result property="imp_uid" column="IMP_UID"/>
    	</resultMap>
 	
-	<select id="listPurItem" resultType="map">
-		
+	<select id="selectPurItem" resultType="Purchase_Item">
+	select * from PURCHASE_ITEM where MERCHANT_UID= #{merchant_uid}
 	</select>
 	
 	<select id="listClosingItem" resultType="map">
@@ -36,5 +36,10 @@
 	insert into PURCHASE_ITEM (merchant_uid,customer_uid,email,item_code,type_code,price,pur_date,cancel,invoice,pur_state,imp_uid)  
    	values(#{merchant_uid},#{customer_uid},#{email},#{item_code},#{type_code},#{price},sysdate,'n',null,null,null) 
 	</insert>
+	
+	<update id="updateImp_uid" parameterType="Map">
+	update PURCHASE_ITEM set
+	IMP_UID= #{imp_uid} where MERCHANT_UID= #{merchant_uid}
+	</update>
 	
 </mapper>

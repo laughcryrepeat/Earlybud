@@ -23,6 +23,9 @@ public class NewProjectServiceImpl implements NewProjectService {
 		System.out.println("service");
 		return dao.sellerItem(email);
 	}
+	public List<Type> selectType(long item_code){
+		return dao.selectType(item_code);
+	}
 	public Seller seller_select(String email) {
 		return dao.seller_select(email);
 	}
@@ -31,6 +34,13 @@ public class NewProjectServiceImpl implements NewProjectService {
 
 		return dao.item_select(item_code);
 	}
+	public Item item_select2(long item_code) {
+
+		return dao.item_select2(item_code);
+	}
+	public int modifyItem(Item item) {
+		return dao.modifyItem(item);
+	}
 	public int save(Item item) {
 		System.out.println("아이템 save 서비스 들어왔어용");
 		return dao.save(item);
@@ -38,6 +48,13 @@ public class NewProjectServiceImpl implements NewProjectService {
 	public int save2(Type type) {
 		System.out.println("타입 save 서비스 들어왔어용");
 		return dao.save2(type);
+	}
+	public int modifyType(long item_code) {
+		System.out.println("타입 update 서비스 들어왔어용");
+		return dao.modifyType(item_code);
+	}
+	public int modifySeller(Seller seller) {
+		return dao.modifySeller(seller);
 	}
 	public int update(Item item) {
 		System.out.println("아이템 업데이트 서비스 들어왔어용");

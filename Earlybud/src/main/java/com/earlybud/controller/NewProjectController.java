@@ -62,12 +62,28 @@ public class NewProjectController {
 		String email = authentication.getName();
 		System.out.println("1st page email: "+email);
 		Seller seller = new Seller();
-		String fileName=image.getOriginalFilename()+System.currentTimeMillis();
-		long size = image.getSize();
-		String contentType = image.getContentType();
-		byte[] fileContents = image.getBytes();
-		image.transferTo(new File("C:\\Users\\student\\git\\Earlybud\\Earlybud\\src\\main\\webapp\\resources\\uploads\\member\\profile\\"+fileName));
-		seller.setImage(fileName);
+		String originFullName= image.getOriginalFilename();
+		String saveName = originFullName;
+		if(originFullName != "") {
+			originFullName = originFullName.trim();
+			if(originFullName.length() != 0) {
+				if(new File(profilePath,originFullName).exists()) {
+					int idx = originFullName.lastIndexOf(".");
+					String fName = originFullName.substring(0,idx);
+					String fExt = originFullName.substring(idx+1);
+					
+					saveName = fName+"_"+System.currentTimeMillis()+"."+fExt;
+				}
+			}
+			System.out.println("save file name:"+saveName);
+			try {
+				image.transferTo(new File(profilePath,saveName));
+			}catch(Exception e) {
+				
+			}
+			seller.setImage(saveName);
+		}else {
+		}
 		System.out.println("프로젝트 생성 p1: " + info + ", " + seller_loc + ", " + seller_account);
 		
 		seller.setEmail(email);
@@ -79,38 +95,53 @@ public class NewProjectController {
 		return "newProject/newprojectDetail2";
 	}
 	@RequestMapping("newprojectDetail3")
-	public String newProjectDetail3(@RequestParam("cat_code") long cat_code, @RequestParam("opendate") String opendate, 
+	public String newProjectDetail3(Model model, @RequestParam("cat_code") long cat_code, @RequestParam("opendate") String opendate, 
 			@RequestParam("closingdate") String closingdate, @RequestParam("title") String title, 
 			@RequestParam("main_image") MultipartFile main_image) throws ParseException, IOException{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
 		System.out.println("3rd page email: "+email);
-		String fileName=main_image.getOriginalFilename();
-		long size = main_image.getSize();
-		String contentType = main_image.getContentType();
-		byte[] fileContents = main_image.getBytes();
-		main_image.transferTo(new File("C:\\Users\\student\\git\\Earlybud\\Earlybud\\src\\main\\webapp\\resources\\uploads\\reward\\"+fileName));	//자기 컴터 경로에 맞게 고쳐야됨
-		
+		String originFullName= main_image.getOriginalFilename();
+		Item item = new Item();
+		String saveName = originFullName;
+		if(originFullName != "") {
+			originFullName = originFullName.trim();
+			if(originFullName.length() != 0) {
+				if(new File(profilePath,originFullName).exists()) {
+					int idx = originFullName.lastIndexOf(".");
+					String fName = originFullName.substring(0,idx);
+					String fExt = originFullName.substring(idx+1);
+					
+					saveName = fName+"_"+System.currentTimeMillis()+"."+fExt;
+				}
+			}
+			System.out.println("save file name:"+saveName);
+			try {
+				main_image.transferTo(new File(profilePath,saveName));
+			}catch(Exception e) {
+			}
+			item.setMain_image(saveName);
+		}else {
+		}
 		Date startDate = new  SimpleDateFormat("yyyy-MM-dd").parse(opendate);
 		Date endDate = new  SimpleDateFormat("yyyy-MM-dd").parse(closingdate);
 		java.sql.Date openDate = new java.sql.Date(startDate.getTime());
 		java.sql.Date closingDate = new java.sql.Date(endDate.getTime() + TimeUnit.DAYS.toMillis( 1 ));
-		
-		Item item = new Item();
 		item.setEmail(email);
 		item.setCat_code(cat_code);
 		item.setTitle(title);
-		item.setMain_image(fileName);
 		item.setOpendate(openDate);
 		item.setClosingdate(closingDate);
 		System.out.println("프로젝트 생성 p2: "+item);
 		projectS.save(item);
+		long item_code = item.getItem_code();
+		model.addAttribute("seller", projectS.item_select2(item_code));
 		
 		return "newProject/newprojectDetail3";
 	}
 	@RequestMapping("newprojectCheck")
-	public void newProjectCheck(@RequestParam("target_sum") long target_sum, @RequestParam String summary,
-			@RequestParam String[] type_code, @RequestParam String[] name, @RequestParam String[] info,@RequestParam String content){
+	public void newProjectCheck(@RequestParam long item_code, @RequestParam("target_sum") long target_sum, @RequestParam String summary,
+			@RequestParam long[] type_code, @RequestParam String[] name, @RequestParam String[] info,@RequestParam String content){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
 		Item item = new Item();
@@ -119,23 +150,19 @@ public class NewProjectController {
 		item.setSummary(summary);
 		item.setContent(content);
 		projectS.update(item);
-		System.out.println("아이템코드? " + item.getItem_code());
-		long item_code = (long) item.getItem_code();
 		Type type = new Type();
 		type.setItem_code(item_code);
 		for(int i=0; i<type_code.length; i++) {
 			System.out.println(type_code[i]+", " +name[i]+", "+info[i]);
+			type.setPrice(type_code[i]);
+			type.setName(name[i]);
+			type.setInfo(info[i]);
+			projectS.save2(type);
 		}
-		/*
-		type.setPrice(price);
-		type.setName(name);
-		type.setInfo(info);
-		projectS.save2(type);
-		System.out.println("저장완료");*/
+		System.out.println("저장완료");
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////// 프로젝트 수정
-	Model model;
 	@RequestMapping("newprojectModify1")
 	public String newProjectModify1(Model model	) throws IOException{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -143,6 +170,50 @@ public class NewProjectController {
 		model.addAttribute("seller", projectS.seller_select(email));
 		System.out.println(projectS.seller_select(email));
 		return "newProject/newprojectM1";
+	}
+	
+	String profilePath = "C:\\Users\\hb6009\\git\\Earlybud\\Earlybud\\src\\main\\webapp\\resources\\uploads\\member\\profile";
+	
+	@RequestMapping("sellerModify")
+	public String sellerModify(Model model, @RequestParam("image") MultipartFile image, @RequestParam("info") String info,
+			@RequestParam("seller_loc") String seller_loc, @RequestParam("seller_account") String seller_account, @RequestParam("image_name") String image_name) throws IOException{
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String email = authentication.getName();
+		Seller seller = new Seller();
+		String originFullName= image.getOriginalFilename();
+		String saveName = originFullName;
+		if(originFullName != "") {
+			originFullName = originFullName.trim();
+			if(originFullName.length() != 0) {
+				if(new File(profilePath,originFullName).exists()) {
+					int idx = originFullName.lastIndexOf(".");
+					String fName = originFullName.substring(0,idx);
+					String fExt = originFullName.substring(idx+1);
+					
+					saveName = fName+"_"+System.currentTimeMillis()+"."+fExt;
+				}
+			}
+			System.out.println("save file name:"+saveName);
+			try {
+				image.transferTo(new File(profilePath,saveName));
+			}catch(Exception e) {
+			}
+			seller.setImage(saveName);
+		}else {
+			seller.setImage(image_name);
+		}
+		//long size = image.getSize();
+		//String contentType = image.getContentType();
+		//byte[] fileContents = image.getBytes();		
+		seller.setEmail(email);
+		seller.setInfo(info);
+		seller.setSeller_loc(seller_loc);
+		seller.setSeller_account(seller_account);
+		System.out.println("셀러 info: " +seller.getInfo());
+		System.out.println("셀러 수정: " +seller);
+		projectS.modifySeller(seller);
+		//model.addAttribute("seller", projectS.seller_select(email));
+		return "redirect:../mypage/sellerPage";
 	}
 	@RequestMapping(value="newprojectModify2/{item_code}")
 	public String newprojectModify2(@PathVariable long item_code, Model model) throws IOException{
@@ -152,38 +223,78 @@ public class NewProjectController {
 		model.addAttribute("seller", projectS.item_select(item_code));
 		return "newProject/newprojectM2";
 	}
-	@RequestMapping("newprojectModify3/{item_code}")
-	public String newProjectModify3(Model model) throws ParseException, IOException{
+	@RequestMapping("newprojectModify3")
+	public String newProjectModify3(@RequestParam long item_code, Model model, @RequestParam long cat_code, @RequestParam String title, @RequestParam MultipartFile main_image,
+			@RequestParam String opendate, @RequestParam String closingdate, Type type) throws ParseException, IOException{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
 		System.out.println("3rd page email: "+email);
+		String originFullName= main_image.getOriginalFilename();
+		Item item = new Item();
+		String saveName = originFullName;
+		if(originFullName != "") {
+			originFullName = originFullName.trim();
+			if(originFullName.length() != 0) {
+				if(new File(profilePath,originFullName).exists()) {
+					int idx = originFullName.lastIndexOf(".");
+					String fName = originFullName.substring(0,idx);
+					String fExt = originFullName.substring(idx+1);
+					
+					saveName = fName+"_"+System.currentTimeMillis()+"."+fExt;
+				}
+			}
+			System.out.println("save file name:"+saveName);
+			try {
+				main_image.transferTo(new File(profilePath,saveName));
+			}catch(Exception e) {
+			}
+			item.setMain_image(saveName);
+		}else {
+		}
+		Date startDate = new  SimpleDateFormat("yyyy-MM-dd").parse(opendate);
+		Date endDate = new  SimpleDateFormat("yyyy-MM-dd").parse(closingdate);
+		java.sql.Date openDate = new java.sql.Date(startDate.getTime());
+		java.sql.Date closingDate = new java.sql.Date(endDate.getTime() + TimeUnit.DAYS.toMillis( 1 ));
 		
-		return "newProject/newprojectDetail3";
+		item.setItem_code(item_code);
+		item.setCat_code(cat_code);
+		item.setTitle(title);
+		item.setOpendate(openDate);
+		item.setClosingdate(closingDate);
+		System.out.println("프로젝트 생성 p2: "+item);
+		projectS.modifyItem(item);
+		System.out.println(projectS.item_select2(item.getItem_code()));
+		long itemcode = item.getItem_code();
+		model.addAttribute("seller", projectS.item_select2(itemcode));
+		System.out.println(projectS.selectType(itemcode));
+		model.addAttribute("type", projectS.selectType(itemcode));
+		
+		return "newProject/newprojectM3";
 	}
 	@RequestMapping("newprojectModifyCheck")
-	public void newProjectModifyCheck(@RequestParam long target_sum, @RequestParam String summary,
-			@RequestParam String option_type, @RequestParam String content){
+	public void newProjectModifyCheck(@RequestParam long item_code, @RequestParam long target_sum, @RequestParam String summary,
+			@RequestParam long[] type_code, @RequestParam String[] name, @RequestParam String[] info, @RequestParam String content){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
-		String typeprice = option_type.substring(option_type.indexOf("가격: ")+4, option_type.indexOf(" 옵션이름: "));
-		long price = Long.parseLong(typeprice);
-		String name = option_type.substring(option_type.indexOf(" 옵션이름: ")+7, option_type.lastIndexOf(" 옵션설명: "));
-		String info = option_type.substring(option_type.indexOf(" 옵션설명: ")+7);
-		System.out.println("프로젝트 생성 p3: "+target_sum+", " +summary+","+price+","+name + ","+info);
 		Item item = new Item();
+		item.setItem_code(item_code);
 		item.setEmail(email);
 		item.setTarget_sum(target_sum);
 		item.setSummary(summary);
 		item.setContent(content);
 		projectS.update(item);
-		System.out.println("아이템코드? " + item.getItem_code());
-		long item_code = (long) item.getItem_code();
 		Type type = new Type();
+		projectS.modifyType(item_code);
+		System.out.println(type_code.length);
 		type.setItem_code(item_code);
-		type.setPrice(price);
-		type.setName(name);
-		type.setInfo(info);
-		projectS.save2(type);
+		for(int i=0; i<=type_code.length; i++) {
+			System.out.println(type_code[i]+name[i]+info[i]);
+			type.setPrice(type_code[i]);
+			type.setName(name[i]);
+			type.setInfo(info[i]);
+			projectS.save2(type);
+		}
+		System.out.println("아이템코드? " + item.getItem_code());
 		System.out.println("저장완료");
 	}
 }

@@ -23,7 +23,7 @@
         <div class="b-avatar has-pad-bottom-dot5 is_vaporable" style="width: 96px">
   <div class="b-avatar__frame b-avatar__frame--bordered" style="width:96px; height:96px">
     <img alt="6e65e28f-55c7-435a-a6c7-9b70c09f2233.jpg?ixlib=rb-1.1.0&amp;w=200&amp;h=250&amp;auto=format%2ccompress&amp;fit=facearea&amp;facepad=2" class="b-avatar__pic"
-    src='${pageContext.request.contextPath}/images/like/${seller.image}' />
+    src='${pageContext.request.contextPath}/uploads/member/profile/${seller.image}' />
 </div>
 </div>
         <h1 class="headline text-size_3xl is_vaporable">
@@ -31,10 +31,10 @@
         </h1>
       <ul class="b-meta is_vaporable">
           <li class="b-meta__item is_first">
-            <span class="b-meta__link">
+            <a class="b-meta__link" data-toggle="tooltip" title="판매자 정보 수정하기" data-placement="top" href="../newproject/newprojectModify1">
               <i class="b-fontello b-fontello--tag "></i>
               ${seller.info}
-            </span>
+            </a>
             </li > 
         </ul>
           <br/>
@@ -66,7 +66,7 @@
 				
 				  <div class="b-project-card__body"> 
 				    <h3 class="b-project-card__title">
-				      <a href="/toolbook" class="[ yoke yoke--theme_light ]"><c:out value="${item.title}"/></a>
+				      <a href="../reward?item_code=${item.item_code}" class="[ yoke yoke--theme_light ]"><c:out value="${item.title}"/></a>
 				    </h3>
 				    <p class="b-project-card__creator">
 				     <sec:authentication property="principal.member.nickname"/>의 프로젝트
@@ -123,7 +123,7 @@
 				<c:forEach items="${itemEncore}" var="item">
 				 <div class="b-project-card">
 				  <figure class="b-project-card__head">
-				    <a class="b-project-card__head__link" href='../newproject/newprojectModify2/${item.item_code}'>
+				   <a class="b-project-card__head__link" href="../reward?item_code=${item.item_code}">
 				      <div class="b-project-card__head__link__inner">
 				        <div class="b-project-card__head__filter"></div>
 				        <img src='${pageContext.request.contextPath}/images/like/<c:out value="${item.main_image}"/>' alt="" class="b-project-card__head__pic" />			 
@@ -133,7 +133,7 @@
 				
 				  <div class="b-project-card__body"> 
 				    <h3 class="b-project-card__title">
-				      <a href="/toolbook" class="[ yoke yoke--theme_light ]"><c:out value="${item.title}"/></a>
+				      <a href="../reward?item_code=${item.item_code}" class="[ yoke yoke--theme_light ]"><c:out value="${item.title}"/></a>
 				    </h3>
 				    <p class="b-project-card__creator">
 				     <sec:authentication property="principal.member.nickname"/>의 프로젝트
@@ -142,6 +142,7 @@
 				    <c:out value="${item.summary}"/>
 				    </p>
 				  </div> 
+				  <div>&nbsp;&nbsp;<button data-toggle="tooltip" title="재업로드하기" data-placement="top" class="btn encore_btn" value="${item.item_code}"><i class="fa fa-check" aria-hidden="true"></i></button></div>
 				  <div class="b-project-card__gauge [ b-gauge ]">
 				  
 				  <c:choose>
@@ -190,17 +191,17 @@
 				<c:forEach items="${itemEnd}" var="item">
 				 <div class="b-project-card">
 				  <figure class="b-project-card__head">
-				    <a class="b-project-card__head__link" href="javascript:void(0);">
+				    <a class="b-project-card__head__link" href="../reward?item_code=${item.item_code}"">
 				      <div class="b-project-card__head__link__inner">
 				        <div class="b-project-card__head__filter"></div>
-				        <img src='${pageContext.request.contextPath}/images/like/<c:out value="${item.main_image}"/>' alt="" class="b-project-card__head__pic" />			 
+				        <img src='${pageContext.request.contextPath}/resources/uploads/reward/<c:out value="${item.main_image}"/>' alt="" class="b-project-card__head__pic" />			 
 				      </div>
 				    </a>
 				  </figure>
 				
 				  <div class="b-project-card__body"> 
 				    <h3 class="b-project-card__title">
-				      <a href="/toolbook" class="[ yoke yoke--theme_light ]"><c:out value="${item.title}"/></a>
+				      <a href="../reward?item_code=${item.item_code}" class="[ yoke yoke--theme_light ]"><c:out value="${item.title}"/></a>
 				    </h3>
 				    <p class="b-project-card__creator">
 				     <sec:authentication property="principal.member.nickname"/>의 프로젝트
@@ -309,6 +310,26 @@
          </div>
       </footer><!-- #colophon -->
    </div><!-- #page -->
+   
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<script>
+	$(function () {
+		  $('[data-toggle="tooltip"]').tooltip()
+		})
+		
+		$('.encore_btn').on( 'click',function() {
+	        var data = this.value;
+	        console.log(data);
+			if(confirm("아이템을 정말 재업로드하시겠습니까?") == true){
+                   location.href='../newproject/newprojectModify2/'+data ;
+	        }else{
+	            return false;
+	        }
+	    });	
+
+	</script>
 
 </body>
 

@@ -13,9 +13,16 @@ import com.earlybud.vo.PageVO;
 
 public interface CategoryDAO {
 	
-	public List<Category> getList();
+	/*메인용*/
 	public List<MainVO> getMainList(HashMap map);
-	int countItem(HashMap map);
-	List<CategoryVO> itemList(PageVO vo);
+	public List<MainVO> getRandomList();
+	public List<MainVO> getOpenRankNum();
+	public List<MainVO> getRewardRankNum();
+	public List<MainVO> getRankList(HashMap map);
+	
+	/*카테고리용*/
+	public List<Category> getList();	
+	public int countItem(HashMap map);
+	public List<CategoryVO> itemList(PageVO vo);
 	public List<CategoryVO> selectCategory(HashMap map);
 }

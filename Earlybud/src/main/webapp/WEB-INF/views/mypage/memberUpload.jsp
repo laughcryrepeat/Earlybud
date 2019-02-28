@@ -9,7 +9,7 @@
 <body>
 <script type="text/javascript">
 	alert('회원 정보에 성공하였습니다.');
-	location.href="/earlybud/mypage";
+	location.href="/earlybud/mypage/modify";
 </script>
 </body>
 </html>

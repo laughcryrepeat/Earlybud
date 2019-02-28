@@ -503,10 +503,7 @@
                     <p class="comment-form-author"><label for="author">프로젝트 요약<span class="required">*</span></label> 
                     	<input id="summary" name="summary" type="text" value="" size="30" maxlength="600" /></p>
                     <p class="comment-form-email"><label for="email">선물 구성(옵션)</label> 
-                    <label for="type_code">가격&emsp;&emsp;&emsp;&emsp;&emsp;옵션 이름&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;옵션 설명&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
-                    	<input class="ocode" id="ocode" name="ocode" type="text" size="20" maxlength="20" />
-                    	<input class="oname" id="oname" name="oname" type="text" size="20" maxlength="60" />
-                    	<input class="oinfo" id="oinfo" name="oinfo" type="text" size="30" maxlength="100" /></p>
+                    	<input class="comment-form-email" id="optionfield" name="optionfield" type="text" size="20" maxlength="20" />
                     	<div class="hiddenO">
               	    	  	<input class="ocodeh" id="ocode" name="type_code" type="hidden" size="20" maxlength="20" />
                 	    	<input class="onameh" id="oname" name="name" type="hidden" size="20" maxlength="60" />
@@ -529,6 +526,7 @@
                     <section id="categories-2" class="widget widget_catego ries">
                       <ul>
                         <input name="submit" type="submit" class="submit" value="다음페이지" />
+                        <input name="item_code" type="hidden" value="${seller.item_code}"/>
                       </ul>
                     </section>
                  </form>
@@ -702,7 +700,7 @@
 	  }
 	  </style>
 	  <script type="text/javascript">
-	  var pick = document.getElementById('ocode');
+	  var pick = document.getElementById('optionfield');
 	  var mymodal = document.getElementById('myModal');
 	  pick.onclick = function(){
 		  mymodal.style.display = "block";
@@ -731,6 +729,7 @@
         	  var hc =$('.ocodeh').get();
         	  var hn =$('.onameh').get();
         	  var hi =$('.oinfoh').get();
+        	  
         	  for(var i=0; i<oc.length; i++){
         		  hc[i].value = oc[i].value;
         		  hn[i].value = on[i].value;
@@ -741,7 +740,7 @@
         		  
         	  }
         	  console.log(oc.length);
-    		  
+        	  document.getElementById("optionfield").value =oc.length+"개의 옵션을 입력하셨습니다";
         	  <!-- myproject.option_type.value = "가격: "+ type_code.value + " 옵션이름: " + type_name.value + " 옵션설명: " + info.value;--> 
               mymodal.style.display = "none";
           }

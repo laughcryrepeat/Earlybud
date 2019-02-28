@@ -189,6 +189,9 @@ c.readyCallback = function() {
 		}(window, document, window._wpemojiSettings);
 	</script>
 	<style type="text/css">
+		.addrD{
+			width: 330px !important;
+		}
 		img.wp-smiley,
 		img.emoji {
 			display: inline !important;
@@ -643,4 +646,3 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 				</div>
 			</div>
 	</header>
-

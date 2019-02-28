@@ -488,366 +488,93 @@
           
           <div id="mainKeyVisual">
             <div class="banner-key-main" id="main-keyvisual">
-              
-              <div class="banner-item">
-                <a href="https://www.wadiz.kr/web/wboard/newsBoardDetail/6420?_refer_section_st=MKB_0" class="banner-item-container" style="background-image:url(https://cdn.wadiz.kr/ft/images/green001/2019/0110/20190110122506428_826.jpg/wadiz/resize/630/format/jpg/quality/80/optimize)" >
-                <div class="banner-item-inner">
-                    
-                    <em class="banner-item-badge">이벤트</em>
-                    
-                    
-                    <h3 class="banner-item-title">2019 새해 <br>혜택과 함께하는 투자</h3>
-                    
-                    
-                    <p class="banner-item-text">처음 시작하는 분을 위한 특별 이벤트</p>
-                    
-                    
-                  </div>
-                </a>
-              </div>
-              
-             <div class="banner-item">
-                <a href="https://www.wadiz.kr/crowd/specialday?_refer_section_st=MKB_1" class="banner-item-container" style="background-image:url(https://cdn.wadiz.kr/ft/images/green001/2019/0104/20190104192653819_588.jpeg/wadiz/resize/630/format/jpg/quality/80/optimize)" >
-                <div class="banner-item-inner">
-                    
-                    <em class="banner-item-badge">리워드</em>
-                    
-                    
-                    <h3 class="banner-item-title">당신을 위한<br>특별한 하루</h3>
-                    
-                    
-                    <p class="banner-item-text">다양한 취미부터 공연까지, 오늘도 고생한 당신을 위해 특별한 하루를 만들어보세요!</p>
-                    
-                    
-                  </div>
-                </a>
-              </div>
-              
-              <div class="banner-item">
-                <a href="https://www.wadiz.kr/web/equity/campaign/1256?_refer_section_st=MKB_2" class="banner-item-container" style="background-image:url(https://cdn.wadiz.kr/ft/images/green001/2019/0108/20190108115410869_826.jpg/wadiz/resize/630/format/jpg/quality/80/optimize)" >
-                <div class="banner-item-inner">
-                    
-                    <em class="banner-item-badge">투자</em>
-                    
-                    
-                    <h3 class="banner-item-title">봄에 뛰어놀 수 있는 <br>뮤직 페스티벌</h3>
-                    
-                    
-                    <p class="banner-item-text">투자수익과 투자자혜택을 동시에</p>
-                    
-                    
-                    <p class="banner-item-sub-text">※원금손실가능</p>
-                    
-                  </div>
-                </a>
-              </div>
-              
-              <div class="banner-item">
-                <a href="https://www.wadiz.kr/web/wcomingsoon/rwd/27938?_refer_section_st=MKB_3" class="banner-item-container" style="background-image:url(https://cdn.wadiz.kr/ft/images/green001/2019/0104/20190104192320972_808.jpg/wadiz/resize/630/format/jpg/quality/80/optimize)" >
-                <div class="banner-item-inner">
-                    
-                    <em class="banner-item-badge">리워드</em>
-                    
-                    
-                    <h3 class="banner-item-title">돌아온 도르핀 왙-치</h3>
-                    
-                    
-                    <p class="banner-item-text">응답하라 8090!<br>자, 이제 추억으로 빠져듭니다</p>
-                    
-                    
-                  </div>
-                </a>
-              </div>
-              
-              <div class="banner-item">
-                <a href="https://www.wadiz.kr/web/equity/campaign/1241?_refer_section_st=MKB_4" class="banner-item-container" style="background-image:url(https://cdn.wadiz.kr/ft/images/green001/2019/0108/20190108115811647_784.jpg/wadiz/resize/630/format/jpg/quality/80/optimize)" >
-                <div class="banner-item-inner">
-                    
-                    <em class="banner-item-badge">투자</em>
-                    
-                    
-                    <h3 class="banner-item-title">명품의 진짜 의미를 실천하는 발레학교</h3>
-                    
-                    
-                    <p class="banner-item-text">국내 첫 프리미엄 발레 영어유치원</p>
-                    
-                    
-                    <p class="banner-item-sub-text">※원금손실가능</p>
-                    
-                  </div>
-                </a>
-              </div>
-              
-              <div class="banner-item">
-                <a href="https://www.wadiz.kr/web/wcomingsoon/rwd/20714?_refer_section_st=MKB_5" class="banner-item-container" style="background-image:url(https://cdn.wadiz.kr/ft/images/green001/2019/0104/20190104192829106_612.jpg/wadiz/resize/630/format/jpg/quality/80/optimize)" >
-                <div class="banner-item-inner">
-                    
-                    <em class="banner-item-badge">리워드</em>
-                    
-                    
-                    <h3 class="banner-item-title">특허받은 기능성 목베개</h3>
-                    
-                    
-                    <p class="banner-item-text">베개하나로 굽은 자세를 바로 잡는다?!</p>
-                    
-                    
-                  </div>
-                </a>
-              </div>
-              
-              <div class="banner-item">
-                <a href="https://www.wadiz.kr/web/equity/campaign/1216?_refer_section_st=MKB_6" class="banner-item-container" style="background-image:url(https://cdn.wadiz.kr/ft/images/green001/2019/0104/20190104173634192_826.jpg/wadiz/resize/630/format/jpg/quality/80/optimize)" >
-                <div class="banner-item-inner">
-                    
-                    <em class="banner-item-badge">투자</em>
-                    
-                    
-                    <h3 class="banner-item-title">청와대도 이미 맛본 맥주</h3>
-                    
-                    
-                    <p class="banner-item-text">30% 할인받을 수 있는 기회</p>
-                    
-                    
-                  </div>
-                </a>
-              </div>
-              
-              <div class="banner-item">
-                <a href="https://www.wadiz.kr/web/wcomingsoon/rwd/27732?_refer_section_st=MKB_7" class="banner-item-container" style="background-image:url(https://cdn.wadiz.kr/ft/images/green001/2019/0104/20190104193553915_576.jpg/wadiz/resize/630/format/jpg/quality/80/optimize)" >
-                <div class="banner-item-inner">
-                    
-                    <em class="banner-item-badge">리워드</em>
-                    
-                    
-                    <h3 class="banner-item-title">이 집, 깔라만시 잘하네</h3>
-                    
-                    
-                    <p class="banner-item-text">캡슐 타입으로 간편하게! 새해에는 건강 챙기세요</p>
-                    
-                    
-                  </div>
-                </a>
-              </div>
-              
-              <div class="banner-item">
-                <a href="https://www.wadiz.kr/web/wpage/w9?_refer_section_st=MKB_8" class="banner-item-container" style="background-image:url(https://cdn.wadiz.kr/ft/images/green001/2019/0109/20190109230143873_683.jpg/wadiz/resize/630/format/jpg/quality/80/optimize)" >
-                <div class="banner-item-inner">
-                    
-                    <em class="banner-item-badge">신규오픈</em>
-                    
-                    
-                    <h3 class="banner-item-title">W9 멤버십 신규 출시</h3>
-                    
-                    
-                    <p class="banner-item-text">30만원 쿠폰부터 HBR 1년 구독권까지</p>
-                    
-                    
-                  </div>
-                </a>
-              </div>
+              <c:forEach items="${randomList}" var="random">	
+	              <div class="banner-item">
+	                <a href="/../earlybud/reward?item_code=<c:out value="${random.ITEM_CODE}"/>" class="banner-item-container" style="background-image:url(${pageContext.request.contextPath}/uploads/reward/<c:out value="${random.MAIN_IMAGE}"/>)" >
+	                <div class="banner-item-inner">	                    
+	                    <em class="banner-item-badge">리워드</em>
+	                    <h3 class="banner-item-title"><c:out value="${random.TITLE}"/></h3>
+	                    <p class="banner-item-text"><c:out value="${random.SUMMARY}"/></p>
+	                  </div>
+	                </a>
+	              </div>
+              </c:forEach>                      
               
             </div>
           </div>
+          
+          
+          
           
           <div id="rankingSection">
             <div class="ranking-wrap">
               <div class="ranking-tab">
                 <ul>
-                  <li ><button onclick="selectRankingTab('1')">투자</button></li>
-                  <li class="active"><button onclick="selectRankingTab('2')">리워드</button></li>
-                  <li><button onclick="selectRankingTab('3')">오픈예정</button></li>
+                  <li><button onclick="selectRankingTab('1')">리워드</button></li>
+                  <li class="active"><button onclick="selectRankingTab('2')">오픈예정</button></li>
                 </ul>
               </div>
               
-              <div id="rankContent1" class="ranking-content">
+              <div id="rankContent1 rankContent3" class="ranking-content">
                 <div class="helpinfo">
                   <button class="btn-helpinfo"><i class="wadizicon wa-help" aria-hidden="true"></i></button>
-                  <div class="rank-helpinfo">24시간내 펀딩 횟수가 가장 많은 프로젝트 순으로 정렬됩니다.</div>
-                </div>
-                
-                  
-                  
-                    <a href="/web/ftcampaign/detail/1149" title="세계 최초 산업용 loT 드론 플랫폼 &#039;아리온&#039;">
-                                <em class="ranking-img" style="background-image:url('https://cdn.wadiz.kr/ft/images/green001/2018/1223/20181223215610551_0.jpg/wadiz/resize/516/format/jpg/quality/80/optimize')"></em>
+                  <div class="rank-helpinfo">펀딩 횟수가 가장 많은 프로젝트 순으로 정렬됩니다.</div>
+                </div>                
+                    <a href="/../earlybud/reward?item_code=<c:out value="${rewardRankingList[0].ITEM_CODE}"/>" title="<c:out value="${rewardRankingList[0].TITLE}"/>">
+                         <em class="ranking-img" style="background-image:url(${pageContext.request.contextPath}/uploads/reward/<c:out value="${rewardRankingList[0].MAIN_IMAGE}"/>)"></em>
                             </a>
                     <div class="ranking-list">
-                      <ol>
-                        
+                      <ol>                      	       
+                    <c:set var="num" value="0"/> 
+                      	       
+                      <c:forEach items="${rewardRankingList}" var="ranking">	 
+                      		<c:set var="sum" value="${num+1}"/>               	
                         <li>
                           <div>
                             <p class="real">
-                            <em>1</em>
-                            <a href="/web/ftcampaign/detail/1171">[연 9%]출시 한 달만에 백화점 입점, 포바디초이스</a>
+                            <em>${sum}</em>
+                            <a href="/../earlybud/reward?item_code=<c:out value="${ranking.ITEM_CODE}"/>"><c:out value="${ranking.TITLE}"/></a>
                           </p>
-                            <p><em>1</em><a href="/web/ftcampaign/detail/1171">[연 9%]출시 한 달만에 백화점 입점, 포바디초이스</a></p>
+                            <p><em>${sum}</em><a href="/../earlybud/reward?item_code=<c:out value="${ranking.ITEM_CODE}"/>"><c:out value="${ranking.TITLE}"/></a></p>
                           </div>
                         </li>
                         
-                        <li>
-                          <div>
-                            <p class="real">
-                            <em>2</em>
-                            <a href="/web/ftcampaign/detail/1236">최대 53%수익ㅣ2019 대만K-POP콘서트(18년 매진)</a>
-                          </p>
-                            <p><em>2</em><a href="/web/ftcampaign/detail/1236">최대 53%수익ㅣ2019 대만K-POP콘서트(18년 매진)</a></p>
-                          </div>
-                        </li>
-                        
-                        <li>
-                          <div>
-                            <p class="real">
-                            <em>3</em>
-                            <a href="/web/ftcampaign/detail/1234">[1년만기/연12%]마이크로소프트 공식파트너 라이또 PC방</a>
-                          </p>
-                            <p><em>3</em><a href="/web/ftcampaign/detail/1234">[1년만기/연12%]마이크로소프트 공식파트너 라이또 PC방</a></p>
-                          </div>
-                        </li>
-                        
-                        <li>
-                          <div>
-                            <p class="real">
-                            <em>4</em>
-                            <a href="/web/ftcampaign/detail/1149">세계 최초 산업용 loT 드론 플랫폼 &#039;아리온&#039;</a>
-                          </p>
-                            <p><em>4</em><a href="/web/ftcampaign/detail/1149">세계 최초 산업용 loT 드론 플랫폼 &#039;아리온&#039;</a></p>
-                          </div>
-                        </li>
-                        
-                        <li>
-                          <div>
-                            <p class="real">
-                            <em>5</em>
-                            <a href="/web/ftcampaign/detail/1182">[앵콜]연23% 배당예상│글로벌 수출계약 체결, 휴마코스</a>
-                          </p>
-                            <p><em>5</em><a href="/web/ftcampaign/detail/1182">[앵콜]연23% 배당예상│글로벌 수출계약 체결, 휴마코스</a></p>
-                          </div>
-                        </li>
-                        
+                      </c:forEach>	
+                           
                       </ol>
                     </div>
-                  
-                
               </div>
               
               <div id="rankContent2" class="ranking-content">
                 <div class="helpinfo">
-                  <button class="btn-helpinfo"><i class="wadizicon wa-help" aria-hidden="true"></i></button>
-                  <div class="rank-helpinfo">24시간 내 펀딩 횟수가 가장 많은 프로젝트 순으로 정렬됩니다.</div>
+                  <button class="btn-helpinfo"><i class="wadizicon wa-help" aria-hidden="true"></i><img src="${pageContext.request.contextPath}/images/main/help2.png"></button>
+                  <div class="rank-helpinfo">관심 등록 횟수가 가장 많은 프로젝트 순으로 정렬됩니다.</div>
                 </div>
-                <a href="/web/campaign/detail/28794" title="[단 2주/이벤트] 처음이야! 이렇게 얇고 착 붙는 스킨팩용 화장솜">
-                        <em class="ranking-img" style="background-image:url('https://cdn.wadiz.kr/wwwwadiz/green001/2019/0103/20190103174828850_28794.jpg/wadiz/resize/516/format/jpg/quality/80/optimize')"></em>
-                      </a>
+                <a href="/../earlybud/reward?item_code=<c:out value="${openRankingList[0].ITEM_CODE}"/>" title="<c:out value="${openRankingList[0].TITLE}"/>">
+                         <em class="ranking-img" style="background-image:url(${pageContext.request.contextPath}/uploads/reward/<c:out value="${openRankingList[0].MAIN_IMAGE}"/>)"></em>
+                            </a>
                 <div class="ranking-list">
                   <ol>
+               <c:set var="num" value="0"/>              		
+			
+                   <c:forEach items="${openRankingList}" var="ranking">	
+                   		<c:set var="sum" value="${num+1}"/> 
+                    <li>
+                       <div>
+                         <p class="real">
+                         <em>${sum}</em>
+                         <a href="/../earlybud/reward?item_code=<c:out value="${ranking.ITEM_CODE}"/>"><c:out value="${ranking.TITLE}"/></a>
+                       </p>
+                         <p><em>${sum}</em><a href="/../earlybud/reward?item_code=<c:out value="${ranking.ITEM_CODE}"/>"><c:out value="${ranking.TITLE}"/></a></p>
+                       </div>
+                    </li>
                     
-                      <li>
-                        <div>
-                          <p class="real">
-                        <em>1</em>
-                        <a href="/web/campaign/detail/28953">*앵콜* [아이띵소] 여행의 질을 높이는, 잘 만든 백팩</a>
-                      </p>
-                          <p><em>1</em><a href="/web/campaign/detail/28953">*앵콜* [아이띵소] 여행의 질을 높이는, 잘 만든 백팩</a></p>
-                        </div>
-                      </li>
-                    
-                      <li>
-                        <div>
-                          <p class="real">
-                        <em>2</em>
-                        <a href="/web/campaign/detail/29262">[설선물] 입소문난 쫀득쫀득 인절미, 착한마을 마음이가 선물세트</a>
-                      </p>
-                          <p><em>2</em><a href="/web/campaign/detail/29262">[설선물] 입소문난 쫀득쫀득 인절미, 착한마을 마음이가 선물세트</a></p>
-                        </div>
-                      </li>
-                    
-                      <li>
-                        <div>
-                          <p class="real">
-                        <em>3</em>
-                        <a href="/web/campaign/detail/27431">[1억앵콜] 발도 매트리스가 필요하다. 엣지있고 편안한 마성의 스니커즈!</a>
-                      </p>
-                          <p><em>3</em><a href="/web/campaign/detail/27431">[1억앵콜] 발도 매트리스가 필요하다. 엣지있고 편안한 마성의 스니커즈!</a></p>
-                        </div>
-                      </li>
-                    
-                      <li>
-                        <div>
-                          <p class="real">
-                        <em>4</em>
-                        <a href="/web/campaign/detail/29261">[펼치고 걸면 끝] 휴대용 디자인 행거, 링콘2</a>
-                      </p>
-                          <p><em>4</em><a href="/web/campaign/detail/29261">[펼치고 걸면 끝] 휴대용 디자인 행거, 링콘2</a></p>
-                        </div>
-                      </li>
-                    
-                      <li>
-                        <div>
-                          <p class="real">
-                        <em>5</em>
-                        <a href="/web/campaign/detail/28794">[단 2주/이벤트] 처음이야! 이렇게 얇고 착 붙는 스킨팩용 화장솜</a>
-                      </p>
-                          <p><em>5</em><a href="/web/campaign/detail/28794">[단 2주/이벤트] 처음이야! 이렇게 얇고 착 붙는 스킨팩용 화장솜</a></p>
-                        </div>
-                      </li>
-                    
+                  </c:forEach>	
+                     
                   </ol>
                 </div>
               </div>
-              
-              <div id="rankContent3" class="ranking-content">
-                <div class="helpinfo">
-                  <button class="btn-helpinfo"><i class="wadizicon wa-help" aria-hidden="true"></i></button>
-                  <div class="rank-helpinfo">오픈예정 프로젝트 순위는 프로젝트 알림 신청자 순으로 반영된 순위이며, 주기적으로 업데이트 됩니다. </div>
-                </div>
-                
-                <a href="/web/wcomingsoon/ivt/1256" title="최대25.6%수익ㅣ10주년 맞이, 그린플러그드 2019">
-                <em class="ranking-img" style="background-image:url(https://cdn.wadiz.kr/ft/images/green001/2018/1227/20181227143609377_0.jpg/wadiz/resize/516/format/jpg/quality/80/optimize)"></em></a>
-                <div class="ranking-list">
-                  <ol>
-                    
-                    
-                      <li>
-                        <div>
-                          <p class="real"><em>1</em><a href="/web/wcomingsoon/rwd/29032">베이직북14: 대기업 노트북과 비교해보세요, 20만원대 울트라북!</a></p>
-                          <p><em>1</em><a href="/web/wcomingsoon/rwd/29032">베이직북14: 대기업 노트북과 비교해보세요, 20만원대 울트라북!</a></p>
-                        </div>
-                      </li>
-                    
-                    
-                      <li>
-                        <div>
-                          <p class="real"><em>2</em><a href="/web/wcomingsoon/ivt/1256">최대25.6%수익ㅣ10주년 맞이, 그린플러그드 2019</a></p>
-                          <p><em>2</em><a href="/web/wcomingsoon/ivt/1256">최대25.6%수익ㅣ10주년 맞이, 그린플러그드 2019</a></p>
-                        </div>
-                      </li>
-                    
-                    
-                      <li>
-                        <div>
-                          <p class="real"><em>3</em><a href="/web/wcomingsoon/rwd/20714">베개하나로 굽은 자세를 바로 잡는다?? 특허청 실용신안 등록 제품!!</a></p>
-                          <p><em>3</em><a href="/web/wcomingsoon/rwd/20714">베개하나로 굽은 자세를 바로 잡는다?? 특허청 실용신안 등록 제품!!</a></p>
-                        </div>
-                      </li>
-                    
-                    
-                      <li>
-                        <div>
-                          <p class="real"><em>4</em><a href="/web/wcomingsoon/ivt/1206">천만 재테크족을 위한 혁신적 대안을 만들어가는 &#039;불리오&#039;</a></p>
-                          <p><em>4</em><a href="/web/wcomingsoon/ivt/1206">천만 재테크족을 위한 혁신적 대안을 만들어가는 &#039;불리오&#039;</a></p>
-                        </div>
-                      </li>
-                    
-                    
-                      <li>
-                        <div>
-                          <p class="real"><em>5</em><a href="/web/wcomingsoon/rwd/27938">응답하라 8090!  돌아온 &lt;돌핀시계&gt;</a></p>
-                          <p><em>5</em><a href="/web/wcomingsoon/rwd/27938">응답하라 8090!  돌아온 &lt;돌핀시계&gt;</a></p>
-                        </div>
-                      </li>
-                    
-                  </ol>
-                </div>
-              </div>
+                            
             </div>
           </div>
         </div>
