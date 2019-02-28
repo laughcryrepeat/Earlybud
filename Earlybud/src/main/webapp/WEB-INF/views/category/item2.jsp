@@ -740,15 +740,36 @@
 		<c:forEach items="${item.getOptionList()}" var="oplist">
          	<!-- 리워드 수량이 무한한 경우 -->
             <li>
-                <a href="payment/input/${oplist.TYPE_CODE}" class="box_reward">
-                    <strong class="tit_reward">${oplist.OP_PRICE}원 펀딩</strong>
-                    <p class="txt_desc">${oplist.NAME}</p>
-                    <span class="info_dely"><span class="txt_info">${oplist.INFO}</span></span>
-                    <span class="txt_satea"><em class="num_state">${oplist.PURNUM}명</em> 참여하였습니다.</span>
-                </a>
+            	<c:choose>
+	                 <c:when test="${item.TIME < 0}">	                 
+	                 	<a href="javascript:void(0);" onclick="endMessage()" class="box_reward">	  
+	                 		<strong class="tit_reward">${oplist.OP_PRICE}원 펀딩</strong>
+		                    <p class="txt_desc">${oplist.NAME}</p>
+		                    <span class="info_dely"><span class="txt_info">${oplist.INFO}</span></span>
+		                    <span class="txt_satea"><em class="num_state">${oplist.PURNUM}명</em> 참여하였습니다.</span> 
+                   		</a>             
+	                </c:when>
+	                <c:otherwise>
+	                	<a href="payment/input/${oplist.TYPE_CODE}" class="box_reward">
+			                <strong class="tit_reward">${oplist.OP_PRICE}원 펀딩</strong>
+		                    <p class="txt_desc">${oplist.NAME}</p>
+		                    <span class="info_dely"><span class="txt_info">${oplist.INFO}</span></span>
+		                    <span class="txt_satea"><em class="num_state">${oplist.PURNUM}명</em> 참여하였습니다.</span>
+		                </a>
+	                </c:otherwise>
+                </c:choose>
+                	
             </li> 
         </c:forEach>
 	</ul>
+		
+<script type="text/javascript">
+	function endMessage(){
+		alert("이미 종료된 프로젝트입니다.");
+	}
+</script>
+			
+	
                                     </fieldset>
                                 </form>
                             </div>
@@ -809,8 +830,6 @@
 						<a href="">얼리버드(주) | 대표 얼리버드 010-1111-1111 | 서울시 중구 비트캠프 7층 | 통신판매업 2019-서울중구-1919 | 대표전화 02-0000-0000</a>
 						
 						</div><!-- .site-info -->
->>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
-
 				</div>
 			</div>
 		</footer><!-- #colophon -->

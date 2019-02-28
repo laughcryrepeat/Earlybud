@@ -16,6 +16,7 @@ public interface ItemDAO {
 	void updateSuccessY(long item_code);
 	String encoreCheck(HashMap map);
 	boolean encoreInsert(HashMap map);
+	boolean encoreAddItem(HashMap map);	
 	Long likeCheck(HashMap map);
 	boolean likeAdd(HashMap map);
 	boolean likeDel(HashMap map);

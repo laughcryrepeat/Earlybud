@@ -85,7 +85,7 @@ public class ItemController {
 		if (enc_check == null) {			
 			System.out.println("앵콜체크는 1임. 승인");
 			
-			if(service.encoreInsertService(map)){
+			if(service.encoreInsertService(map) & service.encoreAddItemService(map)){
 				System.out.println("승인완료");
 				enc_check = "1";	
 			}
