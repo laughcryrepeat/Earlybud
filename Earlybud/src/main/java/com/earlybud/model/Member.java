@@ -22,6 +22,5 @@ public class Member {
 	private String detail_addr;
 	private Date joindate;
 	private Date dropdate;
-	private String item_liked;
 	private List<Authorities> authList;
 }

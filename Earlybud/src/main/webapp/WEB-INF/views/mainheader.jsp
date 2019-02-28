@@ -432,21 +432,26 @@
 									
 									 <sec:authorize access="isAnonymous()">
 									 	<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">로그인/회원가입</a></li>
+									 	<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="login">마이페이지</a></li>
 									</sec:authorize>
 									<sec:authorize access="isAuthenticated()">
-										<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/> 님 환영합니다</li>
+										<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
 										<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/customLogout">로그아웃</a></li>
+										<li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79">마이페이지
+										<ul>
+										<li><a href="mypage/modify">개인정보 수정</a></li>										
+										<li><a href="mypage/<sec:authentication property="principal.member.email"/>">좋아요한 프로젝트/판매자</a></li>
+										<li><a href="member_orderlist/<sec:authentication property="principal.member.email"/>">주문조회</a></li>
+										<li><a href="message/<sec:authentication property="principal.member.email"/>" targe="popup"
+										onclick="window.open('message/<sec:authentication property="principal.member.email"/>',	'popup', 'width=1000, height=750'); return false;">판매자 문의</a></li>
+										</ul>
+									</li>
 									</sec:authorize>
-										
-								</ul>
-							</div>
-							<ul class="header-search-cart">
-								<li class="header-search">
-									<div class="header-search-toggle"><a><i class="fa fa-search"></i></a></div>
-								</li>
-								<li class="header-cart-link"></li>
-							</ul>
-						</nav><!-- #site-navigation -->
+									
+									
+									</ul>
+									</div>
+									</nav><!-- #site-navigation -->
 
 				</div>
 			</div>

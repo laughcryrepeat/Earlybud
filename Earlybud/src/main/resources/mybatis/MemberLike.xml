@@ -27,20 +27,6 @@
 		where ITEM.item_code in (select ITEM_CODE from LIKES where EMAIL=#{email})
   	</select>
   	
-  
-  	
-<!--   	<insert id="insertItemLiked" parameterMap="likeListMap"> -->
-<!--   		INSERT into LIKES(EMAIL, ITEM_CODE) -->
-<!--   		values(#{email}, #{item_code}) -->
-<!--   	</insert> -->
-  	
- 
-  	
-  	<delete id="deleteItemLiked">
-  		delete LIKES
-  		where email = #{email} and item_code = #{item_code}
-  	</delete>
-  	
 	 <select id="readOneSellerItem" resultType="com.earlybud.vo.MemberLikeVO"><!-- 좋아요한 아이템들 목록 불러오기 -->
   		SELECT
   		ITEM.email, ITEM.item_code, ITEM.main_image, ITEM.title, MEMBER.nickname, ITEM.target_sum, ITEM.cur_sum, ITEM.summary, ITEM.closingdate, SELLER.image, SELLER.info,
@@ -50,6 +36,29 @@
 		LEFT OUTER JOIN SELLER on MEMBER.EMAIL=SELLER.EMAIL
 		where ITEM.email = #{email}
   	</select>
-
+  	
+  	<select id="likeCK" resultType="Long" parameterType="String">
+  		select count(*) from LIKES where email=#{email} and seller_email=#{seller}
+  	</select>
+  	
+	<select id="likeAdd" parameterType="String">
+		insert into likes(email, seller_email) values(#{email}, #{seller})
+	</select>
+	
+	<select id="likeDel" parameterType="String">
+		delete from likes where email=#{email} and seller_email= #{seller}
+	</select>
+	
+	<select id="countLikes" resultType="Long" parameterType="Long">
+		select count(*) from likes where seller_email =#{seller}
+	</select>
+	
+	<insert id="likeSeller" parameterType="String"> 
+   	insert into LIKES(#{email}, null, #{seller})  
+   	</insert> 
+   	
+   	<delete id="deleteLikeSeller" parameterType="String">
+   	delete from LIKES where (email=#{email} and seller_email=#{seller})
+   	</delete>
   	
   </mapper>

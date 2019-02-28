@@ -33,11 +33,12 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 //@RequestMapping(value = "category")
-//@RequestMapping("/category/*")	
+//@RequestMapping("/category/*")   
 @AllArgsConstructor
 public class ItemController {
-	
-	private ItemService service;
+   
+   private ItemService service;
+
 
 	@RequestMapping(value="reward", method=RequestMethod.GET)
 	public ModelAndView reward(@RequestParam("item_code") Long item_code, HttpServletRequest request) {
@@ -137,3 +138,4 @@ public class ItemController {
 	}
 
 }
+

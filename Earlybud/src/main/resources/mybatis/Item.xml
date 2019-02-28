@@ -46,7 +46,7 @@
   	</select>
   	
   	<update id="approveItem" parameterType="Long">
-  	update ITEM set ADMINCALL=1 where ITEM_CODE = #{item_code}
+  	update ITEM set ADMINCALL=1, SUCCESS=0 where ITEM_CODE = #{item_code}
   	</update>
   	
   	<update id="rejectItem" parameterType="Long">
@@ -94,11 +94,11 @@
   	
   	<update id="insertItem2" parameterType="Item" keyProperty="email">
   	update ITEM set 
-  	target_sum = #{target_sum}, summary=#{summary}, content=#{content}
+  	item_code=#{item_code}, target_sum = #{target_sum}, summary=#{summary}, content=#{content}
   	where item_code=#{item_code}
   	</update>
   	<select id="modifyItem2" parameterType="long" resultType="Item">
-  	select target_sum, summary, content from ITEM where item_code = #{item_code}
+  	select item_code, target_sum, summary, content from ITEM where item_code = #{item_code}
   	</select>
   	
   	<select id="selectItem" parameterType="Long" resultType="Item">

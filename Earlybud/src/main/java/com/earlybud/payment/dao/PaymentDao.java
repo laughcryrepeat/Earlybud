@@ -22,4 +22,6 @@ public interface PaymentDao {
 	void updateCancel(String merchant_uid);
 	void updateCancelSum(long type_code, long price);
 	void updateCancelType(long type_code);
+	Purchase_Item selectPurchaseItem(String merchant_uid);
+	void updatePayItem(Map<String, Object> paymap);
 }

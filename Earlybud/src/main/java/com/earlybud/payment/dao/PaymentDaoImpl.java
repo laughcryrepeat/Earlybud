@@ -116,6 +116,20 @@ public class PaymentDaoImpl implements PaymentDao {
 		System.out.println("type cancle update dao");
 		int i=sqlSession.update(ns3+".updateCanclePurnum", type_code);
 		System.out.println("type cancle update: "+i);
+	}
+
+	@Override
+	public Purchase_Item selectPurchaseItem(String merchant_uid) {
+		// TODO Auto-generated method stub
+		log.info("select purchase item");
+		return sqlSession.selectOne(ns1+".selectPurItem", merchant_uid);
+	}
+
+	@Override
+	public void updatePayItem(Map<String, Object> paymap) {
+		// TODO Auto-generated method stub
+		log.info("update pay item imp_uid");
+		sqlSession.update(ns1+".updateImp_uid", paymap);
 	}	
 
 }

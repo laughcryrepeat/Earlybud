@@ -57,7 +57,7 @@
 	<ul>
 		<c:forEach items="${list}" var="list">
 			<li class="reward">
-					<a href="../reward?item_code=${list.ITEM_CODE}">
+					<a href="/../earlybud/reward?item_code=${list.ITEM_CODE}">
 					<div class="project-card">
 						<div class="card-img-section">
 							<em class="project-img" style="background-image:url('${pageContext.request.contextPath}/uploads/reward/<c:out value="${list.MAIN_IMAGE}')"/>"></em>
@@ -141,7 +141,7 @@
  			<img style="width: 67px; height: 67px; border: 1px grey; border-radius: 90px; -moz-border-radius: 90px;
  				-khtml-border-radius: 90px; -webkit-border-radius: 90px;" src="${pageContext.request.contextPath}/uploads/member/profile/<c:out value="${listS.IMAGE}"/>"/>
  				&nbsp; &nbsp;
- 				<span style="font-size:1.5em;"><a href='../seller_items/<c:out value="${listS.EMAIL}"/>'><c:out value="${listS.NICKNAME}"/></a></span><br><br>			
+ 				<span style="font-size:1.5em;"><a href='/../earlybud/seller_items/<c:out value="${listS.EMAIL}"/>'><c:out value="${listS.NICKNAME}"/></a></span><br><br>			
           </li>
           </c:forEach>
         </ul>

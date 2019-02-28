@@ -14,7 +14,7 @@
                 <div id="respond" class="comment-respond">
                   <form action="newprojectDetail2" method="post" id="commentform" enctype="multipart/form-data" class="comment-form" novalidate>
                     <p class="comment-form-email"><label for="image">진행자 프로필이미지<span class="required">*</span></label>
-                    	<input id="image" type="text" class="upload-name" value="" size="30" maxlength="245" required='required' onclick="check()" readonly/>
+                    	<input id="image" name="image_name" type="text" class="upload-name" value="" size="30" maxlength="245" required='required' onclick="check()" readonly/>
                     	<input id="image_file" name="image" type="file" id="submit" class="file-hidden" value="file" required="required"></p>
                     <p class="comment-form-comment"><label for="author">진행자 소개<span class="required">*</span></label> 
                     	<input id="info" name="info" type="text" value="" size="30" maxlength="245" required='required' /></p>

@@ -61,7 +61,7 @@ public class NewProjectDaoImpl implements NewProjectDao {
 	}
 	public int save2(Type type) {
 		int p = -1;
-		System.out.println("dao 들어왔어용"+type.getItem_code());
+		System.out.println("저장 dao 들어왔어용"+type.getItem_code());
 		try {
 			p = sqlSession.insert(ns2+".insertOption", type);
 		} finally {
@@ -69,14 +69,14 @@ public class NewProjectDaoImpl implements NewProjectDao {
 		System.out.println("lastPage insert("+type+")");
 		return p;
 	}
-	public int modifyType(Type type) {
+	public int modifyType(long item_code) {
 		int p = -1;
-		System.out.println("dao 들어왔어용"+type.getItem_code());
+		System.out.println("타입 삭제 dao 들어왔어용"+item_code);
 		try {
-			p = sqlSession.update(ns2+".updateType", type);
+			p = sqlSession.delete(ns2+".updateType", item_code);
+			
 		} finally {
 		}
-		System.out.println("lastPage insert("+type+")");
 		return p;
 	}
 	
