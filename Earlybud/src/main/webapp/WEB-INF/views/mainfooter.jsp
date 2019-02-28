@@ -35,6 +35,34 @@
 						</div>
 					</div>
 
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">문의 메세지보내기</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        <div class="modal-body">
+          <p>Request Message</p>
+            <form name="msg_form" method="post">
+                <div class="form-group">
+                  <label class="control-label">From</label>
+                  <input id="msg_from" name="msg_from" class="form-control" readonly >
+                </div>
+                <div class="form-group">
+                  <label class="control-label">내용</label>
+                  <textarea id="msg_content" name="msg_content" class="form-control" rows="4"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" id="send" class="btn btn-default" data-dismiss="modal" >Send</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 				</main><!-- #main -->
 			</div><!-- #primary -->
 
