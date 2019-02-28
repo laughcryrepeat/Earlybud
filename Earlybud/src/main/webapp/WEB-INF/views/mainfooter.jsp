@@ -34,7 +34,9 @@
 							</div>
 						</div>
 					</div>
-
+  <!-- Modal -->
+  <div class="modal fade" id="msg_modal" role="dialog">
+    <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
