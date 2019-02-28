@@ -28,8 +28,18 @@ z-index: 1 !important;
       <div class="changable-content">
         <div class="b-avatar has-pad-bottom-dot5 is_vaporable" style="width: 96px">
 		  <div class="b-avatar__frame b-avatar__frame--bordered" style="width:96px; height:96px">
-		    <img alt="6e65e28f-55c7-435a-a6c7-9b70c09f2233.jpg?ixlib=rb-1.1.0&amp;w=200&amp;h=250&amp;auto=format%2ccompress&amp;fit=facearea&amp;facepad=2" class="b-avatar__pic"
-		    src='${pageContext.request.contextPath}/uploads/member/profile/${seller.image}' />
+		  
+		  <c:choose>
+		  	<c:when test="${seller.image ne null}">
+			    <img alt="6e65e28f-55c7-435a-a6c7-9b70c09f2233.jpg?ixlib=rb-1.1.0&amp;w=200&amp;h=250&amp;auto=format%2ccompress&amp;fit=facearea&amp;facepad=2" class="b-avatar__pic"
+			    src='${pageContext.request.contextPath}/uploads/member/profile/${seller.image}' />
+		    </c:when>
+		    <c:otherwise>
+		    	<img alt="6e65e28f-55c7-435a-a6c7-9b70c09f2233.jpg?ixlib=rb-1.1.0&amp;w=200&amp;h=250&amp;auto=format%2ccompress&amp;fit=facearea&amp;facepad=2" class="b-avatar__pic"
+		    src='${pageContext.request.contextPath}/uploads/member/profile/basic.jpg' />
+		    </c:otherwise>
+		   </c:choose>
+		    
 			</div>
 			</div>
         <h1 class="headline text-size_3xl is_vaporable">
