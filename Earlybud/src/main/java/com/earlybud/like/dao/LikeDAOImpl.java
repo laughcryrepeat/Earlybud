@@ -1,6 +1,8 @@
 package com.earlybud.like.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +46,38 @@ public class LikeDAOImpl implements LikeDAO {
 		List<MemberLikeVO> oneSellerList = sqlSession.selectList(ns + ".readOneSellerItem", email);
 		return oneSellerList;
 
+	}
+
+	@Override
+	public Long likeCheck(HashMap map) {
+		return sqlSession.selectOne(ns+".likeCK", map);
+	}
+
+	@Override
+	public boolean likeAdd(HashMap map) {
+		sqlSession.selectOne(ns+".likeAdd", map);
+		return true;
+	}
+
+	@Override
+	public boolean likeDel(HashMap map) {
+		sqlSession.selectOne(ns+".likeDel", map);
+		return true;
+	}
+
+	@Override
+	public long countLike(String seller) {
+		 return sqlSession.selectOne(ns+".countLikes", seller);
+
+	}
+
+	@Override
+	public int like(String email, String seller) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("email", email);
+		map.put("seller", seller);
+		int like = sqlSession.insert(ns + ".likeSeller", map);
+		return like;
 	}
 
 

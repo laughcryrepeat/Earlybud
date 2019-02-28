@@ -33,11 +33,12 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 //@RequestMapping(value = "category")
-//@RequestMapping("/category/*")	
+//@RequestMapping("/category/*")   
 @AllArgsConstructor
 public class ItemController {
-	
-	private ItemService service;
+   
+   private ItemService service;
+
 
 	@RequestMapping(value="reward", method=RequestMethod.GET)
 	public ModelAndView reward(@RequestParam("item_code") Long item_code, HttpServletRequest request) {
@@ -85,7 +86,7 @@ public class ItemController {
 		if (enc_check == null) {			
 			System.out.println("앵콜체크는 1임. 승인");
 			
-			if(service.encoreInsertService(map)){
+			if(service.encoreInsertService(map) & service.encoreAddItemService(map)){
 				System.out.println("승인완료");
 				enc_check = "1";	
 			}
@@ -137,3 +138,4 @@ public class ItemController {
 	}
 
 }
+

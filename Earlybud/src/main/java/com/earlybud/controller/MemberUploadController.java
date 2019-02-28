@@ -31,9 +31,9 @@ public class MemberUploadController {
 	CustomUserDetailsService service;
 	@Autowired
 	NewProjectService projectS;
-	@Autowired
+
 	BCryptPasswordEncoder passwordencoder;
-	@RequestMapping("modify")
+	@RequestMapping("mypage/modify")
 	public String mypage(Model model){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();

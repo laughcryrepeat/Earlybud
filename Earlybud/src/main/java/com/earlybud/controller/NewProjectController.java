@@ -178,6 +178,7 @@ public class NewProjectController {
 	public String sellerModify(Model model, @RequestParam("image") MultipartFile image, @RequestParam("info") String info,
 			@RequestParam("seller_loc") String seller_loc, @RequestParam("seller_account") String seller_account, @RequestParam("image_name") String image_name) throws IOException{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
 		String email = authentication.getName();
 		Seller seller = new Seller();
 		String originFullName= image.getOriginalFilename();
@@ -205,6 +206,7 @@ public class NewProjectController {
 		//long size = image.getSize();
 		//String contentType = image.getContentType();
 		//byte[] fileContents = image.getBytes();		
+
 		seller.setEmail(email);
 		seller.setInfo(info);
 		seller.setSeller_loc(seller_loc);
