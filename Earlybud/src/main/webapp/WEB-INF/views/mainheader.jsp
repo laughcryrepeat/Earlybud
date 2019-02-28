@@ -525,18 +525,16 @@
                          <em class="ranking-img" style="background-image:url(${pageContext.request.contextPath}/uploads/reward/<c:out value="${rewardRankingList[0].MAIN_IMAGE}"/>)"></em>
                             </a>
                     <div class="ranking-list">
-                      <ol>                      	       
-                    <c:set var="num" value="0"/> 
+                      <ol>                      	   
                       	       
-                      <c:forEach items="${rewardRankingList}" var="ranking">	 
-                      		<c:set var="sum" value="${num+1}"/>               	
+                      <c:forEach items="${rewardRankingList}" var="ranking" varStatus="status">	                       	             	
                         <li>
                           <div>
                             <p class="real">
-                            <em>${sum}</em>
+                            <em>${status.count}</em>
                             <a href="/../earlybud/reward?item_code=<c:out value="${ranking.ITEM_CODE}"/>"><c:out value="${ranking.TITLE}"/></a>
                           </p>
-                            <p><em>${sum}</em><a href="/../earlybud/reward?item_code=<c:out value="${ranking.ITEM_CODE}"/>"><c:out value="${ranking.TITLE}"/></a></p>
+                            <p><em>${status.count}</em><a href="/../earlybud/reward?item_code=<c:out value="${ranking.ITEM_CODE}"/>"><c:out value="${ranking.TITLE}"/></a></p>
                           </div>
                         </li>
                         
@@ -556,17 +554,15 @@
                             </a>
                 <div class="ranking-list">
                   <ol>
-               <c:set var="num" value="0"/>              		
 			
-                   <c:forEach items="${openRankingList}" var="ranking">	
-                   		<c:set var="sum" value="${num+1}"/> 
+                   <c:forEach items="${openRankingList}" var="ranking" varStatus="status">	
                     <li>
                        <div>
                          <p class="real">
-                         <em>${sum}</em>
+                         <em>${status.count}</em>
                          <a href="/../earlybud/reward?item_code=<c:out value="${ranking.ITEM_CODE}"/>"><c:out value="${ranking.TITLE}"/></a>
                        </p>
-                         <p><em>${sum}</em><a href="/../earlybud/reward?item_code=<c:out value="${ranking.ITEM_CODE}"/>"><c:out value="${ranking.TITLE}"/></a></p>
+                         <p><em>${status.count}</em><a href="/../earlybud/reward?item_code=<c:out value="${ranking.ITEM_CODE}"/>"><c:out value="${ranking.TITLE}"/></a></p>
                        </div>
                     </li>
                     
