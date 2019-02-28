@@ -50,6 +50,10 @@ public class ItemServiceImpl implements ItemService {
 		return dao.encoreInsert(map);
 	}
 	@Override
+	public boolean encoreAddItemService(HashMap map) {
+		return dao.encoreAddItem(map);
+	}
+	@Override
 	public Long likeCheckService(HashMap map) {
 		return dao.likeCheck(map);
 	}

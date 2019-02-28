@@ -56,6 +56,11 @@ public class ItemDAOImpl implements ItemDAO {
 		return true;
 	}
 	@Override
+	public boolean encoreAddItem(HashMap map) {
+		sqlSession.selectOne(ns+".encoreAddItem", map);
+		return true;
+	}
+	@Override
 	public boolean likeAdd(HashMap map) {
 		sqlSession.selectOne(ns+".likeAdd", map);
 		return true;
