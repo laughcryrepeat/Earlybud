@@ -515,9 +515,9 @@
                 </ul>
               </div>
               
-              <div id="rankContent1 rankContent3" class="ranking-content">
+              <div id="rankContent1" class="ranking-content">
                 <div class="helpinfo">
-                  <button class="btn-helpinfo"><i class="wadizicon wa-help" aria-hidden="true"></i></button>
+                  <button class="btn-helpinfo"><i class="wadizicon wa-help" aria-hidden="true"></i><img src="${pageContext.request.contextPath}/images/main/help2.png"></button>
                   <div class="rank-helpinfo">펀딩 횟수가 가장 많은 프로젝트 순으로 정렬됩니다.</div>
                 </div>                
                     <a href="/../earlybud/reward?item_code=<c:out value="${rewardRankingList[0].ITEM_CODE}"/>" title="<c:out value="${rewardRankingList[0].TITLE}"/>">

@@ -13,6 +13,15 @@
       		WHERE rn BETWEEN 1 AND 10
 	</select>
 	
+	<select id="getMainOpenList" resultType="com.earlybud.vo.MainVO" parameterType="hashmap"> 
+		SELECT * 
+      FROM (SELECT  q.*, rownum rn 
+      		FROM(select ITEM_CODE, TITLE, MAIN_IMAGE 
+      		from ITEM WHERE ${date_info} and ADMINCALL=1 ORDER BY ${standard}) q) 
+      		WHERE rn BETWEEN 1 AND 10
+	</select>
+	
+	
 	<select id="getRandomList" resultType="com.earlybud.vo.MainVO" parameterType="hashmap"> 
 		<![CDATA[
 		select S.*

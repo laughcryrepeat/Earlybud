@@ -54,10 +54,9 @@ public class MainController {
 	
 	/*오픈예정*/
 	HashMap<String, Object> map4 = new HashMap<String, Object>();
-	map4.put("end_code", "0");
 	map4.put("date_info", "opendate>sysdate");
 	map4.put("standard", "OPENDATE");	
-	List<MainVO> beOpenList = service.getMainList(map4);
+	List<MainVO> beOpenList = service.getMainOpenList(map4);
 	
 	/*종료*/
 	HashMap<String, Object> map5 = new HashMap<String, Object>();
