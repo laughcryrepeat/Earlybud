@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html>
 
@@ -28,16 +27,14 @@
   
   <script type="text/javascript">
     $(document).ready(function() {
+    	var add_button = $(".add_field_button");
+      $('.hiddenO').trigger('click');
       $('.summernote').summernote({
         height: 300,
         tabsize: 2
       });
-      var oc =$('.option_code').get();
-      document.getElementById("optionfield").value = oc.length+"개의 옵션을 입력하셨습니다";
     });
   </script>
-
-
 
   <style id="kirki-css-vars">:root{}</style>
   <title>EarlyBud &#8211; MyPage</title>
@@ -496,7 +493,7 @@
 
                 <header class="entry-header">
                   <span class="posted-on">EarlyBud</span>
-                  <h1 class="entry-title">프로젝트 수정</h1>
+                  <h1 class="entry-title">프로젝트 올리기</h1>
                 </header><!-- .entry-header -->
 
                 <div id="respond" class="comment-respond">
@@ -507,21 +504,15 @@
                     	<input id="summary" name="summary" type="text" value="${seller.summary}" size="30" maxlength="600" /></p>
                     <p class="comment-form-email"><label for="email">선물 구성(옵션)</label> 
                     	<input class="comment-form-email" id="optionfield" name="optionfield" type="text" size="20" maxlength="20" />
-                    		<div class="hiddenO">
-              	    	  	<input class="ocodeh" id="ocode" name="type_code" type="hidden" size="20" maxlength="20" />
-                	    	<input class="onameh" id="oname" name="name" type="hidden" size="20" maxlength="60" />
-                    		<input class="oinfoh" id="oinfo" name="info" type="hidden" size="30" maxlength="100" /></div>
+                    	<div class="hiddenO">
+                    	</div>
                     	<div id="myModal" class="optionmodal">
                     		<div class="optionmodal-content">
                     			<div>
                     				<p><a href="#" class="add_field_button">add</a></p>
                     				<label for="type_code">가격&emsp;&emsp;&emsp;&emsp;&emsp;옵션 이름&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;옵션 설명&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
                     				<div class="real_content">
-                    				<c:forEach items="${type}" var="t">
-                    					<td><input class="option_code" id="otype_code" name="otype_code" value="${t.price}" type="text" size="20" maxlength="20" /></td>
-                    					<td><input class="option_name" id="otype_name" name="oname" type="text" value="${t.name}"size="20" maxlength="60" /></td>
-                    					<td><input class="option_info" id="oinfo" name="oinfo" type="text" value="${t.info}" size="30" maxlength="100" /></td>
-                    				</c:forEach>
+                    				
                     				</div>
                     			</div>
                     		</div>
@@ -531,6 +522,7 @@
                     <section id="categories-2" class="widget widget_catego ries">
                       <ul>
                         <input name="submit" type="submit" class="submit" value="다음페이지" />
+                        <input name="item_code" type="hidden" value="${seller.item_code}"/>
                       </ul>
                     </section>
                  </form>
@@ -703,6 +695,7 @@
         width: 50%; /* Could be more or less, depending on screen size */
 	  }
 	  </style>
+
 	  <script type="text/javascript">
 	  var pick = document.getElementById('optionfield');
 	  var mymodal = document.getElementById('myModal');
@@ -714,20 +707,44 @@
 	  var wrapper = $(".real_content");
 	  var add_button = $(".add_field_button");
 	  var x=1;
-	  $(add_button).click(function(e){
+	  $('.hiddenO').click(function(e){
 		  e.preventDefault();
 		  if(x < max_fields){
 			  x++;
-			  $(wrapper).append('<div><input class="option_code" id="otype_code" name="otype_code" type="text" size="10" maxlength="20" /><input class="option_name" id="otype_name" name="oname" type="text" size="20" maxlength="60" /><input class="option_info" id="dinfo" name="dinfo" type="text" size="30" maxlength="100" /><a href="#" class="remove_field">remove</a></div>\n');
+			  $(wrapper).append('<c:forEach items="${type}" var="t"><div><td><input class="option_code" id="otype_code" name="otype_code" type="text" value="${t.price}" size="10" maxlength="20" /></td><td><input class="option_name" id="otype_name" name="oname" type="text" value="${t.name}" size="20" maxlength="60" /></td><td><input class="option_info" id="dinfo" name="dinfo" value="${t.info}" type="text" size="30" maxlength="100" /></td><a href="#" class="remove_field">remove</a></div>\n</c:forEach>');
 			  $(hidden).append('<div><input class="ocodeh" id="type_code" name="type_code" type="hidden" size="10" maxlength="20" /><input class="onameh" id="type_name" name="name" type="hidden" size="20" maxlength="60" /><input class="oinfoh" id="info" name="info" type="hidden" size="30" maxlength="100" />');
 		  }
-	  $(wrapper).on("click",".remove_field", function(e){
-		  e.preventDefault(); $(this).parent('div').remove(); x--;
-		})
-	  });
+		  $(add_button).click(function(e){
+			  e.preventDefault();
+			  if(x < max_fields){
+				  x++;
+				  $(wrapper).append('<div><input class="option_code" id="otype_code" name="otype_code" type="text" size="10" maxlength="20" /><input class="option_name" id="otype_name" name="oname" type="text" size="20" maxlength="60" /><input class="option_info" id="dinfo" name="dinfo" type="text" size="30" maxlength="100" /><a href="#" class="remove_field">remove</a></div>\n');
+				  $(hidden).append('<div><input class="ocodeh" id="type_code" name="type_code" type="hidden" size="10" maxlength="20" /><input class="onameh" id="type_name" name="name" type="hidden" size="20" maxlength="60" /><input class="oinfoh" id="info" name="info" type="hidden" size="30" maxlength="100" />');
+			  }
+		  })
+	  		$(wrapper).on("click",".remove_field", function(e){
+		 		 e.preventDefault(); $(this).parent('div').remove(); x--;
+			})
+			});
 	  window.onclick = function(event) {
           if (event.target == mymodal) {
-        	 
+        	  var oc =$('.option_code').get();
+        	  var on =$('.option_name').get();
+        	  var oi =$('.option_info').get();
+        	  var hc =$('.ocodeh').get();
+        	  var hn =$('.onameh').get();
+        	  var hi =$('.oinfoh').get();
+        	  for(var i=0; i<oc.length; i++){
+        		  hc[i].value = oc[i].value;
+        		  hn[i].value = on[i].value;
+        		  hi[i].value = oi[i].value;
+        		  console.log("타입코드"+hc[i].value);
+        		  console.log(hn[i].value);
+        		  console.log(hi[i].value);
+        		  
+        	  }
+        	  document.getElementById("optionfield").value =oc.length+"개의 옵션을 입력하셨습니다";
+        	  <!-- myproject.option_type.value = "가격: "+ type_code.value + " 옵션이름: " + type_name.value + " 옵션설명: " + info.value;--> 
               mymodal.style.display = "none";
           }
       };

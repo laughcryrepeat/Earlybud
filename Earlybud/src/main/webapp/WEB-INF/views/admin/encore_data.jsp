@@ -139,7 +139,7 @@
                     data: JSON.stringify({
                     	"mailto": seller,
                     	"mailsubject": "얼리버드 상품 관리자 앵콜 승인 되었습니다.",
-                    	"mailcontent": "상품 "+ item +" 앵콜살품으로 수정 하시면 다시 등록됩니다. 마이페이지에서 확인가능합니다."
+                    	"mailcontent": "상품 "+ item +" 앵콜상품으로 수정 하시면 다시 등록됩니다. 마이페이지에서 확인가능합니다."
                     	}),
                     success: function(){
                         console.log("확인 메일&메세지 보냄");
@@ -149,5 +149,9 @@
   	  });
     });
     </script>
+<<<<<<< HEAD
   </body>
+=======
+  </body>
+>>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
 </html>

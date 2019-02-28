@@ -20,9 +20,9 @@
    	insert into TYPE(type_code,item_code,name,info,price,pur_num)  
    	values(TYPE_CODE_SEQ.nextval,#{item_code},#{name},#{info},#{price},#{pur_num})  
    	</insert> 
-  	<update id="updateType" parameterType="Type">
-  	update TYPE set name=#{name} , info=#{info} , price=#{price} where type_code=#{type_code}
-  	</update>
+  	<delete id="updateType" parameterType="Type">
+  	delete from type where item_code=#{item_code}
+  	</delete>
    	<update id="updatePurnum" parameterType="Long"> 
    	update TYPE set pur_num = (pur_num+1) where type_code =#{type_code}
    	</update>

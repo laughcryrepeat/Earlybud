@@ -14,7 +14,7 @@ public interface NewProjectDao {
 	public List<Type> selectType(long item_code);
 	public int save(Item item);
 	public int save2(Type type);
-	public int modifyType(Type type);
+	public int modifyType(long item_code);
 	public int update(Item item);
 	public int update2(Seller seller);
 	public int modifyItem(Item item);
