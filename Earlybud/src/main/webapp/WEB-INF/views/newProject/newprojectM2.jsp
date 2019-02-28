@@ -31,7 +31,7 @@
                     <p class="comment-form-author"><label for="author">프로젝트 제목<span class="required">*</span></label> 
                     	<input id="title" name="title" type="text" value="${seller.title}" size="30" maxlength="245" required='required' /></p>
                     <p class="comment-form-email"><label for="main_image">프로젝트 대표이미지<span class="required">*</span></label>
-                    	<input id="main_image" type="text" class="upload-name" value="${seller.main_image}" size="30" maxlength="245" required='required' onclick="check()" readonly/>
+                    	<input id="main_image" name="image_name" type="text" class="upload-name" value="${seller.main_image}" size="30" maxlength="245" required='required' onclick="check()" readonly/>
                     	<input id="image_file" name="main_image" type="file" id="submit" class="file-hidden" value="file" required="required"></p>
                     <p class="comment-form-url">
                 	    <span>

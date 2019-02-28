@@ -39,78 +39,79 @@ public class ItemController {
    
    private ItemService service;
 
-   @RequestMapping(value="reward", method=RequestMethod.GET)
-   public ModelAndView reward(@RequestParam("item_code") Long item_code, HttpServletRequest request) {
-      String reply = (String)request.getParameter("reply");
-      System.out.println("하용");
-      
-      RewardVO listOne= service.get(item_code);
-      String view = "category/item2";
-      System.out.println("하용2");
-      
-   //   List<Notice> listNotice = service_Notice.listService(item_code);
-   //   List<Reply> listReply = service_Reply.listService(item_code);   //댓글리스트 만들기
-      Date date = new Date();
-      if (date.getTime()<listOne.getOPENDATE().getTime()){
-         listOne.setTIME("999");         
-      }
-      Long likes = service.countLikeService(item_code);
-         
-      ModelAndView mv = new ModelAndView(view, "item", listOne);
-      mv.addObject("item_code", item_code);
-      mv.addObject("reply", reply);   //최초로딩시 상세설명탭에 위치하기 위해서 반드시 null값을 보내야함
-   //   mv.addObject("list_reply", listReply);
-      mv.addObject("likes", likes);
-      System.out.println("하용~객체내용"+listOne);
-      return mv;
-   }
-   
-   
-   @RequestMapping(value="reward/encore", method=RequestMethod.POST)
-   public @ResponseBody String encore(@RequestBody Map<String, Object> params) {
-      
-      String email = (String) params.get("em");
-      String item_code = (String) params.get("itemcode");
-      
-      System.out.println("em은 "+email);
-      System.out.println("카테고리코드는 "+item_code);
-   
-      
-      HashMap<String, Object> map = new HashMap<String, Object>();
-      map.put("email", email);
-      map.put("item_code", item_code);
-      String enc_check = service.encoreCheckService(map);
-      
-      System.out.println("앵콜체크는 "+enc_check);
-      if (enc_check == null) {         
-         System.out.println("앵콜체크는 1임. 승인");
-         
-         if(service.encoreInsertService(map)){
-            System.out.println("승인완료");
-            enc_check = "1";   
-         }
-      }else {
-         System.out.println("앵콜체크는 0임. "+enc_check);
-         enc_check = "0";
-         
-      }
-      
-      return enc_check;
-   }
-   @RequestMapping(value="reward/like", method=RequestMethod.POST)
-   public @ResponseBody HashMap<String, Object> likes(@RequestBody Map<String, Object> params) {
-      
-      String email = (String) params.get("em");
-      String item_code = (String) params.get("itemcode");
-      
-      System.out.println("em은 "+email);
-      System.out.println("카테고리코드는 "+item_code);
-   
-      HashMap<String, Object> map = new HashMap<String, Object>();
-      map.put("email", email);
-      map.put("item_code", item_code);
-      
-      String like_check = Long.toString(service.likeCheckService(map));
+
+	@RequestMapping(value="reward", method=RequestMethod.GET)
+	public ModelAndView reward(@RequestParam("item_code") Long item_code, HttpServletRequest request) {
+		String reply = (String)request.getParameter("reply");
+		System.out.println("하용");
+		
+		RewardVO listOne= service.get(item_code);
+		String view = "category/item2";
+		System.out.println("하용2");
+		
+	//	List<Notice> listNotice = service_Notice.listService(item_code);
+	//	List<Reply> listReply = service_Reply.listService(item_code);	//댓글리스트 만들기
+		Date date = new Date();
+		if (date.getTime()<listOne.getOPENDATE().getTime()){
+			listOne.setTIME("999");			
+		}
+		Long likes = service.countLikeService(item_code);
+			
+		ModelAndView mv = new ModelAndView(view, "item", listOne);
+		mv.addObject("item_code", item_code);
+		mv.addObject("reply", reply);	//최초로딩시 상세설명탭에 위치하기 위해서 반드시 null값을 보내야함
+	//	mv.addObject("list_reply", listReply);
+		mv.addObject("likes", likes);
+		System.out.println("하용~객체내용"+listOne);
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="reward/encore", method=RequestMethod.POST)
+	public @ResponseBody String encore(@RequestBody Map<String, Object> params) {
+		
+		String email = (String) params.get("em");
+		String item_code = (String) params.get("itemcode");
+		
+		System.out.println("em은 "+email);
+		System.out.println("카테고리코드는 "+item_code);
+	
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("email", email);
+		map.put("item_code", item_code);
+		String enc_check = service.encoreCheckService(map);
+		
+		System.out.println("앵콜체크는 "+enc_check);
+		if (enc_check == null) {			
+			System.out.println("앵콜체크는 1임. 승인");
+			
+			if(service.encoreInsertService(map) & service.encoreAddItemService(map)){
+				System.out.println("승인완료");
+				enc_check = "1";	
+			}
+		}else {
+			System.out.println("앵콜체크는 0임. "+enc_check);
+			enc_check = "0";
+			
+		}
+		
+		return enc_check;
+	}
+	@RequestMapping(value="reward/like", method=RequestMethod.POST)
+	public @ResponseBody HashMap<String, Object> likes(@RequestBody Map<String, Object> params) {
+		
+		String email = (String) params.get("em");
+		String item_code = (String) params.get("itemcode");
+		
+		System.out.println("em은 "+email);
+		System.out.println("카테고리코드는 "+item_code);
+	
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("email", email);
+		map.put("item_code", item_code);
+		
+		String like_check = Long.toString(service.likeCheckService(map));
 
 		System.out.println("like체크는 "+like_check);
 		if (like_check.equals("0")) {			

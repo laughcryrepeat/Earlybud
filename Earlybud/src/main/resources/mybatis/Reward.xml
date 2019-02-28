@@ -69,6 +69,10 @@
 		insert into mem_encore values(#{email}, #{item_code})
 	</select>
 	
+	<select id="encoreAddItem" parameterType="String">
+		update ITEM set encore_num=encore_num+1 where item_code=#{item_code}
+	</select>
+	
 	<select id="likeCK" resultType="Long" parameterType="String">
 		select count(*) from likes where email=#{email} and item_code=#{item_code}
 	</select>	

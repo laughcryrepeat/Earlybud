@@ -15,7 +15,9 @@ public interface ItemService {
 	public void updateSuccessNService();
 	public String encoreCheckService(HashMap map);
 	public boolean encoreInsertService(HashMap map);
+	public boolean encoreAddItemService(HashMap map);
 	public Long likeCheckService(HashMap map);
 	public boolean likeAddService(HashMap map);
 	public boolean likeDelService(HashMap map);
+	
 }
