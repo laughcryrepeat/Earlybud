@@ -30,6 +30,7 @@
     	var add_button = $(".add_field_button");
       $('.hiddenO').trigger('click');
       $('.add_field_button').trigger('click');
+      $('.remove_field').trigger('click');
       $('.summernote').summernote({
         height: 300,
         tabsize: 2
@@ -712,7 +713,7 @@
 		  e.preventDefault();
 		  if(x < max_fields){
 			  x++;
-			  $(wrapper).append('<c:forEach items="${type}" var="t"><div><td><input class="option_code" id="otype_code" name="otype_code" type="text" value="${t.price}" size="10" maxlength="20" /></td><td><input class="option_name" id="otype_name" name="oname" type="text" value="${t.name}" size="20" maxlength="60" /></td><td><input class="option_info" id="dinfo" name="dinfo" value="${t.info}" type="text" size="30" maxlength="100" /></td><a href="#" class="remove_field">remove</a></div>\n</c:forEach>');
+			  $(wrapper).append('<c:forEach items="${type}" var="t"><div><td><input class="option_code" id="otype_code" name="otype_code" type="text" value="${t.price}" size="10" maxlength="20" /></td><td><input class="option_name" id="otype_name" name="oname" type="text" value="${t.name}" size="20" maxlength="60" /></td><td><input class="option_info" id="dinfo" name="dinfo" value="${t.info}" type="text" size="30" maxlength="100" /></td><a href="#" class="remov_field">remove</a></div>\n</c:forEach>');
 			  $(hidden).append('<div><input class="ocodeh" id="type_code" name="type_code" type="hidden" size="10" maxlength="20" /><input class="onameh" id="type_name" name="name" type="hidden" size="20" maxlength="60" /><input class="oinfoh" id="info" name="info" type="hidden" size="30" maxlength="100" />');
 	  	  }
 	  });
@@ -725,6 +726,9 @@
 		  }
 	  })
 	  		$(wrapper).on("click",".remove_field", function(e){
+		 		 e.preventDefault(); $(this).parent('div').remove(); x--;
+			})
+	  		$(wrapper).on("click",".remov_field", function(e){
 		 		 e.preventDefault(); $(this).parent('div').remove(); x--;
 			});
 	  window.onclick = function(event) {

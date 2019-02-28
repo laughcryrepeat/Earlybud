@@ -2,49 +2,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@include file="seller_items_header.jsp" %>
+<%@include file="header.jsp" %>
 <!doctype html> 
 <html class="no-js">
 <!doctype html>
 <html lang="en-US">
 
 <body>
-<<<<<<< HEAD
-      
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-		
-=======
-		
->>>>>>> stash
-=======
-<<<<<<< HEAD
-		
-=======
-		
->>>>>>> stash
->>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
->>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
-<%@include file="header.jsp" %>
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
-
-<<<<<<< HEAD
-=======
-
->>>>>>> stash
-=======
->>>>>>> stash
->>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
->>>>>>> branch 'master' of https://github.com/laughcryrepeat/Earlybud.git
  <nav class="b-nav-global">
   <ul class="b-nav-global__items">
    
