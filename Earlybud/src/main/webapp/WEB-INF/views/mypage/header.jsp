@@ -603,7 +603,7 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 					<div class="row">
 						<div class="site-branding col-md-4 col-sm-6 col-9">
 							<a href="/../earlybud/main" class="custom-logo-link" rel="home" itemprop="url">
-								<img width="80" height="50" src="images/main/earlybud.png" class="custom-logo" alt="Atu" itemprop="logo">
+								<img width="80" height="50" src="${pageContext.request.contextPath}/images/main/earlybud.png" class="custom-logo" alt="Atu" itemprop="logo">
 							</a>			
 						</div><!-- .site-branding -->
 			
