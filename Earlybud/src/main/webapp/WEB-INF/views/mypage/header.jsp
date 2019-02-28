@@ -642,7 +642,6 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 									</ul>
 									</div>
 									</nav><!-- #site-navigation -->
-
 				</div>
 			</div>
 	</header>
