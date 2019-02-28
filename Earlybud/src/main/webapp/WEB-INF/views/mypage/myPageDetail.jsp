@@ -10,7 +10,7 @@
             <main id="main" class="site-main">
               <article id="post-1" class="post-1 post type-post status-publish format-standard hentry category-uncategorized">
                 <header class="entry-header">
-                  <span class="posted-on">My Page detail</span>
+                  <span class="posted-on"></span>
                   <h1 class="entry-title">회원정보수정</h1>
                 </header><!-- .entry-header -->
                 <div id="respond" class="comment-respond">

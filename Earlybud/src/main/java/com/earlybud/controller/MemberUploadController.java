@@ -31,7 +31,7 @@ public class MemberUploadController {
 	CustomUserDetailsService service;
 	@Autowired
 	NewProjectService projectS;
-
+	@Autowired
 	BCryptPasswordEncoder passwordencoder;
 	@RequestMapping("mypage/modify")
 	public String mypage(Model model){
@@ -50,6 +50,7 @@ public class MemberUploadController {
 			@RequestParam("pwd") String pwd, @RequestParam("addr") String addr, @RequestParam("detail_addr") String detail_addr,
 			@RequestParam("phone") String phone,String error, Model model)
 		throws Exception{
+		System.out.println(pwd);
 		if(!passwordencoder.matches(pwd, passwordencoder.encode(member.getPwd()))) {
 			System.out.println("비밀번호가 다르다");
 			member.setPwd(pwd);
