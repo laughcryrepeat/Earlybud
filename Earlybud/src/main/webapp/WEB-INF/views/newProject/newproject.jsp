@@ -34,7 +34,9 @@
                             <center>
                               <h2 class="entry-title"><a href="newprojectDetail1" rel="bookmark">프로젝트 만들기</a></h2>
                             </center>
+                            
                             <img src="https://pbs.twimg.com/media/C6Ye6jOUoAAYCPX.jpg" alt="명지 남친">
+                           
                           </div><!-- .entry-content -->
                           <footer class="entry-footer">
                             <a class="read-more-link" href="#">더 알아보기<span class="gt">&gt;&gt;</span></a>
