@@ -29,6 +29,7 @@
 
 </head>
 <body>
+
 <div class="container">
 <h3 class=" text-center">EarlyBud 판매자 문의</h3>
 <div class="messaging">
@@ -106,7 +107,14 @@
       <p class="text-center top_spac"> Design by <a target="_blank" href="#">Sunil Rajput</a></p>
       
     </div></div>
-    
+    <script type="text/javascript">
+
+    	$(".msg_history").scrollTop($(document).height());
+
+    	function myFunction(){
+    		location.href=window.location.href+"/"+$("#contentA").val();
+    	}
+    </script>
     </body>
     
     <script type="text/javascript">
