@@ -35,7 +35,7 @@ public class NewProjectController {
 	@Autowired
 	NewProjectService projectS;
 	
-	String projectPath="C:\\Users\\hb6009\\git\\Earlybud\\Earlybud\\src\\main\\webapp\\resources\\uploads\\reward";
+	String projectPath="C:\\Users\\student\\git\\Earlybud\\Earlybud\\src\\main\\webapp\\resources\\uploads\\reward";
 	
 	DateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
 	@RequestMapping("newproject")
@@ -177,7 +177,7 @@ public class NewProjectController {
 		return "newProject/newprojectM1";
 	}
 	
-	String profilePath = "C:\\Users\\hb6009\\git\\Earlybud\\Earlybud\\src\\main\\webapp\\resources\\uploads\\member\\profile";
+	String profilePath = "C:\\Users\\student\\git\\Earlybud\\Earlybud\\src\\main\\webapp\\resources\\uploads\\member\\profile";
 	
 	@RequestMapping("sellerModify")
 	public String sellerModify(Model model, @RequestParam("image") MultipartFile image, @RequestParam("info") String info,
