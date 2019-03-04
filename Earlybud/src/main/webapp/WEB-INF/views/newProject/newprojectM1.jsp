@@ -16,11 +16,11 @@
                     <p class="comment-form-email"><label for="image">진행자 프로필이미지<span class="required">*</span></label>
                     	<input id="image_name" name="image_name" type="text" class="upload-name" value="${seller.image}" size="30" maxlength="245" required='required' onclick="check()" readonly/>
                     	<input id="image_file" name="image" type="file" id="submit" class="file-hidden" value="file" required="required"></p>
-                    <p class="comment-form-comment"><label for="author">진행자 소개<span class="required">*</span></label> 
+                    <p class="comment-form-comment"><label for="author">진행자 소개<span class="required">*</span></label>
                     	<input id="info" name="info" type="text" value="${seller.info }" size="30" maxlength="245" required='required' /></p>
-                    <p class="comment-form-author"><label for="email">진행자 활동 지역</label> 
+                    <p class="comment-form-author"><label for="email">진행자 활동 지역</label>
                     	<input id="seller_loc" name="seller_loc" type="text" value="${seller.seller_loc }" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
-                    <p class="comment-form-url"><label for="url">계좌 등록하기<span class="required">*</span></label> 
+                    <p class="comment-form-url"><label for="url">계좌 등록하기<span class="required">*</span></label>
                     	<input id="seller_account" name="seller_account" type="text" value="${seller.seller_account }" size="30" maxlength="200" /></p>
                     <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="정보 수정" /> <input type='hidden' name='comment_post_ID' value='1' id='comment_post_ID' />
                       <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
@@ -32,7 +32,7 @@
           </div><!-- #comments -->
           </main><!-- #main -->
         </div><!-- #primary -->
-        
+
         <footer id="colophon" class="site-footer">
           <div class="container">
             <div class="row">
@@ -138,18 +138,18 @@
 	  }
 	  </script>
 	  <script type="text/javascript">
-	  $(document).ready(function(){ 
-		  var fileTarget = $('.comment-form-email .file-hidden'); 
-		  fileTarget.on('change', function(){ // 값이 변경되면 
-			  if(window.FileReader){ // modern browser 
-				  var filename = $(this)[0].files[0].name; 
-			  } else { // old IE 
-				  var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
-			} 
-		  // 추출한 파일명 삽입 
-		  $(this).siblings('.upload-name').val(filename); 
-		  }); 
-	 }); 
+	  $(document).ready(function(){
+		  var fileTarget = $('.comment-form-email .file-hidden');
+		  fileTarget.on('change', function(){ // 값이 변경되면
+			  if(window.FileReader){ // modern browser
+				  var filename = $(this)[0].files[0].name;
+			  } else { // old IE
+				  var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출
+			}
+		  // 추출한 파일명 삽입
+		  $(this).siblings('.upload-name').val(filename);
+		  });
+	 });
 	  </script>
 </body>
 

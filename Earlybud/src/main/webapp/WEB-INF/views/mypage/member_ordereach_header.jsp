@@ -4,95 +4,95 @@
 <html>
 <head>
 <!-- 주문서 양식 -->
-<meta http-equiv=”Cache-Control” content=”no-cache”/> 
-		<meta http-equiv=”Expires” content=”0″/> 
+<meta http-equiv=”Cache-Control” content=”no-cache”/>
+		<meta http-equiv=”Expires” content=”0″/>
 		<meta http-equiv=”Pragma” content=”no-cache”/>
 
 		<meta charset="utf-8"/>
 		<title>FOLDER TEMPLATE</title>
-			
+
 		<!-- https://getbootstrap.com/docs/4.0/getting-started/introduction/   js는 </body> 바로 앞에 있음. -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-			
+
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<link rel="stylesheet" media="all" href="${root}css/mypage/style.css"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->		
-				
+		<!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
+
 		<!-- JS -->
-		
+
 		<!--  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>-->
 		<script src="${root}js/jquery-1.7.1.min.js"></script>
 		<script src="${root}js/custom.js"></script>
 		<script src="${root}js/tabs.js"></script>
 		<script src="${root}js/css3-mediaqueries.js"></script>
 		<script src="${root}js/jquery.columnizer.min.js"></script>
-		
+
 		<!-- Isotope -->
 		<script src="${root}js/jquery.isotope.min.js"></script>
-		
+
 		<!-- Lof slider -->
 		<script src="${root}js/jquery.easing.js"></script>
 		<script src="${root}js/lof-slider.js"></script>
-		<link rel="stylesheet" href="${root}css/mypage/lof-slider.css" media="all"  /> 
+		<link rel="stylesheet" href="${root}css/mypage/lof-slider.css" media="all"  />
 		<!-- ENDS slider -->
-		
+
 		<!-- Tweet -->
-		<link rel="stylesheet" href="${root}css/mypage/jquery.tweet.css" media="all"  /> 
-		<script src="${root}js/tweet/jquery.tweet.js" ></script> 
+		<link rel="stylesheet" href="${root}css/mypage/jquery.tweet.css" media="all"  />
+		<script src="${root}js/tweet/jquery.tweet.js" ></script>
 		<!-- ENDS Tweet -->
-		
+
 		<!-- superfish -->
-		<link rel="stylesheet" media="screen" href="${root}css/mypage/superfish.css" /> 
+		<link rel="stylesheet" media="screen" href="${root}css/mypage/superfish.css" />
 		<script  src="${root}js/superfish-1.4.8/js/hoverIntent.js"></script>
 		<script  src="${root}js/superfish-1.4.8/js/superfish.js"></script>
 		<script  src="${root}js/superfish-1.4.8/js/supersubs.js"></script>
 		<!-- ENDS superfish -->
-		
+
 		<!-- prettyPhoto -->
 		<script  src="${root}js/prettyPhoto/js/jquery.prettyPhoto.js"></script>
 		<link rel="stylesheet" href="${root}js/prettyPhoto/css/prettyPhoto.css"  media="screen" />
 		<!-- ENDS prettyPhoto -->
-		
+
 		<!-- poshytip -->
 		<link rel="stylesheet" href="${root}js/poshytip-1.1/src/tip-twitter/tip-twitter.css"  />
 		<link rel="stylesheet" href="${root}js/poshytip-1.1/src/tip-yellowsimple/tip-yellowsimple.css"  />
 		<script  src="${root}js/poshytip-1.1/src/jquery.poshytip.min.js"></script>
 		<!-- ENDS poshytip -->
-		
+
 		<!-- JCarousel -->
 		<script type="text/javascript" src="${root}js/jquery.jcarousel.min.js"></script>
-		<link rel="stylesheet" media="screen" href="${root}css/carousel.css" /> 
+		<link rel="stylesheet" media="screen" href="${root}css/carousel.css" />
 		<!-- ENDS JCarousel -->
-		
+
 		<!-- GOOGLE FONTS -->
 		<link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
 
 		<!-- modernizr -->
 		<script src="${root}js/modernizr.js"></script>
-		
+
 		<!-- SKIN -->
 		<link rel="stylesheet" media="all" href="${root}css/mypage/skin.css"/>
-		
+
 		<!-- Less framework -->
 		<link rel="stylesheet" media="all" href="${root}css/mypage/lessframework.css"/>
-		
+
 		<!-- jplayer -->
 		<link href="${root}player-skin/jplayer-black-and-yellow.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="${root}js/jquery.jplayer.min.js"></script>
-		
+
 		<!-- flexslider -->
 		<link rel="stylesheet" href="${root}css/mypage/flexslider.css" >
 		<script src="${root}js/jquery.flexslider.js"></script>
-		
-		
+
+
 		<!-- reply move form -->
 		<script src="${root}js/moveform.js"></script>
-		
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"> 
-	 
+
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
 	 <style>
 	 html,body{
   //height:100%;
@@ -150,7 +150,7 @@ button:hover:before,button:hover:after{
 		    background-color: #333333;
 		    font-family: Tahoma,'Noto Sans Korean', 'Malgun Gothic', '맑은 고딕', AppleSDGothicNeo, Helvetica, dotum, 돋움, sans-serif;
 		    height:65px;
-		    
+
 		}
 		.tab2 button {
 				font-weight: bold;
@@ -183,27 +183,27 @@ button:hover:before,button:hover:after{
 		    color:#ffffff;
 		}
 		.select_table table[id=buytable]{
-		font-size: 14px; 
-		width: 100%; /* 원하는 너비설정 */ 
-		padding: .8em .5em; /* 여백으로 높이 설정 */ 
+		font-size: 14px;
+		width: 100%; /* 원하는 너비설정 */
+		padding: .8em .5em; /* 여백으로 높이 설정 */
 		font-family: inherit; /* 폰트 상속 */
 		/*border: 1px solid #999;*/
-		border-radius: 0px; /* iOS 둥근모서리 제거 */ 
-		-webkit-appearance: none; /* 네이티브 외형 감추기 */ 
-		-moz-appearance: none; 
+		border-radius: 0px; /* iOS 둥근모서리 제거 */
+		-webkit-appearance: none; /* 네이티브 외형 감추기 */
+		-moz-appearance: none;
 		appearance: none;
 }
 .select_table table input,
 .select_table table button[class=mybtn2]{
-		font-size: 14px; 
+		font-size: 14px;
 		width: 100%; /* 원하는 너비설정 */
-		height:100%; 
-		padding: .8em .5em; /* 여백으로 높이 설정 */ 
+		height:100%;
+		padding: .8em .5em; /* 여백으로 높이 설정 */
 		font-family: inherit; /* 폰트 상속 */
 		/*border: 1px solid #999;*/
-		border-radius: 0px; /* iOS 둥근모서리 제거 */ 
-		-webkit-appearance: none; /* 네이티브 외형 감추기 */ 
-		-moz-appearance: none; 
+		border-radius: 0px; /* iOS 둥근모서리 제거 */
+		-webkit-appearance: none; /* 네이티브 외형 감추기 */
+		-moz-appearance: none;
 		appearance: none;
 		border:0;
 }
@@ -311,12 +311,12 @@ table.type01 td {
 		id = ((Member)session.getAttribute("userLoginInfo")).getId();
 		System.out.println("action: "+action);
 		System.out.println("id: "+id);
-		request.setAttribute("joinOrLogin",joinOrLogin); 
-	}else{		
+		request.setAttribute("joinOrLogin",joinOrLogin);
+	}else{
 		request.setAttribute("joinOrLogin",joinOrLogin);
 		System.out.println("로그아웃중");
 	%>
-		<script type="text/javascript"> 
+		<script type="text/javascript">
 		$(function(){
 				console.log("다시 로그인.");
 				alert("다시 로그인 해주세요");
@@ -328,18 +328,18 @@ table.type01 td {
 	</%
 	}
 	%/> -->
-	<%  
-response.setHeader("Cache-Control","no-store");  
-response.setHeader("Pragma","no-cache");  
-response.setDateHeader("Expires",0);  
+	<%
+response.setHeader("Cache-Control","no-store");
+response.setHeader("Pragma","no-cache");
+response.setDateHeader("Expires",0);
 if (request.getProtocol().equals("HTTP/1.1"))
         response.setHeader("Cache-Control", "no-cache");
 %>
 	</style>
 	<!--  <input  value="검토요청" name="submit2" id="submit2" type="submit"/> -->
 	<!-- 주문서 끝 -->
-	
-	
+
+
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
@@ -352,7 +352,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 <script type="text/javascript">
 	$(function(){
 		$('.project-filter').mouseenter(function(){
-			$('.project-filter').css("background-color", #db79f5)
+			$('.project-filter').css("background-color", #cfbaf4)
 		});
 	});
 </script>
@@ -423,10 +423,10 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			padding: 0 !important;
 		}
 		.active{
-			background-color: #db79f5 !important;
+			background-color: #cfbaf4 !important;
 		}
 		.elementor-size-sm{
-			background-color: #db79f5 !important;
+			background-color: #cfbaf4 !important;
 			border: none !important;
 		}
 	</style>
@@ -507,7 +507,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		.menuStyle4 .contact-area .contact-block .contact-icon,
 		.widget_categories li:hover::before,
 		.widget_categories li:hover a {
-			color: #db79f5;
+			color: #cfbaf4;
 		}
 
 		.menuStyle4 .contact-area .contact-block .contact-icon,
@@ -516,7 +516,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		input[type="button"],
 		input[type="reset"],
 		input[type="submit"] {
-			border-color: #db79f5;
+			border-color: #cfbaf4;
 		}
 
 		.menuStyle2 .main-navigation a:hover:after,
@@ -531,7 +531,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 		input[type="submit"],
 		.menuStyle3 .main-navigation a:hover:after,
 		.menuStyle3 .main-navigation .current-menu-item:after {
-			background-color: #db79f5;
+			background-color: #cfbaf4;
 		}
 
 		.menuStyle2 .site-title a {

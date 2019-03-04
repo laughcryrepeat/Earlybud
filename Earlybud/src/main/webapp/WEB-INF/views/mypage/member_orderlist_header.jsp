@@ -70,11 +70,11 @@ window.wadizWebManifest={"0":"equity-feedback.js?543e2719c82224c0cf5b","1":"equi
 
 3dabf8f27601e2c8aa2f","25":"static/equity-open.js?d47dd54b51347b9b1be1","26":"social.js?7f3ffdb4f9228d482664"};
 window.wadiz = window.wadiz || {};window.wadiz.sessionUser="";</script>
-<link rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/vendor.css?966a1957dbe0ea1e47a26794a40b2772"><link 
+<link rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/vendor.css?966a1957dbe0ea1e47a26794a40b2772"><link
 
-rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/common.css?c067a4b077f78dd0d8ac2a36ba9e8c08"><script 
+rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/common.css?c067a4b077f78dd0d8ac2a36ba9e8c08"><script
 
-type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/vendor.js?33b07d8ab3089c7ecb0c"></script><script 
+type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/vendor.js?33b07d8ab3089c7ecb0c"></script><script
 
 type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441e2f6ee1fcac27a0e"></script>
 <!-- S : page_head area -->
@@ -143,12 +143,12 @@ release.min.js?ver=4.9.9"
 				if (!l || !l.fillText) return !1;
 				switch (l.textBaseline = "top", l.font = "600 32px Arial", a) {
 					case "flag":
-						return !(b = d([55356, 56826, 55356, 56819], [55356, 56826, 8203, 55356, 56819])) 
+						return !(b = d([55356, 56826, 55356, 56819], [55356, 56826, 8203, 55356, 56819]))
 
-&& (b = d([55356, 57332, 56128, 56423, 56128, 56418, 56128, 56421, 56128, 56430, 56128, 56423, 56128, 56447], [55356, 57332, 8203, 
+&& (b = d([55356, 57332, 56128, 56423, 56128, 56418, 56128, 56421, 56128, 56430, 56128, 56423, 56128, 56447], [55356, 57332, 8203,
 
 56128, 56423, 8203, 56128,
-							56418, 8203, 56128, 56421, 8203, 56128, 56430, 8203, 56128, 56423, 8203, 
+							56418, 8203, 56128, 56421, 8203, 56128, 56430, 8203, 56128, 56423, 8203,
 
 56128, 56447
 						]), !b);
@@ -167,18 +167,18 @@ release.min.js?ver=4.9.9"
 			for (j = Array("flag", "emoji"), c.supports = {
 					everything: !0,
 					everythingExceptFlag: !0
-				}, i = 0; i < j.length; i++) c.supports[j[i]] = e(j[i]), c.supports.everything = 
+				}, i = 0; i < j.length; i++) c.supports[j[i]] = e(j[i]), c.supports.everything =
 
-c.supports.everything && c.supports[j[i]], "flag" !== j[i] && (c.supports.everythingExceptFlag = c.supports.everythingExceptFlag 
+c.supports.everything && c.supports[j[i]], "flag" !== j[i] && (c.supports.everythingExceptFlag = c.supports.everythingExceptFlag
 
 && c.supports[j[i]]);
-			c.supports.everythingExceptFlag = c.supports.everythingExceptFlag && !c.supports.flag, c.DOMReady = !1, 
+			c.supports.everythingExceptFlag = c.supports.everythingExceptFlag && !c.supports.flag, c.DOMReady = !1,
 
 c.readyCallback = function() {
 				c.DOMReady = !0
 			}, c.supports.everything || (h = function() {
 				c.readyCallback()
-			}, b.addEventListener ? (b.addEventListener("DOMContentLoaded", h, !1), a.addEventListener("load", h, !1)) 
+			}, b.addEventListener ? (b.addEventListener("DOMContentLoaded", h, !1), a.addEventListener("load", h, !1))
 
 : (a.attachEvent("onload", h), b.attachEvent("onreadystatechange", function() {
 				"complete" === b.readyState && c.readyCallback()
@@ -201,10 +201,10 @@ c.readyCallback = function() {
 			padding: 0 !important;
 		}
 		.active{
-			background-color: #db79f5 !important;
+			background-color: #cfbaf4 !important;
 		}
 		.elementor-size-sm{
-			background-color: #db79f5 !important;
+			background-color: #cfbaf4 !important;
 			border: none !important;
 		}
 	</style>
@@ -214,7 +214,7 @@ content/themes/airi/css/bootstrap/bootstrap.min.css?ver=1' type='text/css' media
 	<link rel='stylesheet' id='contact-form-7-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-
 
 content/plugins/contact-form-7/includes/css/styles.css?ver=5.0.2' type='text/css' media='all' />
-	<link rel='stylesheet' id='airi-style-css' href='${pageContext.request.contextPath}/css/mypage/ewwww.css' type='text/css' 
+	<link rel='stylesheet' id='airi-style-css' href='${pageContext.request.contextPath}/css/mypage/ewwww.css' type='text/css'
 
 media='all' />
 	<link rel='stylesheet' id='airi-font-awesome-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-
@@ -303,7 +303,7 @@ content/plugins/kirki/assets/css/kirki-styles.css?ver=3.0.33' type='text/css' me
 		.menuStyle4 .contact-area .contact-block .contact-icon,
 		.widget_categories li:hover::before,
 		.widget_categories li:hover a {
-			color: #db79f5;
+			color: #cfbaf4;
 		}
 
 		.menuStyle4 .contact-area .contact-block .contact-icon,
@@ -312,7 +312,7 @@ content/plugins/kirki/assets/css/kirki-styles.css?ver=3.0.33' type='text/css' me
 		input[type="button"],
 		input[type="reset"],
 		input[type="submit"] {
-			border-color: #db79f5;
+			border-color: #cfbaf4;
 		}
 
 		.menuStyle2 .main-navigation a:hover:after,
@@ -327,7 +327,7 @@ content/plugins/kirki/assets/css/kirki-styles.css?ver=3.0.33' type='text/css' me
 		input[type="submit"],
 		.menuStyle3 .main-navigation a:hover:after,
 		.menuStyle3 .main-navigation .current-menu-item:after {
-			background-color: #db79f5;
+			background-color: #cfbaf4;
 		}
 
 		.menuStyle2 .site-title a {
@@ -413,7 +413,7 @@ ver=1.12.4'></script>
 
 migrate.min.js?ver=1.4.1'></script>
 	<link rel='https://api.w.org/' href='https://demo.athemes.com/airi-portfolio/wp-json/' />
-	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://demo.athemes.com/airi-portfolio/xmlrpc.php?rsd" 
+	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://demo.athemes.com/airi-portfolio/xmlrpc.php?rsd"
 
 />
 	<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://demo.athemes.com/airi-portfolio/wp-
@@ -463,9 +463,9 @@ url=https%3A%2F%2Fdemo.athemes.com%2Fairi-portfolio%2F&#038;format=xml" />
 			box-shadow: 0 2px 24px 0 rgba(51, 71, 86, 0.15);
 		}
 	</style>
-	
-	
-	
+
+
+
 	<!--  여기 밑에부터 와디즈 내용    -->
 	<meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -536,11 +536,11 @@ window.wadizWebManifest={"0":"equity-feedback.js?543e2719c82224c0cf5b","1":"equi
 
 3dabf8f27601e2c8aa2f","25":"static/equity-open.js?d47dd54b51347b9b1be1","26":"social.js?7f3ffdb4f9228d482664"};
 window.wadiz = window.wadiz || {};window.wadiz.sessionUser="571408206";</script>
-<link rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/vendor.css?966a1957dbe0ea1e47a26794a40b2772"><link 
+<link rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/vendor.css?966a1957dbe0ea1e47a26794a40b2772"><link
 
-rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/common.css?c067a4b077f78dd0d8ac2a36ba9e8c08"><script 
+rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/common.css?c067a4b077f78dd0d8ac2a36ba9e8c08"><script
 
-type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/vendor.js?33b07d8ab3089c7ecb0c"></script><script 
+type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/vendor.js?33b07d8ab3089c7ecb0c"></script><script
 
 type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441e2f6ee1fcac27a0e"></script>
 <!-- S : page_head area -->
@@ -572,7 +572,7 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 <link href="${pageContext.request.contextPath}/css/mypage/util.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/mypage/wprojectcard.css" rel="stylesheet">
 
-    
+
 
 <!-- E : page style area -->
 <!-- S : core script area -->
@@ -583,7 +583,7 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 <!-- S : page head script area -->
 
         <script type="text/javascript" src="/resources/static/js/wCommon.js"></script>
-    
+
 <!-- E : page head script area -->
 
 <!-- 여기부터 와디즈 판매자 리스트 내용 -->
@@ -593,15 +593,15 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 		<div id="masthead-sticky-wrapper" class="sticky-wrapper" style="height: 87px; min-height: 87px;">
 			<header id="masthead" class="site-header">
-	
+
 				<div class="container">
 					<div class="row">
 						<div class="site-branding col-md-4 col-sm-6 col-9">
 							<a href="/../earlybud/main" class="custom-logo-link" rel="home" itemprop="url">
 								<img width="80" height="50" src="${pageContext.request.contextPath}/images/main/earlybud.png" class="custom-logo" alt="Atu" itemprop="logo">
-							</a>			
+							</a>
 						</div><!-- .site-branding -->
-			
+
 						<div class="header-mobile-menu col-md-8 col-sm-6 col-3">
 							<button class="mobile-menu-toggle" aria-controls="primary-menu">
 								<span class="mobile-menu-toggle_lines"></span>
@@ -614,8 +614,8 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 								<ul id="primary-menu" class="menu">
 									<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-4 current_page_item menu-item-43"><a href="/../earlybud/main">Home</a></li>
 									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">소개</a></li>
-									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">카테고리</a></li>									
-									
+									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">카테고리</a></li>
+
 									 <sec:authorize access="isAnonymous()">
 									 	<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">로그인/회원가입</a></li>
 									 	<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">마이페이지</a></li>
@@ -625,7 +625,7 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 										<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/customLogout">로그아웃</a></li>
 										<li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79">마이페이지
 										<ul>
-										<li><a href="/../earlybud/mypage/modify">개인정보 수정</a></li>										
+										<li><a href="/../earlybud/mypage/modify">개인정보 수정</a></li>
 										<li><a href="/../earlybud/mypage/<sec:authentication property="principal.member.email"/>">좋아요한 프로젝트/판매자</a></li>
 										<li><a href="/../earlybud/member_orderlist/<sec:authentication property="principal.member.email"/>">주문조회</a></li>
 										<li><a href="/../earlybud/message/<sec:authentication property="principal.member.email"/>" targe="popup"
@@ -633,8 +633,8 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 										</ul>
 									</li>
 									</sec:authorize>
-									
-									
+
+
 									</ul>
 									</div>
 									</nav><!-- #site-navigation -->
@@ -653,7 +653,7 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 <script type="text/javascript">
 	$(function(){
 		$('.project-filter').mouseenter(function(){
-			$('.project-filter').css("background-color", "#db79f5")
+			$('.project-filter').css("background-color", "#cfbaf4")
 		});
 	});
 </script>
@@ -724,10 +724,10 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 			padding: 0 !important;
 		}
 		.active{
-			background-color: #db79f5 !important;
+			background-color: #cfbaf4 !important;
 		}
 		.elementor-size-sm{
-			background-color: #db79f5 !important;
+			background-color: #cfbaf4 !important;
 			border: none !important;
 		}
 	</style>
@@ -808,7 +808,7 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 		.menuStyle4 .contact-area .contact-block .contact-icon,
 		.widget_categories li:hover::before,
 		.widget_categories li:hover a {
-			color: #db79f5;
+			color: #cfbaf4;
 		}
 
 		.menuStyle4 .contact-area .contact-block .contact-icon,
@@ -817,7 +817,7 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 		input[type="button"],
 		input[type="reset"],
 		input[type="submit"] {
-			border-color: #db79f5;
+			border-color: #cfbaf4;
 		}
 
 		.menuStyle2 .main-navigation a:hover:after,
@@ -832,7 +832,7 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 		input[type="submit"],
 		.menuStyle3 .main-navigation a:hover:after,
 		.menuStyle3 .main-navigation .current-menu-item:after {
-			background-color: #db79f5;
+			background-color: #cfbaf4;
 		}
 
 		.menuStyle2 .site-title a {
@@ -959,94 +959,94 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 	<!-- 내용 틀 시작 -->
 	<!-- https://getbootstrap.com/docs/4.0/getting-started/introduction/   js는 </body> 바로 앞에 있음. -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-			
+
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<link rel="stylesheet" media="all" href="${root}css/mypage/style.css"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->		
-				
+		<!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
+
 		<!-- JS -->
-		
+
 		<!--  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>-->
 		<script src="${root}js/jquery-1.7.1.min.js"></script>
 		<script src="${root}js/custom.js"></script>
 		<script src="${root}js/tabs.js"></script>
 		<script src="${root}js/css3-mediaqueries.js"></script>
 		<script src="${root}js/jquery.columnizer.min.js"></script>
-		
+
 		<!-- Isotope -->
 		<script src="${root}js/jquery.isotope.min.js"></script>
-		
+
 		<!-- Lof slider -->
 		<script src="${root}js/jquery.easing.js"></script>
 		<script src="${root}js/lof-slider.js"></script>
-		<link rel="stylesheet" href="${root}css/mypage/lof-slider.css" media="all"  /> 
+		<link rel="stylesheet" href="${root}css/mypage/lof-slider.css" media="all"  />
 		<!-- ENDS slider -->
-		
+
 		<!-- Tweet -->
-		<link rel="stylesheet" href="${root}css/jquery.tweet.css" media="all"  /> 
-		<script src="${root}js/tweet/jquery.tweet.js" ></script> 
+		<link rel="stylesheet" href="${root}css/jquery.tweet.css" media="all"  />
+		<script src="${root}js/tweet/jquery.tweet.js" ></script>
 		<!-- ENDS Tweet -->
-		
+
 		<!-- superfish -->
-		<link rel="stylesheet" media="screen" href="${root}css/mypage/superfish.css" /> 
+		<link rel="stylesheet" media="screen" href="${root}css/mypage/superfish.css" />
 		<script  src="${root}js/superfish-1.4.8/js/hoverIntent.js"></script>
 		<script  src="${root}js/superfish-1.4.8/js/superfish.js"></script>
 		<script  src="${root}js/superfish-1.4.8/js/supersubs.js"></script>
 		<!-- ENDS superfish -->
-		
+
 		<!-- prettyPhoto -->
 		<script  src="${root}js/prettyPhoto/js/jquery.prettyPhoto.js"></script>
 		<link rel="stylesheet" href="${root}js/prettyPhoto/css/prettyPhoto.css"  media="screen" />
 		<!-- ENDS prettyPhoto -->
-		
+
 		<!-- poshytip -->
 		<link rel="stylesheet" href="${root}js/poshytip-1.1/src/tip-twitter/tip-twitter.css"  />
 		<link rel="stylesheet" href="${root}js/poshytip-1.1/src/tip-yellowsimple/tip-yellowsimple.css"  />
 		<script  src="${root}js/poshytip-1.1/src/jquery.poshytip.min.js"></script>
 		<!-- ENDS poshytip -->
-		
+
 		<!-- JCarousel -->
 		<script type="text/javascript" src="${root}js/jquery.jcarousel.min.js"></script>
-		<link rel="stylesheet" media="screen" href="${root}css/mypage/carousel.css" /> 
+		<link rel="stylesheet" media="screen" href="${root}css/mypage/carousel.css" />
 		<!-- ENDS JCarousel -->
-		
+
 		<!-- GOOGLE FONTS -->
 		<link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
 
 		<!-- modernizr -->
 		<script src="${root}js/modernizr.js"></script>
-		
+
 		<!-- SKIN -->
 		<link rel="stylesheet" media="all" href="${root}css/mypage/skin.css"/>
-		
+
 		<!-- Less framework -->
 		<link rel="stylesheet" media="all" href="${root}css/mypage/lessframework.css"/>
-		
+
 		<!-- jplayer -->
 		<link href="${root}player-skin/jplayer-black-and-yellow.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="${root}js/jquery.jplayer.min.js"></script>
-		
+
 		<!-- flexslider -->
 		<link rel="stylesheet" href="${root}css/mypage/flexslider.css" >
 		<script src="${root}js/jquery.flexslider.js"></script>
-		
-		
+
+
 		<!-- reply move form -->
 		<script src="${root}js/moveform.js"></script>
-		
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"> 
+
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Jua|Nanum+Gothic" rel="stylesheet">
 	<style>
 		.container{
 			/*font-family: 'Nanum Gothic', sans-serif;*/
 		}
-		
-		
+
+
 	</style>
-<!-- 
+<!--
 
 	String joinOrLogin = "로그인/회원가입";
 	String action = "login.do";
@@ -1058,12 +1058,12 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 		id = ((Member)session.getAttribute("userLoginInfo")).getId();
 		System.out.println("action: "+action);
 		System.out.println("id: "+id);
-		request.setAttribute("joinOrLogin",joinOrLogin); 
-	}else{		
+		request.setAttribute("joinOrLogin",joinOrLogin);
+	}else{
 		request.setAttribute("joinOrLogin",joinOrLogin);
 		System.out.println("로그아웃중");
 	%>
-		<script type="text/javascript"> 
+		<script type="text/javascript">
 		$(function(){
 				console.log("다시 로그인.");
 				alert("다시 로그인 해주세요");

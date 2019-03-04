@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!doctype html> 
+<!doctype html>
 <html class="no-js">
 <!doctype html>
 <html lang="en-US">
@@ -18,7 +18,7 @@
 <script type="text/javascript">
 	$(function(){
 		$('.project-filter').mouseenter(function(){
-			$('.project-filter').css("background-color", #db79f5)
+			$('.project-filter').css("background-color", #cfbaf4)
 		});
 	});
 </script>
@@ -89,10 +89,10 @@
 			padding: 0 !important;
 		}
 		.active{
-			background-color: #db79f5 !important;
+			background-color: #cfbaf4 !important;
 		}
 		.elementor-size-sm{
-			background-color: #db79f5 !important;
+			background-color: #cfbaf4 !important;
 			border: none !important;
 		}
 	</style>
@@ -173,7 +173,7 @@
 		.menuStyle4 .contact-area .contact-block .contact-icon,
 		.widget_categories li:hover::before,
 		.widget_categories li:hover a {
-			color: #db79f5;
+			color: #cfbaf4;
 		}
 
 		.menuStyle4 .contact-area .contact-block .contact-icon,
@@ -182,7 +182,7 @@
 		input[type="button"],
 		input[type="reset"],
 		input[type="submit"] {
-			border-color: #db79f5;
+			border-color: #cfbaf4;
 		}
 
 		.menuStyle2 .main-navigation a:hover:after,
@@ -197,7 +197,7 @@
 		input[type="submit"],
 		.menuStyle3 .main-navigation a:hover:after,
 		.menuStyle3 .main-navigation .current-menu-item:after {
-			background-color: #db79f5;
+			background-color: #cfbaf4;
 		}
 
 		.menuStyle2 .site-title a {

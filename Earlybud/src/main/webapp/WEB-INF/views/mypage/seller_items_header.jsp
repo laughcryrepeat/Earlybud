@@ -15,7 +15,7 @@
 <script type="text/javascript">
    $(function(){
       $('.project-filter').mouseenter(function(){
-         $('.project-filter').css("background-color", "#db79f5")
+         $('.project-filter').css("background-color", "#cfbaf4")
       });
    });
 </script>
@@ -86,10 +86,10 @@
          padding: 0 !important;
       }
       .active{
-         background-color: #db79f5 !important;
+         background-color: #cfbaf4 !important;
       }
       .elementor-size-sm{
-         background-color: #db79f5 !important;
+         background-color: #cfbaf4 !important;
          border: none !important;
       }
    </style>
@@ -170,7 +170,7 @@
       .menuStyle4 .contact-area .contact-block .contact-icon,
       .widget_categories li:hover::before,
       .widget_categories li:hover a {
-         color: #db79f5;
+         color: #cfbaf4;
       }
 
       .menuStyle4 .contact-area .contact-block .contact-icon,
@@ -179,7 +179,7 @@
       input[type="button"],
       input[type="reset"],
       input[type="submit"] {
-         border-color: #db79f5;
+         border-color: #cfbaf4;
       }
 
       .menuStyle2 .main-navigation a:hover:after,
@@ -194,7 +194,7 @@
       input[type="submit"],
       .menuStyle3 .main-navigation a:hover:after,
       .menuStyle3 .main-navigation .current-menu-item:after {
-         background-color: #db79f5;
+         background-color: #cfbaf4;
       }
 
       .menuStyle2 .site-title a {
@@ -318,12 +318,12 @@
          box-shadow: 0 2px 24px 0 rgba(51, 71, 86, 0.15);
       }
    </style>
-   
-   
+
+
    <!-- 텀블벅 틀 시작 -->
     <meta content="authenticity_token" name="csrf-param" />
 <meta content="t3NJnTbVWLX8GgoBuJVekLVS6UwrdDaEmU2JyI7HVUU=" name="csrf-token" />
-     
+
     <link rel="shortcut icon" href="https://d1pqmsyqo4bi9.cloudfront.net/assets/favicon-b594df9b14d52e12c4e12c4714d0539c.png" type="image/png">
 
     <link href="https://d1pqmsyqo4bi9.cloudfront.net/assets/ios_57-ae293c21544c4068bfc297ed55261d45.png" rel="apple-touch-icon" type="image/png" />
@@ -346,7 +346,7 @@
 
 <!-- end CSS externals -->
 
-    
+
 <!-- JS from CDN -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -361,7 +361,7 @@
 
 <!-- 텀블벅 끝 -->
 
-   
+
 </head>
 
 

@@ -89,7 +89,7 @@
   </script>
   <style type="text/css">
   	.comment-form-email input[type="file"]{
-  		position: absolute !important; 
+  		position: absolute !important;
   		width: 1px !important;
   		height: 1px !important;
   		padding: 0 !important;
@@ -122,19 +122,19 @@
       padding: 0 !important;
     }
     .active {
-      background-color: #db79f5 !important;
+      background-color: #cfbaf4 !important;
     }
 
     .elementor-size-sm {
-      background-color: #db79f5 !important;
+      background-color: #cfbaf4 !important;
       border: none !important;
     }
-    
+
     form{
       position: relative !important;
       left: 100px !important;
     }
-    
+
     form .form-submit{
       position: relative !important;
       top: 50px !important;
@@ -221,7 +221,7 @@
     .menuStyle4 .contact-area .contact-block .contact-icon,
     .widget_categories li:hover::before,
     .widget_categories li:hover a {
-      color: #db79f5;
+      color: #cfbaf4;
     }
 	input[type="submit"] {
       border-color: #ffffff;
@@ -234,7 +234,7 @@
     .button,
     input[type="button"],
     input[type="reset"]{
-      border-color: #db79f5;
+      border-color: #cfbaf4;
     }
 
     .menuStyle2 .main-navigation a:hover:after,
@@ -248,7 +248,7 @@
     input[type="reset"],
     .menuStyle3 .main-navigation a:hover:after,
     .menuStyle3 .main-navigation .current-menu-item:after {
-      background-color: #db79f5;
+      background-color: #cfbaf4;
     }
 
     .menuStyle2 .site-title a {
@@ -447,8 +447,8 @@
               <ul id="primary-menu" class="menu">
                <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-43"><a href="/../earlybud/main">Home</a></li>
 									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">소개</a></li>
-									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">카테고리</a></li>									
-									
+									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">카테고리</a></li>
+
 									 <sec:authorize access="isAnonymous()">
 									 	<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">로그인/회원가입</a></li>
 									 	<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">마이페이지</a></li>
@@ -458,7 +458,7 @@
 										<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/customLogout">로그아웃</a></li>
 										<li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79">마이페이지
 										<ul>
-										<li><a href="/../earlybud/mypage/modify">개인정보 수정</a></li>										
+										<li><a href="/../earlybud/mypage/modify">개인정보 수정</a></li>
 										<li><a href="/../earlybud/mypage/<sec:authentication property="principal.member.email"/>">좋아요한 프로젝트/판매자</a></li>
 										<li><a href="/../earlybud/member_orderlist/<sec:authentication property="principal.member.email"/>">주문조회</a></li>
 										<li><a href="/../earlybud/message/<sec:authentication property="principal.member.email"/>" targe="popup"
@@ -466,10 +466,10 @@
 										</ul>
 									</li>
 									</sec:authorize>
-									
-									
+
+
 				</ul>
-           
+
           </nav><!-- #site-navigation -->
 
         </div>
