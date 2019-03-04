@@ -1,4 +1,4 @@
-$("#pwd").keyup(function(){
+$("#pwd").blur(function(){
     var str = formOrder.pwd.value;
     var nick = formOrder.nickname.value;
     console.log(str);

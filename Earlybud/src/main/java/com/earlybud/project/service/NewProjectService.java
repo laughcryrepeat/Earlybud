@@ -21,4 +21,6 @@ public interface NewProjectService {
 	public int modifySeller(Seller seller);
 	public List<Item> sellerEndItem(String email);
 	public List<Item> sellerEncoreItem(String email);
+	public List<Item> sellerEditItem(String email);
+	public void applyItem(long item_code);
 }

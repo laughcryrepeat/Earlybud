@@ -108,7 +108,6 @@
       
     </div></div>
     <script type="text/javascript">
-
     	$(".msg_history").scrollTop($(document).height());
 
     	function myFunction(){

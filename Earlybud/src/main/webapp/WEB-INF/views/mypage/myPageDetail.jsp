@@ -26,6 +26,7 @@
 	              <p class="comment-form-url"><label for="phone">핸드폰 번호</label> 
 	              	<input id="phone" name="phone" type="text" value="${user.phone}" required size="30" maxlength="200" /></p>
                   <p class="form-submit">
+                  <input name="nickname" type="hidden" value="${user.nickname}">
                     <input name="submit" type="submit" id="submit" class="submit" value="수정하기" /> 
                     </p>
                     <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="b0c1d8b81d" /></p>
