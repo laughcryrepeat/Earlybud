@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+cfbaf4<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!doctype html>
@@ -12,7 +12,7 @@
 
 
   <!-- include jquery -->
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3cfbaf4.3.1/jquery.js"></script>
 
   <!-- include libs stylesheets -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.css" />
@@ -24,7 +24,7 @@
   <script type="text/javascript" src="${pageContext.request.contextPath}/summernote/dist/summernote-bs4.js"></script>
 
   <link rel="stylesheet"  href="${pageContext.request.contextPath}/summernote/examples/example.css">
-  
+
   <script type="text/javascript">
     $(document).ready(function() {
     	var add_button = $(".add_field_button");
@@ -112,11 +112,11 @@
     }
 
     .active {
-      background-color: #db79f5 !important;
+      background-color: #cfbaf4 !important;
     }
 
     .elementor-size-sm {
-      background-color: #db79f5 !important;
+      background-color: #cfbaf4 !important;
       border: none !important;
     }
     form{
@@ -227,7 +227,7 @@
     .menuStyle4 .contact-area .contact-block .contact-icon,
     .widget_categories li:hover::before,
     .widget_categories li:hover a {
-      color: #db79f5;
+      color: #cfbaf4;
     }
 	input[type="submit"] {
       border-color: #ffffff;
@@ -240,9 +240,9 @@
     .button,
     input[type="button"],
     input[type="reset"]{
-      border-color: #db79f5;
+      border-color: #cfbaf4;
     }
-	
+
     .menuStyle2 .main-navigation a:hover:after,
     .menuStyle2 .main-navigation .current-menu-item:after,
     .comments-area .comment-reply-link:hover,
@@ -254,7 +254,7 @@
     input[type="reset"],
     .menuStyle3 .main-navigation a:hover:after,
     .menuStyle3 .main-navigation .current-menu-item:after {
-      background-color: #db79f5;
+      background-color: #cfbaf4;
     }
 
     .menuStyle2 .site-title a {
@@ -452,8 +452,8 @@
               <ul id="primary-menu" class="menu">
                <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-43"><a href="/../earlybud/main">Home</a></li>
 									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">소개</a></li>
-									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">카테고리</a></li>									
-									
+									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">카테고리</a></li>
+
 									 <sec:authorize access="isAnonymous()">
 									 	<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">로그인/회원가입</a></li>
 									 	<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">마이페이지</a></li>
@@ -463,7 +463,7 @@
 										<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/customLogout">로그아웃</a></li>
 										<li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79">마이페이지
 										<ul>
-										<li><a href="/../earlybud/mypage/modify">개인정보 수정</a></li>										
+										<li><a href="/../earlybud/mypage/modify">개인정보 수정</a></li>
 										<li><a href="/../earlybud/mypage/<sec:authentication property="principal.member.email"/>">좋아요한 프로젝트/판매자</a></li>
 										<li><a href="/../earlybud/member_orderlist/<sec:authentication property="principal.member.email"/>">주문조회</a></li>
 										<li><a href="/../earlybud/message/<sec:authentication property="principal.member.email"/>" targe="popup"
@@ -471,10 +471,10 @@
 										</ul>
 									</li>
 									</sec:authorize>
-									
-									
+
+
 				</ul>
-           
+
           </nav><!-- #site-navigation -->
 
         </div>
@@ -508,11 +508,11 @@
 
                 <div id="respond" class="comment-respond">
                   <form action="newprojectModifyCheck" method="post" enctype="multipart/form-data" id="myproject" class="comment-form" novalidate>
-                    <p class="comment-form-url"><label for="url">목표 금액<span class="required">*</span></label> 
+                    <p class="comment-form-url"><label for="url">목표 금액<span class="required">*</span></label>
                     	<input id="target_sum" name="target_sum" type="text" value="${seller.target_sum}" size="30" maxlength="200" /></p>
-                    <p class="comment-form-author"><label for="author">프로젝트 요약<span class="required">*</span></label> 
+                    <p class="comment-form-author"><label for="author">프로젝트 요약<span class="required">*</span></label>
                     	<input id="summary" name="summary" type="text" value="${seller.summary}" size="30" maxlength="600" /></p>
-                    <p class="comment-form-email"><label for="email">선물 구성(옵션)</label> 
+                    <p class="comment-form-email"><label for="email">선물 구성(옵션)</label>
                     	<input class="comment-form-email" id="optionfield" name="optionfield" type="text" size="20" maxlength="20" />
                     	<div class="hiddenO">
                     	</div>
@@ -522,7 +522,7 @@
                     				<p><a href="#" class="add_field_button">add</a></p>
                     				<label for="type_code">가격&emsp;&emsp;&emsp;&emsp;&emsp;옵션 이름&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;옵션 설명&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
                     				<div class="real_content">
-                    				
+
                     				</div>
                     			</div>
                     		</div>
@@ -686,15 +686,15 @@
         		  console.log("타입코드"+ hc[i].value);
         		  console.log(hn[i].value);
         		  console.log(hi[i].value);
-        		  
+
         	  }
         	  document.getElementById("optionfield").value =oc.length+"개의 옵션을 입력하셨습니다";
-        	  <!-- myproject.option_type.value = "가격: "+ type_code.value + " 옵션이름: " + type_name.value + " 옵션설명: " + info.value;--> 
+        	  <!-- myproject.option_type.value = "가격: "+ type_code.value + " 옵션이름: " + type_name.value + " 옵션설명: " + info.value;-->
               mymodal.style.display = "none";
           }
       };
 	  </script>
-	
+
 </body>
 
 </html>

@@ -28,7 +28,7 @@
 							    <option value="9">캠페인</option>
 							</select>
                     </p>
-                    <p class="comment-form-author"><label for="author">프로젝트 제목<span class="required">*</span></label> 
+                    <p class="comment-form-author"><label for="author">프로젝트 제목<span class="required">*</span></label>
                     	<input id="title" name="title" type="text" value="${seller.title}" size="30" maxlength="245" required='required' /></p>
                     <p class="comment-form-email"><label for="main_image">프로젝트 대표이미지<span class="required">*</span></label>
                     	<input id="main_image" name="image_name" type="text" class="upload-name" value="${seller.main_image}" size="30" maxlength="245" required='required' onclick="check()" readonly/>
@@ -155,17 +155,17 @@
 	  }
 	  </script>
 	  <script type="text/javascript">
-	  $(document).ready(function(){ 
-		  var fileTarget = $('.comment-form-email .file-hidden'); 
-		  fileTarget.on('change', function(){  
+	  $(document).ready(function(){
+		  var fileTarget = $('.comment-form-email .file-hidden');
+		  fileTarget.on('change', function(){
 			  if(window.FileReader){
-				  var filename = $(this)[0].files[0].name; 
-			  } else { 
-				  var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
-			} 
-		  $(this).siblings('.upload-name').val(filename); 
-		  }); 
-	 }); 
+				  var filename = $(this)[0].files[0].name;
+			  } else {
+				  var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출
+			}
+		  $(this).siblings('.upload-name').val(filename);
+		  });
+	 });
 	  </script>
 	</body>
 
