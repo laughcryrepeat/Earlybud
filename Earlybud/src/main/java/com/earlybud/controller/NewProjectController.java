@@ -148,6 +148,7 @@ public class NewProjectController {
 		String email = authentication.getName();
 		Item item = new Item();
 		item.setEmail(email);
+		item.setItem_code(item_code);
 		item.setTarget_sum(target_sum);
 		item.setSummary(summary);
 		item.setContent(content);
@@ -278,7 +279,7 @@ public class NewProjectController {
 		return "newProject/newprojectM3";
 	}
 	@RequestMapping("newprojectModifyCheck")
-	public void newProjectModifyCheck(@RequestParam long item_code, @RequestParam long target_sum, @RequestParam String summary,
+	public String newProjectModifyCheck(@RequestParam long item_code, @RequestParam long target_sum, @RequestParam String summary,
 			@RequestParam long[] type_code, @RequestParam String[] name, @RequestParam String[] info, @RequestParam String content){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
@@ -302,5 +303,12 @@ public class NewProjectController {
 		}
 		System.out.println("아이템코드? " + item.getItem_code());
 		System.out.println("저장완료");
+		return "redirect:../mypage/sellerPage";
+	}
+	@RequestMapping("applyItem/{item_code}")
+	public String applyItem(@PathVariable long item_code) {
+		projectS.applyItem(item_code);
+		System.out.println("apply item to admin completed. admincall : 0");
+		return "redirect:../mypage/sellerPage";
 	}
 }
