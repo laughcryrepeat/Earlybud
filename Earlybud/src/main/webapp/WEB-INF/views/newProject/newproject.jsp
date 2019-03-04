@@ -35,7 +35,7 @@
                               <h2 class="entry-title"><a href="newprojectDetail1" rel="bookmark">프로젝트 만들기</a></h2>
                             </center>
                             
-                            <img src="https://pbs.twimg.com/media/C6Ye6jOUoAAYCPX.jpg" alt="명지 남친">
+                            <img src="${pageContext.request.contextPath}/images/project/project.jpg" alt="new project">
                            
                           </div><!-- .entry-content -->
                           <footer class="entry-footer">
@@ -57,19 +57,20 @@
             <section class="widget widget_recent_entries">
               <h4 class="widget-title">EarlyBud와 함께하세요!</h4>
               <ul>
-                우리는 창작자를 지원합니다.
+               반짝이는 아이디어가 있으신가요? 우리는 창작자를 지원합니다.
               </ul>
             </section>
             <section class="widget widget_recent_entries">
               <h4 class="widget-title">누구에게나 열려있습니다</h4>
               <ul>
-                평소 몰두했던 작업이나 구상했던 작품을 본격적인 단계로 끌어올리세요.
+                평소 가지고 있던 아이디어, 몰두했던 작업이나 혹은 구상했던 작품을 본격적인 단계로 끌어올리세요.
               </ul>
             </section>
             <section class="widget widget_recent_entries">
               <h4 class="widget-title">쉽게 시작할 수 있습니다</h4>
               <ul>
                 단지 특별한 제품, 그리고 경험을 후원자들과 약속하고 공유하면 됩니다.
+                지금, 얼리버드에서 시작하세요!
               </ul>
             </section>
             <section id="categories-2" class="widget widget_categories">

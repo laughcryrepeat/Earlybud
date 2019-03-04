@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -18,15 +19,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.earlybud.model.Item;
 import com.earlybud.model.Member;
 import com.earlybud.model.Seller;
+import com.earlybud.payment.service.PaymentService;
 import com.earlybud.project.service.NewProjectService;
 import com.earlybud.security.CustomUserDetailsService;
 import com.earlybud.vo.AddrVo;
 
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 @RequestMapping("/mypage/*")
 public class MemberUploadController {
+	@Setter(onMethod_ = { @Autowired } )
+	private PaymentService payservice;
 	@Autowired
 	CustomUserDetailsService service;
 	@Autowired
@@ -46,15 +51,21 @@ public class MemberUploadController {
 		return "payment/jusoPopup";
 	}
 	@RequestMapping("/memberUpload")
-	public Member memberUpload(@ModelAttribute("Member") Member member, @RequestParam("email") String email,
+	public Member memberUpload(Member member, @RequestParam String nickname, @RequestParam("email") String email,
 			@RequestParam("pwd") String pwd, @RequestParam("addr") String addr, @RequestParam("detail_addr") String detail_addr,
 			@RequestParam("phone") String phone,String error, Model model)
 		throws Exception{
 		System.out.println(pwd);
-		if(!passwordencoder.matches(pwd, passwordencoder.encode(member.getPwd()))) {
-			System.out.println("비밀번호가 다르다");
+		service.userDetail(email);
+		String pp = payservice.pwdCheckService(nickname);
+		System.out.println(pp);
+		
+		if(passwordencoder.matches(pwd, pp)) {
+			System.out.println("비밀번호가 같다");
+		}else {
+			System.out.println("비밀번호 다르다");
 			member.setPwd(pwd);
-		}else {System.out.println("비밀번호 같다");}
+		}
 		member.setEmail(member.getEmail());
 		member.setAddr(addr);
 		member.setDetail_addr(detail_addr);

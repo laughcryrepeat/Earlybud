@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +35,7 @@ import com.earlybud.model.Item;
 import com.earlybud.model.Member;
 import com.earlybud.payment.service.PaymentService;
 import com.earlybud.security.CustomNoOpPasswordEncoder;
+import com.earlybud.security.CustomUserDetailsService;
 import com.earlybud.vo.AddrVo;
 import com.earlybud.model.Payment_Info;
 import com.earlybud.model.Purchase_Item;
@@ -56,9 +58,8 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class PaymentController {
 	
-	@Setter(onMethod_ = { @Autowired } )
+	@Autowired
 	private PaymentService service;
-	
 	@Setter(onMethod_ = { @Autowired })
 	private MemberDAO dao;
 	
@@ -80,7 +81,8 @@ public class PaymentController {
 		
 		return "payment/input";
 	}
-	
+	@Autowired
+	BCryptPasswordEncoder passwordencoder;
 	@RequestMapping("pwdCheck")
 	public @ResponseBody Boolean pwdCheck(String pwd, String nickname, HttpServletResponse response) {
 		log.info("pwd check with Ajex");
@@ -88,15 +90,22 @@ public class PaymentController {
 		log.info("nickname: "+nickname);
 		String pwdMatch = service.pwdCheckService(nickname);
 		log.info("pwdMatch: "+pwdMatch);
-		CustomNoOpPasswordEncoder cpe = new CustomNoOpPasswordEncoder();
-		System.out.println("cpe.encode(pwd) :"+cpe.encode(pwd));
-		if(cpe.encode(pwd).equals(pwdMatch)) {
-			System.out.println("true");
-			return true;
-		}else {
+		//CustomNoOpPasswordEncoder cpe = new CustomNoOpPasswordEncoder();
+		//System.out.println("cpe.encode(pwd) :"+cpe.encode(pwd));
+		//if(cpe.encode(pwd).equals(pwdMatch)) {
+		try {
+			if(passwordencoder.matches(pwd, pwdMatch)) {
+				System.out.println("true");
+				return true;
+			}else {
+				System.out.println("false");
+			}
+			
+		}catch (NullPointerException ne) {
 			System.out.println("false");
 			return null;
 		}
+		return null;
 	}
 	
 	@RequestMapping("jusoPopup")

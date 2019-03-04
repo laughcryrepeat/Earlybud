@@ -111,6 +111,7 @@
     </body>
     
     <script type="text/javascript">
+    $("body").scrollTop($(document).height());
     	function myFunction(){
     		location.href=window.location.href+"/"+$("#contentA").val();
     	}

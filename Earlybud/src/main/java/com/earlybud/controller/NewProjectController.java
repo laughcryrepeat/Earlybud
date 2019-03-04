@@ -147,6 +147,7 @@ public class NewProjectController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
 		Item item = new Item();
+		item.setItem_code(item_code);
 		item.setEmail(email);
 		item.setTarget_sum(target_sum);
 		item.setSummary(summary);
