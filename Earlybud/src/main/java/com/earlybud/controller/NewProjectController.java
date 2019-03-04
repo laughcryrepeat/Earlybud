@@ -220,7 +220,7 @@ public class NewProjectController {
 		System.out.println("셀러 수정: " +seller);
 		projectS.modifySeller(seller);
 		//model.addAttribute("seller", projectS.seller_select(email));
-		return "redirect:../mypage/sellerPage";
+		return "redirect:../../mypage/sellerPage";
 	}
 	@RequestMapping(value="newprojectModify2/{item_code}")
 	public String newprojectModify2(@PathVariable long item_code, Model model) throws IOException{
@@ -304,12 +304,12 @@ public class NewProjectController {
 		}
 		System.out.println("아이템코드? " + item.getItem_code());
 		System.out.println("저장완료");
-		return "redirect:../mypage/sellerPage";
+		return "redirect:../../mypage/sellerPage";
 	}
 	@RequestMapping("applyItem/{item_code}")
 	public String applyItem(@PathVariable long item_code) {
 		projectS.applyItem(item_code);
 		System.out.println("apply item to admin completed. admincall : 0");
-		return "redirect:../mypage/sellerPage";
+		return "redirect:../../mypage/sellerPage";
 	}
 }

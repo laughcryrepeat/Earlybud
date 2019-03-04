@@ -5,7 +5,11 @@
 <%@include file="header.jsp" %>
 <!doctype html>
 <html class="no-js">
-
+<style>
+.b-flag {
+z-index: 1 !important;
+}
+</style>
 <body>
 
 

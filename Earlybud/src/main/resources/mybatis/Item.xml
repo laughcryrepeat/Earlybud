@@ -99,7 +99,7 @@
   	
   	<update id="insertItem2" parameterType="Item" keyProperty="email">
   	update ITEM set 
-  	item_code=#{item_code}, target_sum = #{target_sum}, summary=#{summary}, content=#{content}
+  	item_code=#{item_code}, target_sum = #{target_sum}, summary=#{summary}, content=#{content}, admincall=null
   	where item_code=#{item_code}
   	</update>
   	<select id="modifyItem2" parameterType="long" resultType="Item">
