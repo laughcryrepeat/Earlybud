@@ -56,7 +56,7 @@
 
 			            <div class="chat_list active_chat">
 			              <div class="chat_people">
-			                <div class="chat_img"> <img src="${pageContext.request.contextPath}/images/like/<c:out value="${listM.IMAGE}"/>" alt="sunil"> </div>
+			                <div class="chat_img"> <img src="${pageContext.request.contextPath}/uploads/member/profile/<c:out value="${listM.IMAGE}"/>" alt="sunil"> </div>
 			                <div class="chat_ib">
 			                  <h5><a href="${myEmail}/${listM.EMAIL}">${listM.NICKNAME}</a></h5>			             
 			                  <plow>${listM.INFO}</plow>
