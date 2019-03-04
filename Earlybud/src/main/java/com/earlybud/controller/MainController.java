@@ -115,4 +115,11 @@ public class MainController {
 	return mv;
 	 }
 	
+	
+	@RequestMapping(value = "about")
+	 public String About(Model model) {
+		
+		return "aboutus/aboutus"; 
+		
+	}
 }

@@ -50,20 +50,7 @@
 		});
 	});
 </script>
-	<style id="kirki-css-vars">:root{}</style>
-	<title>EarlyBud</title>
-	<link rel='dns-prefetch' href='//s.w.org' />
-	<link rel="alternate" type="application/rss+xml" title="Atu &raquo; Feed" href="https://demo.athemes.com/airi-portfolio/feed/" />
-	<link rel="alternate" type="application/rss+xml" title="Atu &raquo; Comments Feed" href="https://demo.athemes.com/airi-portfolio/comments/feed/" />
-<!-- 알수없이 추가된부분
-<script type="text/javascript">
-	$(function(){
-		$('.project-filter').mouseenter(function(){
-			$('.project-filter').css("background-color", '#cfbaf4')
-		});
-	});
-</script>
--->
+
 	<script type="text/javascript">
 		window._wpemojiSettings = {
 			"baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/",
@@ -427,7 +414,7 @@
 							<div class="menu-menu-container">
 								<ul id="primary-menu" class="menu">
 									<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-4 current_page_item menu-item-43"><a href="/../earlybud/main">Home</a></li>
-									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">소개</a></li>
+									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/about">소개</a></li>
 									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">카테고리</a></li>									
 									
 									 <sec:authorize access="isAnonymous()">
