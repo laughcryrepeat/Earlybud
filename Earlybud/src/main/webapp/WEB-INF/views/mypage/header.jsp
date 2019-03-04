@@ -623,7 +623,7 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 						<nav id="site-navigation" class="main-navigation col-md-8">
 							<div class="menu-menu-container">
 								<ul id="primary-menu" class="menu">
-									<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-4 current_page_item menu-item-43"><a href="/../earlybud/main">Home</a></li>
+									<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a href="/../earlybud/main">Home</a></li>
 									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">소개</a></li>
 									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">카테고리</a></li>
 
@@ -634,7 +634,7 @@ type="text/javascript" src="https://cdn.wadiz.kr/resources/assets/common.js?3441
 									<sec:authorize access="isAuthenticated()">
 										<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
 										<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/customLogout">로그아웃</a></li>
-										<li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79">마이페이지
+										<li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79 current-menu-item page_item page-item-4 current_page_item menu-item-43">마이페이지
 										<ul class="front_all">
 										<li><a href="/../earlybud/mypage/modify">개인정보 수정</a></li>
 										<li><a href="/../earlybud/mypage/<sec:authentication property="principal.member.email"/>">좋아요한 프로젝트/판매자</a></li>

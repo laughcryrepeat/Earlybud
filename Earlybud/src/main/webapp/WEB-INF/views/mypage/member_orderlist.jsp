@@ -213,7 +213,7 @@ function requestCancel(SALE_CODE){
 					<div class="sidebar-column col-md-4">
 						<section id="text-2" class="widget widget_text">
 							<div class="textwidget">
-								<p><strong>+999.222.333</strong></p>
+								<p><strong>02-111-1111</strong></p>
 							</div>
 						</section>
 					</div>
@@ -235,7 +235,7 @@ function requestCancel(SALE_CODE){
 					<div class="sidebar-column col-md-4">
 						<section id="text-3" class="widget widget_text">
 							<div class="textwidget">
-								<p><strong>office@example.org</strong></p>
+								<p><strong>earlybud@gmail.com</strong></p>
 							</div>
 						</section>
 					</div>
@@ -249,9 +249,9 @@ function requestCancel(SALE_CODE){
 
 					<div class="site-info col-md-12">
 
-						<a href="https://wordpress.org/">Proudly powered by WordPress</a>
-						<span class="sep"> | </span>
-						Theme: <a href="https://athemes.com/theme/airi">Airi</a> by aThemes. </div><!-- .site-info -->
+						<a href="">얼리버드(주) | 대표 얼리버드 010-1111-1111 | 서울시 중구 비트캠프 7층 | 통신판매업 2019-서울중구-1919 | 대표전화 02-0000-0000</a>
+						
+						</div><!-- .site-info -->
 
 				</div>
 			</div>

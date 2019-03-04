@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <%@include file="seller_items_header.jsp" %>
-<%@include file="header.jsp" %>
+<%@include file="header2.jsp" %>
 
 <!doctype html> 
 <html class="no-js">
@@ -343,11 +343,21 @@ z-index: 1 !important;
 				</c:forEach>
 			</div>
 			
+			
+			
+			
            </div>
         </div>
      </div>
   </div>
             </main><!-- #main -->
+            
+            
+           
+            
+            
+            
+            
          <!-- #primary -->
       </div><!-- #content -->
       
@@ -385,6 +395,11 @@ z-index: 1 !important;
 
 	</script>
 
+
+
 </body>
+
+
+
 
 </html>

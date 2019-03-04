@@ -406,20 +406,32 @@
 
 					<nav id="site-navigation" class="main-navigation col-md-8">
 						<div class="menu-menu-container">
-							<ul id="primary-menu" class="menu">
-								<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home"><a href="/../earlybud/main">Home</a></li>
-								<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">소개</a></li>
-								<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44 current-menu-item page_item page-item-4 current_page_item menu-item-43"><a href="/../earlybud/category">카테고리</a></li>
-												
-								<sec:authorize access="isAnonymous()">
-								 	<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">로그인/회원가입</a></li>
-								</sec:authorize>
-								<sec:authorize access="isAuthenticated()">
-									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/> 님 환영합니다</li>
-									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/customLogout">로그아웃</a></li>
-								</sec:authorize>						
-							</ul>
-						</div>
+								<ul id="primary-menu" class="menu">
+									<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home "><a href="/../earlybud/main">Home</a></li>
+									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/about">소개</a></li>
+									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44 current-menu-item page_item page-item-4 current_page_item menu-item-43"><a href="/../earlybud/category">카테고리</a></li>									
+									
+									 <sec:authorize access="isAnonymous()">
+									 	<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">로그인/회원가입</a></li>
+									 	<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="login">마이페이지</a></li>
+									</sec:authorize>
+									<sec:authorize access="isAuthenticated()">
+										<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
+										<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/customLogout">로그아웃</a></li>
+										<li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79">마이페이지
+										<ul>
+										<li><a href="mypage/modify">개인정보 수정</a></li>										
+										<li><a href="mypage/<sec:authentication property="principal.member.email"/>">좋아요한 프로젝트/판매자</a></li>
+										<li><a href="/../earlybud/mypage/sellerPage">내가만든 프로젝트</a></li>
+										<li><a href="member_orderlist/<sec:authentication property="principal.member.email"/>">주문조회</a></li>
+										<li><a href="message/<sec:authentication property="principal.member.email"/>" targe="popup"
+										onclick="window.open('message/<sec:authentication property="principal.member.email"/>',	'popup', 'width=1000, height=750'); return false;">판매자 문의</a></li>
+										</ul>
+									</li>
+									</sec:authorize>	
+								</ul>
+							</div>
+						<!--
 						<ul class="header-search-cart">
 							<li class="header-search">
 								<div class="header-search-toggle"><a><i class="fa fa-search"></i></a></div>
@@ -427,18 +439,16 @@
 							<li class="header-cart-link">
 							</li>
 						</ul>
+						-->
 					</nav><!-- #site-navigation -->
-
 				</div>
 			</div>
-			<div class="header-search-form">
-				<form role="search" method="get" class="search-form" action="https://demo.athemes.com/airi-portfolio/">
-					<label>
-						<span class="screen-reader-text">Search for:</span>
-						<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
-					</label>
-					<input type="submit" class="search-submit" value="Search" />
-				</form>
-			</div>
+			
+			<style>
+				.gotop {position:fixed; _position:absolute; left:96%; top:94%; width:100px; height:100px; z-index:10; 
+					
+				}
+				.gotop div {z-index:5; display:block; width:80px; height:80px; background:url("${pageContext.request.contextPath}/images/category/totop.png") no-repeat;}
+			</style>
 
 		</header><!-- #masthead -->		
