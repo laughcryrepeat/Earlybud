@@ -80,4 +80,19 @@ public class NewProjectServiceImpl implements NewProjectService {
 	public void applyItem(long item_code) {
 		dao.applyItem(item_code);
 	}
+	@Override
+	public void insertEncoreItem(Item item) {
+		// TODO Auto-generated method stub
+		dao.insertEncoreItem(item);
+	}
+	@Override
+	public void insertEncoreItem2(Item item) {
+		// TODO Auto-generated method stub
+		dao.insertEncoreItem2(item);
+	}
+	@Override
+	public void insertEncoreType(Type type) {
+		// TODO Auto-generated method stub
+		dao.insertEncoreType(type);
+	}
 }
