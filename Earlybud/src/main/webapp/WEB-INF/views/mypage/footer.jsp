@@ -2,6 +2,57 @@
         </div><!-- #primary -->
 
 
+<div id="sidebar-footer" class="footer-widgets" role="complementary">
+			<div class="container">
+				<div class="row">
+					<div class="sidebar-column col-md-4">
+						<section id="text-2" class="widget widget_text">
+							<div class="textwidget">
+								<p><strong>02-111-1111</strong></p>
+							</div>
+						</section>
+					</div>
+
+					<div class="sidebar-column col-md-4">
+						<section id="athemes_social_widget-2" class="widget widget_athemes_social_widget">
+							<div class="menu-social-container">
+								<ul id="menu-social" class="menu social-media-list clearfix">
+									<li id="menu-item-47" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-47"><a href="https://facebook.com"><span class="screen-reader-text">Facebook</span></a></li>
+									<li id="menu-item-48" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-48"><a href="https://twitter.com"><span class="screen-reader-text">Twitter</span></a></li>
+									<li id="menu-item-49" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-49"><a href="https://instagram.com"><span class="screen-reader-text">Instagram</span></a></li>
+									<li id="menu-item-50" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-50"><a href="https://youtube.com"><span class="screen-reader-text">Youtube</span></a></li>
+									<li id="menu-item-51" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51"><a href="https://linkedin.com"><span class="screen-reader-text">Linkedin</span></a></li>
+								</ul>
+							</div>
+						</section>
+					</div>
+
+					<div class="sidebar-column col-md-4">
+						<section id="text-3" class="widget widget_text">
+							<div class="textwidget">
+								<p><strong>earlybud@gmail.com</strong></p>
+							</div>
+						</section>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<footer id="colophon" class="site-footer">
+			<div class="container">
+				<div class="row">
+
+					<div class="site-info col-md-12">
+
+						<a href="">얼리버드(주) | 대표 얼리버드 010-1111-1111 | 서울시 중구 비트캠프 7층 | 통신판매업 2019-서울중구-1919 | 대표전화 02-0000-0000</a>
+						
+						</div><!-- .site-info -->
+
+				</div>
+			</div>
+		</footer><!-- #colophon -->
+
+
       </div><!-- #page -->
 
       <script type="text/javascript">

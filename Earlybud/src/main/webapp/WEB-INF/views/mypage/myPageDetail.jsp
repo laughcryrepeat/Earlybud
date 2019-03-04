@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-<%@include file="header.jsp" %>
+<%@include file="header2.jsp" %>
     <div id="content" class="site-content">
 
       <div class="container">
