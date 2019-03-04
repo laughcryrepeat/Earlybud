@@ -1,4 +1,4 @@
-cfbaf4<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!doctype html>
@@ -12,7 +12,7 @@ cfbaf4<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 
 
   <!-- include jquery -->
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3cfbaf4.3.1/jquery.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
   <!-- include libs stylesheets -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.css" />

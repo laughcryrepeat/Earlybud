@@ -83,6 +83,7 @@ public class PaymentDaoImpl implements PaymentDao {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("price",price);
 		map.put("type_code", type_code);
+		System.out.println("map: "+map);
 		int i = sqlSession.update(ns4+".updateSum", map);
 		System.out.println("item price sum update: "+i);
 	}
@@ -107,7 +108,8 @@ public class PaymentDaoImpl implements PaymentDao {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("price",price);
 		map.put("type_code", type_code);
-		int i = sqlSession.update(ns4+".updateCancleSum", map);
+		System.out.println("map: "+map);
+		int i = sqlSession.update(ns4+".updateCancelSum", map);
 		System.out.println("item price cancle sum update: "+i);
 	}
 
@@ -129,6 +131,8 @@ public class PaymentDaoImpl implements PaymentDao {
 	public void updatePayItem(Map<String, Object> paymap) {
 		// TODO Auto-generated method stub
 		log.info("update pay item imp_uid");
+		System.out.println("update pay item imp_uid");
+		System.out.println("paymap: "+paymap);
 		sqlSession.update(ns1+".updateImp_uid", paymap);
 	}	
 

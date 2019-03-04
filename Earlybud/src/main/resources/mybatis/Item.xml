@@ -60,7 +60,7 @@
   	
   	<select id="sellerEditItem" parameterType="ITEM" resultType="Item">
   	select ITEM_CODE, TITLE, SUMMARY, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
-  	ENCORE_NUM, ENCORE, EMAIL from ITEM where email=#{email} and ADMINCALL is null or ADMINCALL = 2
+  	ENCORE_NUM, ENCORE, EMAIL from ITEM where email=#{email} and ADMINCALL != 1 or ADMINCALL IS NULL
   	</select>
   	
   	<select id="sellerEndItem" parameterType="ITEM" resultType="Item">
