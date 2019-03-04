@@ -107,15 +107,16 @@
       <p class="text-center top_spac"> Design by <a target="_blank" href="#">Sunil Rajput</a></p>
       
     </div></div>
-    
-    </body>
-    
     <script type="text/javascript">
-    $("body").scrollTop($(document).height());
+    	$(".msg_history").scrollTop($(document).height());
+
     	function myFunction(){
     		location.href=window.location.href+"/"+$("#contentA").val();
     	}
     </script>
+    </body>
+    
+
     <script type = "text/javascript">
     
     
