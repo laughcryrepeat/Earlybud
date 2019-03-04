@@ -72,4 +72,12 @@ public class NewProjectServiceImpl implements NewProjectService {
 	public List<Item> sellerEncoreItem(String email) {
 		return dao.sellerEncoreItem(email);
 	}
+	@Override
+	public List<Item> sellerEditItem(String email) {
+		return dao.sellerEditItem(email);
+	}
+	@Override
+	public void applyItem(long item_code) {
+		dao.applyItem(item_code);
+	}
 }

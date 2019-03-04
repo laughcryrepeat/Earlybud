@@ -109,12 +109,20 @@ public class NewProjectDaoImpl implements NewProjectDao {
 	}
 	@Override
 	public List<Item> sellerEndItem(String email) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList(ns+".sellerEndItem", email);
 	}
 	@Override
 	public List<Item> sellerEncoreItem(String email) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList(ns+".sellerEncoreItem", email);
+	}
+	@Override
+	public List<Item> sellerEditItem(String email) {
+		return sqlSession.selectList(ns+".sellerEditItem", email);
+	}
+	@Override
+	public void applyItem(long item_code) {
+		// TODO Auto-generated method stub
+		int i = sqlSession.update(ns+".applyItem", item_code);
+		if(i>0) System.out.println("applyItem");
 	}
 }

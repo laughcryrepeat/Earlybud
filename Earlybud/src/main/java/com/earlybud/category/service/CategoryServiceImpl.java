@@ -31,6 +31,10 @@ public class CategoryServiceImpl implements CategoryService {
 		 return dao.getMainList(map);	 
 	}
 	 @Override
+	 public List<MainVO> getMainOpenList(HashMap map) {
+		 return dao.getMainOpenList(map);	 
+	}
+	 @Override
 	 public List<MainVO> getOpenRankNumService() {
 		 return dao.getOpenRankNum();	 
 	} 

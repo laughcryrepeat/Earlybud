@@ -365,9 +365,9 @@
 					<nav id="site-navigation" class="main-navigation col-md-8">
 						<div class="menu-menu-container">
 								<ul id="primary-menu" class="menu">
-									<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-4 current_page_item menu-item-43"><a href="/../earlybud/main">Home</a></li>
+									<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home "><a href="/../earlybud/main">Home</a></li>
 									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">소개</a></li>
-									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">카테고리</a></li>									
+									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44 current-menu-item page_item page-item-4 current_page_item menu-item-43"><a href="/../earlybud/category">카테고리</a></li>									
 									
 									 <sec:authorize access="isAnonymous()">
 									 	<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">로그인/회원가입</a></li>

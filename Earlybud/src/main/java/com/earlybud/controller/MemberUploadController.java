@@ -79,11 +79,13 @@ public class MemberUploadController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
 		List<Item> item = projectS.sellerItem(email);
+		List<Item> itemEdit = projectS.sellerEditItem(email);
 		List<Item> itemEnd = projectS.sellerEndItem(email);
 		List<Item> itemEncore = projectS.sellerEncoreItem(email);
 		Seller seller = projectS.seller_select(email);
 		System.out.println(seller);
 		model.addAttribute("item", item);
+		model.addAttribute("itemEdit",itemEdit);
 		model.addAttribute("itemEnd",itemEnd);
 		model.addAttribute("itemEncore", itemEncore);
 		model.addAttribute("seller",seller);

@@ -28,8 +28,18 @@ z-index: 1 !important;
       <div class="changable-content">
         <div class="b-avatar has-pad-bottom-dot5 is_vaporable" style="width: 96px">
 		  <div class="b-avatar__frame b-avatar__frame--bordered" style="width:96px; height:96px">
-		    <img alt="6e65e28f-55c7-435a-a6c7-9b70c09f2233.jpg?ixlib=rb-1.1.0&amp;w=200&amp;h=250&amp;auto=format%2ccompress&amp;fit=facearea&amp;facepad=2" class="b-avatar__pic"
-		    src='${pageContext.request.contextPath}/uploads/member/profile/${seller.image}' />
+		  
+		  <c:choose>
+		  	<c:when test="${seller.image ne null}">
+			    <img alt="6e65e28f-55c7-435a-a6c7-9b70c09f2233.jpg?ixlib=rb-1.1.0&amp;w=200&amp;h=250&amp;auto=format%2ccompress&amp;fit=facearea&amp;facepad=2" class="b-avatar__pic"
+			    src='${pageContext.request.contextPath}/uploads/member/profile/${seller.image}' />
+		    </c:when>
+		    <c:otherwise>
+		    	<img alt="6e65e28f-55c7-435a-a6c7-9b70c09f2233.jpg?ixlib=rb-1.1.0&amp;w=200&amp;h=250&amp;auto=format%2ccompress&amp;fit=facearea&amp;facepad=2" class="b-avatar__pic"
+		    src='${pageContext.request.contextPath}/uploads/member/profile/basic.jpg' />
+		    </c:otherwise>
+		   </c:choose>
+		    
 			</div>
 			</div>
         <h1 class="headline text-size_3xl is_vaporable">
@@ -71,7 +81,7 @@ z-index: 1 !important;
 				    <a class="b-project-card__head__link" href="../reward?item_code=${item.item_code}">
 				      <div class="b-project-card__head__link__inner">
 				        <div class="b-project-card__head__filter"></div>
-				        <img src='${pageContext.request.contextPath}/images/like/<c:out value="${item.main_image}"/>' alt="" class="b-project-card__head__pic" />
+				        <img src='${pageContext.request.contextPath}/uploads/reward/<c:out value="${item.main_image}"/>' alt="" class="b-project-card__head__pic" />
 				 
 				      </div>
 				    </a>
@@ -129,7 +139,75 @@ z-index: 1 !important;
 				</div>
 				</c:forEach>
 			</div>
-			
+<!------------------------------------------------------------------------------  -->	
+			<hr/>
+			<h2 class="mypage-top-title">현재 만들고있는 프로젝트</h2>
+			<div class="row has-pad-bottom">
+				<c:forEach items="${itemEdit}" var="item">
+				 <div class="b-project-card">
+				  <figure class="b-project-card__head">
+				   <a class="b-project-card__head__link" href="../newproject/newprojectModify2/${item.item_code}">
+				      <div class="b-project-card__head__link__inner">
+				        <div class="b-project-card__head__filter"></div>
+				        <img src='${pageContext.request.contextPath}/uploads/reward/<c:out value="${item.main_image}"/>' alt="" class="b-project-card__head__pic" />			 
+				      </div>
+				    </a>
+				  </figure>
+				
+				  <div class="b-project-card__body"> 
+				    <h3 class="b-project-card__title">
+				      <a href="../reward?item_code=${item.item_code}" class="[ yoke yoke--theme_light ]"><c:out value="${item.title}"/></a>
+				    </h3>
+				    <p class="b-project-card__creator">
+				     <sec:authentication property="principal.member.nickname"/>의 프로젝트
+				    </p>
+				    <p class="b-project-card__blurb">
+				    <c:out value="${item.summary}"/>
+				    </p>
+				  </div> 
+				  <div>&nbsp;&nbsp;<button data-toggle="tooltip" title="관리자에게 승인요청" data-placement="top" class="btn apply_btn" value="${item.item_code}"><i class="fa fa-check" aria-hidden="true"></i></button></div>
+				  <div class="b-project-card__gauge [ b-gauge ]">
+				  
+				  <c:choose>
+				     <c:when test="${item.cur_sum/item.target_sum * 100 > 100}">
+				       <div class="b-gauge__liquid" style="width:100%"></div>
+				    </c:when>
+				    <c:otherwise>
+				    <div class="b-gauge__liquid" style='width: <fmt:formatNumber value="${item.cur_sum/item.target_sum * 100 }" pattern=".00" />%'></div>
+				    </c:otherwise>
+				 </c:choose>
+				  </div> 
+				  <div class="b-project-card__figures">
+				
+				    <div class="[ b-project-card__figure b-project-card__figure_for_amount ]">
+				      <span class="b-project-card__figure-title">모인 금액</span>
+				      <span class="b-project-card__figure-item">
+				        <fmt:formatNumber value="${item.cur_sum}" type="number"/> 원
+				        <span class="b-project-card__percentage">
+				        <fmt:formatNumber value="${item.cur_sum/item.target_sum * 100 }" pattern=".00" />%
+				        </span>
+				      </span>
+				    </div>
+				    <div class="[ b-project-card__figure b-project-card__figure_for_day ]">
+				        <span class="b-project-card__figure-title">남은 시간</span>
+				        <span class="b-project-card__figure-item">
+				        
+				        <c:choose>                                 
+				           <c:when test="${item.success > 0}">
+				                 <span class="days">마감됨</span>                                      
+				           </c:when>
+				           <c:otherwise>
+				           		<fmt:parseDate value="${item.closingdate}" var="endPlanDate" pattern="yyyy-MM-dd"/>
+				                 <span class="days"><c:out value="${endPlanDate}"/>일 까지</span> 
+				           </c:otherwise>
+				        </c:choose>
+				        </span>
+				    </div> 
+				  </div>
+				</div>
+				</c:forEach>
+			</div>
+<!------------------------------------------------------------------------------  -->			
 			<hr/>
 			<h2 class="mypage-top-title">앵콜가능 프로젝트</h2>
 			<div class="row has-pad-bottom">
@@ -139,7 +217,7 @@ z-index: 1 !important;
 				   <a class="b-project-card__head__link" href="../reward?item_code=${item.item_code}">
 				      <div class="b-project-card__head__link__inner">
 				        <div class="b-project-card__head__filter"></div>
-				        <img src='${pageContext.request.contextPath}/images/like/<c:out value="${item.main_image}"/>' alt="" class="b-project-card__head__pic" />			 
+				        <img src='${pageContext.request.contextPath}/uploads/reward/<c:out value="${item.main_image}"/>' alt="" class="b-project-card__head__pic" />			 
 				      </div>
 				    </a>
 				  </figure>
@@ -207,7 +285,7 @@ z-index: 1 !important;
 				    <a class="b-project-card__head__link" href="../reward?item_code=${item.item_code}"">
 				      <div class="b-project-card__head__link__inner">
 				        <div class="b-project-card__head__filter"></div>
-				        <img src='${pageContext.request.contextPath}/resources/uploads/reward/<c:out value="${item.main_image}"/>' alt="" class="b-project-card__head__pic" />			 
+				        <img src='${pageContext.request.contextPath}/uploads/reward/<c:out value="${item.main_image}"/>' alt="" class="b-project-card__head__pic" />			 
 				      </div>
 				    </a>
 				  </figure>
@@ -294,6 +372,16 @@ z-index: 1 !important;
 	            return false;
 	        }
 	    });	
+	
+		$('.apply_btn').on( 'click',function() {
+	        var data = this.value;
+	        console.log(data);
+			if(confirm("아이템을 정말 관리자에게 승인요청하시겠습니까? 승인요청하시면 더이상 수정하실수 없습니다.") == true){
+	               location.href='../newproject/applyItem/'+data ;
+	        }else{
+	            return false;
+	        }
+	    });
 
 	</script>
 

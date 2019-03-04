@@ -30,6 +30,11 @@ public class CategoryDAOImpl implements CategoryDAO {
 		return itemMap;
 	}
 	@Override
+	public List<MainVO> getMainOpenList(HashMap map){
+		List<MainVO> itemMap = sqlSession.selectList(ns3+".getMainOpenList", map);
+		return itemMap;
+	}
+	@Override
 	public List<MainVO> getRandomList(){
 		List<MainVO> itemMap = sqlSession.selectList(ns3+".getRandomList");
 		return itemMap;

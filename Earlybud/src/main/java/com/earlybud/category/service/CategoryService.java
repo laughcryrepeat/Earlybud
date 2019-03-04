@@ -14,6 +14,7 @@ public interface CategoryService {
 	/*메인용*/
 	public List<MainVO> getRandomList();
 	public List<MainVO> getMainList(HashMap map);
+	public List<MainVO> getMainOpenList(HashMap map);
 	public List<MainVO> getOpenRankNumService();
 	public List<MainVO> getRewardRankNumService();
 	public List<MainVO> getRankListService(HashMap map);

@@ -45,10 +45,9 @@
                                 <tr>
                                     <td style="vertical-align:middle">
                                         <div style="display:  inline-block; vertical-align:middle;">
-										<a href="../member_ordereach/<c:out value="${list.merchant_uid}"/>"
-											target="popup"
-											onclick="window.open('../member_ordereach/<c:out value="${list.merchant_uid}"/>', 'popup',
-											'width=600, height=680'); return false;"><c:out value="${list.title}"/></a>
+										<a href="../reward?item_code=<c:out value="${list.item_code}"/>" class="table-link" >
+                                           <c:out value="${list.title}"/>
+                                        </a>
 
                                     	</div>
                                     </td>
@@ -79,12 +78,13 @@
                                     </td>
                                     <td style="vertical-align:middle; text-align:center;"><c:out value="${list.pur_date}"/></td>
                                     <td style="vertical-align:middle; text-align:center;">
-										    <a href="../reward?item_code=<c:out value="${list.item_code}"/>" class="table-link" >
-                                            <span class="fa-stack">
+	                                        <a href="../member_ordereach/<c:out value="${list.merchant_uid}"/>"
+											target="popup"
+											onclick="window.open('../member_ordereach/<c:out value="${list.merchant_uid}"/>', 'popup',
+											'width=600, height=680'); return false;"><span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x" style="color:royalblue"></i>
                                                 <i class="fa fa-search-plus fa-stack-1x fa-inverse" ></i>
-                                            </span>
-	                                        </a>
+                                            </span></a>
 <!-- 	                                        <a href="#" class="table-link"> -->
 <!-- 	                                            <span class="fa-stack"> -->
 <!-- 	                                                <i class="fa fa-square fa-stack-2x" style="color:royalblue"></i> -->
@@ -95,6 +95,11 @@
                               
                                 </tr>
                                 </c:forEach>
+                                <c:choose>
+                             <c:when test="${list.size() eq 0}">
+                             	<tr><td colspan="5">주문 내역이 없습니다.</td></tr>
+                             </c:when>
+                             </c:choose>
                             </tbody>
                              
                             <!-- 테스트코드 끝 -->

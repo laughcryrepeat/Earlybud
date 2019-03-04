@@ -15,6 +15,7 @@ public interface CategoryDAO {
 	
 	/*메인용*/
 	public List<MainVO> getMainList(HashMap map);
+	public List<MainVO> getMainOpenList(HashMap map);
 	public List<MainVO> getRandomList();
 	public List<MainVO> getOpenRankNum();
 	public List<MainVO> getRewardRankNum();
