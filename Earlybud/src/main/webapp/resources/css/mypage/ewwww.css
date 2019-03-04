@@ -1840,7 +1840,7 @@ ul.social-media-list li {
 .startup-video .elementor-widget-video .elementor-custom-embed-image-overlay i {
 	background-color: #fff;
 	text-shadow: none;
-	color: #db79f5;
+	color: #cfbaf4;
 	border-radius: 50%;
 	width: 70px;
 	height: 70px;
@@ -2025,7 +2025,7 @@ ul.social-media-list li {
 }
 
 .plan-price .currency {
-	color: #db79f5;
+	color: #cfbaf4;
 	font-size: 24px;
 }
 
@@ -2036,7 +2036,7 @@ ul.social-media-list li {
 
 .plan-feature i {
 	margin-right: 5px;
-	color: #db79f5;
+	color: #cfbaf4;
 }
 
 .plan-item {
@@ -2071,7 +2071,7 @@ ul.social-media-list li {
 
 .pricing-section .plan-price {
 	margin-bottom: 15px;
-	color: #db79f5;
+	color: #cfbaf4;
 	font-weight: 600;
 	font-size: 48px;
 }
@@ -2289,7 +2289,7 @@ ul.social-media-list li {
 
 .employee .team-item .team-social li:hover a {
 	background-color: #fff;
-	color: #db79f5;
+	color: #cfbaf4;
 }
 
 /* Testimonial */
@@ -2737,7 +2737,7 @@ ul.social-media-list li {
 .athemes-project-wrap .project-filter li a:hover,
 .athemes-project-wrap .project-filter li a.active {
 	color: #fff;
-	background-color: #db79f5;
+	background-color: #cfbaf4;
 }
 
 .athemes-project-wrap .project-filter li:first-of-type a {
