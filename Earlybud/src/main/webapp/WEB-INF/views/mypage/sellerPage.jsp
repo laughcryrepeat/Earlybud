@@ -165,7 +165,15 @@ z-index: 1 !important;
 				    <c:out value="${item.summary}"/>
 				    </p>
 				  </div> 
-				  <div>&nbsp;&nbsp;<button data-toggle="tooltip" title="관리자에게 승인요청" data-placement="top" class="btn apply_btn" value="${item.item_code}"><i class="fa fa-check" aria-hidden="true"></i></button></div>
+				  
+				  <c:choose>
+				     <c:when test="${item.admincall eq 0}">
+				       <div>&nbsp;&nbsp;관리자 승인중</div>
+				    </c:when>
+				    <c:otherwise>
+				    	<div>&nbsp;&nbsp;<button data-toggle="tooltip" title="관리자에게 승인요청" data-placement="top" class="btn apply_btn" value="${item.item_code}"><i class="fa fa-check" aria-hidden="true"></i></button></div>
+				    </c:otherwise>
+				 </c:choose>
 				  <div class="b-project-card__gauge [ b-gauge ]">
 				  
 				  <c:choose>
