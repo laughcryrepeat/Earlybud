@@ -106,6 +106,12 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/category/uikit.css">
 
 	
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&subset=korean');
+		@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
+		
+	</style>
+	
 	<style id='kirki-styles-airi-inline-css' type='text/css'>
 		h1,
 		h2,
@@ -119,8 +125,8 @@
 		}
 
 		body {
-			font-family: "Work Sans", Helvetica, Arial, sans-serif;
-			font-weight: 400;
+			font-family: 'Nanum Gothic', sans-serif;
+			font-weight: 200;
 			font-size: 16px;
 		}
 

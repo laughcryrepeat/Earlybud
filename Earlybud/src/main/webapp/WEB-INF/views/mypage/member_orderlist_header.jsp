@@ -235,6 +235,14 @@ content/uploads/sites/92/elementor/css/post-4.css?ver=1540206708' type='text/css
 	<link rel='stylesheet' id='kirki-styles-airi-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-
 
 content/plugins/kirki/assets/css/kirki-styles.css?ver=3.0.33' type='text/css' media='all' />
+	
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&subset=korean');
+		@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
+		
+	</style>
+	
+	
 	<style id='kirki-styles-airi-inline-css' type='text/css'>
 		h1,
 		h2,
@@ -248,8 +256,8 @@ content/plugins/kirki/assets/css/kirki-styles.css?ver=3.0.33' type='text/css' me
 		}
 
 		body {
-			font-family: "Work Sans", Helvetica, Arial, sans-serif;
-			font-weight: 400;
+			font-family: 'Nanum Gothic',sans-serif;
+			font-weight: 300;
 			font-size: 16px;
 		}
 

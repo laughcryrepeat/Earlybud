@@ -146,7 +146,10 @@
 	<link rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/vendor.css?966a1957dbe0ea1e47a26794a40b2772"><link rel="stylesheet" href="https://cdn.wadiz.kr/resources/assets/common.css?c067a4b077f78dd0d8ac2a36ba9e8c08">
 	<!-- 추가끝 -->
 	
-	
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&subset=korean');
+		@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
+	</style>
 	
 	<style id='kirki-styles-airi-inline-' type='text/css'>
 		h1,
@@ -161,8 +164,8 @@
 		}
 
 		body {
-			font-family: "Work Sans", Helvetica, Arial, sans-serif;
-			font-weight: 400;
+			font-family: 'Nanum Gothic', sans-serif;
+			font-weight: 200;
 			font-size: 16px;
 		}
 
