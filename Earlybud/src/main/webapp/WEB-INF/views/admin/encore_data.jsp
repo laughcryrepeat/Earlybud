@@ -67,22 +67,7 @@
 	                                            </tr>
 	                                          </c:forEach>
 	                 <!-------------------------------------------------->                                           
-	                                            <tr>
-	                                                <td>2</td>
-	                                                <td><img src="${pageContext.request.contextPath}/images/admin/book-2.jpg" alt="" /></td>
-	                                                <td>Quality Bol pen</td>
-	                                                <td>
-	                                                    <button class="ps-setting encore-due">앵콜대기중</button>
-	                                                </td>
-	                                                <td>디자인상품</td>
-	                                                <td>0%</td>
-	                                                <td>0만원</td>
-	                                                <td>1700만원</td>
-	                                                <td>
-	                                                    <button data-toggle="tooltip" title="Approve" class="pd-setting-ed"><i class="fa fa-check" aria-hidden="true"></i></button>
-	                                                    <button data-toggle="tooltip" title="Email" class="pd-setting-ed"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-	                                                </td>
-	                                            </tr>
+	                                           
                                             </tbody>
                                         </table>
                                     </div>

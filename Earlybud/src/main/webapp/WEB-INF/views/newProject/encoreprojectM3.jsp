@@ -25,19 +25,6 @@
 
   <link rel="stylesheet"  href="${pageContext.request.contextPath}/summernote/examples/example.css">
 
-  <script type="text/javascript">
-    $(document).ready(function() {
-    	//var add_button = $(".add_field_button");
-      //$('.hiddenO').trigger('click');
-      //$('.add_field_button').trigger('click');
-      //$('.remove_field').trigger('click');
-      $('.summernote').summernote({
-        height: 300,
-        tabsize: 2
-      });
-    });
-  </script>
-
   <style id="kirki-css-vars">:root{}</style>
   <title>EarlyBud &#8211; MyPage</title>
   <link rel='dns-prefetch' href='//s.w.org' />
@@ -547,7 +534,7 @@
 			        <div class="modal-body">
 			          
 			        <div class="form-group">
-			                <p><a href="#" class="add_field_button">add</a></p>
+			                <p><a href="javascript:void(0);" class="add_field_button">add</a></p>
                     		<label for="type_code">가격&emsp;&emsp;&emsp;&emsp;&emsp;옵션 이름&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;옵션 설명&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
 			                <div class="real_content">
 			                <c:forEach items="${type}" var="t">
@@ -694,25 +681,36 @@
 			  $(wrapper).append('<div><input class="option_code" id="otype_code" name="otype_code" type="text" size="10" maxlength="20" /><input class="option_name" id="otype_name" name="oname" type="text" size="20" maxlength="60" /><input class="option_info" id="dinfo" name="dinfo" type="text" size="30" maxlength="100" /><a href="#" class="remove_field">remove</a></div>\n');
 			  $(hidden).append('<div><input class="ocodeh" id="type_code" name="type_code" type="hidden" size="10" maxlength="20" /><input class="onameh" id="type_name" name="name" type="hidden" size="20" maxlength="60" /><input class="oinfoh" id="info" name="info" type="hidden" size="30" maxlength="100" />');
 		  }
-	  });	*/	  
-     $('#optionfield').on('click',function(){
-    	 $("#type_modal").modal({backdrop: 'static', keyboard: false});
-
-     });
-     $('.add_field_button').on('click',function(){
-    	 $(".real_content").append('<div><td><input class="option_code" id="otype_code" name="otype_code" type="text" size="10" maxlength="20" /></td><td><input class="option_name" id="otype_name" name="oname" type="text" size="20" maxlength="60" /></td><td><input class="option_info" id="dinfo" name="dinfo" type="text" size="30" maxlength="100" /></td><td><a href="javascript:void(0);" class="remov_field">remove</a></td></div>\n');
-     });
-     $('.remove_field').on('click',function(e){
-    	 console.log("remove_field");
-    	 $(this).parent().parent().remove();
-    	 e.preventDefault();
-     });
-     $('.remov_field').on('click',function(e){
-    	 console.log("remov_field");
-    	 $(this).parent().parent().remove();
-    	 e.preventDefault();
-     });
-      
+	  });	*/	 
+	  
+	  
+	    $(document).ready(function() {
+	    	//var add_button = $(".add_field_button");
+	      //$('.hiddenO').trigger('click');
+	      //$('.add_field_button').trigger('click');
+	      //$('.remove_field').trigger('click');
+	      $('.summernote').summernote({
+	        height: 300,
+	        tabsize: 2
+	      });
+	  
+	     $('#optionfield').on('click',function(){
+	    	 $("#type_modal").modal({backdrop: 'static', keyboard: false});
+	
+	     });
+	     
+	     $('.add_field_button').on('click',function(){
+	    	 console.log("add this: "+this);
+	    	 $(".real_content").append('<div><td><input class="option_code" id="otype_code" name="otype_code" type="text" size="10" maxlength="20" /></td><td><input class="option_name" id="otype_name" name="oname" type="text" size="20" maxlength="60" /></td><td><input class="option_info" id="dinfo" name="dinfo" type="text" size="30" maxlength="100" /></td><td><a href="javascript:void(0);" class="remove_field">remove</a></td></div>');
+	     });
+	     
+	     $(".remove_field").on('click',function(e){
+	    	 console.log("remove_field this: "+this.parent());
+	    	 $(this).parent().remove();
+	    	 e.preventDefault();
+	     });
+	     
+	 }); 
 	  </script>
 
 </body>
