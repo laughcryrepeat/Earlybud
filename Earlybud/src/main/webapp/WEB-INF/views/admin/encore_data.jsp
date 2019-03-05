@@ -58,11 +58,8 @@
 	                                                <td><fmt:formatNumber value="${Item.cur_sum}" type="number"/></td>
 	                                                <td><fmt:formatNumber value="${Item.target_sum}" type="number"/></td>
 	                                                <td>
-	                                                	<c:choose>
-	                                                	<c:when test="${Item.success eq 2}">
-	                                                    	<button data-toggle="tooltip" title="suggest" class="pd-setting-ed approve_btn"><i class="fa fa-check" aria-hidden="true"></i></button>
-	                                                    </c:when>
-	                                                    </c:choose>
+	                                                   <button data-toggle="tooltip" title="suggest" class="pd-setting-ed approve_btn"><i class="fa fa-check" aria-hidden="true"></i></button>
+
 	                                                </td>
 	                                            </tr>
 	                                          </c:forEach>

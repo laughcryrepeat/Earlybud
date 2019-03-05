@@ -41,7 +41,7 @@
   	<select id="listEncoreItem" resultType="Item">
   	select ITEM_CODE, TITLE, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
   	ENCORE_NUM, ENCORE, EMAIL from ITEM where ENCORE_NUM <![CDATA[ > ]]> 10 and SUCCESS >0 
-  	 and ADMINCALL=0 and ITEM_CODE not in (select ITEM_CODE from ENCORE)
+  	 and ADMINCALL=1 and ITEM_CODE not in (select ITEM_CODE from ENCORE)
   	 order by ITEM_CODE desc
   	</select>
   	
@@ -70,7 +70,7 @@
   	
   	<select id="sellerEncoreItem" parameterType="ITEM" resultType="Item">
   	select ITEM_CODE, TITLE, SUMMARY, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
-  	ENCORE_NUM, ENCORE, EMAIL from ITEM natural join ENCORE where email=#{email} and SUCCESS = 2 and ENCORE_MASTER = 1 and ENCORE_SELLER != 1
+  	ENCORE_NUM, ENCORE, EMAIL from ITEM natural join ENCORE where email=#{email} and ENCORE_MASTER = 1 and ENCORE_SELLER != 1
   	</select>
   	
   	<select id="modifyItem1" parameterType="ITEM" resultType="Item">
