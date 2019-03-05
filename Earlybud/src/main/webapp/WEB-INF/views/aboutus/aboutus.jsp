@@ -255,7 +255,7 @@ ul.social-media-list li {
 				<div data-id="73539d57" class="elementor-element elementor-element-73539d57 elementor-widget elementor-widget-image" data-element_type="image.default">
 				<div class="elementor-widget-container">
 					<div class="elementor-image">
-										<img width="665" height="381" src="https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/uploads/sites/92/2018/09/sign.png" class="attachment-large size-large" alt="" srcset="https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/uploads/sites/92/2018/09/sign.png 665w, https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/uploads/sites/92/2018/09/sign-300x172.png 300w" sizes="(max-width: 665px) 100vw, 665px">											</div>
+							<img width="800" height="800" src="${pageContext.request.contextPath}/images/main/sign.png" class="attachment-large size-large" alt="" srcset=${pageContext.request.contextPath}/images/main/sign.png 800w, ${pageContext.request.contextPath}/images/main/sign.png 800w" sizes="(min-width:3000px min-height:2000px) 500vw, 800px">											</div>
 				</div>
 				</div>
 						</div>
@@ -267,7 +267,7 @@ ul.social-media-list li {
 				<div data-id="42d26d59" class="elementor-element elementor-element-42d26d59 elementor-widget elementor-widget-image" data-element_type="image.default">
 				<div class="elementor-widget-container">
 					<div class="elementor-image">
-										<img width="1024" height="682" src="${pageContext.request.contextPath}/images/main/owner.jpg" class="attachment-large size-large" alt="" srcset="${pageContext.request.contextPath}/images/main/owner.jpg 1024w, ${pageContext.request.contextPath}/images/main/owner.jpg 300w, ${pageContext.request.contextPath}/images/main/owner.jpg 768w, ${pageContext.request.contextPath}/images/main/owner.jpg 720w, ${pageContext.request.contextPath}/images/main/owner.jpg 1280w" sizes="(max-width: 1024px) 100vw, 1024px">											
+										<img width="1024" height="700" src="${pageContext.request.contextPath}/images/main/owner.jpg" class="attachment-large size-large" alt="" srcset="${pageContext.request.contextPath}/images/main/owner.jpg 1024w, ${pageContext.request.contextPath}/images/main/owner.jpg 300w, ${pageContext.request.contextPath}/images/main/owner.jpg 768w, ${pageContext.request.contextPath}/images/main/owner.jpg 720w, ${pageContext.request.contextPath}/images/main/owner.jpg 1280w" sizes="(max-width: 1024px) 100vw, 1024px">											
 							</div></div>			
 				</div>
 						</div>

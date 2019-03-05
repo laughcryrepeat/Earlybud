@@ -232,7 +232,7 @@
                                 <div class="item_btns">
                                     <a href="#none" class="link_share" id="link_share">공유 <span class="btn_icon"><img src="${pageContext.request.contextPath}/images/item/share.jpg"></span><span class="num_count" id="share_num_count">
                                     
-                                            1994                                    
+                                            0                                    
                                 </span></a>
                                     <input type="hidden" id="like_count" value="5">
                                     <input type="hidden" id="interest_seq" value="">
