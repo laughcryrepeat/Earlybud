@@ -11,5 +11,7 @@
    		<result property="newitem_code" column="NEWITEM_CODE"/> 
    	</resultMap> 
   	
-   	
+   	<update id="updateEncore" parameterType="Encore">
+  	update ENCORE set ENCORE_SELLER=1, NEWITEM_CODE=#{newitem_code} where ITEM_CODE = #{item_code}
+  	</update>
   </mapper>

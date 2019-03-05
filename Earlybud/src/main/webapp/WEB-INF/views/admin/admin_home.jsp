@@ -52,13 +52,21 @@
           </div>
         </div>
       </div>
+      
       <div class="row">
         <div class="col-md-6">
           <div class="tile">
-            <h3 class="tile-title">주간 방문자 수</h3>
-            <div class="embed-responsive embed-responsive-16by9">
-              <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
-            </div>
+            <h3 class="tile-title">관리자 페이지</h3>
+            <ul>
+              <li>- 회원들이 올린 아이템 목록 페이지</li>
+              <li>- 종료된 아이템중 앵콜요청수 도달한 아이템 목록 페이지</li>
+              <li>- 회원 명부 관리, 검색, 삭제 페이지</li>
+              <li>- 관리자 문의 받은 쪽지함, 보낸 쪽지함</li>
+              <li>- 여러명에게 쪽지와 이미엘 보내기</li>
+            </ul>
+            <br/>
+            <p> <i class="fa fa-arrow-down"></i> 얼리버드 깃허브 들어오시면 소스 확인하실수 있습니다!!</p>
+            <p class="mt-4 mb-4"><a class="btn btn-info mr-2 mb-2" href="https://github.com/laughcryrepeat/Earlybud" target="_blank"><i class="fa fa-github"></i>GitHub</a></p>
           </div>
         </div>
         <div class="col-md-6">
@@ -70,29 +78,19 @@
           </div>
         </div>
       </div>
+      
       <div class="row">
         <div class="col-md-6">
           <div class="tile">
-            <h3 class="tile-title">Features</h3>
-            <ul>
-              <li>.</li>
-              <li>.</li>
-              <li>.</li>
-              <li>.</li>
-              <li>.</li>
-              <li>.</li>
-            </ul>
-            <p>.</p>
-            <p class="mt-4 mb-4"><a class="btn btn-primary mr-2 mb-2" href="http://pratikborsadiya.in/blog/vali-admin" target="_blank"><i class="fa fa-file"></i>Docs</a><a class="btn btn-info mr-2 mb-2" href="https://github.com/pratikborsadiya/vali-admin" target="_blank"><i class="fa fa-github"></i>GitHub</a><a class="btn btn-success mr-2 mb-2" href="https://github.com/pratikborsadiya/vali-admin/archive/master.zip" target="_blank"><i class="fa fa-download"></i>Download</a></p>
+            <h3 class="tile-title">주간 방문자 수</h3>
+            <div class="embed-responsive embed-responsive-16by9">
+              <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="tile">
-            <h3 class="tile-title">Earlybud Admin page</h3>
-            <p>.</p>
-          </div>
-        </div>
+        
       </div>
+      
     </main>
     <!-- Essential javascripts for application to work-->
     <script src="${pageContext.request.contextPath}/js/admin/jquery-3.2.1.min.js"></script>

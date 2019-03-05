@@ -261,8 +261,6 @@
                     <select class="form-control" id="pur_type" name="pur_type">
                         <option value="" disabled selected></option>
                         <option value="nice">나이스페이먼츠</option>
-                        <option value="inisis">이니시스</option>
-                        <option value="payco">페이코</option>
                     </select>
                   </div>
             </div>

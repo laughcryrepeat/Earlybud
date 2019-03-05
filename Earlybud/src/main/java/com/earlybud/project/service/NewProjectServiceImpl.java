@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.earlybud.model.Encore;
 import com.earlybud.model.Item;
 import com.earlybud.model.Seller;
 import com.earlybud.model.Type;
@@ -91,8 +92,8 @@ public class NewProjectServiceImpl implements NewProjectService {
 		dao.insertEncoreItem2(item);
 	}
 	@Override
-	public void insertEncoreType(Type type) {
+	public void updateEncore(Encore encore) {
 		// TODO Auto-generated method stub
-		dao.insertEncoreType(type);
+		dao.updateEncore(encore);
 	}
 }
