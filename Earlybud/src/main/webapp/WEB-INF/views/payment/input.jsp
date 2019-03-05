@@ -14,9 +14,9 @@
     <meta name="description" content="Create forms comprising or involving several steps or stages." />
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
     <!-- style CSS for ITEM LIST //
-		============================================ -->
+      ============================================ -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/payment/admin4b.min.css">
   </head>
   <body class="app sidebar-mini rtl">
@@ -31,9 +31,9 @@
   </ol>
 </nav>
 <div class="container-fluid">
-  
+
   <div class="callout callout-info">
-    선택하신 상품 : <a href="#">${itemMap.get("TITLE")}</a> / 
+    선택하신 상품 : <a href="#">${itemMap.get("TITLE")}</a> /
     타입 : ${itemMap.get("NAME")} /
     금액 : <fmt:formatNumber value='${itemMap.get("PRICE")}' type="number"/> 원 /
   <fmt:formatDate value='${itemMap.get("CLOSINGDATE-1")}' var="endPlanDate" pattern="yyyy-MM-dd"/>
@@ -111,7 +111,7 @@
               <div class="form-group">
                 <label>Password</label>
                 <input type="password" class="form-control" id="pwd" name="pwd">
-              </div>         
+              </div>
             </div>
             <div class="col-12 col-md-6 col-lg-6">
                 <br/>
@@ -121,7 +121,7 @@
           <div class="d-none d-md-block">
             <hr>
             <div class="d-flex mb-3">
-              <button type="button" class="btn btn-success ml-auto" data-form-step="#personal">
+              <button type="button" class="btn ml-auto" data-form-step="#personal">
                 회원정보 확인 &nbsp;
                 <i class="icon-arrow-right font-sm"></i>
               </button>
@@ -156,7 +156,7 @@
              </div>
             </div>
           </div>
-          
+
           <div class="row">
             <div class="col-12 col-lg-6">
               <div class="row">
@@ -243,11 +243,11 @@
                     <label>카드 유효기간 년 Year</label>
                     <input type="text" class="form-control" id="exp_year" placeholder="ex ) 2019" name="exp_year" maxlength="4">
                   </div>
-                </div>   
+                </div>
               </div>
             </div>
-          </div>          
-          
+          </div>
+
           <div class="row">
             <div class="col-12 col-md-8 col-lg-7">
               <div class="form-group">
@@ -261,11 +261,13 @@
                     <select class="form-control" id="pur_type" name="pur_type">
                         <option value="" disabled selected></option>
                         <option value="nice">나이스페이먼츠</option>
+                        <option value="inisis">이니시스</option>
+                        <option value="payco">페이코</option>
                     </select>
                   </div>
             </div>
-          </div>         
-          
+          </div>
+
           <div class="d-none d-md-block">
             <hr>
             <div class="d-flex mb-3">
@@ -456,17 +458,17 @@
     <script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
     <script>
     $(":input").inputmask();
-    
+
     function goPopup(){
          // 주소검색을 수행할 팝업 페이지를 호출합니다.
          // 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
-         var pop = window.open("../jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
-         
+         var pop = window.open("../jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes");
+
          // 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
-         //var pop = window.open("/payment/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
+         //var pop = window.open("/payment/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes");
       }
       function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
-      // 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다. 
+      // 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
        formOrder.zip_code.value = zipNo;//우편번호
        formOrder.addr1.value = roadAddrPart1;//도로명주소
        formOrder.addr2.value = addrDetail; //상세주소
