@@ -68,7 +68,7 @@ img.emoji {
 
 <link rel="stylesheet" id="airi-bootstrap-css" href="https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/css/bootstrap/bootstrap.min.css?ver=1" type="text/css" media="all">
 <link rel="stylesheet" id="contact-form-7-css" href="https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.0.2" type="text/css" media="all">
-<link rel="stylesheet" id="airi-style-css" href="https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/style.css?ver=4.9.9" type="text/css" media="all">
+<link rel="stylesheet" id="airi-style-css" href="../css/mypage/ewwww.css" type="text/css" media="all">
 
 <link rel="stylesheet" id="airi-font-awesome-css" href="https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/css/font-awesome/css/font-awesome.min.css?ver=4.9.9" type="text/css" media="all">
 <link rel="stylesheet" id="elementor-icons-css" href="https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=3.8.0" type="text/css" media="all">
