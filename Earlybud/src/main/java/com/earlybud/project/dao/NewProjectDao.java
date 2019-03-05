@@ -23,4 +23,7 @@ public interface NewProjectDao {
 	public List<Item> sellerEncoreItem(String email);
 	public List<Item> sellerEditItem(String email);
 	public void applyItem(long item_code);
+	public void insertEncoreItem(Item item);
+	public void insertEncoreItem2(Item item);
+	public void insertEncoreType(Type type);
 }

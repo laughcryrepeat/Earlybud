@@ -220,7 +220,7 @@ public class NewProjectController {
 		System.out.println("셀러 수정: " +seller);
 		projectS.modifySeller(seller);
 		//model.addAttribute("seller", projectS.seller_select(email));
-		return "redirect:../../mypage/sellerPage";
+		return "redirect:../mypage/sellerPage";
 	}
 	@RequestMapping(value="newprojectModify2/{item_code}")
 	public String newprojectModify2(@PathVariable long item_code, Model model) throws IOException{
@@ -304,12 +304,99 @@ public class NewProjectController {
 		}
 		System.out.println("아이템코드? " + item.getItem_code());
 		System.out.println("저장완료");
-		return "redirect:../../mypage/sellerPage";
+		return "redirect:../mypage/sellerPage";
 	}
 	@RequestMapping("applyItem/{item_code}")
 	public String applyItem(@PathVariable long item_code) {
 		projectS.applyItem(item_code);
 		System.out.println("apply item to admin completed. admincall : 0");
 		return "redirect:../../mypage/sellerPage";
+	}
+	@RequestMapping(value="encoreprojectModify2/{item_code}")
+	public String encoreprojectModify2(@PathVariable long item_code, Model model) throws IOException{
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String email = authentication.getName();
+		System.out.println("1st page email: "+email);
+		model.addAttribute("seller", projectS.item_select(item_code));
+		return "newProject/encoreprojectM2";
+	}
+	@RequestMapping("encoreprojectModify3")
+	public String encoreProjectModify3(@RequestParam long item_code, Model model, @RequestParam String image_name, @RequestParam long cat_code, @RequestParam String title, @RequestParam MultipartFile main_image,
+			@RequestParam String opendate, @RequestParam String closingdate, Type type) throws ParseException, IOException{
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String email = authentication.getName();
+		System.out.println("3rd page email: "+email);
+		String originFullName= main_image.getOriginalFilename();
+		Item item = new Item();
+		String saveName = originFullName;
+		if(originFullName != "") {
+			originFullName = originFullName.trim();
+			if(originFullName.length() != 0) {
+				if(new File(projectPath,originFullName).exists()) {
+					int idx = originFullName.lastIndexOf(".");
+					String fName = originFullName.substring(0,idx);
+					String fExt = originFullName.substring(idx+1);
+					
+					saveName = fName+"_"+System.currentTimeMillis()+"."+fExt;
+				}
+			}
+			System.out.println("save file name:"+saveName);
+			try {
+				main_image.transferTo(new File(projectPath,saveName));
+			}catch(Exception e) {
+			}
+			item.setMain_image(saveName);
+		}else {
+			item.setMain_image(image_name);
+		}
+		Date startDate = new  SimpleDateFormat("yyyy-MM-dd").parse(opendate);
+		Date endDate = new  SimpleDateFormat("yyyy-MM-dd").parse(closingdate);
+		java.sql.Date openDate = new java.sql.Date(startDate.getTime());
+		java.sql.Date closingDate = new java.sql.Date(endDate.getTime() + TimeUnit.DAYS.toMillis( 1 ));
+		
+		item.setEmail(email);
+		item.setCat_code(cat_code);
+		item.setTitle(title);
+		item.setOpendate(openDate);
+		item.setClosingdate(closingDate);
+		System.out.println("프로젝트 생성 p2: "+item);
+		projectS.insertEncoreItem(item);//-------------------------------------------------
+		//System.out.println(projectS.item_select2(item.getItem_code()));
+		//long itemcode = item.getItem_code();
+		System.out.println("new item code: "+item.getItem_code());
+		model.addAttribute("seller", projectS.item_select2(item_code));
+		//System.out.println(projectS.selectType(item_code));
+		model.addAttribute("new_item_code",item.getItem_code());
+		model.addAttribute("type", projectS.selectType(item_code));
+		
+		return "newProject/encoreprojectM3";
+	}
+	@RequestMapping("encoreprojectModifyCheck")
+	public String encoreProjectModifyCheck(@RequestParam long item_code, @RequestParam long target_sum, @RequestParam String summary,
+			@RequestParam String[] type_code, @RequestParam String[] name, @RequestParam String[] info, @RequestParam String content){
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String email = authentication.getName();
+		System.out.println("encore project modify IN");
+		Item item = new Item();
+		item.setItem_code(item_code);
+		item.setEmail(email);
+		item.setTarget_sum(target_sum);
+		item.setSummary(summary);
+		item.setContent(content);
+		projectS.update(item);
+		Type type = new Type();
+		projectS.modifyType(item_code);
+		System.out.println(type_code.length);
+		type.setItem_code(item_code);
+		for(int i=0; i<type_code.length; i++) {
+			System.out.println(type_code[i]+name[i]+info[i]);
+			type.setPrice(Integer.parseInt(type_code[i]));
+			type.setName(name[i]);
+			type.setInfo(info[i]);
+			projectS.save2(type);
+		}
+		System.out.println("아이템코드? " + item.getItem_code());
+		System.out.println("저장완료");
+		return "redirect:../mypage/sellerPage";
 	}
 }

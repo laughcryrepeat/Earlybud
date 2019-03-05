@@ -125,4 +125,21 @@ public class NewProjectDaoImpl implements NewProjectDao {
 		int i = sqlSession.update(ns+".applyItem", item_code);
 		if(i>0) System.out.println("applyItem");
 	}
+	@Override
+	public void insertEncoreItem(Item item) {
+		// TODO Auto-generated method stub
+		int i = sqlSession.insert(ns+".insertEncoreItem", item);
+		if(i>0) System.out.println("insert Encore item1");
+	}
+	@Override
+	public void insertEncoreItem2(Item item) {
+		// TODO Auto-generated method stub
+		int i = sqlSession.insert(ns+".insertEncoreItem2", item);
+		if(i>0) System.out.println("insert Encore item2");
+	}
+	@Override
+	public void insertEncoreType(Type type) {
+		// TODO Auto-generated method stub
+		
+	}
 }

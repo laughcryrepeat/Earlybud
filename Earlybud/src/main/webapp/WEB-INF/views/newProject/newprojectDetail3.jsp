@@ -463,6 +463,7 @@
 										<ul>
 										<li><a href="/../earlybud/mypage/modify">개인정보 수정</a></li>
 										<li><a href="/../earlybud/mypage/<sec:authentication property="principal.member.email"/>">좋아요한 프로젝트/판매자</a></li>
+										<li><a href="/../earlybud/mypage/sellerPage">내가만든 프로젝트</a></li>
 										<li><a href="/../earlybud/member_orderlist/<sec:authentication property="principal.member.email"/>">주문조회</a></li>
 										<li><a href="/../earlybud/message/<sec:authentication property="principal.member.email"/>" targe="popup"
 										onclick="window.open('/../earlybud/message/<sec:authentication property="principal.member.email"/>',	'popup', 'width=1000, height=750'); return false;">판매자 문의</a></li>

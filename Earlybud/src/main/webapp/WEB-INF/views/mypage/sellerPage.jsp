@@ -168,10 +168,11 @@ z-index: 1 !important;
 				  
 				  <c:choose>
 				     <c:when test="${item.admincall eq 0}">
-				       <div>&nbsp;&nbsp;관리자 승인중</div>
+				     	<div>&nbsp;&nbsp;관리자 승인중 </div>
 				    </c:when>
 				    <c:otherwise>
 				    	<div>&nbsp;&nbsp;<button data-toggle="tooltip" title="관리자에게 승인요청" data-placement="top" class="btn apply_btn" value="${item.item_code}"><i class="fa fa-check" aria-hidden="true"></i></button></div>
+
 				    </c:otherwise>
 				 </c:choose>
 				  <div class="b-project-card__gauge [ b-gauge ]">
@@ -385,7 +386,7 @@ z-index: 1 !important;
 	        var data = this.value;
 	        console.log(data);
 			if(confirm("아이템을 정말 재업로드하시겠습니까?") == true){
-                   location.href='../newproject/newprojectModify2/'+data ;
+                   location.href='../newproject/encoreprojectModify2/'+data ;
 	        }else{
 	            return false;
 	        }
