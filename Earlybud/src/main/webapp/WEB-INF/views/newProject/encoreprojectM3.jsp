@@ -27,10 +27,10 @@
 
   <script type="text/javascript">
     $(document).ready(function() {
-    	var add_button = $(".add_field_button");
-      $('.hiddenO').trigger('click');
-      $('.add_field_button').trigger('click');
-      $('.remove_field').trigger('click');
+    	//var add_button = $(".add_field_button");
+      //$('.hiddenO').trigger('click');
+      //$('.add_field_button').trigger('click');
+      //$('.remove_field').trigger('click');
       $('.summernote').summernote({
         height: 300,
         tabsize: 2
@@ -465,6 +465,7 @@
 										<ul>
 										<li><a href="/../earlybud/mypage/modify">개인정보 수정</a></li>
 										<li><a href="/../earlybud/mypage/<sec:authentication property="principal.member.email"/>">좋아요한 프로젝트/판매자</a></li>
+										<li><a href="/../earlybud/mypage/sellerPage">내가만든 프로젝트</a></li>
 										<li><a href="/../earlybud/member_orderlist/<sec:authentication property="principal.member.email"/>">주문조회</a></li>
 										<li><a href="/../earlybud/message/<sec:authentication property="principal.member.email"/>" targe="popup"
 										onclick="window.open('/../earlybud/message/<sec:authentication property="principal.member.email"/>',	'popup', 'width=1000, height=750'); return false;">판매자 문의</a></li>
@@ -535,7 +536,7 @@
           </div><!-- #comments -->
             <!-- Modal -->
 			  <div class="modal fade" id="type_modal" role="dialog">
-			    <div class="modal-dialog">
+			    <div class="modal-dialog modal-lg">
 			    
 			      <!-- Modal2 content-->
 			      <div class="modal-content">
@@ -556,7 +557,7 @@
 			                <td><input class="option_name" id="otype_name" name="oname" type="text" value="${t.name}" size="20" maxlength="60" /></td>
 			                <td><input class="option_info" id="dinfo" name="dinfo" value="${t.info}" type="text" size="30" maxlength="100" /></td>
 			                
-			                <a href="#" class="remov_field">remove</a>
+			                <td><a href="javascript:void(0);" class="remove_field">remove</a></td>
 			                </div>
 			                </c:forEach>
 			                </div>                
@@ -573,27 +574,72 @@
           </main><!-- #main -->
         </div><!-- #primary -->
       </div><!-- #page -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-	
-	<script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/elementor/assets/lib/slick/slick.min.js?ver=1.8.1'></script>
-   	<script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/airi-pro//js/elementor.js?ver=20181010'></script>
-    <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/imagesloaded.min.js?ver=3.2.0'></script>
-    <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/js/vendor/navigation.js?ver=20180717'></script>
-	<script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=3.4.3'></script>
+	<script type="text/javascript">
+        var c = document.body.className;
+        c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+        document.body.className = c;
+      </script>
+      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/elementor/assets/lib/slick/slick.min.js?ver=1.8.1'></script>
+      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/airi-pro//js/elementor.js?ver=20181010'></script>
+      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/imagesloaded.min.js?ver=3.2.0'></script>
+      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/js/vendor/navigation.js?ver=20180717'></script>
+      <script type='text/javascript'>
+        /* <![CDATA[ */
+        var wpcf7 = {
+          "apiSettings": {
+            "root": "https:\/\/demo.athemes.com\/airi-shop\/wp-json\/contact-form-7\/v1",
+            "namespace": "contact-form-7\/v1"
+          },
+          "recaptcha": {
+            "messages": {
+              "empty": "Please verify that you are not a robot."
+            }
+          }
+        };
+        /* ]]> */
+      </script>
+      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.0.2'></script>
+      <script type='text/javascript'>
+        /* <![CDATA[ */
+        var wc_add_to_cart_params = {
+          "ajax_url": "\/airi-shop\/wp-admin\/admin-ajax.php",
+          "wc_ajax_url": "\/airi-shop\/?wc-ajax=%%endpoint%%",
+          "i18n_view_cart": "View cart",
+          "cart_url": "https:\/\/demo.athemes.com\/airi-shop",
+          "is_cart": "",
+          "cart_redirect_after_add": "no"
+        };
+        /* ]]> */
+      </script>
+      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=3.4.3'></script>
+      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70'></script>
+      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4'></script>
+      <script type='text/javascript'>
+        /* <![CDATA[ */
+        var woocommerce_params = {
+          "ajax_url": "\/airi-shop\/wp-admin\/admin-ajax.php",
+          "wc_ajax_url": "\/airi-shop\/?wc-ajax=%%endpoint%%"
+        };
+        /* ]]> */
+      </script>
+      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=3.4.3'></script>
+      <script type='text/javascript'>
+        /* <![CDATA[ */
+        var wc_cart_fragments_params = {
+          "ajax_url": "\/airi-shop\/wp-admin\/admin-ajax.php",
+          "wc_ajax_url": "\/airi-shop\/?wc-ajax=%%endpoint%%",
+          "cart_hash_key": "wc_cart_hash_c5a0d8ee19d1bc2cabc0f451f4f6d11f",
+          "fragment_name": "wc_fragments_c5a0d8ee19d1bc2cabc0f451f4f6d11f"
+        };
+        /* ]]> */
+      </script>
+      <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=3.4.3'></script>
       <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/js/vendor/skip-link-focus-fix.js?ver=20151215'></script>
       <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/js/vendor/scripts.js?ver=20180223'></script>
       <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/js/custom/custom.min.js?ver=20180223'></script>
       <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/comment-reply.min.js?ver=4.9.9'></script>
       <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-includes/js/wp-embed.min.js?ver=4.9.9'></script>
       <script type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/kirki/modules/webfont-loader/vendor-typekit/webfontloader.js?ver=3.0.28'></script>
-      <script type="text/javascript">
-        var c = document.body.className;
-        c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
-        document.body.className = c;
-      </script>   
-      
       <script type='text/javascript'>
         WebFont.load({
           google: {
@@ -601,6 +647,7 @@
           }
         });
       </script>
+      <script async="async" type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/akismet/_inc/form.js?ver=4.0.8'></script>
 	  <style type="text/css">
 	  .optionmodal{
 	  	display: none;
@@ -628,7 +675,7 @@
 	  //var mymodal = document.getElementById('myModal');
 	  
 	  var max_fields = 10;
-	  var hidden = $(".hiddenO");
+	  //var hidden = $(".hiddenO");
 	  var wrapper = $(".real_content");
 	  var add_button = $(".add_field_button");
 	  var x=1;
@@ -648,16 +695,22 @@
 			  $(hidden).append('<div><input class="ocodeh" id="type_code" name="type_code" type="hidden" size="10" maxlength="20" /><input class="onameh" id="type_name" name="name" type="hidden" size="20" maxlength="60" /><input class="oinfoh" id="info" name="info" type="hidden" size="30" maxlength="100" />');
 		  }
 	  });	*/	  
-	  
      $('#optionfield').on('click',function(){
     	 $("#type_modal").modal({backdrop: 'static', keyboard: false});
+
      });
      $('.add_field_button').on('click',function(){
-    	 $(".real_content").append('<div><td><input class="option_code" id="otype_code" name="otype_code" type="text" size="10" maxlength="20" /></td><td><input class="option_name" id="otype_name" name="oname" type="text" size="20" maxlength="60" /></td><td><input class="option_info" id="dinfo" name="dinfo" type="text" size="30" maxlength="100" /></td><a href="#" class="remov_field">remove</a></div>\n');
+    	 $(".real_content").append('<div><td><input class="option_code" id="otype_code" name="otype_code" type="text" size="10" maxlength="20" /></td><td><input class="option_name" id="otype_name" name="oname" type="text" size="20" maxlength="60" /></td><td><input class="option_info" id="dinfo" name="dinfo" type="text" size="30" maxlength="100" /></td><td><a href="javascript:void(0);" class="remov_field">remove</a></td></div>\n');
      });
-     $('.remov_field').on('click',function(){
-    	 console.log("remov_field: "+this.parent());
-    	 $(this).parent('div').remove();
+     $('.remove_field').on('click',function(e){
+    	 console.log("remove_field");
+    	 $(this).parent().parent().remove();
+    	 e.preventDefault();
+     });
+     $('.remov_field').on('click',function(e){
+    	 console.log("remov_field");
+    	 $(this).parent().parent().remove();
+    	 e.preventDefault();
      });
       
 	  </script>
