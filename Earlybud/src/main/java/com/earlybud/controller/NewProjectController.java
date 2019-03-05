@@ -373,7 +373,7 @@ public class NewProjectController {
 	}
 	@RequestMapping("encoreprojectModifyCheck")
 	public String encoreProjectModifyCheck(@RequestParam long item_code, @RequestParam long target_sum, @RequestParam String summary,
-			@RequestParam long[] type_code, @RequestParam String[] name, @RequestParam String[] info, @RequestParam String content){
+			@RequestParam String[] type_code, @RequestParam String[] name, @RequestParam String[] info, @RequestParam String content){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
 		System.out.println("encore project modify IN");
@@ -390,7 +390,7 @@ public class NewProjectController {
 		type.setItem_code(item_code);
 		for(int i=0; i<type_code.length; i++) {
 			System.out.println(type_code[i]+name[i]+info[i]);
-			type.setPrice(type_code[i]);
+			type.setPrice(Integer.parseInt(type_code[i]));
 			type.setName(name[i]);
 			type.setInfo(info[i]);
 			projectS.save2(type);
