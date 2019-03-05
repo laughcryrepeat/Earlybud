@@ -751,6 +751,14 @@
 		                    <span class="txt_satea"><em class="num_state">${oplist.PURNUM}명</em> 참여하였습니다.</span> 
                    		</a>             
 	                </c:when>
+	                <c:when test="${item.TIME == 999}">
+                       <a href="javascript:void(0);" onclick="openMessage()" class="box_reward">	  
+	                 		<strong class="tit_reward">${oplist.OP_PRICE}원 펀딩</strong>
+		                    <p class="txt_desc">${oplist.NAME}</p>
+		                    <span class="info_dely"><span class="txt_info">${oplist.INFO}</span></span>
+		                    <span class="txt_satea"><em class="num_state">${oplist.PURNUM}명</em> 참여하였습니다.</span> 
+                   		</a> 
+                    </c:when>
 	                <c:otherwise>
 	                	<a href="payment/input/${oplist.TYPE_CODE}" class="box_reward">
 			                <strong class="tit_reward">${oplist.OP_PRICE}원 펀딩</strong>
@@ -769,6 +777,9 @@
 <script type="text/javascript">
 	function endMessage(){
 		alert("이미 종료된 프로젝트입니다.");
+	}
+	function openMessage(){
+		alert("오픈 예정인 프로젝트입니다. 오픈 날짜를 확인해주세요.");
 	}
 </script>
 			
