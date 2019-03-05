@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.earlybud.model.Encore;
 import com.earlybud.model.Item;
 import com.earlybud.model.Seller;
 import com.earlybud.model.Type;
@@ -20,6 +21,7 @@ public class NewProjectDaoImpl implements NewProjectDao {
 	private String ns = "com.earlybud.model.Item";
 	private String ns1 = "com.earlybud.model.Seller";
 	private String ns2 = "com.earlybud.model.Type";
+	private String ns3 = "com.earlybud.model.Encore";
 	
 	public List<Item> sellerItem(String email){
 		System.out.println("dao");
@@ -138,8 +140,9 @@ public class NewProjectDaoImpl implements NewProjectDao {
 		if(i>0) System.out.println("insert Encore item2");
 	}
 	@Override
-	public void insertEncoreType(Type type) {
+	public void updateEncore(Encore encore) {
 		// TODO Auto-generated method stub
-		
+		int i = sqlSession.update(ns3+".updateEncore", encore);
+		if(i>0) System.out.println("update encore table completed");
 	}
 }

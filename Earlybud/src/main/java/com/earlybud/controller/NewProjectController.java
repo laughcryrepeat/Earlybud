@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.earlybud.model.Encore;
 import com.earlybud.model.Item;
 import com.earlybud.model.Seller;
 import com.earlybud.model.Type;
@@ -372,22 +373,23 @@ public class NewProjectController {
 		return "newProject/encoreprojectM3";
 	}
 	@RequestMapping("encoreprojectModifyCheck")
-	public String encoreProjectModifyCheck(@RequestParam long item_code, @RequestParam long target_sum, @RequestParam String summary,
-			@RequestParam String[] type_code, @RequestParam String[] name, @RequestParam String[] info, @RequestParam String content){
+	public String encoreProjectModifyCheck(@RequestParam long item_code, @RequestParam long target_sum, 
+			@RequestParam String summary, @RequestParam String[] type_code, @RequestParam String[] name, 
+			@RequestParam String[] info, @RequestParam String content, @RequestParam long new_item_code){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String email = authentication.getName();
 		System.out.println("encore project modify IN");
 		Item item = new Item();
-		item.setItem_code(item_code);
+		item.setItem_code(new_item_code);
 		item.setEmail(email);
 		item.setTarget_sum(target_sum);
 		item.setSummary(summary);
 		item.setContent(content);
 		projectS.update(item);
 		Type type = new Type();
-		projectS.modifyType(item_code);
-		System.out.println(type_code.length);
-		type.setItem_code(item_code);
+		//projectS.modifyType(item_code);
+		//System.out.println(type_code.length);
+		type.setItem_code(new_item_code);
 		for(int i=0; i<type_code.length; i++) {
 			System.out.println(type_code[i]+name[i]+info[i]);
 			type.setPrice(Integer.parseInt(type_code[i]));
@@ -397,6 +399,12 @@ public class NewProjectController {
 		}
 		System.out.println("아이템코드? " + item.getItem_code());
 		System.out.println("저장완료");
+		
+		Encore encore = new Encore();
+		encore.setItem_code(item_code);
+		encore.setNewitem_code(new_item_code);
+		
+		projectS.updateEncore(encore);
 		return "redirect:../mypage/sellerPage";
 	}
 }

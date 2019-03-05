@@ -70,7 +70,7 @@
   	
   	<select id="sellerEncoreItem" parameterType="ITEM" resultType="Item">
   	select ITEM_CODE, TITLE, SUMMARY, MAIN_IMAGE, TARGET_SUM, CUR_SUM, OPENDATE, CLOSINGDATE, ADMINCALL, SUCCESS, 
-  	ENCORE_NUM, ENCORE, EMAIL from ITEM natural join ENCORE where email=#{email} and SUCCESS = 2 and ENCORE_MASTER = 1
+  	ENCORE_NUM, ENCORE, EMAIL from ITEM natural join ENCORE where email=#{email} and SUCCESS = 2 and ENCORE_MASTER = 1 and ENCORE_SELLER != 1
   	</select>
   	
   	<select id="modifyItem1" parameterType="ITEM" resultType="Item">

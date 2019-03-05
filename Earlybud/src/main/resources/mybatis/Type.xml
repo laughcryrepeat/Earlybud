@@ -32,7 +32,7 @@
    	</update>
    	
   	<insert id="insertOption" parameterType="Type">
-  	insert into TYPE(item_code, type_code, info, name, price) 
-  	values(#{item_code}, TYPE_CODE_SEQ.nextval, #{info}, #{name}, #{price})
+  	insert into TYPE(item_code, type_code, info, name, price, pur_num) 
+  	values(#{item_code}, TYPE_CODE_SEQ.nextval, #{info}, #{name}, #{price}, 0)
   	</insert>
   </mapper>

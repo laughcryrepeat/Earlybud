@@ -2,6 +2,7 @@ package com.earlybud.project.service;
 
 import java.util.List;
 
+import com.earlybud.model.Encore;
 import com.earlybud.model.Item;
 import com.earlybud.model.Seller;
 import com.earlybud.model.Type;
@@ -25,5 +26,5 @@ public interface NewProjectService {
 	public void applyItem(long item_code);
 	public void insertEncoreItem(Item item);
 	public void insertEncoreItem2(Item item);
-	public void insertEncoreType(Type type);
+	public void updateEncore(Encore encore);
 }

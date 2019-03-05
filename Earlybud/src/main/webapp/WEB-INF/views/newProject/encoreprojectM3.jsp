@@ -25,6 +25,19 @@
 
   <link rel="stylesheet"  href="${pageContext.request.contextPath}/summernote/examples/example.css">
 
+  <script type="text/javascript">
+    $(document).ready(function() {
+       var add_button = $(".add_field_button");
+      $('.OO').trigger('click');
+      $('.add_field_button').trigger('click');
+      $('.remove_field').trigger('click');
+      $('.summernote').summernote({
+        height: 300,
+        tabsize: 2
+      });
+    });
+  </script>
+
   <style id="kirki-css-vars">:root{}</style>
   <title>EarlyBud &#8211; MyPage</title>
   <link rel='dns-prefetch' href='//s.w.org' />
@@ -97,7 +110,12 @@
       background: none !important;
       padding: 0 !important;
     }
-
+   .removal_field{
+   display: none;
+   }
+   .removal0_field{
+   display: none;
+   }
     .active {
       background-color: #cfbaf4 !important;
     }
@@ -129,24 +147,24 @@
   <link rel='stylesheet' id='airi-font-awesome-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/themes/airi/css/font-awesome/css/font-awesome.min.css?ver=4.9.9' type='text/css' media='all' />
   <link rel='stylesheet' id='kirki-styles-airi-css' href='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/kirki/assets/css/kirki-styles.css?ver=3.0.33' type='text/css' media='all' />
   <style id='kirki-styles-airi-inline-css' type='text/css'>
-	.ocode{
-		width: 20% !important;
-	}
-	.oname{
-		width: 30% !important;
-	}
-	.oinfo{
-		width: 47% !important;
-	}
+   .ocode{
+      width: 20% !important;
+   }
+   .oname{
+      width: 30% !important;
+   }
+   .oinfo{
+      width: 47% !important;
+   }
     .option_code{
-		width: 13% !important;
-	}
-	.option_name{
-		width: 30% !important;
-	}
-	.option_info{
-		width: 42% !important;
-	}
+      width: 13% !important;
+   }
+   .option_name{
+      width: 30% !important;
+   }
+   .option_info{
+      width: 42% !important;
+   }
     h1,
     h2,
     h3,
@@ -216,7 +234,7 @@
     .widget_categories li:hover a {
       color: #cfbaf4;
     }
-	input[type="submit"] {
+   input[type="submit"] {
       border-color: #ffffff;
       background-color: #e1e1e1;
       position: relative !important;
@@ -438,30 +456,29 @@
             <div class="menu-menu-container">
               <ul id="primary-menu" class="menu">
                <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-43"><a href="/../earlybud/main">Home</a></li>
-									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">소개</a></li>
-									<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">카테고리</a></li>
+                           <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">소개</a></li>
+                           <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/category">카테고리</a></li>
 
-									 <sec:authorize access="isAnonymous()">
-									 	<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">로그인/회원가입</a></li>
-									 	<li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">마이페이지</a></li>
-									</sec:authorize>
-									<sec:authorize access="isAuthenticated()">
-										<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
-										<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/customLogout">로그아웃</a></li>
-										<li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79">마이페이지
-										<ul>
-										<li><a href="/../earlybud/mypage/modify">개인정보 수정</a></li>
-										<li><a href="/../earlybud/mypage/<sec:authentication property="principal.member.email"/>">좋아요한 프로젝트/판매자</a></li>
-										<li><a href="/../earlybud/mypage/sellerPage">내가만든 프로젝트</a></li>
-										<li><a href="/../earlybud/member_orderlist/<sec:authentication property="principal.member.email"/>">주문조회</a></li>
-										<li><a href="/../earlybud/message/<sec:authentication property="principal.member.email"/>" targe="popup"
-										onclick="window.open('/../earlybud/message/<sec:authentication property="principal.member.email"/>',	'popup', 'width=1000, height=750'); return false;">판매자 문의</a></li>
-										</ul>
-									</li>
-									</sec:authorize>
+                            <sec:authorize access="isAnonymous()">
+                               <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">로그인/회원가입</a></li>
+                               <li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><a href="/../earlybud/login">마이페이지</a></li>
+                           </sec:authorize>
+                           <sec:authorize access="isAuthenticated()">
+                              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78"><sec:authentication property="principal.member.nickname"/>님 환영합니다</li>
+                              <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="/../earlybud/customLogout">로그아웃</a></li>
+                              <li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79">마이페이지
+                              <ul>
+                              <li><a href="/../earlybud/mypage/modify">개인정보 수정</a></li>
+                              <li><a href="/../earlybud/mypage/<sec:authentication property="principal.member.email"/>">좋아요한 프로젝트/판매자</a></li>
+                              <li><a href="/../earlybud/member_orderlist/<sec:authentication property="principal.member.email"/>">주문조회</a></li>
+                              <li><a href="/../earlybud/message/<sec:authentication property="principal.member.email"/>" targe="popup"
+                              onclick="window.open('/../earlybud/message/<sec:authentication property="principal.member.email"/>',   'popup', 'width=1000, height=750'); return false;">판매자 문의</a></li>
+                              </ul>
+                           </li>
+                           </sec:authorize>
 
 
-				</ul>
+            </ul>
 
           </nav><!-- #site-navigation -->
 
@@ -495,73 +512,44 @@
                 </header><!-- .entry-header -->
 
                 <div id="respond" class="comment-respond">
-                  <form action="newprojectModifyCheck" method="post" enctype="multipart/form-data" id="myproject" class="comment-form" novalidate>
+                  <form action="encoreprojectModifyCheck" method="post" enctype="multipart/form-data" id="myproject" class="comment-form" novalidate>
                     <p class="comment-form-url"><label for="url">목표 금액<span class="required">*</span></label>
-                    	<input id="target_sum" name="target_sum" type="text" value="${seller.target_sum}" size="30" maxlength="200" /></p>
+                       <input id="target_sum" name="target_sum" type="text" value="${seller.target_sum}" size="30" maxlength="200" /></p>
                     <p class="comment-form-author"><label for="author">프로젝트 요약<span class="required">*</span></label>
-                    	<input id="summary" name="summary" type="text" value="${seller.summary}" size="30" maxlength="600" /></p>
+                       <input id="summary" name="summary" type="text" value="${seller.summary}" size="30" maxlength="600" /></p>
                     <p class="comment-form-email"><label for="email">선물 구성(옵션)</label>
-                    	<input class="comment-form-email" id="optionfield" name="optionfield" type="text" size="20" maxlength="20" />
-                    	<input id="new_item_code" name="new_item_code" value="${new_item_code}" type="hidden">
-                    	
-                    	<input class="ocodeh" id="type_code" name="type_code" type="hidden" size="10" maxlength="20" />
-                    	<input class="onameh" id="type_name" name="name" type="hidden" size="20" maxlength="60" />
-                    	<input class="oinfoh" id="info" name="info" type="hidden" size="30" maxlength="100" />
-                    	
+                       <input class="comment-form-email" id="optionfield" name="optionfield" type="text" size="20" maxlength="20" />
+                       <div class="hiddenO">
+                       <input type="hidden" class="OO"/>
+                       </div>
+                       <div id="myModal" class="optionmodal">
+                          <div class="optionmodal-content">
+                             <div>
+                                <p><a href="#" class="add_field_button">add</a></p>
+                                <label for="type_code">가격&emsp;&emsp;&emsp;&emsp;&emsp;옵션 이름&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;옵션 설명&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                                <div class="real_content">
 
-                    	
+                                </div>
+                             </div>
+                          </div>
+                       </div>
                     <p class="comment-form-comment"><label for="comment">프로젝트 스토리</label><span class="required">*</span>
-                    	<textarea id="content" class="summernote" name="content" cols="45" rows="8" maxlength="65525" required="required">${seller.content}</textarea></p>
+                       <textarea id="content" class="summernote" name="content" cols="45" rows="8" maxlength="65525" required="required">${seller.content}</textarea></p>
                     <section id="categories-2" class="widget widget_catego ries">
                       <ul>
                         <input name="submit" type="submit" class="submit" value="다음페이지" />
                         <input name="item_code" type="hidden" value="${seller.item_code}"/>
+                        <input name="new_item_code" type="hidden" value="${new_item_code}"/>
                       </ul>
                     </section>
                  </form>
                 </div><!-- #respond -->
           </div><!-- #comments -->
-            <!-- Modal -->
-			  <div class="modal fade" id="type_modal" role="dialog">
-			    <div class="modal-dialog modal-lg">
-			    
-			      <!-- Modal2 content-->
-			      <div class="modal-content">
-			        <div class="modal-header">
-			          <h4 class="modal-title">타입 입력</h4>
-			        <button type="button" class="close" data-dismiss="modal">×</button>
-			        </div>
-			        <div class="modal-body">
-			          
-			        <div class="form-group">
-			                <p><a href="javascript:void(0);" class="add_field_button">add</a></p>
-                    		<label for="type_code">가격&emsp;&emsp;&emsp;&emsp;&emsp;옵션 이름&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;옵션 설명&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
-			                <div class="real_content">
-			                <c:forEach items="${type}" var="t">
-			                <div>
-			                
-			                <td><input class="option_code" id="otype_code" name="otype_code" type="text" value="${t.price}" size="10" maxlength="20" /></td>
-			                <td><input class="option_name" id="otype_name" name="oname" type="text" value="${t.name}" size="20" maxlength="60" /></td>
-			                <td><input class="option_info" id="dinfo" name="dinfo" value="${t.info}" type="text" size="30" maxlength="100" /></td>
-			                
-			                <td><a href="javascript:void(0);" class="remove_field">remove</a></td>
-			                </div>
-			                </c:forEach>
-			                </div>                
-			        </div>
-			        <div class="modal-footer">
-			            <button type="button" id="apply" class="btn btn-default" data-dismiss="modal" >입력</button>
-			            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			        </div>
-			      </div>
-			    </div>
-			  </div>
-          
-          
           </main><!-- #main -->
         </div><!-- #primary -->
       </div><!-- #page -->
-	<script type="text/javascript">
+
+      <script type="text/javascript">
         var c = document.body.className;
         c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
         document.body.className = c;
@@ -635,83 +623,92 @@
         });
       </script>
       <script async="async" type='text/javascript' src='https://mk0athemesdemon3j7s5.kinstacdn.com/wp-content/plugins/akismet/_inc/form.js?ver=4.0.8'></script>
-	  <style type="text/css">
-	  .optionmodal{
-	  	display: none;
-	  	position: fixed;
-	  	z-index: 1;
-	    left: 0;
-	    top: 0;
-	    width: 100%; /* Full width */
-	    height: 100%; /* Full height */
-	    overflow: auto; /* Enable scroll if needed */
-	    background-color: rgb(0,0,0); /* Fallback color */
-	    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-	  }
-	  .optionmodal-content{
-	  	background-color: #fefefe;
+     <style type="text/css">
+     .optionmodal{
+        display: none;
+        position: fixed;
+        z-index: 1;
+       left: 0;
+       top: 0;
+       width: 100%; /* Full width */
+       height: 100%; /* Full height */
+       overflow: auto; /* Enable scroll if needed */
+       background-color: rgb(0,0,0); /* Fallback color */
+       background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+     }
+     .optionmodal-content{
+        background-color: #fefefe;
         margin: 10% auto;
         padding: 100px;
         border: 1px solid #888;
         width: 50%; /* Could be more or less, depending on screen size */
-	  }
-	  </style>
+     }
+     </style>
 
-	  <script type="text/javascript">
-	  //var pick = document.getElementById('optionfield');
-	  //var mymodal = document.getElementById('myModal');
-	  
-	  var max_fields = 10;
-	  //var hidden = $(".hiddenO");
-	  var wrapper = $(".real_content");
-	  var add_button = $(".add_field_button");
-	  var x=1;
-	  /*$('.hiddenO').click(function(e){
-		  e.preventDefault();
-		  if(x < max_fields){
-			  x++;
-			  $(wrapper).append('<c:forEach items="${type}" var="t"><div><td><input class="option_code" id="otype_code" name="otype_code" type="text" value="${t.price}" size="10" maxlength="20" /></td><td><input class="option_name" id="otype_name" name="oname" type="text" value="${t.name}" size="20" maxlength="60" /></td><td><input class="option_info" id="dinfo" name="dinfo" value="${t.info}" type="text" size="30" maxlength="100" /></td><a href="#" class="remov_field">remove</a></div>\n</c:forEach>');
-			  $(hidden).append('<div><input class="ocodeh" id="type_code" name="type_code" type="hidden" size="10" maxlength="20" /><input class="onameh" id="type_name" name="name" type="hidden" size="20" maxlength="60" /><input class="oinfoh" id="info" name="info" type="hidden" size="30" maxlength="100" />');
-	  	  }
-	  });
-	  $(add_button).click(function(e){
-		  e.preventDefault();
-		  if(x < max_fields){
-			  x++;
-			  $(wrapper).append('<div><input class="option_code" id="otype_code" name="otype_code" type="text" size="10" maxlength="20" /><input class="option_name" id="otype_name" name="oname" type="text" size="20" maxlength="60" /><input class="option_info" id="dinfo" name="dinfo" type="text" size="30" maxlength="100" /><a href="#" class="remove_field">remove</a></div>\n');
-			  $(hidden).append('<div><input class="ocodeh" id="type_code" name="type_code" type="hidden" size="10" maxlength="20" /><input class="onameh" id="type_name" name="name" type="hidden" size="20" maxlength="60" /><input class="oinfoh" id="info" name="info" type="hidden" size="30" maxlength="100" />');
-		  }
-	  });	*/	 
-	  
-	  
-	    $(document).ready(function() {
-	    	//var add_button = $(".add_field_button");
-	      //$('.hiddenO').trigger('click');
-	      //$('.add_field_button').trigger('click');
-	      //$('.remove_field').trigger('click');
-	      $('.summernote').summernote({
-	        height: 300,
-	        tabsize: 2
-	      });
-	  
-	     $('#optionfield').on('click',function(){
-	    	 $("#type_modal").modal({backdrop: 'static', keyboard: false});
-	
-	     });
-	     
-	     $('.add_field_button').on('click',function(){
-	    	 console.log("add this: "+this);
-	    	 $(".real_content").append('<div><td><input class="option_code" id="otype_code" name="otype_code" type="text" size="10" maxlength="20" /></td><td><input class="option_name" id="otype_name" name="oname" type="text" size="20" maxlength="60" /></td><td><input class="option_info" id="dinfo" name="dinfo" type="text" size="30" maxlength="100" /></td><td><a href="javascript:void(0);" class="remove_field">remove</a></td></div>');
-	     });
-	     
-	     $(".remove_field").on('click',function(e){
-	    	 console.log("remove_field this: "+this.parent());
-	    	 $(this).parent().remove();
-	    	 e.preventDefault();
-	     });
-	     
-	 }); 
-	  </script>
+     <script type="text/javascript">
+     var pick = document.getElementById('optionfield');
+     var mymodal = document.getElementById('myModal');
+     pick.onclick = function(){
+        mymodal.style.display = "block";
+     }
+     var max_fields = 10;
+     var hidden = $(".hiddenO");
+     var wrapper = $(".real_content");
+     var add_button = $(".add_field_button");
+     var x=1;
+     $('.OO').click(function(e){
+        e.preventDefault();
+        if(x < max_fields){
+           x++;
+           $(wrapper).append('<c:choose><c:when test="${empty type}"><div><input class="option_code" id="otype_code" name="otype_code" type="text" size="10" maxlength="20" /><input class="option_name" id="otype_name" name="oname" type="text" size="20" maxlength="60" /><input class="option_info" id="dinfo" name="dinfo" type="text" size="30" maxlength="100" /><a href="#" class="remove_field">remove</a></div>\n</c:when><c:otherwise><c:forEach items="${type}" var="t"><div><td><input class="option_code" id="otype_code" name="otype_code" type="text" value="${t.price}" size="10" maxlength="20" /></td><td><input class="option_name" id="otype_name" name="oname" type="text" value="${t.name}" size="20" maxlength="60" /></td><td><input class="option_info" id="dinfo" name="dinfo" value="${t.info}" type="text" size="30" maxlength="100" /></td><a href="#" class="remov_field">remove</a></div>\n</c:forEach></c:otherwise></c:choose>');
+           $(hidden).append('<div><input class="ocodeh" id="type_code" name="type_code" type="hidden" size="10" maxlength="20" /><input class="onameh" id="type_name" name="name" type="hidden" size="20" maxlength="60" /><input class="oinfoh" id="info" name="info" type="hidden" size="30" maxlength="100" /><a href="#" class="removal0_field">remove</a></div>');
+          }
+     });
+     $(add_button).click(function(e){
+        e.preventDefault();
+        if(x < max_fields){
+           x++;
+           $(wrapper).append('<div><input class="option_code" id="otype_code" name="otype_code" type="text" size="10" maxlength="20" /><input class="option_name" id="otype_name" name="oname" type="text" size="20" maxlength="60" /><input class="option_info" id="dinfo" name="dinfo" type="text" size="30" maxlength="100" /><a href="#" class="remove_field">remove</a></div>\n');
+           $(hidden).append('<div><input class="ocodeh" id="type_code" name="type_code" type="hidden" size="10" maxlength="20" /><input class="onameh" id="type_name" name="name" type="hidden" size="20" maxlength="60" /><input class="oinfoh" id="info" name="info" type="hidden" size="30" maxlength="100" /><a href="#" class="removal_field">remove</a></div>');
+        }
+     })
+           $(wrapper).on("click",".remove_field", function(e){
+              $('.removal0_field').trigger('click');
+              e.preventDefault(); $(this).parent('div').remove(); x--;
+         })
+           $(wrapper).on("click",".remov_field", function(e){
+              $('.removal_field').trigger('click');
+              e.preventDefault(); $(this).parent('div').remove(); x--;
+         });
+         $(hidden).on("click",".removal_field", function(e){
+             e.preventDefault(); $(this).parent('div').remove(); x--;
+         });
+         $(hidden).on("click",".removal0_field", function(e){
+             e.preventDefault(); $(this).parent('div').remove(); x--;
+         });
+     window.onclick = function(event) {
+          if (event.target == mymodal) {
+             var oc =$('.option_code').get();
+             var on =$('.option_name').get();
+             var oi =$('.option_info').get();
+             var hc =$('.ocodeh').get();
+             var hn =$('.onameh').get();
+             var hi =$('.oinfoh').get();
+             for(var i=0; i<oc.length; i++){
+                hc[i].value = oc[i].value;
+                hn[i].value = on[i].value;
+                hi[i].value = oi[i].value;
+                console.log("타입코드"+ hc[i].value+hc[i].length);
+                console.log(hn[i].value);
+                console.log(hi[i].value);
+
+             }
+             document.getElementById("optionfield").value =oc.length+"개의 옵션을 입력하셨습니다";
+             <!-- myproject.option_type.value = "가격: "+ type_code.value + " 옵션이름: " + type_name.value + " 옵션설명: " + info.value;-->
+              mymodal.style.display = "none";
+          }
+      };
+     </script>
 
 </body>
 
