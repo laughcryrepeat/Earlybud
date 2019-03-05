@@ -357,7 +357,7 @@ public class NewProjectController {
 		
 		item.setEmail(email);
 		item.setCat_code(cat_code);
-		item.setTitle(title);
+		item.setTitle("앵콜! "+title);
 		item.setOpendate(openDate);
 		item.setClosingdate(closingDate);
 		System.out.println("프로젝트 생성 p2: "+item);
