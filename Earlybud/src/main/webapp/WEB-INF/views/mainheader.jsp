@@ -169,6 +169,7 @@
 	
 	<style>
 		@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:700&subset=korean');
+		@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
 	</style>
 	
 	<style id='kirki-styles-airi-inline-css' type='text/css'>
@@ -179,13 +180,13 @@
 		h5,
 		h6,
 		.site-title {
-			font-family: font-family: 'Nanum Gothic', sans-serif;
+			font-family: 'Nanum Gothic', sans-serif;
 			font-weight: 500;
 		}
 
 		body {
-			font-family: "Work Sans", Helvetica, Arial, sans-serif;
-			font-weight: 400;
+			font-family: 'Noto Sans KR', sans-serif;
+			font-weight: 300;
 			font-size: 16px;
 		}
 
