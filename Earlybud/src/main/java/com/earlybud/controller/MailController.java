@@ -46,7 +46,7 @@ public class MailController {
 		
 		String host = "smtp.naver.com";
 		String user = "laughcryrepeat@naver.com";
-		String password = "bitcamp2019";
+		String password = "";
 		String emailto = email.getMailto();
 		emailto = emailto.trim();
 		System.out.println("emailto: "+ emailto);
