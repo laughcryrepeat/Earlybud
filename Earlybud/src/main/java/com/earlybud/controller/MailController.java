@@ -119,7 +119,7 @@ public class MailController {
 		
 		String host = "smtp.naver.com";
 		String user = "laughcryrepeat@naver.com";
-		String password = "bitcamp2019";
+		String password = "";
 		System.out.println("emailto: "+ email);
 		String[] mailtoArray = null;
 		
