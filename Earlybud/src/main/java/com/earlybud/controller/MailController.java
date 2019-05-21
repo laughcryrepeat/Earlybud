@@ -45,7 +45,7 @@ public class MailController {
 		System.out.println("mail:"+ email);
 		
 		String host = "smtp.naver.com";
-		String user = "laughcryrepeat@naver.com";
+		String user = "";
 		String password = "";
 		String emailto = email.getMailto();
 		emailto = emailto.trim();
@@ -118,7 +118,7 @@ public class MailController {
 		System.out.println("수신자:"+ email);
 		
 		String host = "smtp.naver.com";
-		String user = "laughcryrepeat@naver.com";
+		String user = "";
 		String password = "";
 		System.out.println("emailto: "+ email);
 		String[] mailtoArray = null;
